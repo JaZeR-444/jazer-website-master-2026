@@ -4,13 +4,13 @@ This is the private repo for the JaZeR site. It’s a static single-page app (pl
 
 ## Structure
 
-- `index.html` — main site (moved to project root)
+- `index.html` — main site (at project root)
 - `404.html` — friendly not-found page
 - `css/` — styles, brand tokens in `style.css`
 - `js/` — navigation, contact form handling, brand color picker
 - `images/` — logo, artwork, favicon
-- `robots/robots.txt` — allow all + sitemap
-- `sitemap/sitemap.xml` — minimal sitemap
+- `robots.txt` — allow all + sitemap reference
+- `sitemap.xml` — minimal sitemap
 - `README/` — original notes (kept)
 
 ## Brand

@@ -11,11 +11,12 @@ Professional website for content creator and music artist JaZeR.
 ## 📁 File Structure
 
 - `index.html` - Main HTML file
+- `404.html` - Custom 404 error page
 - `css/style.css` - All styling
 - `js/script.js` - JavaScript functionality
 - `images/` - Brand images and assets
-- `robots/robots.txt` - SEO robots file
-- `sitemap/sitemap.xml` - Site map
+- `robots.txt` - SEO robots file
+- `sitemap.xml` - Site map
 
 ## ✏️ Customization
 
