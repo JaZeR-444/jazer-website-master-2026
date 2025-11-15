@@ -13,7 +13,8 @@ This is the private repo for the JaZeR site. It’s a static single-page app (pl
 - `sitemap.xml` — site structure for SEO (root level)
 - `robots/` & `sitemap/` — original subdirectories (kept)
 - `README/` — original notes (kept)
-- `GITHUB_PAGES_DEPLOYMENT.md` — deployment guide
+- `QUICKSTART.md` — 3-step deployment guide
+- `GITHUB_PAGES_DEPLOYMENT.md` — comprehensive deployment guide
 - `deploy-gh-pages.sh` — deployment helper script
 - `verify-site.sh` — site structure verification
 
@@ -32,27 +33,29 @@ Open `index.html` directly in your browser, or use a simple static server (recom
 
 ## Deploy to GitHub Pages
 
-This repository is configured for GitHub Pages deployment. Follow these steps:
+This repository is configured for GitHub Pages deployment.
 
-1. **Quick Deploy:**
+📖 **Quick Start**: See [QUICKSTART.md](QUICKSTART.md) for 3-step deployment  
+📖 **Detailed Guide**: See [GITHUB_PAGES_DEPLOYMENT.md](GITHUB_PAGES_DEPLOYMENT.md)
+
+### Quick Deploy
+
+1. **Create gh-pages branch:**
    ```bash
    ./deploy-gh-pages.sh
    ```
 
-2. **Manual Deploy:**
-   - Create gh-pages branch: `git checkout -b gh-pages && git push -u origin gh-pages`
-   - Enable in GitHub: Settings → Pages → Source: gh-pages branch
+2. **Enable in GitHub:**
+   Settings → Pages → Source: gh-pages branch
 
 3. **Verify Site:**
    ```bash
    ./verify-site.sh
    ```
 
-📖 **For detailed instructions, see [GITHUB_PAGES_DEPLOYMENT.md](GITHUB_PAGES_DEPLOYMENT.md)**
-
 ### Deployment Options
 - **GitHub Pages** (default): `https://jazer-444.github.io/JaZeR-Unlimited/`
-- **Custom Domain**: Configure https://jazeratx.com (see deployment guide)
+- **Custom Domain**: Configure https://jazeratx.com (see guides)
 - **Alternative Platforms**: Cloudflare Pages, Vercel, Netlify
 
 Update `og:image` to a dedicated share image (1200x630) when final.
