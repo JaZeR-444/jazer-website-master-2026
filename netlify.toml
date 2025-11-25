@@ -1,0 +1,6 @@
+# Netlify configuration for JaZeR Unlimited static site
+[build]
+  # No build command needed for a static site  
+  command = ""
+  # Publish the repository root
+  publish = "."
