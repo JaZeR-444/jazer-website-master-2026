@@ -1,130 +1,93 @@
-/* Root variables and theme */
-:root {
-    /* Brand Fonts - MATCHING YOUR ACTUAL LOGO */
-    --font-primary: 'Nunito', sans-serif;          /* Logo, Hero - Matches your logo! */
-    --font-secondary: 'Outfit', sans-serif;        /* Headers, Titles - Rounded & Modern */
-    --font-body: 'DM Sans', sans-serif;            /* Body, UI - Friendly & Readable */
-    
-    /* Alternative Font Options */
-    --font-alt-rounded: 'Poppins', sans-serif;     /* Alternative rounded option */
-    --font-alt-geometric: 'Rubik', sans-serif;     /* Alternative geometric option */
-    
-    /* Brand Colors - VIBRANT PALETTE */
-    --jazer-blue-light: #00f2fe;
-    --jazer-blue-mid: #4facfe;
-    --jazer-purple: #9333ea;
-    --jazer-magenta: #ff00ff;
-    --jazer-cyan: #00f2ea;
-    --jazer-pink: #ff006e; /* NEW */
-    --jazer-yellow: #ffbe0b; /* NEW */
-    --jazer-orange: #ff8800;
-    
-    /* Gradients - PLAYFUL */
-    --gradient-primary: linear-gradient(135deg, #ffbe0b 0%, #ff006e 50%, #ff00ff 100%);
-    --gradient-text: linear-gradient(135deg, #00f2fe 0%, #ff006e 50%, #ffbe0b 100%);
-    --gradient-accent: linear-gradient(135deg, #9333ea 0%, #ff00ff 100%);
-    
-    /* Backgrounds */
-    --bg-dark: #000000;
-    --bg-card: rgba(255, 255, 255, 0.05);
-    --bg-bubble: rgba(255, 0, 110, 0.1);
-    --text-light: #ffffff;
-    --text-gray: #b0b0b0;
-    --text-muted: #808080;
-    
-    /* Typography Scale - Mobile First */
-    --text-xs: 0.75rem;      /* 12px */
-    --text-sm: 0.875rem;     /* 14px */
-    --text-base: 1rem;       /* 16px */
-    --text-lg: 1.125rem;     /* 18px */
-    --text-xl: 1.25rem;      /* 20px */
-    --text-2xl: 1.5rem;      /* 24px */
-    --text-3xl: 1.875rem;    /* 30px */
-    --text-4xl: 2.25rem;     /* 36px */
-    --text-5xl: 3rem;        /* 48px */
-    --text-6xl: 3.75rem;     /* 60px */
-    --text-7xl: 4.5rem;      /* 72px */
-    --text-8xl: 6rem;        /* 96px */
-    
-    /* Line Heights - MORE BREATHING ROOM */
-    --leading-tight: 1.2;
-    --leading-snug: 1.35;
-    --leading-normal: 1.6;
-    --leading-relaxed: 1.8;
-    --leading-loose: 2;
-    
-    /* Letter Spacing - WIDER FOR FRIENDLINESS */
-    --tracking-tighter: -0.025em;
-    --tracking-tight: 0;
-    --tracking-normal: 0.01em;
-    --tracking-wide: 0.03em;
-    --tracking-wider: 0.05em;
-    --tracking-widest: 0.1em;
+/* ============================================
+       JAZER BRAND TYPOGRAPHY SYSTEM
+       Version 1.0 - Futuristic Edition
+       ============================================ */
 
-    /* Site specific variables */
-    --max-width: 1100px;
-    /* Icon color variables */
-    --icon-purple: #8B5CF6;
-    --icon-blue: #3B82F6;
-    --icon-pink: #EC4899;
-    --icon-cyan: #06B6D4;
-    --icon-green: #10B981;
-    --icon-orange: #F59E0B;
-}
+    :root {
+      /* Brand Fonts - MATCHING YOUR ACTUAL LOGO */
+      --font-primary: 'Nunito', sans-serif;          /* Logo, Hero - Matches your logo! */
+      --font-secondary: 'Outfit', sans-serif;        /* Headers, Titles - Rounded & Modern */
+      --font-body: 'DM Sans', sans-serif;            /* Body, UI - Friendly & Readable */
+      
+      /* Alternative Font Options */
+      --font-alt-rounded: 'Poppins', sans-serif;     /* Alternative rounded option */
+      --font-alt-geometric: 'Rubik', sans-serif;     /* Alternative geometric option */
+      
+      /* Brand Colors - VIBRANT PALETTE */
+      --jazer-blue-light: #00f2fe;
+      --jazer-blue-mid: #4facfe;
+      --jazer-purple: #9333ea;
+      --jazer-magenta: #ff00ff;
+      --jazer-cyan: #00f2ea;
+      --jazer-pink: #ff006e;
+      --jazer-yellow: #ffbe0b;
+      --jazer-orange: #ff8800;
+      
+      /* Gradients - PLAYFUL */
+      --gradient-primary: linear-gradient(135deg, #ffbe0b 0%, #ff006e 50%, #ff00ff 100%);
+      --gradient-text: linear-gradient(135deg, #00f2fe 0%, #ff006e 50%, #ffbe0b 100%);
+      --gradient-accent: linear-gradient(135deg, #9333ea 0%, #ff00ff 100%);
+      
+      /* Backgrounds */
+      --bg-dark: #000000;
+      --bg-card: rgba(255, 255, 255, 0.05);
+      --bg-bubble: rgba(255, 0, 110, 0.1);
+      --text-light: #ffffff;
+      --text-gray: #b0b0b0;
+      --text-muted: #808080;
+      
+      /* Typography Scale - Mobile First */
+      --text-xs: 0.75rem;      /* 12px */
+      --text-sm: 0.875rem;     /* 14px */
+      --text-base: 1rem;       /* 16px */
+      --text-lg: 1.125rem;     /* 18px */
+      --text-xl: 1.25rem;      /* 20px */
+      --text-2xl: 1.5rem;      /* 24px */
+      --text-3xl: 1.875rem;    /* 30px */
+      --text-4xl: 2.25rem;     /* 36px */
+      --text-5xl: 3rem;        /* 48px */
+      --text-6xl: 3.75rem;     /* 60px */
+      --text-7xl: 4.5rem;      /* 72px */
+      --text-8xl: 6rem;        /* 96px */
+      
+      /* Line Heights - MORE BREATHING ROOM */
+      --leading-tight: 1.2;
+      --leading-snug: 1.35;
+      --leading-normal: 1.6;
+      --leading-relaxed: 1.8;
+      --leading-loose: 2;
+      
+      /* Letter Spacing - WIDER FOR FRIENDLINESS */
+      --tracking-tighter: -0.025em;
+      --tracking-tight: 0;
+      --tracking-normal: 0.01em;
+      --tracking-wide: 0.03em;
+      --tracking-wider: 0.05em;
+      --tracking-widest: 0.1em;
+    }
 
-/* Reset and base */
-* {
-    box-sizing: border-box;
-}
+    /* ============================================
+       BASE STYLES
+       ============================================ */
 
-html,
-body {
-    height: 100%;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    background: var(--bg-dark); /* Updated from --dark-bg */
-    color: var(--text-light);   /* Updated from --text-primary */
-    font-family: var(--font-body); /* Updated from Montserrat */
-    font-size: var(--text-base); /* Added from brand package */
-    line-height: var(--leading-normal); /* Updated from 1.4 */
-    padding: 0; /* Changed from 2rem to avoid initial layout shift; adjust if needed */
-}
+    body {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      padding: 2rem;
+    }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Skip link */
-.skip-link {
-    position: absolute;
-    left: -999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-}
-
-.skip-link:focus {
-    left: 1rem;
-    top: 1rem;
-    width: auto;
-    height: auto;
-    background: #000;
-    padding: .5rem;
-    color: #fff;
-    z-index: 9999;
-}
-
-/* Typography Classes */
+    /* ============================================
+       TYPOGRAPHY CLASSES - THE JAZER SYSTEM
+       ============================================ */
 
     /* TIER 1: BRAND IMPACT (Nunito - Matches Your Logo!) */
     
@@ -141,7 +104,7 @@ a {
       text-transform: uppercase;
     }
 
-    .jazer-logo-text { /* Renamed from .jazer-logo to avoid conflict with .logo selector */
+    .jazer-logo {
       font-family: var(--font-primary);
       font-size: clamp(1.5rem, 4vw, 2.5rem);
       font-weight: 900;
@@ -178,8 +141,9 @@ a {
       font-weight: 700;
       line-height: var(--leading-snug);
       letter-spacing: var(--tracking-normal);
-      color: var(--primary-color); /* Retain existing color and transition */
-      transition: color 0.5s ease-in-out; /* Retain existing color and transition */
+      /* Retain existing color and transition */
+      color: var(--primary-color);
+      transition: color 0.5s ease-in-out;
     }
 
     .jazer-h3 {
@@ -338,624 +302,270 @@ a {
       color: var(--text-gray);
     }
 
-/* Navigation */
-.site-nav {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
+    /* ============================================
+       UTILITY CLASSES
+       ============================================ */
 
-.nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0;
-}
-
-.logo {
-    display: inline-flex;
-    align-items: center;
-}
-
-.logo img {
-    height: 28px;
-    width: auto;
-    display: block;
-    /* Added dynamic glow effect based on --primary-color */
-    filter: drop-shadow(0 0 8px var(--primary-color));
-    /* Smooth transition for the glow effect */
-    transition: filter 0.5s ease-in-out;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    padding: .5rem .75rem;
-    border-radius: 6px;
-    color: var(--text-secondary);
-}
-
-.nav-links a.active,
-.nav-links a:hover {
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.02);
-}
-
-/* Mobile menu */
-.mobile-menu {
-    display: none;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-}
-
-.mobile-menu span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--text-primary);
-    margin: 4px 0;
-}
-
-/* Hero */
-.hero {
-    padding: 6rem 0 3rem;
-    text-align: center;
-    background: linear-gradient(180deg, rgba(139, 92, 246, 0.08), transparent);
-}
-
-.hero-content h1 {
-    margin: 0 0 .5rem;
-    font-size: clamp(2rem, 6vw, 4rem);
-}
-
-.hero-content p {
-    margin: 0 0 1.25rem;
-    color: var(--text-secondary);
-}
-
-.hero-logo {
-    width: min(80%, 520px);
-    height: auto;
-    display: block;
-    margin: 0 auto 0.75rem;
-    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
-}
-
-.cta-button {
-    display: inline-block;
-    padding: .75rem 1.25rem;
-    border-radius: 999px;
-    color: #fff;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border: 0;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-}
-
-/* Sections */
-.section {
-    padding: 3rem 0;
-}
-
-.section-title {
-    margin: 0 0 1.5rem;
-    font-size: 1.5rem;
-}
-
-/* Pages */
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
-/* Grid / cards */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-}
-
-.card {
-    background: var(--card-bg);
-    padding: 1.25rem;
-    border-radius: 8px;
-    color: var(--text-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-.card h3 {
-    margin-top: 0;
-}
-
-/* Forms */
-.contact-form {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: .35rem;
-    color: var(--text-secondary);
-    font-size: .9rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: .6rem;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: transparent;
-    color: var(--text-primary);
-}
-
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-/* Media embeds */
-.media-embed {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-/* Footer */
-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.social-links a {
-    margin: 0 .4rem;
-    font-size: 1.15rem;
-}
-
-/* Brand gallery styles */
-.brand-gallery {
-    margin-top: 1.5rem;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-}
-
-/* Make the gallery items buttons that act like tiles */
-.gallery-item {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 0;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    height: 0;
-    padding-bottom: 66%;
-}
-
-.gallery-item img.brand-sample {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform .35s ease, filter .35s ease;
-    filter: grayscale(.08) contrast(1.02);
-}
-
-.gallery-item:hover img.brand-sample,
-.gallery-item:focus img.brand-sample,
-.gallery-item.selected img.brand-sample {
-    transform: scale(1.06);
-    filter: none;
-}
-
-.gallery-item:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.06);
-    outline-offset: 4px;
-}
-
-/* Ensure buttons have no default button visuals */
-button.gallery-item {
-    background: none;
-    border: none;
-}
-
-/* Small visual cue for selected */
-.gallery-item.selected {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
-    transform: translateY(-2px);
-}
-
-/* Accessibility helpers */
-.visually-hidden {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap;
-}
-
-/* Design embed wrapper */
-.design-embed {
-    background: #0B0E12;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.design-credit a {
-    color: var(--accent-color);
-    text-decoration: underline;
-}
-
-.design-credit a:hover {
-    color: var(--secondary-color);
-}
-
-/* ============================================
-   NEON ICON SYSTEM (for SVG icons)
-   ============================================ */
-
-/* Base neon icon styling */
-.neon-icon {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    filter: drop-shadow(0 0 8px currentColor);
-    transition: all 0.3s ease;
-}
-
-/* Icon size classes */
-.icon-xs {
-    width: 20px;
-    height: 20px;
-}
-
-.icon-sm {
-    width: 28px;
-    height: 28px;
-}
-
-.icon-md {
-    width: 40px;
-    height: 40px;
-}
-
-.icon-lg {
-    width: 56px;
-    height: 56px;
-}
-
-.icon-xl {
-    width: 80px;
-    height: 80px;
-}
-
-/* Icon color classes */
-.icon-purple {
-    color: var(--icon-purple);
-}
-
-.icon-blue {
-    color: var(--icon-blue);
-}
-
-.icon-pink {
-    color: var(--icon-pink);
-}
-
-.icon-cyan {
-    color: var(--icon-cyan);
-}
-
-.icon-green {
-    color: var(--icon-green);
-}
-
-.icon-orange {
-    color: var(--icon-orange);
-}
-
-/* Hover effects */
-.neon-icon:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 12px currentColor);
-}
-
-/* Button wrapper for icons */
-.icon-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-decoration: none;
-}
-
-.icon-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: currentColor;
-    box-shadow: 0 0 15px -5px currentColor;
-}
-
-/* Icon group container */
-.icon-group {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Icon pulse animation */
-@keyframes icon-pulse {
-    0%,
-    100% {
-        filter: drop-shadow(0 0 8px currentColor);
+    .gradient-text {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    50% {
-        filter: drop-shadow(0 0 20px currentColor);
-    }
-}
-
-.icon-pulse {
-    animation: icon-pulse 2s ease-in-out infinite;
-}
-
-/* ============================================
-   CUSTOM EMOJI SYSTEM
-   ============================================ */
-
-/* Base Emoji Styling */
-.custom-emoji {
-    display: inline-block;
-    font-size: 1.5em;
-    line-height: 1;
-    vertical-align: middle;
-    margin: 0 0.2em;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: default;
-}
-
-/* Interactive hover effect */
-.custom-emoji.interactive {
-    cursor: pointer;
-}
-
-.custom-emoji.interactive:hover {
-    transform: scale(1.4) rotate(5deg);
-    filter: drop-shadow(0 0 15px currentColor);
-    z-index: 10;
-}
-
-/* Category-specific styling with colored glows */
-
-/* 1. MUSIC & AUDIO (Purple Glow) */
-.emoji-music {
-    filter: drop-shadow(0 0 8px var(--jazer-purple));
-}
-
-/* 2. VIDEO & CONTENT (Blue Glow) */
-.emoji-content {
-    filter: drop-shadow(0 0 8px var(--jazer-blue-mid));
-}
-
-/* 3. VIBE & ENERGY (Orange/Fire Glow) */
-.emoji-vibe {
-    filter: drop-shadow(0 0 8px var(--jazer-orange));
-}
-
-/* 4. TECH & GEAR (Cyan Glow) */
-.emoji-tech {
-    filter: drop-shadow(0 0 8px var(--jazer-cyan));
-}
-
-/* 5. SOCIAL & COMMUNITY (Magenta Glow) */
-.emoji-social {
-    filter: drop-shadow(0 0 8px var(--jazer-magenta));
-}
-
-/* 6. BUSINESS & GROWTH (Green Glow) */
-.emoji-business {
-    filter: drop-shadow(0 0 8px var(--jazer-green));
-}
-
-/* 7. ACCENTS & DECOR (White/Blue Glow) */
-.emoji-accent {
-    filter: drop-shadow(0 0 8px var(--jazer-blue-light));
-}
-
-/* Emoji size classes */
-.emoji-sm {
-    font-size: 1em;
-}
-
-.emoji-md {
-    font-size: 1.5em;
-}
-
-.emoji-lg {
-    font-size: 2.5em;
-}
-
-.emoji-xl {
-    font-size: 4em;
-}
-
-/* Spacing helpers */
-.emoji-mr {
-    margin-right: 0.5em;
-}
-
-.emoji-ml {
-    margin-left: 0.5em;
-}
-
-/* ============================================
-   EMOJI ANIMATIONS
-   ============================================ */
-
-/* Pulse Animation */
-@keyframes emoji-pulse {
-    0% {
-        transform: scale(1);
+    .text-glow {
+      text-shadow: 0 0 20px rgba(79, 172, 254, 0.6),
+                   0 0 40px rgba(79, 172, 254, 0.4);
     }
 
-    50% {
-        transform: scale(1.1);
+    .text-uppercase { text-transform: uppercase; }
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .text-right { text-align: right; }
+
+    /* ============================================
+       DEMO PAGE STYLING
+       ============================================ */
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    100% {
-        transform: scale(1);
-    }
-}
-
-.emoji-animated-pulse {
-    animation: emoji-pulse 2s infinite ease-in-out;
-}
-
-/* Bounce Animation */
-@keyframes emoji-bounce {
-    0%,
-    100% {
-        transform: translateY(0);
+    .section {
+      margin: 6rem 0;
+      padding: 3rem;
+      background: var(--bg-card);
+      border-radius: 32px;
+      border: 2px solid rgba(255, 0, 110, 0.2);
+      position: relative;
+      overflow: hidden;
     }
 
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-.emoji-animated-bounce {
-    animation: emoji-bounce 1.5s infinite ease-in-out;
-}
-
-/* Spin Animation (Slow) */
-@keyframes emoji-spin {
-    from {
-        transform: rotate(0deg);
+    .section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 0, 110, 0.1) 0%, transparent 70%);
+      animation: bubble-float 20s ease-in-out infinite;
     }
 
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.emoji-animated-spin {
-    animation: emoji-spin 8s linear infinite;
-}
-
-/* ============================================
-   RESPONSIVE STYLES
-   ============================================ */
-
-@media (max-width:800px) {
-    .nav-links {
-        position: absolute;
-        right: 1rem;
-        top: 64px;
-        background: rgba(0, 0, 0, 0.85);
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 1rem;
-        border-radius: 8px;
-        display: none;
+    @keyframes bubble-float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-20px, -20px) scale(1.1); }
     }
 
-    .nav-links.active {
-        display: flex;
+    .section-header {
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 3px solid;
+      border-image: linear-gradient(90deg, #ffbe0b 0%, #ff006e 50%, #ff00ff 100%) 1;
+      position: relative;
+      z-index: 1;
     }
 
-    .mobile-menu {
-        display: block;
+    .type-demo {
+      margin: 2rem 0;
+      padding: 2rem;
+      background: rgba(255, 190, 11, 0.05);
+      border-radius: 20px;
+      border-left: 6px solid var(--jazer-pink);
+      position: relative;
+      transition: all 0.3s ease;
     }
 
-    .hero {
-        padding: 4rem 0 2rem;
+    .type-demo:hover {
+      transform: translateX(8px);
+      border-left-color: var(--jazer-yellow);
+      box-shadow: -8px 0 30px rgba(255, 0, 110, 0.2);
     }
 
-    .grid {
+    .type-demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .type-name {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--jazer-pink);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+    }
+
+    .type-specs {
+      font-family: 'Courier New', monospace;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .usage-card {
+      background: var(--bg-bubble);
+      padding: 2rem;
+      border-radius: 24px;
+      border: 2px solid rgba(255, 0, 110, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .usage-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(255, 190, 11, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .usage-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255, 0, 110, 0.6);
+      box-shadow: 0 20px 60px rgba(255, 0, 110, 0.3);
+    }
+
+    .usage-card:hover::before {
+      opacity: 1;
+    }
+
+    .usage-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .usage-icon {
+      font-size: 2rem;
+    }
+
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .do-card, .dont-card {
+      padding: 2rem;
+      border-radius: 24px;
+      border: 3px solid;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .do-card {
+      background: rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.4);
+    }
+
+    .do-card::before {
+      content: '✨';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+
+    .dont-card {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .dont-card::before {
+      content: '💥';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+
+    .do-card h4, .dont-card h4 {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .do-card h4 { color: #22c55e; }
+    .dont-card h4 { color: #ef4444; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--jazer-pink);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      background: rgba(255, 0, 110, 0.1);
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      background: rgba(255, 0, 110, 0.15);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      color: var(--jazer-yellow);
+      border: 1px solid rgba(255, 0, 110, 0.3);
+    }
+
+    .code-block {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1.5rem;
+      border-radius: 16px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 2px solid rgba(255, 190, 11, 0.2);
+    }
+
+    .code-block pre {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      font-size: var(--text-sm);
+      color: var(--text-gray);
+    }
+
+    @media (max-width: 768px) {
+      .do-dont-grid {
         grid-template-columns: 1fr;
+      }
+
+      .usage-grid {
+        grid-template-columns: 1fr;
+      }
     }
-
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    }
-
-    /* Neon icon responsive sizing */
-    .icon-md {
-        width: 32px;
-        height: 32px;
-    }
-
-    .icon-lg {
-        width: 48px;
-        height: 48px;
-    }
-
-    .icon-xl {
-        width: 64px;
-        height: 64px;
-    }
-
-    /* Emoji responsive sizing */
-    .custom-emoji {
-        font-size: 1.2em;
-    }
-
-    .emoji-lg {
-        font-size: 2em;
-    }
-
-    .emoji-xl {
-        font-size: 3em;
-    }
-}
-
-/* ============================================
-   UTILITY CLASSES (from jazer-typography-brand-package.html)
-   ============================================ */
-
-.gradient-text {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-glow {
-  text-shadow: 0 0 20px rgba(79, 172, 254, 0.6),
-               0 0 40px rgba(79, 172, 254, 0.4);
-}
-
-.text-uppercase { text-transform: uppercase; }
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+  </style>
