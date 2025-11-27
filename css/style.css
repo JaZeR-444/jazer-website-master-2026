@@ -160,12 +160,20 @@
 
 /* ---------- SITE-WIDE BACKGROUND GRADIENT ---------- */
 :root {
-  /* add the site gradient variable (layered radial + linear for vignette effect) */
-  --bg-gradient: radial-gradient(ellipse at 50% 0%,
-      rgba(75, 0, 130, 0.6) 0%,
-      rgba(45, 0, 75, 0.8) 30%,
-      rgba(20, 0, 40, 1) 70%),
-    linear-gradient(180deg, rgba(30, 0, 50, 1) 0%, rgba(10, 0, 20, 1) 50%, rgba(0, 0, 0, 1) 100%);
+  /* Seamless deep purple cosmic gradient - smoother transitions to avoid banding */
+  --bg-gradient: 
+    radial-gradient(ellipse 150% 100% at 50% 0%,
+      rgba(75, 0, 130, 0.5) 0%,
+      rgba(55, 0, 100, 0.6) 20%,
+      rgba(40, 0, 70, 0.8) 40%,
+      rgba(25, 0, 50, 0.95) 60%,
+      rgba(15, 0, 30, 1) 80%,
+      rgba(5, 0, 15, 1) 100%),
+    linear-gradient(180deg, 
+      rgba(20, 0, 40, 1) 0%, 
+      rgba(10, 0, 25, 1) 30%,
+      rgba(5, 0, 15, 1) 60%,
+      rgba(0, 0, 5, 1) 100%);
 }
 
 /* Make main wrappers transparent so the gradient shows through */
@@ -856,7 +864,7 @@ code {
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
   padding: 1rem 0;
 }
 
@@ -980,7 +988,7 @@ main:has(.hero:first-child) {
 
 /* 4. Components */
 .card {
-  background: var(--bg-card);
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 2rem;
