@@ -893,7 +893,7 @@ code {
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .hero-content p {
