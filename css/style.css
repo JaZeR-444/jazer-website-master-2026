@@ -171,14 +171,30 @@
 /* Make main wrappers transparent so the gradient shows through */
 main,
 .container,
-.section {
+.section,
+section,
+.content,
+.wrapper,
+header,
+nav,
+.hero,
+.featured-content,
+.card-container,
+.video-section,
+.about-section {
   background: transparent !important;
+  background-color: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none;
 }
 
-/* Footer: let the gradient show through and use a subtle border if needed */
+/* Footer: let the gradient show through without visible borders */
 footer {
-  background: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none;
   padding: 2rem 0;
 }
 
@@ -596,8 +612,6 @@ body {
 .section-header {
   margin-bottom: 3rem;
   padding-bottom: 1.5rem;
-  border-bottom: 3px solid;
-  border-image: linear-gradient(90deg, #00f2ea 0%, #ff006e 50%, #9333ea 100%) 1;
   position: relative;
   z-index: 1;
 }
@@ -1141,12 +1155,13 @@ main:has(.hero:first-child) {
   border-color: var(--jazer-blue-mid);
 }
 
-/* 5. Footer */
+/* 5. Footer - transparent to allow gradient to show through */
 footer {
   margin-top: 2rem;
   padding: 2rem 0;
-  background: rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
   text-align: center;
 }
 
