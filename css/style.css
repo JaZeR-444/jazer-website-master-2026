@@ -905,7 +905,7 @@ code {
 }
 
 .hero-logo {
-  max-width: 300px;
+  max-width: 900px;
   margin-bottom: 2rem;
   animation: heroFadeInScale 1s ease-out,
              logoFloat 6s ease-in-out 1s infinite;
