@@ -436,8 +436,8 @@ body {
 }
 
 .section {
-  margin: 2rem 0;
-  padding: 3rem;
+  margin: 0;
+  padding: 2rem 3rem;
   position: relative;
 }
 
@@ -881,7 +881,7 @@ code {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 2rem 60px;
+  padding: 120px 2rem 2rem;
   position: relative;
 }
 
