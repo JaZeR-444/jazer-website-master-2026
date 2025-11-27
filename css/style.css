@@ -168,6 +168,13 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -175,6 +182,7 @@ body {
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   padding: 0;
+  margin: 0;
 }
 
 /* ============================================
@@ -785,7 +793,7 @@ code {
 }
 
 .section {
-  padding: 4rem 0;
+  padding: 2rem 0;
   position: relative;
 }
 
@@ -881,8 +889,19 @@ code {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 2rem 2rem;
+  padding: 100px 2rem 2rem;
   position: relative;
+}
+
+/* Main Content Wrapper */
+main {
+  min-height: auto;
+  padding-top: 80px;
+}
+
+/* Remove main padding when hero is present (hero has its own nav clearance) */
+main:has(.hero:first-child) {
+  padding-top: 0;
 }
 
 
@@ -1090,11 +1109,11 @@ code {
 
 /* 5. Footer */
 footer {
+  margin-top: 2rem;
+  padding: 2rem 0;
   background: rgba(0, 0, 0, 0.5);
-  padding: 3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
-  margin-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Mobile Responsive */
@@ -1119,5 +1138,18 @@ footer {
 
   .nav-links.active {
     right: 0;
+  }
+
+  .section {
+    padding: 1.5rem 0;
+  }
+  
+  .hero {
+    padding: 80px 1rem 1rem;
+  }
+  
+  footer {
+    margin-top: 1.5rem;
+    padding: 1.5rem 0;
   }
 }
