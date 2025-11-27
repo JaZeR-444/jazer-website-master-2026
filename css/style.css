@@ -158,6 +158,59 @@
   --tracking-widest: 0.1em;
 }
 
+/* ---------- SITE-WIDE BACKGROUND GRADIENT ---------- */
+:root {
+  /* add the site gradient variable (layered radial + linear for vignette effect) */
+  --bg-gradient: radial-gradient(ellipse at 30% 10%,
+      rgba(147, 51, 234, 0.10) 0%,
+      rgba(79, 11, 30, 0.70) 30%),
+    linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(6, 2, 8, 1) 30%, rgba(2, 1, 6, 1) 100%);
+}
+
+/* Ensure html/body expand naturally and let the gradient fill the page */
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply the brand gradient to the entire page */
+body {
+  background-image: var(--bg-gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /* keeps the gradient steady while scrolling */
+  background-position: center top;
+}
+
+/* Make main wrappers transparent so the gradient shows through */
+main,
+.container,
+.section {
+  background: transparent !important;
+}
+
+/* Footer: let the gradient show through and use a subtle border if needed */
+footer {
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem 0;
+}
+
+/* Keep nav readable but allow gradient to peek through */
+.site-nav {
+  background: rgba(0, 0, 0, 0.55); /* slightly transparent */
+  backdrop-filter: blur(6px);
+}
+
+/* Mobile tweaks: improve performance on mobile */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll; /* improves performance on some mobile browsers */
+  }
+}
+
 /* ============================================
        BASE STYLES
        ============================================ */
