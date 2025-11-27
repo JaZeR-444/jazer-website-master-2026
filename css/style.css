@@ -183,7 +183,6 @@ nav,
 .video-section,
 .about-section {
   background: transparent !important;
-  background-color: transparent !important;
   border-top: none !important;
   border-bottom: none !important;
   box-shadow: none;
@@ -192,7 +191,6 @@ nav,
 /* Footer: let the gradient show through without visible borders */
 footer {
   background: transparent !important;
-  background-color: transparent !important;
   border: none !important;
   box-shadow: none;
   padding: 2rem 0;
@@ -1160,7 +1158,6 @@ footer {
   margin-top: 2rem;
   padding: 2rem 0;
   background: transparent !important;
-  background-color: transparent !important;
   border: none !important;
   text-align: center;
 }
