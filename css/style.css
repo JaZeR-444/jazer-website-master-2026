@@ -8,7 +8,7 @@
 /* Nunito (Brand Impact) */
 @font-face {
   font-family: 'Nunito';
-  src: url('../Fonts/nunito/nunito-v32-latin-700.woff2') format('woff2');
+  src: url('../fonts/nunito/nunito-v32-latin-700.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'Nunito';
-  src: url('../Fonts/nunito/nunito-v32-latin-800.woff2') format('woff2');
+  src: url('../fonts/nunito/nunito-v32-latin-800.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'Nunito';
-  src: url('../Fonts/nunito/nunito-v32-latin-900.woff2') format('woff2');
+  src: url('../fonts/nunito/nunito-v32-latin-900.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -33,7 +33,7 @@
 /* Outfit (Headers) */
 @font-face {
   font-family: 'Outfit';
-  src: url('../Fonts/outfit/outfit-v15-latin-600.woff2') format('woff2');
+  src: url('../fonts/outfit/outfit-v15-latin-600.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -41,7 +41,7 @@
 
 @font-face {
   font-family: 'Outfit';
-  src: url('../Fonts/outfit/outfit-v15-latin-700.woff2') format('woff2');
+  src: url('../fonts/outfit/outfit-v15-latin-700.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -49,7 +49,7 @@
 
 @font-face {
   font-family: 'Outfit';
-  src: url('../Fonts/outfit/outfit-v15-latin-800.woff2') format('woff2');
+  src: url('../fonts/outfit/outfit-v15-latin-800.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -58,7 +58,7 @@
 /* DM Sans (Body) */
 @font-face {
   font-family: 'DM Sans';
-  src: url('../Fonts/dm-sans/dm-sans-v17-latin-400.woff2') format('woff2');
+  src: url('../fonts/dm-sans/dm-sans-v17-latin-400.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -66,7 +66,7 @@
 
 @font-face {
   font-family: 'DM Sans';
-  src: url('../Fonts/dm-sans/dm-sans-v17-latin-500.woff2') format('woff2');
+  src: url('../fonts/dm-sans/dm-sans-v17-latin-500.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -74,7 +74,7 @@
 
 @font-face {
   font-family: 'DM Sans';
-  src: url('../Fonts/dm-sans/dm-sans-v17-latin-700.woff2') format('woff2');
+  src: url('../fonts/dm-sans/dm-sans-v17-latin-700.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

@@ -32,7 +32,7 @@ JaZeR-Unlimited/
 ├── js/
 │   └── script.js       # Interactive features
 ├── images/             # Logos, artwork, brand assets
-├── Fonts/              # Local font files
+├── fonts/              # Local font files
 │   ├── dm-sans/
 │   ├── nunito/
 │   └── outfit/
