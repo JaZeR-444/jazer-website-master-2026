@@ -160,25 +160,42 @@
 
 /* ---------- SITE-WIDE BACKGROUND GRADIENT ---------- */
 :root {
-  /* add the site gradient variable (layered radial + linear for vignette effect) */
-  --bg-gradient: radial-gradient(ellipse at 50% 0%,
-      rgba(75, 0, 130, 0.6) 0%,
-      rgba(45, 0, 75, 0.8) 30%,
-      rgba(20, 0, 40, 1) 70%),
-    linear-gradient(180deg, rgba(30, 0, 50, 1) 0%, rgba(10, 0, 20, 1) 50%, rgba(0, 0, 0, 1) 100%);
+  /* Single smooth gradient from deep purple at top to black at bottom - no layering to avoid banding */
+  --bg-gradient: linear-gradient(180deg,
+    #1a0033 0%,
+    #150028 10%,
+    #10001f 25%,
+    #0c0018 40%,
+    #080010 55%,
+    #050008 70%,
+    #030005 85%,
+    #000000 100%
+  );
 }
 
 /* Make main wrappers transparent so the gradient shows through */
 main,
 .container,
-.section {
+.section,
+section,
+.content,
+.wrapper,
+.hero,
+.featured-content,
+.card-container,
+.video-section,
+.about-section {
   background: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none;
 }
 
-/* Footer: let the gradient show through and use a subtle border if needed */
+/* Footer: let the gradient show through without visible borders */
 footer {
-  background: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none;
   padding: 2rem 0;
 }
 
@@ -596,8 +613,6 @@ body {
 .section-header {
   margin-bottom: 3rem;
   padding-bottom: 1.5rem;
-  border-bottom: 3px solid;
-  border-image: linear-gradient(90deg, #00f2ea 0%, #ff006e 50%, #9333ea 100%) 1;
   position: relative;
   z-index: 1;
 }
@@ -846,7 +861,7 @@ code {
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
   padding: 1rem 0;
 }
 
@@ -970,7 +985,7 @@ main:has(.hero:first-child) {
 
 /* 4. Components */
 .card {
-  background: var(--bg-card);
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 2rem;
@@ -1141,12 +1156,12 @@ main:has(.hero:first-child) {
   border-color: var(--jazer-blue-mid);
 }
 
-/* 5. Footer */
+/* 5. Footer - transparent to allow gradient to show through */
 footer {
   margin-top: 2rem;
   padding: 2rem 0;
-  background: rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent !important;
+  border: none !important;
   text-align: center;
 }
 
