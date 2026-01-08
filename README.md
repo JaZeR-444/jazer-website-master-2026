@@ -1,6 +1,6 @@
 <div align="center">
 
-![JaZeR Logo](images/JaZeR_Logo.svg)
+![JaZeR Logo](images/icons/social/jazer-disco-round-icon.svg)
 
 # 🎶 JaZeR Official Website
 
@@ -179,9 +179,11 @@ jazer-website-master-2026/
 │   └── script.js              # Interactive features (nav toggle, animations)
 │
 ├── 🖼️ images/
-│   ├── JaZeR_Logo.svg         # Primary brand logo
-│   ├── JaZeR Main Logo.jpg    # Social media preview image
-│   └── icons/social/          # Social media icons (Instagram, TikTok, Spotify, etc.)
+│   ├── jazer-disco-round-icon (100 x 100 px).svg  # Primary brand logo (disco ball)
+│   ├── JaZeR_Logo.svg                             # Alternative brand logo
+│   ├── JaZeR_Logo_OFFICIAL.gif                    # Animated logo
+│   ├── JaZeR Main Logo.jpg                        # Social media preview image
+│   └── icons/social/                              # Social media icons (Instagram, TikTok, Spotify, etc.)
 │
 ├── 🔤 fonts/                  # Self-hosted webfonts
 │   ├── DMSans/                # Primary UI font
@@ -234,9 +236,15 @@ All design tokens are defined in `css/style.css` as CSS custom properties for ea
 
 The site includes a comprehensive asset library:
 
-- **Logo Variations**: Static SVG, Animated GIF, Video (MP4)
-- **Social Icons**: Platform-specific round icons (Instagram, TikTok, Spotify, YouTube, etc.)
+- **Primary Logo**: `jazer-disco-round-icon (100 x 100 px).svg` — Round disco ball design used for branding
+- **Logo Variations**: 
+  - Static SVG (`JaZeR_Logo.svg`)
+  - Animated GIF (`JaZeR_Logo_OFFICIAL.gif`)
+  - Video logo (`JaZeR_Logo_Animated.mp4`)
+  - Hero video (`JaZeR_Hero.mp4`)
+- **Social Icons**: Platform-specific round icons (Instagram, TikTok, Spotify, YouTube, Apple Music, SoundCloud, Facebook, X/Twitter)
 - **UI Icons**: Custom icons for music controls, navigation, and features
+- **Profile Images**: Various profile photos and promotional images
 - **Brand Kit**: Complete brand guidelines in `images/brand-kit.md`
 
 ---
@@ -841,6 +849,33 @@ Example:
 <a href="https://instagram.com/YOUR_USERNAME" title="Instagram">
   <img src="images/icons/social/instagram-round-icon.svg" alt="Instagram">
 </a>
+```
+
+</details>
+
+<details>
+<summary><strong>What is the jazer-disco-round-icon and where is it used?</strong></summary>
+
+<br>
+
+**Answer**: The `jazer-disco-round-icon (100 x 100 px).svg` is the **primary brand logo** for JaZeR:
+
+**Where it's used:**
+- 🌐 **Favicon** — Browser tab icon
+- 🧭 **Navigation logo** — Top-left corner of every page
+- 📱 **Mobile home screen** — When users save the site
+- 📄 **README header** — Repository branding
+- 📱 **Social media** — Profile pictures and sharing previews
+
+**Design:**
+- Round disco ball motif
+- 100 x 100 px optimized size
+- SVG format for crisp scaling
+- Represents the vibrant, energetic JaZeR brand
+
+This icon is referenced in all HTML pages via:
+```html
+<link rel="icon" href="images/icons/social/jazer-disco-round-icon.svg" type="image/svg+xml">
 ```
 
 </details>
