@@ -2,23 +2,96 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="images/vibrant-jzr-monogram-logo (50 x 50 px).svg"
+      type="image/svg+xml"
+    />
+
+    <!-- Primary Meta Tags -->
     <title>Music - JaZeR</title>
-    <meta name="description" content="Listen to JaZeR's latest tracks and music releases.">
-    <link rel="canonical" href="https://jazer-music.com/music.html">
-    <link rel="icon" href="images/icons/social/jazer-disco-round-icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="title" content="Music - JaZeR" />
+    <meta
+      name="description"
+      content="Explore JaZeR's music - Latest releases, discography, and streaming links. Listen now on Spotify, Apple Music, and all major platforms."
+    />
+    <meta
+      name="keywords"
+      content="JaZeR, music, releases, discography, electronic music, streaming, Spotify, Apple Music"
+    />
+    <meta name="author" content="JaZeR" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jazer-music.com/music.html" />
+    <meta
+      property="og:title"
+      content="Music - JaZeR"
+    />
+    <meta
+      property="og:description"
+      content="Explore JaZeR's music - Latest releases, discography, and streaming links."
+    />
+    <meta
+      property="og:image"
+      content="https://jazer-music.com/images/JaZeR%20Main%20Logo.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://jazer-music.com/music.html" />
+    <meta
+      property="twitter:title"
+      content="Music - JaZeR"
+    />
+    <meta
+      property="twitter:description"
+      content="Explore JaZeR's music - Latest releases, discography, and streaming links."
+    />
+    <meta
+      property="twitter:image"
+      content="https://jazer-music.com/images/JaZeR%20Main%20Logo.jpg"
+    />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://jazer-music.com/music.html" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css?v=36" />
+    <link rel="stylesheet" href="css/enhancements.css?v=36" />
+    <link rel="stylesheet" href="css/music-enhancements.css" />
 </head>
 
-<body class="music-page">
+<body class="has-announcement">
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+    <!-- #9 - Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+      <a href="music.html">🎵 NEW SINGLE DROPPING MARCH 2026 — Be the first to hear it →</a>
+      <button class="announcement-close" aria-label="Close announcement" onclick="document.getElementById('announcementBar').remove(); document.body.classList.remove('has-announcement');">✕</button>
+    </div>
+    <!-- Preloader -->
+    <div class="preloader" aria-hidden="true">
+        <img class="preloader-logo" src="images/vibrant-jzr-monogram-logo-(500 x 500 px).svg" alt="">
+        <div class="preloader-bar"></div>
+    </div>
+
     <a class="skip-link" href="#main">Skip to content</a>
 
     <nav class="site-nav" role="navigation" aria-label="Primary">
         <div class="container nav-inner">
             <a class="logo" href="index.html" aria-label="Go to home">
-                <img src="images/icons/social/jazer-disco-round-icon.svg" alt="JaZeR logo">
+                <img src="images/vibrant-jzr-monogram-logo (100 x 100 px).svg" alt="JaZeR logo" style="height: 40px; width: auto;">
             </a>
+            <button class="theme-toggle" aria-label="Cycle theme colors" title="Click to change colors">
+                <span class="theme-toggle-icon"></span>
+                <span>Vibe</span>
+            </button>
             <button id="mobileMenu" class="mobile-menu" aria-expanded="false" aria-controls="navLinks"
                 aria-label="Toggle navigation">
                 <span></span>
@@ -27,58 +100,382 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="music.html" class="active">Music</a></li>
+                <li><a href="music.html" class="active" aria-current="page">Music</a></li>
                 <li><a href="videos.html">Videos</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="contact.html">Contact</a></li>
-            </ul>
+                    <li class="nav-cta-item"><a href="music.html" class="nav-cta">Listen</a></li>
+</ul>
         </div>
     </nav>
 
-    <main id="main" tabindex="-1">
-        <div class="container section">
-            <h1 class="jazer-h2 gradient-text text-center">My Music</h1>
-            <p class="page-intro">
-              Plug into the beam — this is where the official JaZeR drops will live.
-            </p>
-            <p class="page-intro-icon">
-              Full Spotify / SoundCloud / Apple Music embeds will land here as releases go live.
-            </p>
+    
+    <div class="nav-progress" aria-hidden="true"></div>
+<div class="nav-overlay" data-nav-overlay></div>
 
-            <div class="grid">
-                <article class="card page-callout coming-soon">
-                    <p id="jazer-teaser" class="teaser">Stay tuned! Fresh content on the way.</p>
-                </article>
+    <main id="main" tabindex="-1">
+        <!-- Hero Section: Launch Sequence Initializing -->
+        <section class="music-hero-section">
+            <div class="container music-hero-container">
+                <div class="music-hero-content" data-animate="fade-right">
+                    <div class="hero-label">
+                        <span class="status-dot"></span> System Status: Initializing...
+                    </div>
+                    <h1 class="music-hero-title gradient-text">Transmission Incoming</h1>
+                    <p class="music-hero-description">
+                        The mainframe is compiling the next generation of sound. The first wave of the JaZeR signal arrives 2026.
+                    </p>
+                    <div class="music-hero-actions">
+                        <button class="cta-button primary-cta glow-effect">
+                            <span class="icon">📩</span> Join the Waitlist
+                        </button>
+                        <button class="cta-button secondary-cta">
+                            <span class="icon">🔓</span> Request Access
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="music-hero-visual" data-animate="fade-left">
+                    <div class="release-card-3d">
+                        <div class="release-artwork">
+                            <!-- New Cosmic Soundbirth Artwork -->
+                            <div class="artwork-placeholder" style="background: none;">
+                                <img src="images/jazer-cosmic-soundbirth.png" alt="Cosmic Soundbirth" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                            </div>
+                            <!-- Removed Vinyl Animation for this static 'glitch' aesthetic, or updated to be a data disk -->
+                            <div class="vinyl-record" style="background: repeating-radial-gradient(#111, #111 2px, #00f2fe 3px, #111 4px); opacity: 0.5;">
+                                <div class="vinyl-grooves"></div>
+                                <div class="vinyl-label"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            
+            <!-- Animated Waveform Divider -->
+            <div class="music-waveform-divider">
+                <div class="waveform-bar" style="--delay: 0s; --height: 40%;"></div>
+                <div class="waveform-bar" style="--delay: 0.1s; --height: 70%;"></div>
+                <div class="waveform-bar" style="--delay: 0.2s; --height: 50%;"></div>
+                <div class="waveform-bar" style="--delay: 0.3s; --height: 80%;"></div>
+                <div class="waveform-bar" style="--delay: 0.4s; --height: 60%;"></div>
+                <div class="waveform-bar" style="--delay: 0.5s; --height: 90%;"></div>
+                <div class="waveform-bar" style="--delay: 0.6s; --height: 65%;"></div>
+                <div class="waveform-bar" style="--delay: 0.7s; --height: 75%;"></div>
+                <div class="waveform-bar" style="--delay: 0.8s; --height: 55%;"></div>
+                <div class="waveform-bar" style="--delay: 0.9s; --height: 85%;"></div>
+                <div class="waveform-bar" style="--delay: 1s; --height: 45%;"></div>
+                <div class="waveform-bar" style="--delay: 1.1s; --height: 95%;"></div>
+            </div>
+        </section>
+
+        <!-- Use Discography Grid as "Project Roadmap" -->
+        <section class="discography-section section">
+            <div class="container">
+                <h2 class="section-title text-center gradient-text" data-animate="fade-up">Transmission Log: 2026</h2>
+                <div class="discography-grid">
+                    <!-- Roadmap Item 1 -->
+                    <div class="release-card" data-animate="fade-up" style="--delay: 0s">
+                        <div class="release-cover">
+                            <div class="cover-placeholder gradient-1"></div>
+                            <div class="status-overlay" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);">
+                                <span style="border: 2px solid white; padding: 0.5rem 1rem; color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transform: rotate(-15deg);">Confidential</span>
+                            </div>
+                        </div>
+                        <div class="release-details">
+                            <h3 class="release-title">Project: Aether</h3>
+                            <p class="release-meta">Single • Spring 2026</p>
+                            <span class="release-link" style="color: var(--text-muted); cursor: default;">Status: Locked 🔒</span>
+                        </div>
+                    </div>
+                    <!-- Roadmap Item 2 -->
+                    <div class="release-card" data-animate="fade-up" style="--delay: 0.1s">
+                        <div class="release-cover">
+                            <div class="cover-placeholder gradient-2"></div>
+                             <div class="status-overlay" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);">
+                                <span style="border: 2px solid var(--jazer-cyan); padding: 0.5rem 1rem; color: var(--jazer-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">Compiling</span>
+                            </div>
+                        </div>
+                        <div class="release-details">
+                            <h3 class="release-title">Phase 1: Ignition</h3>
+                            <p class="release-meta">EP • Summer 2026</p>
+                            <span class="release-link" style="color: var(--jazer-cyan);">Details Encrypted ⚡</span>
+                        </div>
+                    </div>
+                    <!-- Roadmap Item 3 -->
+                    <div class="release-card" data-animate="fade-up" style="--delay: 0.2s">
+                        <div class="release-cover">
+                            <div class="cover-placeholder gradient-3"></div>
+                             <div class="status-overlay" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);">
+                                <span style="border: 2px solid white; padding: 0.5rem 1rem; color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transform: rotate(15deg);">Top Secret</span>
+                            </div>
+                        </div>
+                        <div class="release-details">
+                            <h3 class="release-title">Concept: Void</h3>
+                            <p class="release-meta">Single • Late 2026</p>
+                            <span class="release-link" style="color: var(--text-muted); cursor: default;">Status: Classified 🚫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Streaming Platform Showcase (Refined) -->
+        <section class="streaming-section section-sm">
+            <div class="container">
+                <div class="streaming-platforms" data-animate="fade-up">
+                    <h3 class="streaming-platforms-title text-center">Available Everywhere</h3>
+                    <div class="streaming-platform-grid">
+                        <a href="https://open.spotify.com/artist/jazer" class="platform-card premium-card" target="_blank" rel="noopener">
+                            <div class="platform-icon">
+                                <img src="images/icons/social/spotify-round-icon.svg" alt="Spotify" width="40" height="40">
+                            </div>
+                            <h4 class="platform-name">Spotify</h4>
+                        </a>
+                        
+                        <a href="https://music.apple.com/artist/jazer" class="platform-card" target="_blank" rel="noopener">
+                            <div class="platform-icon">
+                                <img src="images/icons/social/apple-music-round-icon.svg" alt="Apple Music" width="40" height="40">
+                            </div>
+                            <h4 class="platform-name">Apple Music</h4>
+                        </a>
+                        
+                        <a href="https://soundcloud.com/jazer" class="platform-card" target="_blank" rel="noopener">
+                            <div class="platform-icon">
+                                <img src="images/icons/social/soundcloud-round-icon.svg" alt="SoundCloud" width="40" height="40">
+                            </div>
+                            <h4 class="platform-name">SoundCloud</h4>
+                        </a>
+                        
+                        <a href="https://youtube.com/@jazer" class="platform-card" target="_blank" rel="noopener">
+                            <div class="platform-icon">
+                                <img src="images/icons/social/youtube-round-icon.svg" alt="YouTube Music" width="40" height="40">
+                            </div>
+                            <h4 class="platform-name">YouTube</h4>
+                        </a>
+                         <a href="https://tidal.com/browse/artist/jazer" class="platform-card" target="_blank" rel="noopener">
+                            <div class="platform-icon">
+                                <span class="platform-icon-placeholder">🎵</span>
+                            </div>
+                            <h4 class="platform-name">Tidal</h4>
+                        </a>
+                        
+                        <a href="https://music.amazon.com/artists/jazer" class="platform-card" target="_blank" rel="noopener">
+                            <div class="platform-icon">
+                                <span class="platform-icon-placeholder">🎶</span>
+                            </div>
+                            <h4 class="platform-name">Amazon Music</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+            </div>
+
+        <!-- Featured Track Section: System Preview -->
+        <section class="featured-track-section section">
+            <div class="container">
+                <div class="featured-track-container premium-card" data-animate="fade-up">
+                    <!-- Visual (Vinyl) - Left Side -->
+                    <div class="featured-track-visual">
+                         <div class="vinyl-container">
+                           <div class="vinyl-record">
+                             <div class="vinyl-grooves"></div>
+                             <div class="vinyl-label">
+                               <img src="images/JZR-Circle-Monogram-Logo (500 x 500 px).svg" alt="JZR" class="label-logo" />
+                             </div>
+                             <div class="vinyl-shine"></div>
+                           </div>
+                         </div>
+                    </div>
+                
+                    <div class="featured-track-info">
+                        <div class="featured-header">
+                            <span class="featured-badge-pill">🔥 New Release</span>
+                        </div>
+                        <h2 class="featured-title">In Due Time</h2>
+                        <p class="featured-artist">JaZeR</p>
+                        
+                        <!-- Visualizer Bars - Reduced Count for Cleaner Look -->
+                        <div class="audio-visualizer">
+                            <div class="bar" style="--h: 40%"></div>
+                            <div class="bar" style="--h: 70%"></div>
+                            <div class="bar" style="--h: 50%"></div>
+                            <div class="bar" style="--h: 90%"></div>
+                            <div class="bar" style="--h: 60%"></div>
+                            <div class="bar" style="--h: 80%"></div>
+                            <div class="bar" style="--h: 50%"></div>
+                        </div>
+
+                        <div class="featured-meta-row">
+                            <span class="meta-tag highlight">4:34</span>
+                            <span class="meta-tag">MELODIC HIP-HOP • RAP</span>
+                        </div>
+                        <!-- Footer removed to match reference (No Button) -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        </section>
+
+        <!-- Premium Email Capture -->
+        <section class="newsletter-section section-sm" data-animate="fade-up">
+            <div class="container">
+                <div class="newsletter-container glass-panel">
+                    <div class="newsletter-content text-center">
+                        <span class="newsletter-icon">📩</span>
+                        <h2 class="newsletter-title gradient-text">Join the Frequency</h2>
+                        <p class="newsletter-text">
+                            Be the first to access new drops, exclusive mixes, and behind-the-scenes content from the JaZeR mainframe.
+                        </p>
+                        <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                            <div class="input-group">
+                                <input type="email" name="email" placeholder="Enter your email address" required class="newsletter-input">
+                                <button type="submit" class="cta-button primary-cta">
+                                    Subscribe <span class="arrow">→</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 JaZeR. All rights reserved.</p>
-            <nav class="footer-sitemap" aria-label="Site navigation">
-                <a href="index.html">Home</a>
-                <a href="music.html">Music</a>
-                <a href="videos.html">Videos</a>
-                <a href="about.html">About</a>
-                <a href="shop.html">Shop</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            <div class="social-links">
-                <a href="https://instagram.com/jazer_music" title="Instagram"><img src="images/icons/social/instagram-round-icon.svg" alt="Instagram" width="28" height="28"></a>
-                <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src="images/icons/social/tiktok-round-logo.svg" alt="TikTok" width="28" height="28"></a>
-                <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src="images/icons/social/round-x(twitter)-icon.svg" alt="X/Twitter" width="28" height="28"></a>
-                <a href="https://youtube.com/@jazer" title="YouTube"><img src="images/icons/social/youtube-round-icon.svg" alt="YouTube" width="28" height="28"></a>
-                <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src="images/icons/social/spotify-round-icon.svg" alt="Spotify" width="28" height="28"></a>
-                <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src="images/icons/social/apple-music-round-icon.svg" alt="Apple Music" width="28" height="28"></a>
-                <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src="images/icons/social/soundcloud-round-icon.svg" alt="SoundCloud" width="28" height="28"></a>
-                <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src="images/icons/social/round-facebook-icon.svg" alt="Facebook" width="28" height="28"></a>
+    <!-- Footer - Premium Redesign -->
+    <footer class="footer-premium">
+      <!-- Animated Background Watermark (Parallax enabled via JS) -->
+      <div class="footer-watermark-container" data-parallax-watermark>
+        <img src="images/JZR-Circle-Monogram-Logo (500 x 500 px).svg" alt="" class="footer-watermark-animated" aria-hidden="true" />
+      </div>
+      
+      <!-- Glassmorphism Card -->
+      <div class="footer-glass-card">
+        <div class="footer-grid">
+          
+          <!-- Column 1: Brand + Latest Release -->
+          <div class="footer-column footer-brand">
+            <a href="index.html" class="footer-logo-link" id="footerEasterEgg" aria-label="Go to home">
+              <img src="images/vibrant-jzr-monogram-logo (250 x 250 px).svg" alt="JaZeR" class="footer-logo-img">
+            </a>
+            <p class="footer-tagline">A sonic escape hatch — a beam of color for those who need a place to belong.</p>
+            
+            <!-- Latest Release Mini-Card -->
+            <div class="footer-latest-release">
+              <div class="footer-release-art">🎵</div>
+              <div class="footer-release-info">
+                <span class="footer-release-label">Latest Release</span>
+                <span class="footer-release-title">Coming Soon...</span>
+              </div>
+              <a href="music.html" class="footer-release-play" aria-label="Play latest release">▶</a>
             </div>
+          </div>
+          <!-- Column 2: Navigation -->
+          <div class="footer-column footer-nav-column">
+            <h4 class="footer-heading">Navigate</h4>
+            <nav class="footer-nav-links" aria-label="Footer navigation">
+              <a href="index.html">Home</a>
+              <a href="music.html">Music</a>
+              <a href="videos.html">Videos</a>
+              <a href="about.html">About</a>
+              <a href="shop.html">Shop</a>
+              <a href="contact.html">Contact</a>
+            </nav>
+          </div>
+          
+          <!-- Column 3: Connect -->
+          <div class="footer-column footer-connect">
+            <h4 class="footer-heading">Connect</h4>
+            <div class="footer-socials">
+              <a href="https://instagram.com/jazer_music" title="Instagram"><img src="images/icons/social/instagram-round-icon.svg" alt="Instagram"></a>
+              <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src="images/icons/social/tiktok-round-logo.svg" alt="TikTok"></a>
+              <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src="images/icons/social/round-x(twitter)-icon.svg" alt="X/Twitter"></a>
+              <a href="https://youtube.com/@jazer" title="YouTube"><img src="images/icons/social/youtube-round-icon.svg" alt="YouTube"></a>
+              <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src="images/icons/social/spotify-round-icon.svg" alt="Spotify"></a>
+              <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src="images/icons/social/apple-music-round-icon.svg" alt="Apple Music"></a>
+              <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src="images/icons/social/soundcloud-round-icon.svg" alt="SoundCloud"></a>
+              <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src="images/icons/social/round-facebook-icon.svg" alt="Facebook"></a>
+            </div>
+
+            <!-- Compact Email Signup -->
+            <div class="footer-email-signup">
+              <h4 class="footer-heading">Stay Connected</h4>
+              <form class="footer-email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="email" name="email" placeholder="your@email.com" required>
+                <button type="submit">→</button>
+              </form>
+            </div>
+          </div>
+        
+        <!-- Rotating Inspirational Quote -->
+        <div class="footer-quote-container">
+          <p class="footer-quote gradient-text text-center" data-quotes='["Your light is real. Your dream is valid.", "Keep building when it feels heavy.", "Turn pain into power, visions into reality.", "There&apos;s still magic in all of this.", "You&apos;re closer than you think."]'>
+            "Your light is real. Your dream is valid."
+          </p>
         </div>
+      </div>
+      
+      <!-- Floating Musical Notes -->
+      <div class="footer-notes">
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+      </div>
+      
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <img src="images/Vibrant JAZER Bubble Logo (600 x 200 px).svg" alt="JaZeR" class="footer-bubble-logo" />
+        <p class="footer-copyright">© 2026 JaZeR. All rights reserved.</p>
+        <p class="footer-made-with">Handcrafted with <span class="heart">♥</span> by JaZeR</p>
+      </div>
+      
     </footer>
 
+    <!-- Audio Player -->
+    <div class="audio-player" aria-label="Audio player">
+        <div class="audio-player-inner">
+            <div class="audio-player-artwork">🎵</div>
+            <div class="audio-player-info">
+                <div class="audio-player-title">Coming Soon...</div>
+                <div class="audio-player-artist">JaZeR</div>
+            </div>
+            <div class="audio-player-controls">
+                <button class="audio-player-btn" aria-label="Previous">⏮</button>
+                <button class="audio-player-btn play-btn" aria-label="Play">▶</button>
+                <button class="audio-player-btn" aria-label="Next">⏭</button>
+            </div>
+            <div class="audio-player-progress">
+                <span class="audio-player-time">0:00</span>
+                <div class="audio-player-slider">
+                    <div class="audio-player-slider-fill"></div>
+                </div>
+                <span class="audio-player-time">3:24</span>
+            </div>
+            <div class="audio-player-volume">
+                <span>🔊</span>
+                <div class="audio-player-volume-slider">
+                    <div class="audio-player-volume-fill"></div>
+                </div>
+            </div>
+            <button class="audio-player-close" aria-label="Close player">✕</button>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top"></button>
+
     <script src="js/script.js"></script>
+
+    <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-animations.js"></script>
 </body>
 
 </html>

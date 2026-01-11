@@ -1,0 +1,139 @@
+/* =========================================
+   PAGES ENHANCEMENTS (Videos, About, Shop, Contact)
+   ========================================= */
+
+/* --- Unified Page Hero --- */
+.page-hero {
+    position: relative;
+    padding: 8rem 0 4rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(102, 0, 255, 0.15) 0%, transparent 70%);
+    filter: blur(60px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.page-hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.02em;
+}
+
+.page-hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Premium Content Cards (Glass & Glow) --- */
+.premium-glass-card {
+    background: rgba(13, 14, 18, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-glass-card:hover {
+    box-shadow: 0 10px 40px rgba(102, 0, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Coming Soon Placeholder --- */
+.coming-soon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.03) 10px,
+        rgba(0, 0, 0, 0.2) 10px,
+        rgba(0, 0, 0, 0.2) 20px
+    );
+    border-radius: 20px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.coming-soon-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--jazer-cyan, #00f2fe);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+}
+
+/* --- Modern Forms (Contact & Shop) --- */
+.modern-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.modern-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 0.5rem;
+}
+
+.modern-input, .modern-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.modern-input:focus, .modern-textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--jazer-purple, #aa00ff);
+    box-shadow: 0 0 0 4px rgba(170, 0, 255, 0.1);
+}
+
+.modern-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .page-hero-title {
+        font-size: 2.5rem;
+    }
+    .premium-glass-card {
+        padding: 2rem;
+    }
+}

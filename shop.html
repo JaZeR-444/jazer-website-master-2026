@@ -7,18 +7,35 @@
     <title>Shop - JaZeR</title>
     <meta name="description" content="Shop JaZeR merchandise and exclusive items.">
     <link rel="canonical" href="https://jazer-music.com/shop.html">
-    <link rel="icon" href="images/icons/social/jazer-disco-round-icon.svg" type="image/svg+xml">
+    <link rel="icon" href="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+    <link rel="stylesheet" href="css/pages-enhancements.css">
 </head>
 
-<body class="shop-page">
+<body class="shop-page has-announcement">
+    <!-- #9 - Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+      <a href="music.html">🎵 NEW SINGLE DROPPING MARCH 2026 — Be the first to hear it →</a>
+      <button class="announcement-close" aria-label="Close announcement" onclick="document.getElementById('announcementBar').remove(); document.body.classList.remove('has-announcement');">✕</button>
+    </div>
+    <!-- Preloader -->
+    <div class="preloader" aria-hidden="true">
+        <img class="preloader-logo" src="images/vibrant-jzr-monogram-logo-(500 x 500 px).svg" alt="">
+        <div class="preloader-bar"></div>
+    </div>
+
     <a class="skip-link" href="#main">Skip to content</a>
 
     <nav class="site-nav" role="navigation" aria-label="Primary">
         <div class="container nav-inner">
             <a class="logo" href="index.html" aria-label="Go to home">
-                <img src="images/icons/social/jazer-disco-round-icon.svg" alt="JaZeR logo">
+                <img src="images/vibrant-jzr-monogram-logo (100 x 100 px).svg" alt="JaZeR logo" style="height: 40px; width: auto;">
             </a>
+            <button class="theme-toggle" aria-label="Cycle theme colors" title="Click to change colors">
+                <span class="theme-toggle-icon"></span>
+                <span>Vibe</span>
+            </button>
             <button id="mobileMenu" class="mobile-menu" aria-expanded="false" aria-controls="navLinks"
                 aria-label="Toggle navigation">
                 <span></span>
@@ -30,54 +47,185 @@
                 <li><a href="music.html">Music</a></li>
                 <li><a href="videos.html">Videos</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="shop.html" class="active" aria-current="page">Shop</a></li>
                 <li><a href="contact.html">Contact</a></li>
-            </ul>
+                    <li class="nav-cta-item"><a href="music.html" class="nav-cta">Listen</a></li>
+</ul>
         </div>
     </nav>
 
+    
+    <div class="nav-progress" aria-hidden="true"></div>
+<div class="nav-overlay" data-nav-overlay></div>
+
     <main id="main" tabindex="-1">
-        <div class="container section">
-            <h1 class="jazer-h2 gradient-text text-center">Shop</h1>
-            <p class="page-intro">
-              Merch, bundles, and digital goodies are on the way — built for fans who ride the beam.
+        <!-- New Page Hero -->
+        <div class="page-hero" data-animate="fade-up">
+            <h1 class="page-hero-title gradient-text">Shop</h1>
+            <p class="page-hero-subtitle">
+                Merch, bundles, and digital goodies are on the way — built for fans who ride the beam.
             </p>
-            <p class="page-intro-icon">
+        </div>
+
+        <div class="container section">
+            <p class="page-intro-icon text-center mb-lg">
               As designs go live, this section will turn into a fully interactive shop.
             </p>
+
             <div class="grid">
-                <article class="card coming-soon">
-                    <p id="jazer-teaser" class="teaser">Stay tuned! Fresh content on the way.</p>
+                <article class="coming-soon-card" data-animate="fade-up">
+                    <span class="coming-soon-text">Store Opening Soon</span>
+                    <p id="jazer-teaser" class="teaser mt-4 text-muted">Stay tuned! Fresh merch on the way.</p>
                 </article>
+            </div>
+
+            <!-- Email Capture -->
+            <div class="email-capture premium-glass-card mt-xl" data-animate="fade-up">
+                <h3 class="email-capture-title mb-4">🛒 First Dibs on Drops</h3>
+                <p class="email-capture-subtitle mb-4">Be first in line when the merch drops.</p>
+                <form class="email-capture-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="email" name="email" class="modern-input mb-4" placeholder="your@email.com" required>
+                    <input type="hidden" name="_subject" value="Merch drop notification signup">
+                    <button type="submit" class="cta-button">Get Early Access →</button>
+                </form>
+                <p class="email-capture-status" role="status" aria-live="polite"></p>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 JaZeR. All rights reserved.</p>
-            <nav class="footer-sitemap" aria-label="Site navigation">
-                <a href="index.html">Home</a>
-                <a href="music.html">Music</a>
-                <a href="videos.html">Videos</a>
-                <a href="about.html">About</a>
-                <a href="shop.html">Shop</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            <div class="social-links">
-                <a href="https://instagram.com/jazer_music" title="Instagram"><img src="images/icons/social/instagram-round-icon.svg" alt="Instagram" width="28" height="28"></a>
-                <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src="images/icons/social/tiktok-round-logo.svg" alt="TikTok" width="28" height="28"></a>
-                <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src="images/icons/social/round-x(twitter)-icon.svg" alt="X/Twitter" width="28" height="28"></a>
-                <a href="https://youtube.com/@jazer" title="YouTube"><img src="images/icons/social/youtube-round-icon.svg" alt="YouTube" width="28" height="28"></a>
-                <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src="images/icons/social/spotify-round-icon.svg" alt="Spotify" width="28" height="28"></a>
-                <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src="images/icons/social/apple-music-round-icon.svg" alt="Apple Music" width="28" height="28"></a>
-                <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src="images/icons/social/soundcloud-round-icon.svg" alt="SoundCloud" width="28" height="28"></a>
-                <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src="images/icons/social/round-facebook-icon.svg" alt="Facebook" width="28" height="28"></a>
+    <!-- Footer - Premium Redesign -->
+    <footer class="footer-premium">
+      <!-- Animated Background Watermark (Parallax enabled via JS) -->
+      <div class="footer-watermark-container" data-parallax-watermark>
+        <img src="images/JZR-Circle-Monogram-Logo (500 x 500 px).svg" alt="" class="footer-watermark-animated" aria-hidden="true" />
+      </div>
+      
+      <!-- Glassmorphism Card -->
+      <div class="footer-glass-card">
+        <div class="footer-grid">
+          
+          <!-- Column 1: Brand + Latest Release -->
+          <div class="footer-column footer-brand">
+            <a href="index.html" class="footer-logo-link" id="footerEasterEgg" aria-label="Go to home">
+              <img src="images/vibrant-jzr-monogram-logo (250 x 250 px).svg" alt="JaZeR" class="footer-logo-img">
+            </a>
+            <p class="footer-tagline">A sonic escape hatch — a beam of color for those who need a place to belong.</p>
+            
+            <!-- Latest Release Mini-Card -->
+            <div class="footer-latest-release">
+              <div class="footer-release-art">🎵</div>
+              <div class="footer-release-info">
+                <span class="footer-release-label">Latest Release</span>
+                <span class="footer-release-title">Coming Soon...</span>
+              </div>
+              <a href="music.html" class="footer-release-play" aria-label="Play latest release">▶</a>
             </div>
+          </div>
+          <!-- Column 2: Navigation -->
+          <div class="footer-column footer-nav-column">
+            <h4 class="footer-heading">Navigate</h4>
+            <nav class="footer-nav-links" aria-label="Footer navigation">
+              <a href="index.html">Home</a>
+              <a href="music.html">Music</a>
+              <a href="videos.html">Videos</a>
+              <a href="about.html">About</a>
+              <a href="shop.html">Shop</a>
+              <a href="contact.html">Contact</a>
+            </nav>
+          </div>
+          
+          <!-- Column 3: Connect -->
+          <div class="footer-column footer-connect">
+            <h4 class="footer-heading">Connect</h4>
+            <div class="footer-socials">
+              <a href="https://instagram.com/jazer_music" title="Instagram"><img src="images/icons/social/instagram-round-icon.svg" alt="Instagram"></a>
+              <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src="images/icons/social/tiktok-round-logo.svg" alt="TikTok"></a>
+              <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src="images/icons/social/round-x(twitter)-icon.svg" alt="X/Twitter"></a>
+              <a href="https://youtube.com/@jazer" title="YouTube"><img src="images/icons/social/youtube-round-icon.svg" alt="YouTube"></a>
+              <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src="images/icons/social/spotify-round-icon.svg" alt="Spotify"></a>
+              <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src="images/icons/social/apple-music-round-icon.svg" alt="Apple Music"></a>
+              <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src="images/icons/social/soundcloud-round-icon.svg" alt="SoundCloud"></a>
+              <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src="images/icons/social/round-facebook-icon.svg" alt="Facebook"></a>
+            </div>
+
+            <!-- Compact Email Signup -->
+            <div class="footer-email-signup">
+              <h4 class="footer-heading">Stay Connected</h4>
+              <form class="footer-email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="email" name="email" placeholder="your@email.com" required>
+                <button type="submit">→</button>
+              </form>
+            </div>
+          </div>
+        
+        <!-- Rotating Inspirational Quote -->
+        <div class="footer-quote-container">
+          <p class="footer-quote gradient-text text-center" data-quotes='["Your light is real. Your dream is valid.", "Keep building when it feels heavy.", "Turn pain into power, visions into reality.", "There&apos;s still magic in all of this.", "You&apos;re closer than you think."]'>
+            "Your light is real. Your dream is valid."
+          </p>
         </div>
+      </div>
+      
+      <!-- Floating Musical Notes -->
+      <div class="footer-notes">
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+      </div>
+      
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <img src="images/Vibrant JAZER Bubble Logo (600 x 200 px).svg" alt="JaZeR" class="footer-bubble-logo" />
+        <p class="footer-copyright">© 2026 JaZeR. All rights reserved.</p>
+        <p class="footer-made-with">Handcrafted with <span class="heart">♥</span> by JaZeR</p>
+      </div>
+      
     </footer>
 
+    <!-- #2 - Sticky Audio Player -->
+    <div class="audio-player" aria-label="Audio player">
+      <div class="audio-player-inner">
+        <div class="audio-player-artwork">🎵</div>
+        <div class="audio-player-info">
+          <div class="audio-player-title">Coming Soon...</div>
+          <div class="audio-player-artist">JaZeR</div>
+        </div>
+        <div class="audio-player-controls">
+          <button class="audio-player-btn" aria-label="Previous">⏮</button>
+          <button class="audio-player-btn play-btn" aria-label="Play">▶</button>
+          <button class="audio-player-btn" aria-label="Next">⏭</button>
+        </div>
+        <div class="audio-player-progress">
+          <span class="audio-player-time">0:00</span>
+          <div class="audio-player-slider">
+            <div class="audio-player-slider-fill"></div>
+          </div>
+          <span class="audio-player-time">3:24</span>
+        </div>
+        <div class="audio-player-volume">
+          <span>🔊</span>
+          <div class="audio-player-volume-slider">
+            <div class="audio-player-volume-fill"></div>
+          </div>
+        </div>
+        <button class="audio-player-close" aria-label="Close player">✕</button>
+      </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top"></button>
+
     <script src="js/script.js"></script>
+
+    <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-animations.js"></script>
 </body>
 
 </html>

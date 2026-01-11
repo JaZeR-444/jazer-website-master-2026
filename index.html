@@ -1,127 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="images/vibrant-jzr-monogram-logo (50 x 50 px).svg"
+      type="image/svg+xml"
+    />
 
-   <!-- Favicon -->
-   <link rel="icon" href="images/icons/social/jazer-disco-round-icon.svg" type="image/svg+xml">
+    <!-- Primary Meta Tags -->
+    <title>JaZeR - Content Creator & Musician</title>
+    <meta name="title" content="JaZeR - Content Creator & Musician" />
+    <meta
+      name="description"
+      content="Official website of JaZeR - Content creator, music artist, and digital storyteller. Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+    />
+    <meta
+      name="keywords"
+      content="JaZeR, music artist, content creator, electronic music, music producer"
+    />
+    <meta name="author" content="JaZeR" />
+    <meta name="robots" content="index, follow" />
 
-   <!-- Primary Meta Tags -->
-   <title>JaZeR - Content Creator & Music Artist</title>
-   <meta name="title" content="JaZeR - Content Creator & Music Artist">
-   <meta name="description"
-      content="Official website of JaZeR - Content creator, music artist, and digital storyteller. Listen to my latest tracks, watch exclusive content, and connect with my creative journey.">
-   <meta name="keywords" content="JaZeR, music artist, content creator, electronic music, music producer">
-   <meta name="author" content="JaZeR">
-   <meta name="robots" content="index, follow">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jazer-music.com/" />
+    <meta
+      property="og:title"
+      content="JaZeR - Content Creator & Musician"
+    />
+    <meta
+      property="og:description"
+      content="Official website of JaZeR - Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+    />
+    <meta
+      property="og:image"
+      content="https://jazer-music.com/images/JaZeR%20Main%20Logo.jpg"
+    />
 
-   <!-- Open Graph / Facebook -->
-   <meta property="og:type" content="website">
-   <meta property="og:url" content="https://jazer-music.com/">
-   <meta property="og:title" content="JaZeR - Content Creator & Music Artist">
-   <meta property="og:description"
-      content="Official website of JaZeR - Listen to my latest tracks, watch exclusive content, and connect with my creative journey.">
-   <meta property="og:image" content="https://jazer-music.com/images/JaZeR%20Main%20Logo.jpg">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://jazer-music.com/" />
+    <meta
+      property="twitter:title"
+      content="JaZeR - Content Creator & Musician"
+    />
+    <meta
+      property="twitter:description"
+      content="Official website of JaZeR - Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+    />
+    <meta
+      property="twitter:image"
+      content="https://jazer-music.com/images/JaZeR%20Main%20Logo.jpg"
+    />
 
-   <!-- Twitter -->
-   <meta property="twitter:card" content="summary_large_image">
-   <meta property="twitter:url" content="https://jazer-music.com/">
-   <meta property="twitter:title" content="JaZeR - Content Creator & Music Artist">
-   <meta property="twitter:description"
-      content="Official website of JaZeR - Listen to my latest tracks, watch exclusive content, and connect with my creative journey.">
-   <meta property="twitter:image" content="https://jazer-music.com/images/JaZeR%20Main%20Logo.jpg">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://jazer-music.com/" />
 
-   <!-- Canonical -->
-   <link rel="canonical" href="https://jazer-music.com/">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css?v=36" />
+    <link rel="stylesheet" href="css/enhancements.css?v=36" />
+  </head>
 
-   <!-- Stylesheet -->
-   <link rel="stylesheet" href="css/style.css">
-</head>
+  <body class="has-announcement">
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+    <!-- #9 - Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+      <a href="music.html">🎵 NEW SINGLE DROPPING MARCH 2026 — Be the first to hear it →</a>
+      <button class="announcement-close" aria-label="Close announcement" onclick="document.getElementById('announcementBar').remove(); document.body.classList.remove('has-announcement');">✕</button>
+    </div>
 
-<body>
-   <a class="skip-link" href="#main">Skip to content</a>
+    <!-- #7 - Preloader -->
+    <div class="preloader" aria-hidden="true">
+      <img
+        class="preloader-logo"
+        src="images/vibrant-jzr-monogram-logo-(500 x 500 px).svg"
+        alt=""
+      />
+      <div class="preloader-bar"></div>
+    </div>
 
-   <!-- Navigation -->
-   <nav class="site-nav" role="navigation" aria-label="Primary">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Navigation -->
+    <nav class="site-nav" role="navigation" aria-label="Primary">
       <div class="container nav-inner">
-         <a class="logo" href="index.html" aria-label="Go to home">
-            <img src="images/icons/social/jazer-disco-round-icon.svg" alt="JaZeR logo">
-         </a>
-         <button id="mobileMenu" class="mobile-menu" aria-expanded="false" aria-controls="navLinks"
-            aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-         </button>
-         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="music.html">Music</a></li>
-            <li><a href="videos.html">Videos</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="contact.html">Contact</a></li>
-         </ul>
+        <a class="logo" href="index.html" aria-label="Go to home">
+          <img
+            src="images/vibrant-jzr-monogram-logo (100 x 100 px).svg"
+            alt="JaZeR logo"
+            style="height: 40px; width: auto;"
+          />
+        </a>
+
+        <!-- #10 - Visible Theme Toggle -->
+        <button
+          class="theme-toggle"
+          aria-label="Cycle theme colors"
+          title="Click to change colors"
+        >
+          <span class="theme-toggle-icon"></span>
+          <span>Vibe</span>
+        </button>
+
+        <button
+          id="mobileMenu"
+          class="mobile-menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+          <li><a href="music.html">Music</a></li>
+          <li><a href="videos.html">Videos</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+                <li class="nav-cta-item"><a href="music.html" class="nav-cta">Listen</a></li>
+</ul>
       </div>
-   </nav>
+    </nav>
 
-   <main id="main" tabindex="-1">
-      <!-- HOME PAGE -->
-      <div class="hero">
-         <div class="hero-content">
-            <img class="hero-logo" src="images/JaZeR_Logo.svg" alt="JaZeR">
-            <p>Content Creator | Music Artist | Digital Storyteller</p>
-            <a href="music.html" class="cta-button">Listen Now</a>
-         </div>
+    
+    <div class="nav-progress" aria-hidden="true"></div>
+<div class="nav-overlay" data-nav-overlay></div>
+
+    <main id="main" tabindex="-1">
+      <!-- HOME PAGE - #3 Hero Animation -->
+      <section class="hero hero-animated">
+        <div class="hero-particles"></div>
+        <div class="hero-content" data-animate="zoom-in">
+          <span class="hero-eyebrow" data-animate="fade-up">
+            <span class="eyebrow-word" style="--i: 0">Welcome</span>
+            <span class="eyebrow-divider">✦</span>
+            <span class="eyebrow-word" style="--i: 1">to</span>
+            <span class="eyebrow-divider">✦</span>
+            <span class="eyebrow-word" style="--i: 2">the</span>
+            <span class="eyebrow-divider">✦</span>
+            <span class="eyebrow-word" style="--i: 3">experience</span>
+          </span>
+          <img class="hero-logo" src="images/Vibrant JAZER Bubble Logo (450 x 150 px).svg" alt="JaZeR" />
+          <!-- #2 - Typewriter Tagline -->
+          <p class="tagline-roles">
+            <span class="role" style="--i: 0">Content Creator</span>
+            <span class="role-divider">✦</span>
+            <span class="role" style="--i: 1">Musician</span>
+            <span class="role-divider">✦</span>
+            <span class="role" style="--i: 2">Digital Storyteller</span>
+          </p>
+          <!-- #1 - Dual CTA Buttons -->
+          <div class="cta-group">
+            <a href="music.html" class="cta-button" data-audio-trigger>
+              <span class="cta-icon">🎧</span>
+              <span>Listen Now</span>
+            </a>
+            <a href="about.html" class="cta-secondary">
+              <span>Learn My Story</span>
+              <span class="cta-arrow">→</span>
+            </a>
+          </div>
+        </div>
+        <!-- #3 - Scroll Indicator -->
+        <div class="scroll-indicator" onclick="document.querySelector('.stats-section').scrollIntoView({behavior: 'smooth'})">
+          <span>Explore</span>
+          <div class="scroll-indicator-arrow"></div>
+        </div>
+      </section>
+
+      <!-- #10 - Stats Section (Social Proof) - ROUND 2 GLASSMORPHISM -->
+      <section class="stats-section" data-animate="fade-up">
+        <div class="stats-container">
+          <h2 class="stats-heading visually-hidden">JaZeR by the numbers</h2>
+          <div class="stats-grid">
+            <!-- Global SVG Gradient Defs -->
+            <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+              <linearGradient id="infinityGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--jazer-cyan)" />
+                <stop offset="50%" stop-color="var(--jazer-purple)" />
+                <stop offset="100%" stop-color="var(--jazer-pink)" />
+              </linearGradient>
+            </svg>
+
+            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="100">
+              <!-- Listeners Icon: Activity/Radio -->
+              <svg class="stat-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
+                <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" />
+                <circle cx="12" cy="12" r="2" />
+                <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
+                <path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1" />
+              </svg>
+              <div class="stat-value" data-count="10000">
+                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
+                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
+                </svg>
+              </div>
+              <div class="stat-label">Monthly Listeners</div>
+            </div>
+
+            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="200">
+              <!-- Tracks Icon: Music Note -->
+              <svg class="stat-icon-svg icon-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <path d="M9 18V5l12-2v13" />
+                 <circle cx="6" cy="18" r="3" />
+                 <circle cx="18" cy="16" r="3" />
+              </svg>
+              <div class="stat-value" data-count="25">
+                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
+                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
+                </svg>
+              </div>
+              <div class="stat-label">Original Tracks</div>
+            </div>
+
+            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="300">
+              <!-- Community Icon: Users/Sparkle -->
+              <svg class="stat-icon-svg icon-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                 <circle cx="9" cy="7" r="4" />
+                 <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <div class="stat-value" data-count="5000">
+                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
+                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
+                </svg>
+              </div>
+              <div class="stat-label">Community Members</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Content Section -->
+      <section class="section featured-section" style="position: relative;">
+        <div class="container">
+          <!-- Ambient Glow Orbs -->
+          <div class="ambient-glow magenta"></div>
+          <div class="ambient-glow blue"></div>
+
+          <div class="section-header">
+            <img src="images/Featured Content (450 x 150 px).svg" alt="Featured Content" class="section-title-img" data-animate="fade-up">
+            <p class="section-subtitle" data-animate="fade-up" data-animate-delay="100">Explore my latest creative work</p>
+          </div>
+          
+          <div class="bento-grid">
+            <!-- Main Feature Spans 2 Columns -->
+            <a href="music.html" class="card-link grid-span-2" data-animate="fade-up" data-animate-delay="100">
+              <article class="card card-featured track-card premium-card">
+                <!-- Vinyl Record -->
+                <div class="vinyl-container">
+                  <div class="vinyl-record">
+                    <div class="vinyl-grooves"></div>
+                    <div class="vinyl-label">
+                      <img src="images/JZR-Circle-Monogram-Logo (500 x 500 px).svg" alt="JZR" class="label-logo" />
+                    </div>
+                    <div class="vinyl-shine"></div>
+                  </div>
+                </div>
+                
+                <!-- Track Info -->
+                <div class="track-info">
+                  <span class="track-badge">NEW RELEASE</span>
+                  <h3 class="track-title">Latest Track</h3>
+                  <p class="track-artist">JaZeR</p>
+                  
+                  <!-- Waveform Visual -->
+                  <div class="track-waveform">
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                  </div>
+                  
+                  <div class="track-meta">
+                    <span class="track-duration">3:24</span>
+                    <span class="track-genre">Electronic • Bass</span>
+                  </div>
+                  
+                  <span class="track-cta">Stream Now</span>
+                </div>
+              </article>
+            </a>
+            <a href="videos.html" class="card-link" data-animate="fade-up" data-animate-delay="200">
+              <article class="card premium-card video-card">
+                <!-- Visual Section (Top) -->
+                <div class="media-visual-container">
+                  <div class="video-icon-static">
+                    <svg class="video-play-svg" viewBox="0 0 24 24">
+                      <path d="M5 3l14 9-14 9V3z" />
+                    </svg>
+                  </div>
+                </div>
+                
+                <!-- Info Section (Bottom) -->
+                <div class="track-info">
+                  <span class="track-badge" style="background: var(--jazer-cyan); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);">LATEST UPLOAD</span>
+                  <h3 class="track-title">New Video</h3>
+                  <p class="track-artist">Production Vlog</p>
+                  
+                  <div class="track-meta">
+                    <span class="track-duration">12:45</span>
+                    <span class="track-genre">Behind The Scenes</span>
+                  </div>
+                  
+                  <span class="track-cta">Watch Now</span>
+                </div>
+              </article>
+            </a>
+            <a href="contact.html" class="card-link" data-animate="fade-up" data-animate-delay="300">
+              <article class="card premium-card live-card">
+                <!-- Visual Section (Top) -->
+                <div class="media-visual-container">
+                   <div class="live-visual">
+                       <svg class="live-mic-svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                         <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                         <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                         <line x1="12" y1="19" x2="12" y2="23"/>
+                         <line x1="8" y1="23" x2="16" y2="23"/>
+                       </svg>
+                       <div class="live-pulse-ring"></div>
+                   </div>
+                </div>
+                
+                <!-- Info Section (Bottom) -->
+                <div class="track-info">
+                  <span class="track-badge" style="background: var(--jazer-pink); color: #fff; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);">UPCOMING</span>
+                  <h3 class="track-title">Live Sessions</h3>
+                  <p class="track-artist">Q&A + Performance</p>
+                  
+                  <div class="track-meta">
+                    <span class="track-duration">MAR 15</span>
+                    <span class="track-genre">Twitch • YouTube</span>
+                  </div>
+                  
+                  <span class="track-cta">Get Notified</span>
+                </div>
+              </article>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Email Capture Section -->
+      <section class="section email-section">
+        <div class="container">
+          <div class="email-capture" data-animate="fade-up">
+            <img src="images/join-the-beam (1500 x 500 px) (300 x 100 px).svg" alt="Join the Beam" class="email-capture-title-img" data-animate="fade-up">
+            <p class="email-capture-subtitle">
+              Get first access to new drops + an <strong>unreleased track</strong> as a welcome gift.
+            </p>
+            <form
+              class="email-capture-form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+            >
+              <input
+                type="email"
+                name="email"
+                class="email-capture-input"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+              />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New subscriber from JaZeR website"
+              />
+              <button type="submit" class="email-capture-btn">
+                <span>Join Free</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </form>
+            <p class="email-capture-status" role="status" aria-live="polite"></p>
+            <!-- #7 - Social Proof -->
+            <div class="email-capture-proof">
+              <div class="email-capture-avatars">
+                <span class="social-avatar-gradient"></span>
+                <span class="social-avatar-gradient"></span>
+                <span class="social-avatar-gradient"></span>
+                <span class="social-avatar-gradient"></span>
+              </div>
+              <span>Join <strong>500+</strong> fans already on the beam</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer - Premium Redesign -->
+    <footer class="footer-premium">
+      <!-- Animated Background Watermark (Parallax enabled via JS) -->
+      <div class="footer-watermark-container" data-parallax-watermark>
+        <img src="images/JZR-Circle-Monogram-Logo (500 x 500 px).svg" alt="" class="footer-watermark-animated" aria-hidden="true" />
       </div>
+      
+      <!-- Glassmorphism Card -->
+      <div class="footer-glass-card">
+        <div class="footer-grid">
+          
+          <!-- Column 1: Brand + Latest Release -->
+          <div class="footer-column footer-brand">
+            <a href="index.html" class="footer-logo-link" id="footerEasterEgg" aria-label="Go to home">
+              <img src="images/vibrant-jzr-monogram-logo (250 x 250 px).svg" alt="JaZeR" class="footer-logo-img">
+            </a>
+            <p class="footer-tagline">A sonic escape hatch — a beam of color for those who need a place to belong.</p>
+            
+            <!-- Latest Release Mini-Card -->
+            <div class="footer-latest-release">
+              <div class="footer-release-art">🎵</div>
+              <div class="footer-release-info">
+                <span class="footer-release-label">Latest Release</span>
+                <span class="footer-release-title">Coming Soon...</span>
+              </div>
+              <a href="music.html" class="footer-release-play" aria-label="Play latest release">▶</a>
+            </div>
+          </div>
+          <!-- Column 2: Navigation -->
+          <div class="footer-column footer-nav-column">
+            <h4 class="footer-heading">Navigate</h4>
+            <nav class="footer-nav-links" aria-label="Footer navigation">
+              <a href="index.html">Home</a>
+              <a href="music.html">Music</a>
+              <a href="videos.html">Videos</a>
+              <a href="about.html">About</a>
+              <a href="shop.html">Shop</a>
+              <a href="contact.html">Contact</a>
+            </nav>
+          </div>
+          
+          <!-- Column 3: Connect -->
+          <div class="footer-column footer-connect">
+            <h4 class="footer-heading">Connect</h4>
+            <div class="footer-socials">
+              <a href="https://instagram.com/jazer_music" title="Instagram"><img src="images/icons/social/instagram-round-icon.svg" alt="Instagram"></a>
+              <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src="images/icons/social/tiktok-round-logo.svg" alt="TikTok"></a>
+              <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src="images/icons/social/round-x(twitter)-icon.svg" alt="X/Twitter"></a>
+              <a href="https://youtube.com/@jazer" title="YouTube"><img src="images/icons/social/youtube-round-icon.svg" alt="YouTube"></a>
+              <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src="images/icons/social/spotify-round-icon.svg" alt="Spotify"></a>
+              <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src="images/icons/social/apple-music-round-icon.svg" alt="Apple Music"></a>
+              <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src="images/icons/social/soundcloud-round-icon.svg" alt="SoundCloud"></a>
+              <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src="images/icons/social/round-facebook-icon.svg" alt="Facebook"></a>
+            </div>
 
-      <div class="container section">
-         <h2 class="section-title">Featured Content</h2>
-         <div class="grid">
-            <article class="card">
-               <h3>Latest Track</h3>
-               <p>Check out my newest release, blending electronic beats with soulful melodies.</p>
-            </article>
-            <article class="card">
-               <h3>New Video</h3>
-               <p>Behind the scenes of my creative process and production workflow.</p>
-            </article>
-            <article class="card">
-               <h3>Live Sessions</h3>
-               <p>Join me for exclusive live performances and Q&A sessions.</p>
-            </article>
-         </div>
-
+            <!-- Compact Email Signup -->
+            <div class="footer-email-signup">
+              <h4 class="footer-heading">Stay Connected</h4>
+              <form class="footer-email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="email" name="email" placeholder="your@email.com" required>
+                <button type="submit">→</button>
+              </form>
+            </div>
+          </div>
+        
+        <!-- Rotating Inspirational Quote -->
+        <div class="footer-quote-container">
+          <p class="footer-quote gradient-text text-center" data-quotes='["Your light is real. Your dream is valid.", "Keep building when it feels heavy.", "Turn pain into power, visions into reality.", "There's still magic in all of this.", "You're closer than you think."]'>
+            "Your light is real. Your dream is valid."
+          </p>
+        </div>
       </div>
-   </main>
-
-   <!-- Footer -->
-   <footer>
-      <div class="container">
-         <p>&copy; 2026 JaZeR. All rights reserved.</p>
-         <nav class="footer-sitemap" aria-label="Site navigation">
-            <a href="index.html">Home</a>
-            <a href="music.html">Music</a>
-            <a href="videos.html">Videos</a>
-            <a href="about.html">About</a>
-            <a href="shop.html">Shop</a>
-            <a href="contact.html">Contact</a>
-         </nav>
-         <div class="social-links">
-            <a href="https://instagram.com/jazer_music" title="Instagram"><img src="images/icons/social/instagram-round-icon.svg" alt="Instagram" width="28" height="28"></a>
-            <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src="images/icons/social/tiktok-round-logo.svg" alt="TikTok" width="28" height="28"></a>
-            <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src="images/icons/social/round-x(twitter)-icon.svg" alt="X/Twitter" width="28" height="28"></a>
-            <a href="https://youtube.com/@jazer" title="YouTube"><img src="images/icons/social/youtube-round-icon.svg" alt="YouTube" width="28" height="28"></a>
-            <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src="images/icons/social/spotify-round-icon.svg" alt="Spotify" width="28" height="28"></a>
-            <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src="images/icons/social/apple-music-round-icon.svg" alt="Apple Music" width="28" height="28"></a>
-            <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src="images/icons/social/soundcloud-round-icon.svg" alt="SoundCloud" width="28" height="28"></a>
-            <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src="images/icons/social/round-facebook-icon.svg" alt="Facebook" width="28" height="28"></a>
-         </div>
+      
+      <!-- Floating Musical Notes -->
+      <div class="footer-notes">
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
+        <span class="footer-note">♪</span>
+        <span class="footer-note">♫</span>
       </div>
-   </footer>
+      
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <img src="images/Vibrant JAZER Bubble Logo (600 x 200 px).svg" alt="JaZeR" class="footer-bubble-logo" />
+        <p class="footer-copyright">© 2026 JaZeR. All rights reserved.</p>
+        <p class="footer-made-with">Handcrafted with <span class="heart">♥</span> by JaZeR</p>
+      </div>
+      
+    </footer>
 
-   <script src="js/script.js"></script>
-</body>
+    <!-- #2 - Sticky Audio Player -->
+    <div class="audio-player" aria-label="Audio player">
+      <div class="audio-player-inner">
+        <div class="audio-player-artwork">🎵</div>
+        <div class="audio-player-info">
+          <div class="audio-player-title">Coming Soon...</div>
+          <div class="audio-player-artist">JaZeR</div>
+        </div>
+        <div class="audio-player-controls">
+          <button class="audio-player-btn" aria-label="Previous">⏮</button>
+          <button class="audio-player-btn play-btn" aria-label="Play">▶</button>
+          <button class="audio-player-btn" aria-label="Next">⏭</button>
+        </div>
+        <div class="audio-player-progress">
+          <span class="audio-player-time">0:00</span>
+          <div class="audio-player-slider">
+            <div class="audio-player-slider-fill"></div>
+          </div>
+          <span class="audio-player-time">3:24</span>
+        </div>
+        <div class="audio-player-volume">
+          <span>🔊</span>
+          <div class="audio-player-volume-slider">
+            <div class="audio-player-volume-fill"></div>
+          </div>
+        </div>
+        <button class="audio-player-close" aria-label="Close player">✕</button>
+      </div>
+    </div>
 
+    <!-- #8 - Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top"></button>
+
+    <script src="js/script.js"></script>
+    
+    <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-animations.js"></script>
+  </body>
 </html>
