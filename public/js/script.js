@@ -103,6 +103,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ============================================
+    // MOBILE DROPDOWN ACCORDION
+    // ============================================
+    const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const parentDropdown = this.closest('.nav-dropdown');
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                
+                // Close other dropdowns
+                document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                    if (dropdown !== parentDropdown) {
+                        dropdown.classList.remove('active');
+                        const otherToggle = dropdown.querySelector('.nav-dropdown-toggle');
+                        if (otherToggle) {
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+                
+                // Toggle current dropdown
+                parentDropdown.classList.toggle('active');
+                this.setAttribute('aria-expanded', String(!isExpanded));
+            }
+        });
+    });
+
+    // ============================================
+    // NAV SCROLL EFFECTS
+    // ============================================
     if (siteNav) {
         let lastScrollTop = 0;
         const navScrollThreshold = 50;

@@ -1029,7 +1029,7 @@ code {
   width: 100%;
   z-index: 1000;
   padding: 0.75rem 1rem;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease, background 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease, background 0.4s ease, top 0.4s ease;
   transform: translateY(0);
   background: transparent !important;
   backdrop-filter: none !important;
@@ -1062,7 +1062,7 @@ code {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(10, 10, 20, 0.65); /* More translucent for modern feel */
+  background: rgba(10, 10, 20, 0.75);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   
@@ -1145,7 +1145,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.75rem;
+  gap: 2.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1162,8 +1162,14 @@ code {
   letter-spacing: 0.02em;
   transition: all 0.3s ease;
   position: relative;
-  padding: 0.5rem 1rem; /* Added horizontal padding for pill shape */
-  border-radius: 50px; /* For pill shape */
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  outline: none;
+}
+
+.nav-links a:focus-visible {
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.5);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-links a::after {
@@ -1195,6 +1201,8 @@ code {
   background: rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
   text-shadow: 0 0 10px var(--jazer-cyan);
+  border-left: 3px solid var(--jazer-cyan);
+  padding-left: calc(1rem - 3px);
 }
 
 .nav-links a.active::after {
@@ -1332,6 +1340,11 @@ code {
 
 .mobile-menu.active span:nth-child(3) {
   transform: rotate(-45deg) translate(8px, -8px);
+}
+
+.mobile-menu:focus-visible {
+  outline: 3px solid rgba(34, 211, 238, 0.6);
+  outline-offset: 2px;
 }
 
 /* ============================================
@@ -1535,12 +1548,25 @@ code {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+  transition-delay: 0.2s;
+}
+
+.nav-dropdown .nav-dropdown-content {
+  transition-delay: 0s;
 }
 
 .dropdown-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+}
+
+.dropdown-arrow {
+  display: none;
+  font-size: 0.6rem;
+  margin-left: 0.25rem;
+  transition: transform 0.3s ease;
+  color: var(--jazer-cyan);
 }
 
 .dropdown-item {
@@ -3957,6 +3983,11 @@ footer .container {
    MOBILE NAVIGATION OVERRIDES
    ============================================ */
 @media (max-width: 900px) {
+  /* Show dropdown arrow on mobile */
+  .dropdown-arrow {
+    display: inline-block !important;
+  }
+
   /* 1. Reset Container to Flex for Space-Between Alignment */
   .nav-inner {
     display: flex !important;
@@ -4124,5 +4155,59 @@ footer .container {
   /* Adjust Logo for Mobile */
   .logo img {
     height: 32px;
+  }
+}
+
+/* ============================================
+   PERFORMANCE & ACCESSIBILITY
+   ============================================ */
+
+/* Performance: GPU acceleration for animated elements */
+.mobile-menu,
+.nav-links,
+.nav-background,
+.site-nav {
+  will-change: transform;
+}
+
+.nav-links.active {
+  will-change: auto;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .nav-background {
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+  }
+  
+  .mobile-menu:hover,
+  .mobile-menu.active {
+    transform: none !important;
+  }
+  
+  .nav-background::before {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .nav-background {
+    border: 2px solid currentColor;
+    background: rgba(0, 0, 0, 0.95);
+  }
+  
+  .nav-links a:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
   }
 }

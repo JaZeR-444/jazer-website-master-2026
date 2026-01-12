@@ -51,24 +51,27 @@
 /* Announcement Banner - COMPACT FLOATING CAPSULE */
 .announcement-bar {
   position: fixed;
-  top: 0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  transform: none;
   z-index: 1100;
 
-  /* Capsule Shape */
+  /* Full Width Banner */
+  width: 100%;
+  max-width: 100%;
+  
   background: linear-gradient(
-    135deg,
-    rgba(168, 85, 247, 0.9) 0%,
-    rgba(255, 107, 157, 0.9) 50%,
-    rgba(34, 211, 238, 0.9) 100%
+    90deg,
+    rgba(168, 85, 247, 1) 0%,
+    rgba(255, 107, 157, 1) 50%,
+    rgba(34, 211, 238, 1) 100%
   );
   background-size: 200% 100%;
   animation: announcementGradient 6s ease-in-out infinite;
 
   padding: 0.5rem 1.25rem;
   padding-right: 2.5rem;
-  border-radius: 50px;
+  border-radius: 0;
 
   /* Glass + Glow */
   backdrop-filter: blur(10px);
@@ -84,11 +87,11 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
-  max-width: 90%;
+  /* max-width removed for full span */
 }
 
 .announcement-bar:hover {
-  transform: translateX(-50%) scale(1.02);
+  transform: none;
   box-shadow: 0 6px 25px rgba(168, 85, 247, 0.5),
     0 0 50px rgba(255, 107, 157, 0.3);
 }
@@ -139,19 +142,20 @@
 
 /* Adjust nav when announcement is present */
 body.has-announcement .site-nav {
-  top: 2.5rem;
+  top: 40px;
+  z-index: 1001;
 }
 
 body.has-announcement main {
   padding-top: 140px;
 }
 
-/* Mobile Announcement Bar - Standard Top Banner */
+/* Mobile Announcement Bar */
 @media (max-width: 768px) {
   .announcement-bar {
-    position: relative;
-    top: auto;
-    left: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
     transform: none;
     width: 100%;
     max-width: 100%;
@@ -160,18 +164,21 @@ body.has-announcement main {
     padding: 0.75rem 1rem;
     animation: none;
     background: linear-gradient(90deg, #a855f7, #22d3ee);
+    height: 45px;
+    z-index: 1100;
   }
 
   body.has-announcement .site-nav {
-    top: 0;
+    top: 45px !important;
+    z-index: 1001;
   }
 
   body.has-announcement main {
-    padding-top: 100px; /* Reduced padding since bar is relative */
+    padding-top: 120px;
   }
 
   body.has-announcement .hero {
-    padding-top: 120px;
+    padding-top: 140px;
   }
 }
 
@@ -648,17 +655,18 @@ body.has-announcement main {
     0 0 40px rgba(147, 51, 234, 0.4);
 }
 
-/* Rocket Icon Styles */
-.back-to-top .rocket-icon {
-  width: 24px;
-  height: 24px;
-  transform: rotate(-45deg); /* Pointing up */
+/* Rocket Emoji Styles */
+.back-to-top .rocket-emoji {
+  font-size: 26px;
+  line-height: 1;
+  display: inline-block;
+  transform: rotate(-45deg);
   transition: transform 0.3s ease;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
-.back-to-top:hover .rocket-icon {
-  transform: rotate(-45deg) translateY(-3px);
+.back-to-top:hover .rocket-emoji {
+  transform: rotate(-45deg) translateY(-3px) scale(1.1);
 }
 
 /* Adjust position when audio player is visible */

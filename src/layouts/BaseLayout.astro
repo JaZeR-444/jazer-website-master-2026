@@ -77,11 +77,11 @@ const resolvedStyles = extraStyles.map((href) =>
 
     <slot name="afterMain" />
 
-    {showFooter && <Footer />}
+    {showFooter && <Footer currentPath={currentPath} />}
     {showAudioPlayer && <Player />}
     {showBackToTop && (
       <button class="back-to-top" aria-label="Back to top">
-        <img src={`${base}assets/images/icons/emojis/07-travel-places/rocket.svg`} alt="Rocket" class="rocket-icon" />
+        <span class="rocket-emoji">🚀</span>
       </button>
     )}
 

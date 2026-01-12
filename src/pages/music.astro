@@ -371,8 +371,12 @@ const faqItems = [
         <span>SYSTEM STATUS: ONLINE</span>
       </div>
       
-      <h1 class="music-hero-title-text">
-        SONIC<br/>DATABANK
+      <h1 class="music-hero-title-text" style="background: none; -webkit-text-fill-color: initial;">
+        <img 
+          src={`${base}assets/images/Featured Content (450 x 150 px).svg`} 
+          alt="Featured Content" 
+          style="width: 100%; max-width: 600px; height: auto; filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.3));"
+        />
       </h1>
       
       <p class="music-hero-description">
@@ -427,6 +431,57 @@ const faqItems = [
             </div>
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true">
+    <div class="tech-line"></div>
+    <div class="tech-node"></div>
+    <div class="tech-line"></div>
+  </div>
+
+  <!-- Featured Track Section: System Preview -->
+  <section class="featured-track-section section">
+    <div class="container">
+      <div class="featured-track-container premium-card" data-animate="fade-up">
+        <!-- Visual (Vinyl) - Left Side -->
+        <div class="featured-track-visual">
+           <div class="vinyl-container">
+             <div class="vinyl-record">
+               <div class="vinyl-grooves"></div>
+               <div class="vinyl-label">
+                 <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="JZR" class="label-logo" />
+               </div>
+               <div class="vinyl-shine"></div>
+             </div>
+           </div>
+        </div>
+      
+        <div class="featured-track-info">
+          <div class="featured-header">
+            <span class="featured-badge-pill">🔥 New Release</span>
+          </div>
+          <h2 class="featured-title">In Due Time</h2>
+          <p class="featured-artist">JaZeR</p>
+          
+          <!-- Visualizer Bars -->
+          <div class="audio-visualizer">
+            <div class="bar" style="--h: 40%"></div>
+            <div class="bar" style="--h: 70%"></div>
+            <div class="bar" style="--h: 50%"></div>
+            <div class="bar" style="--h: 90%"></div>
+            <div class="bar" style="--h: 60%"></div>
+            <div class="bar" style="--h: 80%"></div>
+            <div class="bar" style="--h: 50%"></div>
+          </div>
+
+          <div class="featured-meta-row">
+            <span class="meta-tag highlight">4:34</span>
+            <span class="meta-tag">MELODIC HIP-HOP • RAP</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>

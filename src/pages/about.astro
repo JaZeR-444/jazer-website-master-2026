@@ -75,137 +75,291 @@ const faqs = [
     '/css/home.css' /* Reusing home styles for consistent hero/card look */
   ]}
 >
-  <Fragment slot="head">
-    <title>About JaZeR - The Story</title>
-    <meta name="title" content="About JaZeR - The Story" />
-    <meta
-      name="description"
-      content="JaZeR is a creative project exploring the intersection of cinematic music, visual storytelling, and digital identity."
-    />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonical} />
-  </Fragment>
-
-  <section class="hero home-hero about-hero">
-    <div class="hero-content home-hero-content" data-animate="fade-up">
-      <div class="hero-status">
-        <span class="status-chip">Established 2026</span>
-      </div>
-      <h1 class="jazer-h1 hero-title">
-        The signal behind the sound.
-      </h1>
-      <p class="jazer-body-lg hero-subhead">
-        JaZeR is a creative project exploring the intersection of cinematic music, visual storytelling, and digital identity.
+  <!-- Hero Section -->
+  <section class="hero hero-animated" style="min-height: 70vh; padding: 8rem 0 4rem;">
+    <div class="hero-particles"></div>
+    <div class="hero-content" data-animate="zoom-in" style="max-width: 800px;">
+      <span class="hero-eyebrow" data-animate="fade-up">
+        <span class="eyebrow-word" style="--i: 0">Meet</span>
+        <span class="eyebrow-divider">✦</span>
+        <span class="eyebrow-word" style="--i: 1">The</span>
+        <span class="eyebrow-divider">✦</span>
+        <span class="eyebrow-word" style="--i: 2">Artist</span>
+      </span>
+      <img class="hero-logo" src={`${base}assets/images/About JaZeR (441 x 94 px).svg`} alt="About JaZeR" style="margin: 2rem 0;" />
+      <p class="tagline-roles" style="max-width: 600px; margin: 0 auto 2rem; font-size: 1.25rem;">
+        A sonic escape hatch — a beam of color for anyone who needs a place to belong.
       </p>
     </div>
   </section>
 
-  <section class="section about-mission">
+  <!-- Artist Profile Section -->
+  <section class="section" style="padding: 4rem 0; position: relative;">
     <div class="container">
-      <div class="brand-banner-inner" data-animate="fade-up" style="max-width: 900px; margin: 0 auto;">
-        <p class="jazer-eyebrow">Mission</p>
-        <h2 class="jazer-h2">A sonic escape hatch.</h2>
-        <p class="jazer-body-lg text-muted" style="max-width: 60ch; margin: 0 auto;">
-          To create a focused beam of energy designed to cut through the noise, light up the dark, and remind people of what's possible.
-        </p>
-        <div class="brand-banner-tags">
-            <span class="tag-chip">Cinematic</span>
-            <span class="tag-chip">Emotive</span>
-            <span class="tag-chip">Futuristic</span>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- Ambient Glow Orbs -->
+      <div class="ambient-glow magenta"></div>
+      <div class="ambient-glow blue"></div>
 
-  <section class="section about-story">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">The Narrative</h2>
-        <p class="section-subtitle">Origins and evolution</p>
-      </div>
-
-      <div class="premium-card" data-animate="fade-up" style="max-width: 800px; margin: 0 auto;">
-        <h3 class="jazer-h3">Digital Roots</h3>
-        <p class="text-muted jazer-body-lg" style="margin-top: 1rem;">
-          Born from a desire to merge sound and vision, JaZeR represents the evolution of digital artistry. In a world of infinite noise, this project aims to be a clear, resonant frequency.
-        </p>
-        <p class="text-muted jazer-body-lg" style="margin-top: 1rem;">
-          What began as an experiment in sound design is growing into a full-spectrum media experience. The journey is just beginning.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section about-status">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Status</h2>
-        <p class="section-subtitle">Current transmission state</p>
-      </div>
-
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 0;">
-        <div class="premium-card" data-animate="fade-up" data-animate-delay="100">
-          <span class="status-chip is-muted">Now</span>
-          <h3 class="jazer-h4">Production Mode</h3>
-          <p class="text-muted">
-            Currently in the studio crafting the sonic palette for the debut collection. Focusing on sound design and visual identity.
-          </p>
-        </div>
-        <div class="premium-card" data-animate="fade-up" data-animate-delay="200">
-          <span class="status-chip">Next</span>
-          <h3 class="jazer-h4">The Debut</h3>
-          <p class="text-muted">
-            The first major release is in development. Expect a fusion of audio and visual art. Coming in 2026.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section about-pathways">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Explore</h2>
-        <p class="section-subtitle">Discover the ecosystem</p>
-      </div>
-
-      <div class="pathways-grid">
-        {pathways.map((pathway, index) => (
-          <a
-            href={pathway.href}
-            class="pathway-card premium-card"
-            data-animate="fade-up"
-            data-animate-delay={index * 80}
-          >
-            <div class="pathway-icon" aria-hidden="true">
-              <img src={pathway.icon} alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3 class="jazer-h4">{pathway.title}</h3>
-            <p class="text-muted text-sm">{pathway.desc}</p>
-            <span class="pathway-cta">{pathway.cta}</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section about-faq">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">FAQ</h2>
-        <p class="section-subtitle">Common questions</p>
-      </div>
-
-      <div style="max-width: 700px; margin: 0 auto; display: grid; gap: 1rem;">
-        {faqs.map((faq, index) => (
-          <div class="premium-card" data-animate="fade-up" data-animate-delay={index * 50} style="padding: 1.5rem;">
-            <h3 class="jazer-h5" style="margin-bottom: 0.5rem; color: var(--text-light);">{faq.q}</h3>
-            <p class="text-muted">{faq.a}</p>
+      <div class="bento-grid" style="align-items: center;">
+        <!-- Profile Image -->
+        <article class="card premium-card" data-animate="fade-up" data-animate-delay="100" style="overflow: hidden;">
+          <div style="aspect-ratio: 1; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+            <!-- Profile placeholder with logo -->
+            <img src={`${base}assets/images/vibrant-jzr-monogram-logo (250 x 250 px).svg`} alt="JaZeR" style="width: 60%; height: 60%; object-fit: contain; opacity: 0.8;" />
+            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(139, 92, 246, 0.2)); mix-blend-mode: overlay;"></div>
           </div>
-        ))}
+          <div class="track-info">
+            <h3 class="track-title">JaZeR</h3>
+            <p class="track-artist">Content Creator • Musician • Storyteller</p>
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+              <a href="https://instagram.com/jazer_music" class="cta-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem; text-decoration: none;">
+                <span>Follow</span>
+              </a>
+              <a href="#connect" class="cta-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem; text-decoration: none;">
+                <span>Contact</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- At a Glance Stats -->
+        <article class="card premium-card grid-span-2" data-animate="fade-up" data-animate-delay="200" style="padding: 2.5rem;">
+          <h3 class="track-title" style="margin-bottom: 2rem;">At a Glance</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem;">
+            <div>
+              <div style="font-size: 2.5rem; font-weight: 800; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">2026</div>
+              <div style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Launch Year</div>
+            </div>
+            <div>
+              <div style="font-size: 2.5rem; font-weight: 800; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">25+</div>
+              <div style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Original Tracks</div>
+            </div>
+            <div>
+              <div style="font-size: 2.5rem; font-weight: 800; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">∞</div>
+              <div style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Creative Energy</div>
+            </div>
+            <div>
+              <div style="font-size: 2.5rem; font-weight: 800; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">100%</div>
+              <div style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Authentic</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary);">
+              <strong>Mission:</strong> To create music that feels like home for the people who don't always feel like they have one.
+            </p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
+
+  <div class="container section">
+    <div class="content-narrow">
+
+      <!-- Visual Timeline -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text">The Journey</h2>
+
+        <div style="position: relative; padding-left: 2rem;">
+          <!-- Timeline line -->
+          <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--jazer-pink), var(--jazer-purple), var(--jazer-cyan));"></div>
+
+          <!-- Timeline Item 1 -->
+          <div style="position: relative; margin-bottom: 2rem; padding-left: 1.5rem;">
+            <div style="position: absolute; left: -0.5rem; top: 0.25rem; width: 1rem; height: 1rem; background: var(--jazer-pink); border-radius: 50%; box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);"></div>
+            <div>
+              <h4 style="margin-bottom: 0.5rem; color: var(--jazer-pink);">The Struggle</h4>
+              <p class="text-muted">
+                JaZeR was born out of transition — a long stretch of struggle, constraint, and feeling like my light was dimmed.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div style="position: relative; margin-bottom: 2rem; padding-left: 1.5rem;">
+            <div style="position: absolute; left: -0.5rem; top: 0.25rem; width: 1rem; height: 1rem; background: var(--jazer-purple); border-radius: 50%; box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);"></div>
+            <div>
+              <h4 style="margin-bottom: 0.5rem; color: var(--jazer-purple);">The Discovery</h4>
+              <p class="text-muted">
+                Music has always been the one thing that made me feel truly special. When I didn't know my purpose, sound gave me one. When I felt lost, rhythm felt like home.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div style="position: relative; padding-left: 1.5rem;">
+            <div style="position: absolute; left: -0.5rem; top: 0.25rem; width: 1rem; height: 1rem; background: var(--jazer-cyan); border-radius: 50%; box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2);"></div>
+            <div>
+              <h4 style="margin-bottom: 0.5rem; color: var(--jazer-cyan);">The Mission - 2026</h4>
+              <p class="text-muted">
+                Now that I'm finally at a point where I feel free, JaZeR is my way of giving that feeling back. Creating music that feels like home for those who don't always have one.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--jazer-pink); border-radius: 8px;">
+          <p class="text-strong text-lg">
+            The mission is simple: to create music that feels like home for the people who don't always feel like they have one.
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA: Listen Now -->
+      <div class="text-center mb-lg" data-animate="fade-up">
+        <a href="music.html" class="cta-button">
+          <span class="cta-icon">🎧</span>
+          <span>Listen Now</span>
+        </a>
+      </div>
+
+      <!-- Core Values -->
+      <div class="grid mb-lg" data-animate="fade-up">
+        <div class="premium-glass-card">
+          <h3>A sense of belonging</h3>
+          <p>For those who don't always feel like they have one</p>
+        </div>
+        <div class="premium-glass-card">
+          <h3>A sense of purpose</h3>
+          <p>Finding meaning through sound and rhythm</p>
+        </div>
+        <div class="premium-glass-card">
+          <h3>Limitless potential</h3>
+          <p>A reminder that you're capable of far more than you were told</p>
+        </div>
+      </div>
+
+      <!-- Sound & Style -->
+      <div class="premium-glass-card mb-lg">
+        <h2 class="mb-md gradient-text">Vibe, Sound & Style</h2>
+        <p class="mb-md text-lg" style="line-height: 1.7;">
+          <strong>Upbeat, positive, and lyrically sharp</strong> — with a lot of choppy wordplay and rhythmic twists.
+        </p>
+
+        <p class="mb-sm text-strong" style="font-size: 1.125rem; margin-top: 2rem;">Genre Influences:</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem;">
+          <span class="track-badge" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white; padding: 0.5rem 1rem; font-size: 0.875rem;">🎸 Southern Rock</span>
+          <span class="track-badge" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 0.5rem 1rem; font-size: 0.875rem;">🔊 Heavy Bass</span>
+          <span class="track-badge" style="background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; padding: 0.5rem 1rem; font-size: 0.875rem;">⚡ Electronic</span>
+          <span class="track-badge" style="background: linear-gradient(135deg, #ec4899, #db2777); color: white; padding: 0.5rem 1rem; font-size: 0.875rem;">🎤 Hip-Hop & Rap</span>
+          <span class="track-badge" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white; padding: 0.5rem 1rem; font-size: 0.875rem;">🎷 Jazz & Blues</span>
+          <span class="track-badge" style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.5rem 1rem; font-size: 0.875rem;">🎹 Boom Bap</span>
+          <span class="track-badge" style="background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; padding: 0.5rem 1rem; font-size: 0.875rem;">💎 Trap-Soul</span>
+        </div>
+
+        <div style="padding: 1.5rem; background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--jazer-cyan); border-radius: 8px;">
+          <p style="line-height: 1.7;">
+            Whenever I'm in the lab, I'm chasing emotion. Good, bad, beautiful, or painful — it all belongs. For me, the point of music is to take even the worst situations and transform them into something beautiful.
+          </p>
+        </div>
+      </div>
+
+      <!-- Behind the Scenes -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text">Behind the Scenes</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+          <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎚️</div>
+            <h4 style="margin-bottom: 0.5rem;">Production</h4>
+            <p class="text-muted text-sm">FL Studio, Ableton, and a coffee addiction</p>
+          </div>
+          <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎤</div>
+            <h4 style="margin-bottom: 0.5rem;">Recording</h4>
+            <p class="text-muted text-sm">Home studio vibes, late-night sessions</p>
+          </div>
+          <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">✍️</div>
+            <h4 style="margin-bottom: 0.5rem;">Writing</h4>
+            <p class="text-muted text-sm">Life experiences, emotions, and raw truth</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Themes -->
+      <div class="premium-glass-card mb-lg">
+        <h2 class="mb-md">Themes & The World of JaZeR</h2>
+        <p class="mb-md text-italic">
+          JaZeR lives in a "funky futuristic" lane — a blend of soulful humanity and cosmic, digital energy.
+        </p>
+        <div class="grid mt-lg">
+          <div>
+            <h4>Self-belief & perseverance</h4>
+            <p class="text-sm text-muted">Never stopping, never shrinking</p>
+          </div>
+          <div>
+            <h4>Freedom & transformation</h4>
+            <p class="text-sm text-muted">Breaking out of old versions of yourself</p>
+          </div>
+          <div>
+            <h4>Authenticity & purpose</h4>
+            <p class="text-sm text-muted">Staying true while you build something new</p>
+          </div>
+          <div>
+            <h4>Mental & emotional growth</h4>
+            <p class="text-sm text-muted">Clarity, healing, evolution</p>
+          </div>
+          <div>
+            <h4>Technology & consciousness</h4>
+            <p class="text-sm text-muted">Metaphysical vibes, digital dreams, cosmic imagery</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why JaZeR -->
+      <div class="premium-glass-card mb-lg">
+        <h2 class="mb-md gradient-text">Why "JaZeR"?</h2>
+        <p class="mb-md" style="font-size: 1.125rem; line-height: 1.7;">
+          The name is a play on my real name, Jay, and the way people have described me over time — an infinite beam of light.
+        </p>
+        <div style="padding: 1.5rem; background: rgba(139, 92, 246, 0.1); border-left: 3px solid var(--jazer-purple); border-radius: 8px;">
+          <p class="text-strong text-lg">
+            So JaZeR is like "J-Laser": a focused beam of energy designed to cut through the noise, light up the dark, and remind you of what's possible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Testimonials Section -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text text-center">What Early Listeners Say</h2>
+        <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
+          <!-- Testimonial 1 -->
+          <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid var(--jazer-pink);">
+            <p class="text-italic mb-md" style="line-height: 1.7;">
+              "The energy is unmatched. Every track feels like it's speaking directly to where I am in life."
+            </p>
+            <p class="text-sm text-strong" style="color: var(--jazer-pink);">— Early Supporter</p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid var(--jazer-cyan);">
+            <p class="text-italic mb-md" style="line-height: 1.7;">
+              "This is exactly what I needed to hear. The wordplay is insane and the vibe is perfect."
+            </p>
+            <p class="text-sm text-strong" style="color: var(--jazer-cyan);">— Beta Listener</p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid var(--jazer-purple);">
+            <p class="text-italic mb-md" style="line-height: 1.7;">
+              "JaZeR's music makes me feel like I'm not alone in this. It's fuel for the journey."
+            </p>
+            <p class="text-sm text-strong" style="color: var(--jazer-purple);">— Community Member</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA: Watch the Journey -->
+      <div class="text-center mb-lg" data-animate="fade-up">
+        <a href="videos.html" class="cta-button">
+          <span class="cta-icon">🎬</span>
+          <span>Watch the Journey</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
 
   <JoinBeamCTA
     id="updates"
@@ -214,12 +368,86 @@ const faqs = [
     captureStyle="max-width: 720px; margin: 0 auto;"
     subtitleStyle="font-size: 1.125rem; max-width: 520px; margin: 1.5rem auto;"
     subject="New subscriber from JaZeR About page"
-    buttonLabel="Get updates"
-    proofText="Updates: <strong>Expected in 2026</strong>"
+    buttonLabel="Join the Beam"
+    proofText="Join 500+ fans on the beam"
   >
     <Fragment slot="subtitle">
-      Stay connected with the journey. New drops expected in <strong>2026</strong>.
+      Be the first to hear new music, get exclusive updates, and <strong>join the community</strong>.
     </Fragment>
   </JoinBeamCTA>
 
+  <!-- Collaborate Section -->
+  <section class="section" style="padding: 4rem 0;" id="connect">
+    <div class="container">
+      <div class="content-narrow">
+        <div class="premium-glass-card" data-animate="fade-up">
+          <h2 class="mb-md gradient-text text-center">Let's Work Together</h2>
+          <p class="text-center mb-lg" style="font-size: 1.125rem; line-height: 1.7;">
+            Open to collaborations, features, production work, and creative partnerships.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <!-- Collaboration Type 1 -->
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+              <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🎤</div>
+              <h4 style="margin-bottom: 0.5rem;">Features</h4>
+              <p class="text-muted text-sm">Guest verses and vocal features</p>
+            </div>
+
+            <!-- Collaboration Type 2 -->
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+              <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🎹</div>
+              <h4 style="margin-bottom: 0.5rem;">Production</h4>
+              <p class="text-muted text-sm">Beats, mixing, and sound design</p>
+            </div>
+
+            <!-- Collaboration Type 3 -->
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+              <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">💼</div>
+              <h4 style="margin-bottom: 0.5rem;">Business</h4>
+              <p class="text-muted text-sm">Bookings, partnerships, licensing</p>
+            </div>
+          </div>
+
+          <div class="text-center" style="margin-top: 2.5rem;">
+            <a href="contact.html" class="cta-button">
+              <span class="cta-icon">📧</span>
+              <span>Get in Touch</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container section">
+    <div class="content-narrow">
+
+      <!-- For New Listeners -->
+      <div class="premium-glass-card callout-gradient-soft">
+        <h2 class="mb-md text-center">For New Listeners</h2>
+        <p class="mb-md text-center text-lg">
+          If you're reading this, here's what I want you to feel:
+        </p>
+        <p class="text-center text-strong text-xl leading-relaxed">
+          That your light is real.<br>
+          That your dream is valid.<br>
+          That you're closer than you think.
+        </p>
+        <p class="mt-lg text-center">
+          My music is for the dreamers, the builders, the ones trying to turn pain into power and visions into
+          reality. It's fuel to keep going when you're tired, to keep building when it feels heavy, and to remind you
+          that there's still magic in all of this.
+        </p>
+        <div class="text-center mt-lg">
+          <a href="music.html" class="cta-button">Press Play</a>
+        </div>
+      </div>
+
+      <p class="text-center text-2xl mt-xl text-strong">
+        This is JaZeR. Welcome home. 🌌✨
+      </p>
+
+    </div>
+  </div>
 </BaseLayout>

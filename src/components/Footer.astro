@@ -1,6 +1,20 @@
 ---
 const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
+const { currentPath = '/' } = Astro.props;
+
+// Normalize path for comparison
+const basePath = base.endsWith('/') ? base.slice(0, -1) : base;
+const normalizedPath = basePath && currentPath.startsWith(basePath)
+  ? currentPath.slice(basePath.length) || '/'
+  : currentPath;
+
+const isHome = normalizedPath === '/';
+const isMusic = normalizedPath.startsWith('/music');
+const isVideos = normalizedPath.startsWith('/videos');
+const isAbout = normalizedPath.startsWith('/about');
+const isShop = normalizedPath.startsWith('/shop');
+const isContact = normalizedPath.startsWith('/contact');
 
 const socials = [
   { href: "https://instagram.com/jazer_music", label: "Instagram", icon: `${base}assets/images/icons/social/instagram-round-icon.svg` },
@@ -44,12 +58,12 @@ const socials = [
       </a>
   
       <nav class="sonic-footer-nav" aria-label="Primary Footer Navigation">
-        <a href={`${base}`} class="sonic-nav-link">[ HOME ]</a>
-        <a href={`${base}music`} class="sonic-nav-link active">[ MUSIC ]</a>
-        <a href={`${base}videos`} class="sonic-nav-link">[ VIDEOS & VISUALS ]</a>
-        <a href={`${base}shop`} class="sonic-nav-link">[ SHOP ]</a>
-        <a href={`${base}about`} class="sonic-nav-link">[ ABOUT ]</a>
-        <a href={`${base}contact`} class="sonic-nav-link">[ CONTACT ]</a>
+        <a href={`${base}`} class={`sonic-nav-link ${isHome ? 'active' : ''}`}>[ HOME ]</a>
+        <a href={`${base}music`} class={`sonic-nav-link ${isMusic ? 'active' : ''}`}>[ MUSIC ]</a>
+        <a href={`${base}videos`} class={`sonic-nav-link ${isVideos ? 'active' : ''}`}>[ VIDEOS ]</a>
+        <a href={`${base}shop`} class={`sonic-nav-link ${isShop ? 'active' : ''}`}>[ SHOP ]</a>
+        <a href={`${base}about`} class={`sonic-nav-link ${isAbout ? 'active' : ''}`}>[ ABOUT ]</a>
+        <a href={`${base}contact`} class={`sonic-nav-link ${isContact ? 'active' : ''}`}>[ CONTACT ]</a>
       </nav>
   
       <nav class="sonic-footer-socials" aria-label="JaZeR social links">
@@ -69,7 +83,7 @@ const socials = [
   
       <div class="sonic-footer-meta">
         <p class="sonic-footer-copyright">
-          © {year} JAZER. ALL RIGHTS RESERVED.
+          © {year} <span class="brand-gradient">JaZeR</span>. ALL RIGHTS RESERVED.
         </p>
 
         <div class="sonic-trust-links">
@@ -267,6 +281,22 @@ const socials = [
   margin: 0;
 }
 
+/* Gradient for JaZeR brand name */
+.brand-gradient {
+  background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple), var(--jazer-pink));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 .sonic-trust-links {
   display: flex;
   justify-content: center;
@@ -288,12 +318,22 @@ const socials = [
 
 .sonic-footer-status {
   font-family: 'Courier New', monospace;
-  font-size: 0.85rem; /* Slightly larger for quotes */
+  font-size: 0.85rem;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.6); /* Brighter for readability */
+  background: linear-gradient(90deg, var(--jazer-cyan), var(--jazer-purple), var(--jazer-pink), var(--jazer-cyan));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0;
   min-height: 1.25em;
   transition: opacity 0.5s ease;
+  animation: gradientFlow 8s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }
 
 /* Respect reduced motion */
@@ -307,6 +347,13 @@ const socials = [
   .sonic-footer-social:hover,
   .sonic-footer-brand:hover .sonic-footer-logo {
     transform: none;
+  }
+  
+  /* Disable gradient animations */
+  .brand-gradient,
+  .sonic-footer-status {
+    animation: none !important;
+    background-position: 0% 50%;
   }
 }
 
