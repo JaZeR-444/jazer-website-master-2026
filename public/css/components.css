@@ -1212,6 +1212,21 @@ code {
   border: none;
   cursor: pointer;
   z-index: 2;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu:hover {
+  background: rgba(79, 172, 254, 0.1);
+  transform: scale(1.05);
+}
+
+.mobile-menu:active {
+  transform: scale(0.95);
 }
 
 .mobile-menu span {
@@ -1222,6 +1237,13 @@ code {
   margin: 5px 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
+}
+
+.mobile-menu:hover span {
+  background-color: var(--jazer-cyan);
+  box-shadow: 0 0 15px rgba(79, 172, 254, 0.6);
 }
 
 /* ============================================
@@ -1289,10 +1311,18 @@ code {
 }
 
 /* ============================================
-   HEADER ENHANCEMENT #3: Hamburger Animation
+   HEADER ENHANCEMENT #3: Hamburger Animation (Improved)
    ============================================ */
+.mobile-menu.active {
+  background: rgba(79, 172, 254, 0.15);
+}
+
+.mobile-menu.active span {
+  background-color: var(--jazer-cyan);
+}
+
 .mobile-menu.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(8px, 8px);
 }
 
 .mobile-menu.active span:nth-child(2) {
@@ -1301,7 +1331,7 @@ code {
 }
 
 .mobile-menu.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(8px, -8px);
 }
 
 /* ============================================
