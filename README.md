@@ -2,7 +2,7 @@
 
 ![JaZeR Logo](public/assets/images/Vibrant%20JAZER%20Bubble%20Logo%20(600%20x%20200%20px).svg)
 
-# JaZeR Official Website
+# Official Website
 ### Content Creator • Musician • Digital Storyteller
 
 [![Deployment](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-brightgreen?style=for-the-badge)](https://jazer-444.github.io/TEST-Website-Import/)
