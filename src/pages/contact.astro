@@ -36,9 +36,39 @@ const announcement = {
       type="image/svg+xml"
     />
   </Fragment>
+  
+  <style>
+    .contact-hero {
+      padding: 6rem 1rem 3rem;
+      text-align: center;
+    }
+    .page-hero-title-logo {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    .contact-card {
+      max-width: 700px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-hero {
+        padding: 4rem 1rem 2rem;
+      }
+      .page-hero-title-logo {
+        max-width: 300px;
+      }
+      .section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  </style>
 
         <!-- New Page Hero -->
-                <div class="page-hero" data-animate="fade-up">
+        <div class="page-hero contact-hero" data-animate="fade-up">
             <h1 class="page-hero-title">
                 <img class="page-hero-title-logo" src={`${base}assets/images/Contact Me (450 x 94 px).svg`} alt="Contact Me">
             </h1>
@@ -52,7 +82,7 @@ const announcement = {
               Drop a message below and it'll beam straight to the control room.
             </p>
 
-            <div class="premium-glass-card" style="max-width: 700px; margin: 0 auto;">
+            <div class="premium-glass-card contact-card">
                 <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-animate="fade-up">
                     <div class="modern-form-group">
                         <label for="name" class="modern-label">Name</label>

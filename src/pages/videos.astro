@@ -36,12 +36,63 @@ const announcement = {
       content="JaZeR, videos, music videos, behind the scenes, visual content, vlogs"
     />
     <link rel="canonical" href={canonical} />
+    <style>
+      .videos-hero {
+        min-height: 70vh;
+        padding: 8rem 0 4rem;
+      }
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .hero-logo {
+        margin: 2rem auto;
+        display: block;
+        width: 100%;
+        max-width: 501px;
+        height: auto;
+      }
+      .tagline-roles {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+      .videos-featured {
+        position: relative;
+        padding: 6rem 0;
+      }
+      .bento-grid {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+      /* Mobile Optimization */
+      @media (max-width: 768px) {
+        .videos-hero {
+          min-height: auto;
+          padding: 6rem 0 3rem;
+        }
+        .hero-logo {
+          max-width: 300px;
+        }
+        .videos-featured {
+          padding: 4rem 0;
+        }
+        .bento-grid {
+          margin-top: 2rem;
+          grid-template-columns: 1fr;
+        }
+        .bento-grid .grid-span-2 {
+            grid-column: 1;
+        }
+      }
+    </style>
   </Fragment>
 
         <!-- Hero Section -->
-        <section class="hero hero-animated" style="min-height: 70vh; padding: 8rem 0 4rem;">
+        <section class="hero hero-animated videos-hero">
             <div class="hero-particles"></div>
-            <div class="hero-content" data-animate="zoom-in" style="max-width: 800px; margin: 0 auto;">
+            <div class="hero-content" data-animate="zoom-in">
                 <span class="hero-eyebrow" data-animate="fade-up">
                     <span class="eyebrow-word" style="--i: 0">Visual</span>
                     <span class="eyebrow-divider">✦</span>
@@ -51,8 +102,8 @@ const announcement = {
                     <span class="eyebrow-divider">✦</span>
                     <span class="eyebrow-word" style="--i: 3">2026</span>
                 </span>
-                <img class="hero-logo" src={`${base}assets/images/Videos & Visuals (501 x 75 px).svg`} alt="Videos & Visuals" style="margin: 2rem auto; display: block;" />
-                <p class="tagline-roles" style="max-width: 600px; margin: 0 auto 2rem;">
+                <img class="hero-logo" src={`${base}assets/images/Videos & Visuals (501 x 75 px).svg`} alt="Videos & Visuals" />
+                <p class="tagline-roles">
                     Music videos, behind-the-scenes studio sessions, live performances, and creative vlogs. The visual experience launches 2026.
                 </p>
                 <div class="cta-group">
@@ -69,7 +120,7 @@ const announcement = {
         </section>
 
         <!-- Featured Content Section -->
-        <section class="section featured-section" style="position: relative; padding: 6rem 0;">
+        <section class="section featured-section videos-featured">
             <div class="container">
                 <!-- Ambient Glow Orbs -->
                 <div class="ambient-glow magenta"></div>

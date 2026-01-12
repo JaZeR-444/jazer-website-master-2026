@@ -337,7 +337,7 @@ const announcement = {
       /* Responsive */
       @media (max-width: 768px) {
         .about-hero {
-          min-height: 60vh;
+          min-height: auto;
           padding: 6rem 0 3rem;
         }
 
@@ -356,6 +356,22 @@ const announcement = {
         .stats-grid {
           grid-template-columns: repeat(2, 1fr);
           gap: 1.5rem;
+        }
+        
+        .profile-section {
+          padding: 2rem 0;
+        }
+        
+        .bento-grid .grid-span-2 {
+          grid-column: 1;
+        }
+        
+        .profile-actions {
+          justify-content: center;
+        }
+        
+        .hero-logo {
+          max-width: 80%;
         }
       }
 
