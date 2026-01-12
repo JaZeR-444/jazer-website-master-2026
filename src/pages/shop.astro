@@ -7,16 +7,80 @@ const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.ur
 
 const announcement = {
   href: `${base}shop`,
-  text: '🛍️ MERCH COMING SOMETIME IN 2026 - Sign up for early access!'
+  text: '🛍️ MERCH COMING IN 2026 - Join the waitlist for early access!'
 };
 
 // Product Categories
 const productCategories = [
-  { name: 'All', filter: 'all', icon: '🎯' },
-  { name: 'Apparel', filter: 'apparel', icon: '👕' },
-  { name: 'Accessories', filter: 'accessories', icon: '🧢' },
-  { name: 'Music', filter: 'music', icon: '💿' },
-  { name: 'Bundles', filter: 'bundles', icon: '📦' }
+  { name: 'All', filter: 'all', icon: '🎯', active: true },
+  { name: 'Apparel', filter: 'apparel', icon: '👕', active: false },
+  { name: 'Accessories', filter: 'accessories', icon: '🧢', active: false },
+  { name: 'Music', filter: 'music', icon: '💿', active: false },
+  { name: 'Bundles', filter: 'bundles', icon: '📦', active: false }
+];
+
+// Featured Upcoming Products (standardized cards)
+const upcomingProducts = [
+  { 
+    id: 1,
+    title: 'Beam Hoodie',
+    category: 'Apparel',
+    description: 'Premium heavyweight hoodie with signature gradient embroidery.',
+    priceRange: 'Est. $65-$85',
+    badge: 'Coming in 2026',
+    icon: '🧥',
+    featured: true
+  },
+  { 
+    id: 2,
+    title: 'Signal Tee',
+    category: 'Apparel',
+    description: 'Oversized cotton tee with reflective back print.',
+    priceRange: 'Est. $35-$45',
+    badge: 'Coming in 2026',
+    icon: '👕',
+    featured: true
+  },
+  { 
+    id: 3,
+    title: 'Orbit Cap',
+    category: 'Accessories',
+    description: 'Structured snapback with embossed logo patch.',
+    priceRange: 'Est. $30-$40',
+    badge: 'Coming in 2026',
+    icon: '🧢',
+    featured: true
+  },
+  { 
+    id: 4,
+    title: 'Vinyl Bundle',
+    category: 'Music',
+    description: 'Limited edition vinyl with exclusive artwork and inserts.',
+    priceRange: 'Est. $40-$60',
+    badge: 'Coming in 2026',
+    icon: '💿',
+    featured: false
+  },
+  { 
+    id: 5,
+    title: 'Sticker Pack',
+    category: 'Accessories',
+    description: 'Holographic sticker set featuring album art and logos.',
+    priceRange: 'Est. $12-$18',
+    badge: 'Coming in 2026',
+    icon: '✨',
+    featured: false
+  },
+  { 
+    id: 6,
+    title: 'Starter Bundle',
+    category: 'Bundles',
+    description: 'Tee + Cap + Stickers at a discounted bundle price.',
+    priceRange: 'Est. $60-$80',
+    badge: 'Coming in 2026',
+    icon: '📦',
+    featured: false
+  }
 ];
 
 // Size Guide Data
@@ -30,19 +94,75 @@ const sizeGuide = {
   ]
 };
 
-// Customer Reviews
+// Customer Reviews (social proof)
 const reviews = [
-  { name: 'Early Supporter', rating: 5, text: "Can't wait for the drop! The mockups look fire 🔥", date: 'January 2026' },
-  { name: 'Day One Fan', rating: 5, text: "Finally merch from JaZeR! Take my money already!", date: 'January 2026' },
-  { name: 'Music Lover', rating: 5, text: "The designs are so clean. Definitely copping the hoodie.", date: 'January 2026' }
+  { name: 'Early Supporter', rating: 5, text: "Can't wait for the drop! The mockups look fire 🔥", date: '2026' },
+  { name: 'Day One Fan', rating: 5, text: "Finally merch from JaZeR! Take my money already!", date: '2026' },
+  { name: 'Music Lover', rating: 5, text: "The designs are so clean. Definitely copping the hoodie.", date: '2026' }
 ];
 
-// Shipping Info
+// Shipping Info (safe copy - no specific dates)
 const shippingInfo = [
-  { region: 'United States', time: '3-5 business days', cost: 'Free over $75' },
-  { region: 'Canada', time: '5-7 business days', cost: '$12 flat rate' },
-  { region: 'Europe', time: '7-14 business days', cost: 'Varies by country' },
-  { region: 'Rest of World', time: '14-21 business days', cost: 'Calculated at checkout' }
+  { region: 'United States', time: 'Priority Shipping', cost: 'Free over $75' },
+  { region: 'Canada', time: 'Standard Shipping', cost: 'Flat rate available' },
+  { region: 'International', time: 'Phased rollout in 2026', cost: 'TBD at launch' }
+];
+
+// Shop FAQ (safe copy - no specific dates)
+const shopFAQ = [
+  { 
+    q: 'When does the shop open?', 
+    a: "We're planning to launch sometime in 2026. Join the waitlist to be the first to know when drops go live." 
+  },
+  { 
+    q: 'What will be available?', 
+    a: 'Apparel, accessories, music collectibles, and exclusive bundles. The final lineup is still being finalized.' 
+  },
+  { 
+    q: 'Will you ship internationally?', 
+    a: 'We plan to offer international shipping. Exact regions and rates will be confirmed at launch.' 
+  },
+  { 
+    q: "What's your return policy?", 
+    a: 'Our return and exchange policy will be published when the shop opens. We aim to make it hassle-free.' 
+  },
+  { 
+    q: 'How do I get early access?', 
+    a: 'Join our email waitlist to receive early access notifications and exclusive drop alerts.' 
+  }
+];
+
+// Trust & Policy Links
+const policyLinks = [
+  { name: 'Shipping Info', href: '#shipping', status: 'Available at launch' },
+  { name: 'Returns & Exchanges', href: '#returns', status: 'TBD' },
+  { name: 'Size Guide', href: '#sizing', status: 'Available' },
+  { name: 'Contact Support', href: '/contact', status: 'Active' }
+];
+
+// Drop Timeline Phases (safe copy)
+const dropPhases = [
+  { 
+    phase: '01', 
+    title: 'Core Collection', 
+    description: 'Essentials + Sticker Packs', 
+    timing: 'Coming in 2026',
+    status: 'In Development'
+  },
+  { 
+    phase: '02', 
+    title: 'Orbit Collection', 
+    description: 'Premium Outerwear & Embossed Fabrics', 
+    timing: 'Expected in 2026',
+    status: 'Planned'
+  },
+  { 
+    phase: '03', 
+    title: 'Horizon Collection', 
+    description: 'Limited Edition Collectors Items', 
+    timing: 'Later in 2026',
+    status: 'Planned'
+  }
 ];
 ---
 <BaseLayout
@@ -61,9 +181,9 @@ const shippingInfo = [
   ]}
 >
   <Fragment slot="head">
-    <title>Shop - JaZeR</title>
-    <meta name="description" content="Shop JaZeR merchandise and exclusive items. Get early access to limited drops, premium apparel, and exclusive bundles." />
-    <meta name="keywords" content="JaZeR shop, merchandise, merch, apparel, clothing, hoodies, t-shirts, limited edition" />
+    <title>Shop - JaZeR | Coming in 2026</title>
+    <meta name="description" content="The Official JaZeR Shop. Premium merchandise designed for the community. All items coming in 2026 — join the waitlist for early access." />
+    <meta name="keywords" content="JaZeR shop, merchandise, merch, apparel, clothing, hoodies, t-shirts, limited edition, coming soon" />
     <link rel="canonical" href={canonical} />
     <link
       rel="preload"
@@ -73,7 +193,10 @@ const shippingInfo = [
     />
 
     <style>
-      /* Shop Page Styles */
+      /* ========================================
+         SHOP PAGE - UNIFIED DESIGN SYSTEM
+         ======================================== */
+      
       html {
         scroll-behavior: smooth;
       }
@@ -82,6 +205,350 @@ const shippingInfo = [
         --shop-pink: #ef4444;
         --shop-purple: #8b5cf6;
         --shop-cyan: #06b6d4;
+        --section-padding: 6rem 0;
+        --card-radius: 16px;
+        --card-border: 1px solid rgba(255, 255, 255, 0.1);
+        --card-hover-border: rgba(6, 182, 212, 0.5);
+        --focus-ring: 2px solid var(--jazer-cyan);
+        --focus-offset: 2px;
+      }
+
+      /* ========================================
+         FOCUS STATES (Accessibility)
+         ======================================== */
+      .shop-page a:focus-visible,
+      .shop-page button:focus-visible,
+      .shop-page input:focus-visible,
+      .shop-page details:focus-visible {
+        outline: var(--focus-ring);
+        outline-offset: var(--focus-offset);
+      }
+
+      .shop-page .product-card:focus-within {
+        border-color: var(--card-hover-border);
+        box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.3);
+      }
+
+      /* ========================================
+         HERO SECTION
+         ======================================== */
+      .shop-hero {
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 8rem 2rem 4rem;
+        position: relative;
+      }
+
+      .shop-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15));
+        border: 1px solid rgba(6, 182, 212, 0.4);
+        border-radius: 24px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--jazer-cyan);
+        margin-bottom: 1.5rem;
+        animation: badgePulse 3s ease infinite;
+      }
+
+      .shop-hero-badge::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: var(--jazer-cyan);
+        border-radius: 50%;
+        animation: blink 1.5s infinite;
+      }
+
+      .shop-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        background: linear-gradient(135deg, #fff 0%, var(--jazer-cyan) 50%, var(--jazer-purple) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+      }
+
+      .shop-hero-subtitle {
+        font-size: 1.125rem;
+        color: var(--text-muted);
+        max-width: 600px;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+
+      .shop-hero-cta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      /* ========================================
+         CATEGORY FILTER TABS
+         ======================================== */
+      .category-filter {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+      }
+
+      .category-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .category-tab:hover {
+        background: rgba(6, 182, 212, 0.1);
+        border-color: rgba(6, 182, 212, 0.3);
+        color: var(--text-light);
+      }
+
+      .category-tab.active {
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+        border-color: var(--jazer-cyan);
+        color: var(--jazer-cyan);
+      }
+
+      /* ========================================
+         PRODUCT CARDS (Standardized)
+         ======================================== */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .product-card {
+        position: relative;
+        background: rgba(10, 10, 20, 0.8);
+        border: var(--card-border);
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .product-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .product-card:hover::before {
+        opacity: 1;
+      }
+
+      .product-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--card-hover-border);
+        box-shadow: 
+          0 20px 40px rgba(0, 0, 0, 0.3),
+          0 0 20px rgba(6, 182, 212, 0.15);
+      }
+
+      .product-card-badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.75rem;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        border-radius: 16px;
+        font-size: 0.625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--jazer-cyan);
+        z-index: 2;
+      }
+
+      .product-card-badge::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: var(--jazer-cyan);
+        border-radius: 50%;
+        animation: blink 1.5s infinite;
+      }
+
+      .product-card-image {
+        position: relative;
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0f0f1f 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        overflow: hidden;
+      }
+
+      .product-card-image::before {
+        content: '';
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0%,
+          rgba(6, 182, 212, 0.08) 25%,
+          transparent 50%,
+          rgba(139, 92, 246, 0.08) 75%,
+          transparent 100%
+        );
+        animation: rotateSlow 25s linear infinite;
+      }
+
+      .product-card-icon {
+        font-size: 3rem;
+        z-index: 1;
+        opacity: 0.4;
+      }
+
+      .product-card-body {
+        padding: 1.5rem;
+      }
+
+      .product-card-category {
+        display: inline-block;
+        padding: 0.25rem 0.625rem;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 4px;
+        font-size: 0.625rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+
+      .product-card-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--text-light);
+      }
+
+      .product-card-description {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+
+      .product-card-price {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--jazer-cyan);
+        margin-bottom: 1rem;
+      }
+
+      .product-card-cta {
+        width: 100%;
+      }
+
+      /* ========================================
+         BUTTONS (Unified)
+         ======================================== */
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple));
+        border: none;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-light);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--jazer-cyan);
+      }
+
+      .btn-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      /* ========================================
+         ANIMATIONS
+         ======================================== */
+      @keyframes badgePulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
+        50% { box-shadow: 0 0 20px 5px rgba(6, 182, 212, 0.15); }
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+
+      @keyframes rotateSlow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
       }
 
       /* Coming Soon Badge Animation */
@@ -992,6 +1459,83 @@ const shippingInfo = [
         line-height: 1.6;
       }
 
+      /* ========================================
+         TRUST BLOCK
+         ======================================== */
+      .trust-block {
+        background: rgba(10, 10, 20, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--card-radius);
+        padding: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .trust-block-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--text-light);
+      }
+
+      .trust-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+
+      .trust-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.25rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text-light);
+        transition: all 0.3s ease;
+      }
+
+      .trust-link:hover {
+        background: rgba(6, 182, 212, 0.1);
+        border-color: rgba(6, 182, 212, 0.3);
+      }
+
+      .trust-link-name {
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+
+      .trust-link-status {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        padding: 0.25rem 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+      }
+
+      .trust-link-status.active {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+      }
+
+      /* ========================================
+         FOOTER RELEASE LINE
+         ======================================== */
+      .shop-footer-note {
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+
+      .shop-footer-note strong {
+        color: var(--jazer-cyan);
+      }
+
       /* Email Capture Section */
       .email-capture {
         padding: 3rem;
@@ -1258,167 +1802,105 @@ const shippingInfo = [
     </style>
   </Fragment>
 
-  <!-- Hero Section -->
-  <section class="hero hero-animated shop-hero">
-    <div class="hero-particles"></div>
-    <div class="hero-content shop-hero-content" data-animate="zoom-in">
-        <span class="hero-eyebrow" data-animate="fade-up">
-            <span class="eyebrow-word" style="--i: 0">System</span>
-            <span class="eyebrow-divider">✦</span>
-            <span class="eyebrow-word" style="--i: 1">Status</span>
-            <span class="eyebrow-divider">✦</span>
-            <span class="eyebrow-word" style="--i: 2">Online</span>
-        </span>
-        
-        <img class="shop-logo" src={`${base}assets/images/Merch Drop 01 (450 x 150 px).svg`} alt="Merch Drop 01" loading="eager" />
-        
-        <div class="countdown-wrapper" data-animate="fade-up" data-animate-delay="100">
-            <div class="countdown-header">
-                <span class="status-dot blink"></span>
-                <span class="countdown-label" style="color: var(--jazer-cyan); letter-spacing: 0.1em; font-size: 0.875rem;">DROP SEQUENCE INITIALIZING</span>
-            </div>
-            <div class="coming-soon-text">COMING 2026</div>
-            <div class="countdown-footer">
-                <span>Date TBA • Stay Tuned</span>
-            </div>
-        </div>
-
-        <div class="hero-email-capture" data-animate="fade-up" style="margin-top: 3rem;">
-           <p class="hero-email-copy" style="color: rgba(255,255,255,0.7);">Be the first to know when the shop opens.</p>
-           <form class="hero-email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-             <label for="hero-email" class="sr-only">Email address</label>
-             <input type="email" id="hero-email" name="email" class="modern-input" placeholder="Enter your email" required style="background: rgba(0,0,0,0.5); border-color: rgba(6,182,212,0.3);">
-             <button type="submit" class="cta-button" style="background: var(--jazer-cyan); color: #000; box-shadow: 0 0 15px rgba(6,182,212,0.4);">Get Notified</button>
-           </form>
-         </div>
+  <!-- ========================================
+       SHOP HERO (Improved)
+       ======================================== -->
+  <section class="shop-hero">
+    <span class="shop-hero-badge">Coming in 2026</span>
+    
+    <h1>The Official JaZeR Shop</h1>
+    
+    <p class="shop-hero-subtitle">
+      Premium merchandise designed for the community. All items are in development — 
+      sign up to be notified when drops go live.
+    </p>
+    
+    <div class="shop-hero-cta">
+      <a href="#waitlist" class="btn-primary">
+        <span>🔔</span>
+        <span>Get Notified</span>
+      </a>
+      <a href="#products" class="btn-secondary">
+        <span>View Upcoming Drops</span>
+        <span>↓</span>
+      </a>
     </div>
   </section>
 
   <div class="container section">
-    <div class="coming-soon-badge" style="margin: 0 auto 2rem; display: flex; justify-content: center;">
-      <span>Store Opening 2026</span>
+    
+    <!-- ========================================
+         CATEGORY FILTER (Visual)
+         ======================================== -->
+    <div class="category-filter" role="tablist" aria-label="Product categories">
+      {productCategories.map((cat) => (
+        <button 
+          class={`category-tab ${cat.active ? 'active' : ''}`}
+          role="tab"
+          aria-selected={cat.active}
+        >
+          <span>{cat.icon}</span>
+          <span>{cat.name}</span>
+        </button>
+      ))}
     </div>
-    <p class="page-intro-icon text-center mb-lg" style="max-width: 600px; margin: 0 auto 3rem;">
-      The JaZeR merch store is currently in development. Preview what's coming and sign up to be the first to know when items become available.
-    </p>
 
-    <div class="section-divider"></div>
-
-    <!-- Featured Drops -->
-    <section class="shop-section" data-animate="fade-up">
+    <!-- ========================================
+         FEATURED PRODUCT GRID (Standardized Cards)
+         ======================================== -->
+    <section class="shop-section" id="products" data-animate="fade-up">
       <div class="shop-section-header">
-        <h2 class="shop-section-title">Featured Drops</h2>
-        <p class="shop-section-subtitle">Early teasers with projected pricing and launch windows.</p>
+        <h2 class="shop-section-title">Upcoming Drops</h2>
+        <p class="shop-section-subtitle">Preview what's coming. All items expected in 2026.</p>
       </div>
-      <div class="grid shop-featured-grid">
-        <article class="shop-card shop-card-enhanced">
-          <div class="product-placeholder">
-            <span class="status-indicator">Coming 2026</span>
-            <span class="shop-card-badge">Limited</span>
-            <span class="product-placeholder-icon">🧥</span>
-            <span class="product-placeholder-text">Mockup Preview</span>
-          </div>
-          <h3 class="shop-card-title">Beam Hoodie</h3>
-          <p class="shop-card-meta">Est. $60 • Coming 2026</p>
-          <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-             <label for="beam-hoodie-email" class="sr-only">Email for Beam Hoodie alerts</label>
-             <input type="email" id="beam-hoodie-email" name="email" class="shop-interest-input" placeholder="your@email.com" required>
-             <input type="hidden" name="_subject" value="Shop interest: Beam Hoodie">
-             <button type="submit" class="notify-btn">
-                 <span>🔔</span>
-                 <span>Notify Me</span>
-             </button>
-          </form>
-        </article>
-
-        <article class="shop-card shop-card-enhanced">
-          <div class="product-placeholder">
-            <span class="status-indicator">Coming 2026</span>
-            <span class="shop-card-badge">Core</span>
-            <span class="product-placeholder-icon">👕</span>
-            <span class="product-placeholder-text">Mockup Preview</span>
-          </div>
-          <h3 class="shop-card-title">Signal Tee</h3>
-          <p class="shop-card-meta">Est. $30 • Coming 2026</p>
-          <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-             <label for="signal-tee-email" class="sr-only">Email for Signal Tee alerts</label>
-             <input type="email" id="signal-tee-email" name="email" class="shop-interest-input" placeholder="your@email.com" required>
-             <input type="hidden" name="_subject" value="Shop interest: Signal Tee">
-             <button type="submit" class="notify-btn">
-                 <span>🔔</span>
-                 <span>Notify Me</span>
-             </button>
-          </form>
-        </article>
-
-        <article class="shop-card shop-card-enhanced">
-          <div class="product-placeholder">
-            <span class="status-indicator">Coming 2026</span>
-            <span class="shop-card-badge">Bundle</span>
-            <span class="product-placeholder-icon">🎨</span>
-            <span class="product-placeholder-text">Mockup Preview</span>
-          </div>
-          <h3 class="shop-card-title">Orbit Sticker Pack</h3>
-          <p class="shop-card-meta">Est. $12 • Coming 2026</p>
-          <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-             <label for="sticker-pack-email" class="sr-only">Email for Orbit Sticker Pack alerts</label>
-             <input type="email" id="sticker-pack-email" name="email" class="shop-interest-input" placeholder="your@email.com" required>
-             <input type="hidden" name="_subject" value="Shop interest: Orbit Sticker Pack">
-             <button type="submit" class="notify-btn">
-                 <span>🔔</span>
-                 <span>Notify Me</span>
-             </button>
-          </form>
-        </article>
-
-        <article class="shop-card shop-card-enhanced">
-          <div class="product-placeholder">
-            <span class="status-indicator">Coming 2026</span>
-            <span class="shop-card-badge">Limited</span>
-            <span class="product-placeholder-icon">🖼️</span>
-            <span class="product-placeholder-text">Mockup Preview</span>
-          </div>
-          <h3 class="shop-card-title">Neon Poster</h3>
-          <p class="shop-card-meta">Est. $25 • Coming 2026</p>
-          <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-             <label for="neon-poster-email" class="sr-only">Email for Neon Poster alerts</label>
-             <input type="email" id="neon-poster-email" name="email" class="shop-interest-input" placeholder="your@email.com" required>
-             <input type="hidden" name="_subject" value="Shop interest: Neon Poster">
-             <button type="submit" class="notify-btn">
-                 <span>🔔</span>
-                 <span>Notify Me</span>
-             </button>
-          </form>
-        </article>
+      
+      <div class="product-grid">
+        {upcomingProducts.map((product) => (
+          <article class="product-card" data-category={product.category.toLowerCase()}>
+            <span class="product-card-badge">{product.badge}</span>
+            
+            <div class="product-card-image">
+              <span class="product-card-icon">{product.icon}</span>
+            </div>
+            
+            <div class="product-card-body">
+              <span class="product-card-category">{product.category}</span>
+              <h3 class="product-card-title">{product.title}</h3>
+              <p class="product-card-description">{product.description}</p>
+              <p class="product-card-price">{product.priceRange}</p>
+              
+              <a href="#waitlist" class="btn-primary product-card-cta">
+                <span>🔔</span>
+                <span>Get Notified</span>
+              </a>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <!-- Drop Schedule -->
+    <!-- ========================================
+         DROP TIMELINE (Safe Copy)
+         ======================================== -->
     <section class="shop-section" data-animate="fade-up">
       <div class="shop-section-header">
         <h2 class="shop-section-title">Drop Sequence</h2>
-        <p class="shop-section-subtitle">Planned rollout phases for 2026. Dates subject to change.</p>
+        <p class="shop-section-subtitle">Planned rollout phases. Dates subject to change.</p>
       </div>
       <div class="drop-timeline" style="border-left: none; padding-left: 0;">
-        <div class="timeline-step-enhanced">
-          <span class="timeline-phase-tag">Phase 01</span>
-          <div class="timeline-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Core Collection</div>
-          <div class="timeline-meta">Essentials + Sticker Packs • Coming sometime in 2026</div>
-        </div>
-        <div class="timeline-step-enhanced">
-          <span class="timeline-phase-tag">Phase 02</span>
-          <div class="timeline-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Orbit Collection</div>
-          <div class="timeline-meta">Premium Outerwear & Embossed Fabrics • TBA 2026</div>
-        </div>
-        <div class="timeline-step-enhanced">
-          <span class="timeline-phase-tag">Phase 03</span>
-          <div class="timeline-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Horizon Collection</div>
-          <div class="timeline-meta">Limited Edition Collectors Items • Later in 2026</div>
-        </div>
+        {dropPhases.map((phase) => (
+          <div class="timeline-step-enhanced">
+            <span class="timeline-phase-tag">Phase {phase.phase}</span>
+            <div class="timeline-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">{phase.title}</div>
+            <div class="timeline-meta">{phase.description} • {phase.timing}</div>
+          </div>
+        ))}
       </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- Behind the Design -->
     <section class="shop-section" data-animate="fade-up">
@@ -1624,49 +2106,40 @@ const shippingInfo = [
       <a class="cta-button" href="#shop-updates" aria-label="Get shop alert notifications">Get shop alerts</a>
     </section>
 
-    <!-- FAQ -->
-    <section class="shop-section" data-animate="fade-up">
+    <!-- FAQ (Safe Copy) -->
+    <section class="shop-section" id="faq" data-animate="fade-up">
       <div class="shop-section-header">
-        <h2 class="shop-section-title">FAQ</h2>
-        <p class="shop-section-subtitle">Quick answers before the store opens.</p>
+        <h2 class="shop-section-title">Frequently Asked Questions</h2>
+        <p class="shop-section-subtitle">Everything you need to know before the shop opens.</p>
       </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>When does the store open?</summary>
-          <p>The first drop is planned for sometime in 2026. Join the email list to be the first to know when we have an exact date.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Will there be international shipping?</summary>
-          <p>Yes. The first wave will focus on North America with expanded regions after.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How do I pick my size?</summary>
-          <p>Each drop includes a size guide. Most fits run true to size.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I bundle items?</summary>
-          <p>Bundles are planned for select drops and include exclusive add-ons.</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- Product Filter Tabs -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Browse by Category</h2>
-        <p class="shop-section-subtitle">Filter products by type.</p>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem;">
-        {productCategories.map((cat) => (
-          <button class="filter-tab" style="padding: 1rem 2rem; background: rgba(0,0,0,0.3); border: 2px solid transparent; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;" data-filter={cat.filter}>
-            <span style="font-size: 1.5rem;">{cat.icon}</span>
-            <span style="font-weight: 600; font-size: 0.875rem;">{cat.name}</span>
-          </button>
+      <div class="faq-list" style="max-width: 700px; margin: 0 auto;">
+        {shopFAQ.map((faq, index) => (
+          <details class="faq-item" data-animate="fade-up" data-animate-delay={index * 50}>
+            <summary>{faq.q}</summary>
+            <p>{faq.a}</p>
+          </details>
         ))}
       </div>
     </section>
 
-    <!-- Size Guide Section -->
+    <div class="section-divider"></div>
+
+    <!-- Trust & Policies Block -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="trust-block">
+        <h3 class="trust-block-title">Policies & Support</h3>
+        <div class="trust-links">
+          {policyLinks.map((link) => (
+            <a href={link.href} class="trust-link">
+              <span class="trust-link-name">{link.name}</span>
+              <span class={`trust-link-status ${link.status === 'Active' || link.status === 'Available' ? 'active' : ''}`}>{link.status}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
     <section class="shop-section" data-animate="fade-up">
       <div class="shop-section-header">
         <h2 class="shop-section-title">Size Guide</h2>
@@ -1755,18 +2228,27 @@ const shippingInfo = [
 
   </div>
 
-  <!-- Email Signup CTA -->
-  <JoinBeamCTA
-    sectionStyle="padding: 6rem 0; background: rgba(0,0,0,0.2);"
-    captureStyle="max-width: 700px; margin: 0 auto;"
-    subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
-    subject="New subscriber from JaZeR Shop page"
-    buttonLabel="Get Shop Alerts"
-    proofText="Join <strong>500+</strong> fans waiting for the drop"
-  >
-    <Fragment slot="subtitle">
-      Be the first to hear about new merch drops, exclusive bundles, and <strong>early access</strong>.
-    </Fragment>
-  </JoinBeamCTA>
+  <!-- ========================================
+       EMAIL WAITLIST CTA
+       ======================================== -->
+  <section id="waitlist">
+    <JoinBeamCTA
+      sectionStyle="padding: 6rem 0; background: rgba(0,0,0,0.2);"
+      captureStyle="max-width: 700px; margin: 0 auto;"
+      subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
+      subject="Shop Waitlist - JaZeR"
+      buttonLabel="Join the Waitlist"
+      proofText="Join <strong>500+</strong> fans waiting for the drop"
+    >
+      <Fragment slot="subtitle">
+        Be the first to hear about new merch drops, exclusive bundles, and <strong>early access</strong> when the shop opens in 2026.
+      </Fragment>
+    </JoinBeamCTA>
+  </section>
+
+  <!-- Shop Footer Note -->
+  <div class="shop-footer-note">
+    🛍️ <strong>Release updates:</strong> All merchandise coming in 2026. Join the waitlist to stay informed.
+  </div>
 
 </BaseLayout>

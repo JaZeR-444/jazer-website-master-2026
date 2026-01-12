@@ -10,40 +10,109 @@ const ogImage = site
 
 const announcement = {
   href: `${base}music`,
-  text: '🎵 NEW SINGLE "IN DUE TIME" DROPPING MARCH 2026 - Pre-save now!'
+  text: '🎵 MUSIC COMING IN 2026 — Join the beam for updates'
 };
+
+// Upcoming Releases - Using only non-specific timing
+const upcomingReleases = [
+  { 
+    title: 'Project: Aether', 
+    type: 'TBA', 
+    status: 'Coming in 2026',
+    gradient: 'gradient-1',
+    description: 'The first signal'
+  },
+  { 
+    title: 'Phase 1: Ignition', 
+    type: 'TBA', 
+    status: 'Expected in 2026',
+    gradient: 'gradient-2',
+    description: 'Details encrypted'
+  },
+  { 
+    title: 'Concept: Void', 
+    type: 'TBA', 
+    status: 'Coming in 2026',
+    gradient: 'gradient-3',
+    description: 'Classified'
+  }
+];
 
 // Streaming Stats
 const streamingStats = [
-  { platform: 'Spotify', count: '10K+', label: 'Monthly Listeners', color: '#1DB954' },
-  { platform: 'Apple Music', count: '5K+', label: 'Plays', color: '#FC3C44' },
-  { platform: 'YouTube', count: '2K+', label: 'Subscribers', color: '#FF0000' },
-  { platform: 'SoundCloud', count: '8K+', label: 'Plays', color: '#FF5500' }
+  { platform: 'Spotify', count: 'TBD', label: 'Monthly Listeners', color: '#1DB954' },
+  { platform: 'YouTube', count: 'TBD', label: 'Subscribers', color: '#FF0000' },
+  { platform: 'SoundCloud', count: 'TBD', label: 'Followers', color: '#FF5500' },
+  { platform: 'Apple Music', count: 'TBD', label: 'Listeners', color: '#FA243C' }
 ];
 
-// Upcoming Releases
-const upcomingReleases = [
-  { title: 'In Due Time', type: 'Single', date: 'March 15, 2026', status: 'PRE-SAVE' },
-  { title: 'Midnight Sessions EP', type: 'EP', date: 'Summer 2026', status: 'COMING' },
-  { title: 'First Light', type: 'Album', date: 'Fall 2026', status: 'ANNOUNCED' }
-];
-
-// Playlists by Mood
-const moodPlaylists = [
-  { name: 'Late Night Vibes', mood: '🌙', tracks: 12, gradient: 'linear-gradient(135deg, #1a1a2e, #16213e)' },
-  { name: 'Energy Boost', mood: '⚡', tracks: 15, gradient: 'linear-gradient(135deg, #f59e0b, #ef4444)' },
-  { name: 'Chill & Focus', mood: '🎧', tracks: 10, gradient: 'linear-gradient(135deg, #06b6d4, #8b5cf6)' },
-  { name: 'Workout Mix', mood: '💪', tracks: 18, gradient: 'linear-gradient(135deg, #10b981, #06b6d4)' }
-];
-
-// Genre Tags
+// Genres
 const genres = ['Electronic', 'Hip-Hop', 'R&B', 'Pop', 'Lo-Fi', 'Trap', 'Melodic'];
 
-// Featured Collaborations
+// Mood Playlists
+const moodPlaylists = [
+  { name: 'Late Night Drives', mood: 'Chill', tracks: 'TBD', icon: '🌙' },
+  { name: 'Focus Mode', mood: 'Ambient', tracks: 'TBD', icon: '🎯' },
+  { name: 'Energy Boost', mood: 'Hype', tracks: 'TBD', icon: '⚡' }
+];
+
+// Collaborations
 const collaborations = [
-  { artist: 'Featured Artist 1', track: 'Collaboration Track', role: 'Producer', year: '2026' },
-  { artist: 'Featured Artist 2', track: 'Remix Project', role: 'Remix', year: '2026' },
-  { artist: 'Featured Artist 3', track: 'Joint Single', role: 'Co-Writer', year: '2026' }
+  { artist: 'TBD', track: 'Collaboration Track', role: 'Producer', year: '2026' },
+  { artist: 'TBD', track: 'Remix Project', role: 'Remix', year: '2026' },
+  { artist: 'TBD', track: 'Joint Single', role: 'Co-Writer', year: '2026' }
+];
+
+// Track Analytics
+const trackAnalytics = [
+  { track: 'In Due Time', plays: 'TBD', saves: 'TBD', shares: 'TBD', growth: '+0%' },
+  { track: 'Project: Aether', plays: 'TBD', saves: 'TBD', shares: 'TBD', growth: '+0%' },
+  { track: 'Phase 1: Ignition', plays: 'TBD', saves: 'TBD', shares: 'TBD', growth: '+0%' }
+];
+
+// Behind the Music
+const behindTheMusic = [
+  { track: 'In Due Time', story: 'Written during a late-night session after years of working towards this moment.', inspiration: 'Personal journey', moodboard: '🌙 Late nights, 💭 Reflection' },
+  { track: 'Project: Aether', story: 'Exploring new sonic territories and pushing creative boundaries.', inspiration: 'Innovation', moodboard: '🚀 Ambition, ✨ Discovery' }
+];
+
+// Discography
+const discography = [
+  { title: 'In Due Time', type: 'Single', year: '2026', status: 'Coming in 2026', gradient: 'linear-gradient(135deg, #06b6d4, #8b5cf6)' },
+  { title: 'Project: Aether', type: 'EP', year: '2026', status: 'Expected in 2026', gradient: 'linear-gradient(135deg, #8b5cf6, #ec4899)' },
+  { title: 'Phase 1: Ignition', type: 'Album', year: '2026', status: 'Coming in 2026', gradient: 'linear-gradient(135deg, #ec4899, #f59e0b)' }
+];
+
+// Production Credits
+const productionCredits = [
+  { name: 'JaZeR', role: 'Producer', icon: '🎹' },
+  { name: 'TBD', role: 'Mixing', icon: '🎚️' },
+  { name: 'TBD', role: 'Mastering', icon: '💿' },
+  { name: 'TBD', role: 'Artwork', icon: '🎨' }
+];
+
+// Audio Quality
+const audioQuality = [
+  { format: 'Standard', quality: '128kbps', available: true },
+  { format: 'High', quality: '320kbps', available: true },
+  { format: 'Lossless', quality: 'FLAC', available: false },
+  { format: 'Hi-Res', quality: '24-bit', available: false },
+  { format: 'Dolby Atmos', quality: 'Spatial', available: false }
+];
+
+// Chart Placements
+const chartPlacements = [
+  { playlist: 'Release Radar', platform: 'Spotify', status: 'Goal' },
+  { playlist: 'New Music Friday', platform: 'Spotify', status: 'Goal' },
+  { playlist: 'Trending', platform: 'YouTube', status: 'Goal' },
+  { playlist: 'New Releases', platform: 'Apple Music', status: 'Goal' }
+];
+
+// Exclusive Previews
+const exclusivePreviews = [
+  { title: 'Snippet 1', duration: '0:30', locked: true },
+  { title: 'Teaser', duration: '0:15', locked: false },
+  { title: 'Preview', duration: '0:45', locked: true }
 ];
 
 // Lyrics Preview
@@ -57,74 +126,45 @@ const lyricsPreview = {
   ]
 };
 
-// Behind the Music - Story behind songs
-const behindTheMusic = [
-  { track: 'In Due Time', story: 'Written during a late-night session after years of working towards this moment. The title reflects the belief that everything comes together when you stay committed.', inspiration: 'Personal journey', moodboard: '🌙 Late nights, 💭 Reflection, 🚀 Ambition' },
-  { track: 'Midnight Sessions', story: 'Inspired by countless hours spent perfecting the craft when the world is asleep. This EP captures the essence of dedication.', inspiration: 'Studio life', moodboard: '🎧 Focus, ⏰ Dedication, 🎹 Creation' }
-];
-
-// Track Analytics
-const trackAnalytics = [
-  { track: 'In Due Time', plays: '10K+', saves: '2.5K', shares: '800', growth: '+45%' },
-  { track: 'Preview Track 1', plays: '5K+', saves: '1.2K', shares: '400', growth: '+32%' },
-  { track: 'Preview Track 2', plays: '3K+', saves: '800', shares: '250', growth: '+28%' }
-];
-
-// Production Credits
-const productionCredits = [
-  { role: 'Producer', name: 'JaZeR', icon: '🎛️' },
-  { role: 'Mixing', name: 'JaZeR', icon: '🎚️' },
-  { role: 'Mastering', name: 'TBD', icon: '💿' },
-  { role: 'Songwriter', name: 'JaZeR', icon: '✍️' },
-  { role: 'Vocals', name: 'JaZeR', icon: '🎤' },
-  { role: 'Artwork', name: 'JaZeR Design', icon: '🎨' }
-];
-
-// Discography / Full Catalog
-const discography = [
-  { title: 'In Due Time', type: 'Single', year: '2026', status: 'upcoming', cover: 'gradient-1' },
-  { title: 'Midnight Sessions', type: 'EP', year: '2026', status: 'upcoming', cover: 'gradient-2' },
-  { title: 'First Light', type: 'Album', year: '2026', status: 'announced', cover: 'gradient-3' },
-  { title: 'Demo Collection', type: 'Compilation', year: '2025', status: 'unreleased', cover: 'gradient-4' }
-];
-
-// Audio Quality Options
-const audioQuality = [
-  { format: 'Standard', quality: '256 kbps', icon: '🎵', available: true },
-  { format: 'High Quality', quality: '320 kbps', icon: '🎧', available: true },
-  { format: 'Lossless', quality: 'FLAC 16-bit', icon: '💎', available: true },
-  { format: 'Hi-Res', quality: '24-bit/96kHz', icon: '🔊', available: false },
-  { format: 'Spatial Audio', quality: 'Dolby Atmos', icon: '🌐', available: false }
-];
-
-// Chart/Playlist Placements
-const chartPlacements = [
-  { playlist: 'New Music Friday', platform: 'Spotify', status: 'Target', icon: '🎯' },
-  { playlist: 'Chill Vibes', platform: 'Apple Music', status: 'Pitched', icon: '📤' },
-  { playlist: 'Discover Weekly', platform: 'Spotify', status: 'Goal', icon: '⭐' },
-  { playlist: 'Release Radar', platform: 'Spotify', status: 'Automatic', icon: '📡' }
-];
-
-// Exclusive Previews for Subscribers
-const exclusivePreviews = [
-  { title: 'In Due Time (Preview)', duration: '0:30', locked: false },
-  { title: 'Track 2 (Snippet)', duration: '0:15', locked: true },
-  { title: 'Album Intro (Teaser)', duration: '0:20', locked: true }
-];
+// Listener Stats
+const listeningStats = {
+  topCity: 'TBD',
+  topCountry: 'TBD',
+  peakTime: 'TBD',
+  avgListen: 'TBD'
+};
 
 // Smart Links
 const smartLinks = {
-  mainLink: 'jazer.link/music',
-  platforms: ['Spotify', 'Apple Music', 'YouTube Music', 'Amazon Music', 'Tidal', 'Deezer', 'SoundCloud', 'Pandora']
+  url: 'jazer.link/music',
+  platforms: ['Spotify', 'Apple Music', 'YouTube', 'SoundCloud', 'Tidal', 'Amazon', 'Deezer', 'Pandora']
 };
 
-// Listening Stats
-const listeningStats = {
-  topCity: 'Los Angeles',
-  topCountry: 'United States',
-  peakTime: '10 PM - 2 AM',
-  avgListenTime: '3:24'
-};
+// FAQ Items
+const faqItems = [
+  {
+    question: 'When will music be available?',
+    answer: 'The first releases are expected sometime in 2026. Join updates to be notified when music drops.'
+  },
+  {
+    question: 'Where can I listen?',
+    answer: 'Music will be available on all major streaming platforms including Spotify, Apple Music, YouTube Music, and more when released.'
+  },
+  {
+    question: 'How do I get notified about new releases?',
+    answer: 'Join the beam using the signup form below — you\'ll be first to know about releases, updates, and exclusive content.'
+  }
+];
+
+// Streaming Platforms (real profile links - even if empty)
+const streamingPlatforms = [
+  { name: 'Spotify', href: '#', icon: 'music-note-black.svg', color: '#1DB954' },
+  { name: 'Apple Music', href: '#', icon: 'playlist-black.svg', color: '#FA233B' },
+  { name: 'SoundCloud', href: '#', icon: 'soundcloud-round-icon.svg', color: '#FF5500', isRound: true },
+  { name: 'YouTube', href: '#', icon: 'youtube-round-icon.svg', color: '#FF0000', isRound: true },
+  { name: 'Tidal', href: '#', icon: 'album-black.svg', color: '#000000' },
+  { name: 'Amazon Music', href: '#', icon: 'playlist-black.svg', color: '#25D1DA' }
+];
 ---
 <BaseLayout
   bodyClass="has-announcement music-page"
@@ -445,19 +485,12 @@ const listeningStats = {
     </style>
   </Fragment>
 
-  <!-- Sonic Hero Section -->
+  <!-- Hero Section -->
   <section class="music-hero-section">
-    <div class="sonic-waveform-bg">
-        <div class="waveform-line" style="--i: 1"></div>
-        <div class="waveform-line" style="--i: 2"></div>
-        <div class="waveform-line" style="--i: 3"></div>
-        <div class="waveform-line" style="--i: 4"></div>
-        <div class="waveform-line" style="--i: 5"></div>
-        <div class="waveform-line" style="--i: 6"></div>
-        <div class="waveform-line" style="--i: 7"></div>
-        <div class="waveform-line" style="--i: 8"></div>
-        <div class="waveform-line" style="--i: 9"></div>
-        <div class="waveform-line" style="--i: 10"></div>
+    <div class="sonic-waveform-bg" aria-hidden="true">
+      {[...Array(10)].map((_, i) => (
+        <div class="waveform-line" style={`--i: ${i + 1}`}></div>
+      ))}
     </div>
 
     <div class="container music-hero-container">
@@ -477,147 +510,23 @@ const listeningStats = {
           />
         </div>
         <p class="music-hero-description">
-          Compiling the next generation of sound. The first wave of the JaZeR signal arrives 2026.
+          The first wave of the JaZeR sound arrives in 2026. Join the beam to be the first to know.
         </p>
         
-        <div class="portal-grid">
-            <a href="#" class="portal-card" style="--hover-color: #1DB954;">
-                 <img src={`${base}assets/images/icons/music/music-note-black.svg`} alt="Spotify" class="portal-icon" />
-                 <span class="portal-name">Spotify</span>
-            </a>
-            <a href="#" class="portal-card" style="--hover-color: #FA233B;">
-                 <img src={`${base}assets/images/icons/music/playlist-black.svg`} alt="Apple Music" class="portal-icon" />
-                 <span class="portal-name">Apple Music</span>
-            </a>
-            <a href="#" class="portal-card" style="--hover-color: #000000;">
-                 <img src={`${base}assets/images/icons/music/album-black.svg`} alt="Tidal" class="portal-icon" />
-                 <span class="portal-name">Tidal</span>
-            </a>
+        <!-- Quick Navigation -->
+        <div class="hero-nav-links" style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <a href="#coming-2026" class="system-button">Coming 2026</a>
+          <a href="#platforms" class="system-button" style="background: transparent;">Platforms</a>
+          <a href="#join-beam" class="system-button" style="background: transparent;">Get Notified</a>
         </div>
       </div>
 
       <div class="music-hero-visual" data-animate="fade-left">
-         <div class="holographic-disc-container">
-             <div class="holographic-disc">
-                 <div class="disc-reflection"></div>
-                 <img src={`${base}assets/images/jazer-cosmic-soundbirth.png`} alt="Cosmic Soundbirth" class="disc-art" />
-             </div>
-         </div>
-      </div>
-    </div>
-
-    <!-- Animated Waveform Divider -->
-    <div class="music-waveform-divider" aria-hidden="true">
-      <div class="waveform-bar" style="--delay: 0s; --height: 40%;"></div>
-      <div class="waveform-bar" style="--delay: 0.1s; --height: 70%;"></div>
-      <div class="waveform-bar" style="--delay: 0.2s; --height: 50%;"></div>
-      <div class="waveform-bar" style="--delay: 0.3s; --height: 80%;"></div>
-      <div class="waveform-bar" style="--delay: 0.4s; --height: 60%;"></div>
-      <div class="waveform-bar" style="--delay: 0.5s; --height: 90%;"></div>
-      <div class="waveform-bar" style="--delay: 0.6s; --height: 65%;"></div>
-      <div class="waveform-bar" style="--delay: 0.7s; --height: 75%;"></div>
-      <div class="waveform-bar" style="--delay: 0.8s; --height: 55%;"></div>
-      <div class="waveform-bar" style="--delay: 0.9s; --height: 85%;"></div>
-      <div class="waveform-bar" style="--delay: 1s; --height: 45%;"></div>
-      <div class="waveform-bar" style="--delay: 1.1s; --height: 95%;"></div>
-    </div>
-  </section>
-
-  <!-- Discography Section: Project Roadmap -->
-  <section class="discography-section section">
-    <div class="container">
-      <h2 class="section-title text-center gradient-text" data-animate="fade-up">Transmission Log: 2026</h2>
-      <div class="discography-grid">
-        <!-- Roadmap Item 1 -->
-        <article class="release-card" data-animate="fade-up" style="--delay: 0s">
-          <div class="release-cover">
-            <div class="cover-placeholder gradient-1" aria-hidden="true"></div>
-            <div class="status-overlay" aria-hidden="true">
-              <span class="status-badge status-badge-rotate-left">Confidential</span>
-            </div>
+        <div class="holographic-disc-container">
+          <div class="holographic-disc">
+            <div class="disc-reflection"></div>
+            <img src={`${base}assets/images/jazer-cosmic-soundbirth.png`} alt="JaZeR Cosmic Soundbirth artwork" class="disc-art" />
           </div>
-          <div class="release-details">
-            <h3 class="release-title">Project: Aether</h3>
-            <p class="release-meta">Single • Spring 2026</p>
-            <span class="release-link release-link-muted" aria-label="Project Aether status">Status: Locked 🔒</span>
-          </div>
-        </article>
-
-        <!-- Roadmap Item 2 -->
-        <article class="release-card" data-animate="fade-up" style="--delay: 0.1s">
-          <div class="release-cover">
-            <div class="cover-placeholder gradient-2" aria-hidden="true"></div>
-            <div class="status-overlay" aria-hidden="true">
-              <span class="status-badge status-badge-cyan">Compiling</span>
-            </div>
-          </div>
-          <div class="release-details">
-            <h3 class="release-title">Phase 1: Ignition</h3>
-            <p class="release-meta">EP • Summer 2026</p>
-            <span class="release-link release-link-cyan" aria-label="Phase 1 Ignition status">Details Encrypted ⚡</span>
-          </div>
-        </article>
-
-        <!-- Roadmap Item 3 -->
-        <article class="release-card" data-animate="fade-up" style="--delay: 0.2s">
-          <div class="release-cover">
-            <div class="cover-placeholder gradient-3" aria-hidden="true"></div>
-            <div class="status-overlay" aria-hidden="true">
-              <span class="status-badge status-badge-rotate-right">Top Secret</span>
-            </div>
-          </div>
-          <div class="release-details">
-            <h3 class="release-title">Concept: Void</h3>
-            <p class="release-meta">Single • Late 2026</p>
-            <span class="release-link release-link-muted" aria-label="Concept Void status">Status: Classified 🚫</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Divider -->
-  <div class="tech-divider" aria-hidden="true">
-    <div class="tech-line"></div>
-    <div class="tech-node"></div>
-    <div class="tech-line"></div>
-  </div>
-
-  <!-- Streaming Portals -->
-  <section class="streaming-section section-sm">
-    <div class="container">
-      <div class="streaming-platforms" data-animate="fade-up">
-        <h2 class="streaming-platforms-title text-center">Available Frequencies</h2>
-        <div class="portal-grid">
-          <a href="https://open.spotify.com/artist/jazer" class="portal-card" target="_blank" rel="noopener noreferrer" style="--hover-color: #1DB954;">
-            <img src={`${base}assets/images/icons/music/music-note-black.svg`} alt="" class="portal-icon" loading="lazy" />
-            <span class="portal-name">Spotify</span>
-          </a>
-
-          <a href="https://music.apple.com/artist/jazer" class="portal-card" target="_blank" rel="noopener noreferrer" style="--hover-color: #FA233B;">
-            <img src={`${base}assets/images/icons/music/playlist-black.svg`} alt="" class="portal-icon" loading="lazy" />
-            <span class="portal-name">Apple Music</span>
-          </a>
-
-          <a href="https://soundcloud.com/jazer" class="portal-card" target="_blank" rel="noopener noreferrer" style="--hover-color: #FF5500;">
-            <img src={`${base}assets/images/icons/social/soundcloud-round-icon.svg`} alt="" class="portal-icon" loading="lazy" />
-            <span class="portal-name">SoundCloud</span>
-          </a>
-
-          <a href="https://youtube.com/@jazer" class="portal-card" target="_blank" rel="noopener noreferrer" style="--hover-color: #FF0000;">
-            <img src={`${base}assets/images/icons/social/youtube-round-icon.svg`} alt="" class="portal-icon" loading="lazy" />
-            <span class="portal-name">YouTube</span>
-          </a>
-
-          <a href="https://tidal.com/browse/artist/jazer" class="portal-card" target="_blank" rel="noopener noreferrer" style="--hover-color: #000000;">
-            <img src={`${base}assets/images/icons/music/album-black.svg`} alt="" class="portal-icon" loading="lazy" />
-            <span class="portal-name">Tidal</span>
-          </a>
-
-          <a href="https://music.amazon.com/artists/jazer" class="portal-card" target="_blank" rel="noopener noreferrer" style="--hover-color: #25D1DA;">
-            <img src={`${base}assets/images/icons/music/playlist-black.svg`} alt="" class="portal-icon" loading="lazy" />
-            <span class="portal-name">Amazon</span>
-          </a>
         </div>
       </div>
     </div>
@@ -630,505 +539,131 @@ const listeningStats = {
     <div class="tech-line"></div>
   </div>
 
-  <!-- Featured Signal Section -->
-  <section class="featured-track-section section">
-    <div class="container">
-      <div class="featured-track-container premium-card" data-animate="fade-up">
-        <!-- Visual (Vinyl) - Left Side -->
-        <div class="featured-track-visual">
-          <div class="vinyl-container" aria-label="Spinning vinyl record animation">
-            <div class="vinyl-record">
-              <div class="vinyl-grooves" aria-hidden="true"></div>
-              <div class="vinyl-label">
-                <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="JZR Logo" class="label-logo" loading="lazy" />
-              </div>
-              <div class="vinyl-shine" aria-hidden="true"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="featured-track-info">
-          <div class="featured-header">
-            <div class="hero-eyebrow" style="margin-bottom: 0.5rem;">
-                <span class="eyebrow-dot" aria-hidden="true"></span>
-                <span>PRIMARY SIGNAL DETECTED</span>
-            </div>
-          </div>
-          <h2 class="featured-title">In Due Time</h2>
-          <p class="featured-artist">JaZeR</p>
-
-          <!-- Visualizer Bars -->
-          <div class="audio-visualizer" aria-hidden="true" aria-label="Audio visualization">
-            <div class="bar" style="--h: 40%"></div>
-            <div class="bar" style="--h: 70%"></div>
-            <div class="bar" style="--h: 50%"></div>
-            <div class="bar" style="--h: 90%"></div>
-            <div class="bar" style="--h: 60%"></div>
-            <div class="bar" style="--h: 80%"></div>
-            <div class="bar" style="--h: 50%"></div>
-          </div>
-
-          <div class="featured-meta-row">
-            <span class="meta-tag meta-tag-highlight" aria-label="Track duration">4:34</span>
-            <span class="meta-tag" aria-label="Music genre">MELODIC HIP-HOP • RAP</span>
-          </div>
-          
-          <div style="margin-top: 1rem;">
-               <button class="system-button">
-                 <img src={`${base}assets/images/icons/utility/play.svg`} alt="" class="button-icon" style="width: 16px; height: 16px;" /> Initiate Playback
-             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Streaming Stats Dashboard -->
-  <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.2);">
+  <!-- Currently Available Section (Empty State) -->
+  <section class="section" style="padding: 4rem 0;">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Streaming Stats</h2>
-        <p class="section-subtitle">Growing community across all platforms</p>
+        <h2 class="section-title text-center gradient-text">Currently Available</h2>
       </div>
       
-      <div class="stats-dashboard" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-        {streamingStats.map((stat) => (
-          <div class="stat-card premium-card" style="text-align: center; padding: 2rem;" data-animate="fade-up">
-            <div style={`font-size: 2.5rem; font-weight: 900; color: ${stat.color}; margin-bottom: 0.5rem;`}>{stat.count}</div>
-            <div style="font-weight: 600; margin-bottom: 0.25rem;">{stat.platform}</div>
-            <div style="font-size: 0.875rem; color: var(--text-muted);">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Genre Tags -->
-  <section class="section" style="padding: 3rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Sound Palette</h2>
-        <p class="section-subtitle">Genres and influences</p>
-      </div>
-      
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem;" data-animate="fade-up">
-        {genres.map((genre) => (
-          <span style="padding: 0.75rem 1.5rem; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 100px; font-weight: 600; font-size: 0.875rem;">{genre}</span>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Mood Playlists -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Playlists by Mood</h2>
-        <p class="section-subtitle">Find the perfect vibe for any moment</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-        {moodPlaylists.map((playlist, index) => (
-          <div class="premium-card" style="overflow: hidden; cursor: pointer; transition: transform 0.3s ease;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style={`height: 120px; background: ${playlist.gradient}; display: flex; align-items: center; justify-content: center;`}>
-              <span style="font-size: 3rem;">{playlist.mood}</span>
-            </div>
-            <div style="padding: 1.5rem;">
-              <h3 style="font-weight: 700; margin-bottom: 0.5rem;">{playlist.name}</h3>
-              <p style="font-size: 0.875rem; color: var(--text-muted);">{playlist.tracks} tracks</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Lyrics Preview -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Lyrics Preview</h2>
-        <p class="section-subtitle">A glimpse into "{lyricsPreview.track}"</p>
-      </div>
-      
-      <div class="premium-glass-card" style="max-width: 600px; margin: 3rem auto; padding: 3rem; text-align: center;" data-animate="fade-up">
-        <div style="font-size: 3rem; margin-bottom: 1.5rem;">📝</div>
-        {lyricsPreview.lines.map((line, i) => (
-          <p style={`font-size: 1.25rem; font-style: italic; margin-bottom: 1rem; opacity: ${1 - i * 0.15}; line-height: 1.6;`}>"{line}"</p>
-        ))}
-        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
-          <span style="font-size: 0.875rem; color: var(--jazer-cyan);">Full lyrics available on release</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Upcoming Releases Timeline -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Release Timeline</h2>
-        <p class="section-subtitle">What's coming in 2026</p>
-      </div>
-      
-      <div style="max-width: 600px; margin: 3rem auto;">
-        {upcomingReleases.map((release, index) => (
-          <div class="premium-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; margin-bottom: 1rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
-              {release.type === 'Single' ? '🎵' : release.type === 'EP' ? '💿' : '📀'}
-            </div>
-            <div style="flex: 1;">
-              <h3 style="font-weight: 700; margin-bottom: 0.25rem;">{release.title}</h3>
-              <p style="font-size: 0.875rem; color: var(--text-muted);">{release.type} • {release.date}</p>
-            </div>
-            <span style={`padding: 0.5rem 1rem; background: ${release.status === 'PRE-SAVE' ? 'var(--jazer-pink)' : 'rgba(255,255,255,0.1)'}; border-radius: 6px; font-size: 0.75rem; font-weight: 700;`}>{release.status}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Collaborations -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Collaborations</h2>
-        <p class="section-subtitle">Working with talented artists</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-        {collaborations.map((collab, index) => (
-          <div class="premium-card" style="padding: 2rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3)); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🎤</div>
-            <h3 style="font-weight: 700; margin-bottom: 0.5rem;">{collab.artist}</h3>
-            <p style="font-size: 0.875rem; color: var(--jazer-cyan); margin-bottom: 0.5rem;">"{collab.track}"</p>
-            <p style="font-size: 0.813rem; color: var(--text-muted);">{collab.role} • {collab.year}</p>
-          </div>
-        ))}
-      </div>
-      
-      <div style="text-align: center; margin-top: 2rem;" data-animate="fade-up">
-        <p style="color: var(--text-muted); margin-bottom: 1rem;">Interested in collaborating?</p>
-        <a href="/contact" class="cta-secondary">
-          <span>Get in Touch</span>
-          <span class="cta-arrow">→</span>
+      <div class="premium-glass-card" style="max-width: 600px; margin: 2rem auto; padding: 3rem; text-align: center;" data-animate="fade-up">
+        <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.6;">🎵</div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem;">No Public Releases Yet</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem; max-width: 400px; margin-left: auto; margin-right: auto;">
+          The catalog is being built. First releases expected in 2026.
+        </p>
+        <a href="#join-beam" class="cta-button" style="display: inline-flex;">
+          <span>Get Notified When Music Drops</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Audio Waveform Visualizer -->
-  <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.2); overflow: hidden;">
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true">
+    <div class="tech-line"></div>
+    <div class="tech-node"></div>
+    <div class="tech-line"></div>
+  </div>
+
+  <!-- Coming in 2026 Section -->
+  <section id="coming-2026" class="discography-section section" style="scroll-margin-top: 100px;">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Now Playing</h2>
-        <p class="section-subtitle">Feel the rhythm</p>
+        <h2 class="section-title text-center gradient-text">Coming in 2026</h2>
+        <p class="section-subtitle">The transmission log — releases in development</p>
       </div>
       
-      <div style="display: flex; justify-content: center; align-items: flex-end; gap: 4px; height: 100px; margin-top: 2rem;" data-animate="fade-up">
-        {[...Array(32)].map((_, i) => (
-          <div style={`width: 8px; background: linear-gradient(to top, var(--jazer-cyan), var(--jazer-purple)); border-radius: 4px; animation: waveform ${0.5 + Math.random() * 0.5}s ease-in-out infinite alternate; animation-delay: ${i * 0.05}s; height: ${20 + Math.random() * 60}%;`}></div>
+      <div class="discography-grid">
+        {upcomingReleases.map((release, index) => (
+          <article class="release-card" data-animate="fade-up" style={`--delay: ${index * 0.1}s`}>
+            <div class="release-cover">
+              <div class={`cover-placeholder ${release.gradient}`} aria-hidden="true"></div>
+              <div class="status-overlay" aria-hidden="true">
+                <span class="status-badge">{release.status}</span>
+              </div>
+            </div>
+            <div class="release-details">
+              <h3 class="release-title">{release.title}</h3>
+              <p class="release-meta">{release.type} • 2026</p>
+              <a href="#join-beam" class="release-link">
+                Get Notified <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
         ))}
       </div>
       
-      <style>
-        @keyframes waveform {
-          0% { height: 20%; }
-          100% { height: 80%; }
-        }
-      </style>
-      
-      <div style="text-align: center; margin-top: 2rem;">
-        <p style="color: var(--text-muted); font-size: 0.875rem;">🎵 "In Due Time" - Coming March 2026</p>
+      <div style="text-align: center; margin-top: 2rem;" data-animate="fade-up">
+        <p style="color: var(--text-muted); font-size: 0.875rem;">
+          Release schedule: TBD — Updates will be shared when available
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Equalizer -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true">
+    <div class="tech-line"></div>
+    <div class="tech-node"></div>
+    <div class="tech-line"></div>
+  </div>
+
+  <!-- Streaming Platforms -->
+  <section id="platforms" class="streaming-section section-sm" style="scroll-margin-top: 100px;">
     <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Audio Experience</h2>
-        <p class="section-subtitle">Feel the frequency spectrum</p>
-      </div>
-      
-      <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; padding: 2rem;" data-animate="fade-up">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 150px; gap: 2px;">
-          {[60, 150, 400, 1000, 2500, 6000, 16000].map((freq, i) => (
-            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-              <div style={`width: 100%; background: linear-gradient(to top, var(--jazer-cyan), var(--jazer-purple), var(--jazer-pink)); border-radius: 4px; animation: eqBounce ${0.3 + i * 0.1}s ease-in-out infinite alternate; height: ${30 + Math.random() * 70}%;`}></div>
-              <span style="font-size: 0.625rem; color: var(--text-muted);">{freq >= 1000 ? `${freq/1000}k` : freq}Hz</span>
-            </div>
+      <div class="streaming-platforms" data-animate="fade-up">
+        <h2 class="streaming-platforms-title text-center">Streaming Platforms</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+          Music will be available on all major platforms when released
+        </p>
+        <div class="portal-grid">
+          {streamingPlatforms.map((platform) => (
+            <a 
+              href={platform.href} 
+              class="portal-card" 
+              style={`--hover-color: ${platform.color};`}
+              aria-label={`${platform.name} - Coming soon`}
+            >
+              <img 
+                src={`${base}assets/images/icons/${platform.isRound ? 'social' : 'music'}/${platform.icon}`} 
+                alt="" 
+                class="portal-icon" 
+                loading="lazy" 
+              />
+              <span class="portal-name">{platform.name}</span>
+            </a>
           ))}
         </div>
-        
-        <style>
-          @keyframes eqBounce {
-            0% { transform: scaleY(0.3); }
-            100% { transform: scaleY(1); }
-          }
-        </style>
-        
-        <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
-          <div style="text-align: center;">
-            <div style="font-size: 0.75rem; color: var(--text-muted);">Bass</div>
-            <div style="font-weight: 700; color: var(--jazer-cyan);">+3dB</div>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 0.75rem; color: var(--text-muted);">Mids</div>
-            <div style="font-weight: 700; color: var(--jazer-purple);">0dB</div>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 0.75rem; color: var(--text-muted);">Highs</div>
-            <div style="font-weight: 700; color: var(--jazer-pink);">+2dB</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Track Analytics -->
-  <section class="section" style="padding: 6rem 0;">
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true">
+    <div class="tech-line"></div>
+    <div class="tech-node"></div>
+    <div class="tech-line"></div>
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.2);">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Track Analytics</h2>
-        <p class="section-subtitle">Performance across platforms</p>
+        <h2 class="section-title text-center gradient-text">Frequently Asked Questions</h2>
       </div>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-        {trackAnalytics.map((track, index) => (
-          <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-              <h3 style="font-weight: 700;">{track.track}</h3>
-              <span style="padding: 0.25rem 0.75rem; background: rgba(16, 185, 129, 0.2); color: #10b981; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">{track.growth}</span>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
-              <div>
-                <div style="font-size: 1.5rem; font-weight: 900; color: var(--jazer-cyan);">{track.plays}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">Plays</div>
-              </div>
-              <div>
-                <div style="font-size: 1.5rem; font-weight: 900; color: var(--jazer-purple);">{track.saves}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">Saves</div>
-              </div>
-              <div>
-                <div style="font-size: 1.5rem; font-weight: 900; color: var(--jazer-pink);">{track.shares}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">Shares</div>
-              </div>
-            </div>
+      <div style="max-width: 700px; margin: 2rem auto;">
+        {faqItems.map((item, index) => (
+          <div class="premium-card" style="padding: 1.5rem 2rem; margin-bottom: 1rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <h3 style="font-weight: 700; font-size: 1rem; margin-bottom: 0.75rem; color: var(--jazer-cyan);">
+              {item.question}
+            </h3>
+            <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.938rem;">
+              {item.answer}
+            </p>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Behind the Music -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Behind the Music</h2>
-        <p class="section-subtitle">The stories behind the songs</p>
-      </div>
-      
-      <div style="max-width: 800px; margin: 3rem auto;">
-        {behindTheMusic.map((item, index) => (
-          <div class="premium-glass-card" style="padding: 2.5rem; margin-bottom: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-              <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📝</div>
-              <div>
-                <h3 style="font-weight: 700; font-size: 1.25rem;">"{item.track}"</h3>
-                <p style="font-size: 0.875rem; color: var(--jazer-cyan);">Inspiration: {item.inspiration}</p>
-              </div>
-            </div>
-            <p style="line-height: 1.8; color: var(--text-light); margin-bottom: 1.5rem;">{item.story}</p>
-            <div style="padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px;">
-              <span style="font-size: 0.75rem; color: var(--text-muted);">Moodboard:</span>
-              <span style="font-size: 0.875rem; margin-left: 0.5rem;">{item.moodboard}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Discography Grid -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Discography</h2>
-        <p class="section-subtitle">The complete catalog</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-        {discography.map((release, index) => (
-          <div class="premium-card" style="overflow: hidden; cursor: pointer;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style={`height: 200px; background: linear-gradient(135deg, ${index === 0 ? 'var(--jazer-cyan), var(--jazer-purple)' : index === 1 ? 'var(--jazer-purple), var(--jazer-pink)' : index === 2 ? 'var(--jazer-pink), #f59e0b' : '#6366f1, #8b5cf6'}); display: flex; align-items: center; justify-content: center;`}>
-              <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="" style="width: 80px; height: 80px; opacity: 0.8;" />
-            </div>
-            <div style="padding: 1.5rem;">
-              <span style={`display: inline-block; padding: 0.2rem 0.5rem; background: ${release.status === 'upcoming' ? 'var(--jazer-pink)' : 'rgba(255,255,255,0.1)'}; border-radius: 4px; font-size: 0.625rem; font-weight: 700; margin-bottom: 0.75rem; text-transform: uppercase;`}>{release.status}</span>
-              <h3 style="font-weight: 700; margin-bottom: 0.25rem;">{release.title}</h3>
-              <p style="font-size: 0.875rem; color: var(--text-muted);">{release.type} • {release.year}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Production Credits -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Production Credits</h2>
-        <p class="section-subtitle">The team behind the sound</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; max-width: 800px; margin: 3rem auto;">
-        {productionCredits.map((credit, index) => (
-          <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 50}>
-            <div style="font-size: 2rem; margin-bottom: 0.75rem;">{credit.icon}</div>
-            <div style="font-weight: 700; font-size: 0.938rem; margin-bottom: 0.25rem;">{credit.name}</div>
-            <div style="font-size: 0.75rem; color: var(--jazer-cyan);">{credit.role}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Audio Quality Options -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Audio Quality</h2>
-        <p class="section-subtitle">Choose your listening experience</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; max-width: 1000px; margin: 3rem auto;">
-        {audioQuality.map((quality, index) => (
-          <div class="premium-card" style={`padding: 1.5rem; text-align: center; ${!quality.available ? 'opacity: 0.5;' : ''}`} data-animate="fade-up" data-animate-delay={index * 50}>
-            <div style="font-size: 2rem; margin-bottom: 0.75rem;">{quality.icon}</div>
-            <div style="font-weight: 700; margin-bottom: 0.25rem;">{quality.format}</div>
-            <div style="font-size: 0.813rem; color: var(--jazer-cyan); margin-bottom: 0.5rem;">{quality.quality}</div>
-            <span style={`padding: 0.25rem 0.5rem; background: ${quality.available ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)'}; color: ${quality.available ? '#10b981' : '#ef4444'}; border-radius: 4px; font-size: 0.625rem; font-weight: 700;`}>
-              {quality.available ? 'AVAILABLE' : 'COMING SOON'}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Chart Placements -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Playlist Goals</h2>
-        <p class="section-subtitle">Targeting these placements</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 3rem auto;">
-        {chartPlacements.map((placement, index) => (
-          <div class="premium-card" style="padding: 1.5rem; display: flex; align-items: center; gap: 1rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="font-size: 2rem;">{placement.icon}</div>
-            <div style="flex: 1;">
-              <div style="font-weight: 700; font-size: 0.938rem;">{placement.playlist}</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);">{placement.platform}</div>
-            </div>
-            <span style="padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); color: var(--jazer-purple); border-radius: 4px; font-size: 0.625rem; font-weight: 700;">{placement.status}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Exclusive Previews -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Exclusive Previews</h2>
-        <p class="section-subtitle">Unlock with email subscription</p>
-      </div>
-      
-      <div style="max-width: 500px; margin: 3rem auto;">
-        {exclusivePreviews.map((preview, index) => (
-          <div class="premium-card" style="padding: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style={`width: 50px; height: 50px; background: ${preview.locked ? 'rgba(255,255,255,0.1)' : 'linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple))'}; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;`}>
-              {preview.locked ? '🔒' : '▶️'}
-            </div>
-            <div style="flex: 1;">
-              <div style="font-weight: 600;">{preview.title}</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);">{preview.duration}</div>
-            </div>
-            {preview.locked ? (
-              <span style="font-size: 0.75rem; color: var(--jazer-pink);">Join to unlock</span>
-            ) : (
-              <button class="system-button" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Play</button>
-            )}
-          </div>
-        ))}
-        
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="#join-beam" class="cta-button">
-            <span>🔓</span>
-            <span>Unlock All Previews</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Listening Stats -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Listener Insights</h2>
-        <p class="section-subtitle">Who's listening and when</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 800px; margin: 3rem auto;">
-        <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up">
-          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📍</div>
-          <div style="font-weight: 700; font-size: 1.125rem; color: var(--jazer-cyan);">{listeningStats.topCity}</div>
-          <div style="font-size: 0.75rem; color: var(--text-muted);">Top City</div>
-        </div>
-        <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay="100">
-          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌍</div>
-          <div style="font-weight: 700; font-size: 1.125rem; color: var(--jazer-purple);">{listeningStats.topCountry}</div>
-          <div style="font-size: 0.75rem; color: var(--text-muted);">Top Country</div>
-        </div>
-        <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay="200">
-          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌙</div>
-          <div style="font-weight: 700; font-size: 1.125rem; color: var(--jazer-pink);">{listeningStats.peakTime}</div>
-          <div style="font-size: 0.75rem; color: var(--text-muted);">Peak Time</div>
-        </div>
-        <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay="300">
-          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⏱️</div>
-          <div style="font-weight: 700; font-size: 1.125rem; color: #10b981;">{listeningStats.avgListenTime}</div>
-          <div style="font-size: 0.75rem; color: var(--text-muted);">Avg Listen</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Smart Links -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="premium-glass-card" style="max-width: 600px; margin: 0 auto; padding: 3rem; text-align: center;" data-animate="fade-up">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">🔗</div>
-        <h2 class="gradient-text" style="margin-bottom: 0.5rem;">One Link, All Platforms</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;">Share music with anyone, anywhere</p>
-        
-        <div style="background: rgba(0,0,0,0.3); padding: 1rem 2rem; border-radius: 12px; display: inline-flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-          <span style="font-family: monospace; font-size: 1.125rem; color: var(--jazer-cyan);">{smartLinks.mainLink}</span>
-          <button style="padding: 0.5rem 1rem; background: var(--jazer-cyan); color: #000; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Copy</button>
-        </div>
-        
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
-          {smartLinks.platforms.map((platform) => (
-            <span style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 6px; font-size: 0.813rem;">{platform}</span>
-          ))}
-        </div>
       </div>
     </div>
   </section>
@@ -1141,18 +676,20 @@ const listeningStats = {
   </div>
 
   <!-- Email Signup CTA -->
-  <JoinBeamCTA
-    sectionStyle="padding: 6rem 0;"
-    captureStyle="max-width: 700px; margin: 0 auto;"
-    subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
-    subject="New subscriber from JaZeR Music page"
-    buttonLabel="Join the Beam"
-    proofText="Join <strong>500+</strong> fans on the beam"
-  >
-    <Fragment slot="subtitle">
-      Be the first to hear new music, get exclusive updates, and <strong>join the community</strong>.
-    </Fragment>
-  </JoinBeamCTA>
+  <div id="join-beam" style="scroll-margin-top: 100px;">
+    <JoinBeamCTA
+      sectionStyle="padding: 6rem 0;"
+      captureStyle="max-width: 700px; margin: 0 auto;"
+      subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
+      subject="New subscriber from JaZeR Music page"
+      buttonLabel="Join the Beam"
+      proofText="Be among the first to know"
+    >
+      <Fragment slot="subtitle">
+        Be the first to hear new music and get exclusive updates when releases drop in 2026.
+      </Fragment>
+    </JoinBeamCTA>
+  </div>
 
 </BaseLayout>
 

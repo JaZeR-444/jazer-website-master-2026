@@ -7,7 +7,7 @@ const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.ur
 
 const announcement = {
   href: `${base}music`,
-  text: '🎵 NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it'
+  text: '🎵 NEW MUSIC COMING 2026 - Be the first to hear it'
 };
 
 // Contact Reasons
@@ -20,13 +20,14 @@ const contactReasons = [
   { value: 'feedback', label: 'Feedback / Fan Message', icon: '💜' }
 ];
 
-// FAQ Items
+// FAQ Items - Updated with non-specific dates
 const faqs = [
-  { q: 'When is the first single releasing?', a: '"In Due Time" drops March 15, 2026. Pre-save links coming February 2026.' },
-  { q: 'Are you open to collaborations?', a: 'Yes! Send details about your project through the contact form. Include links to your work.' },
-  { q: 'Can I use your music in my content?', a: 'For licensing inquiries, use the contact form with subject "Music Licensing" and describe your project.' },
-  { q: 'How can I support JaZeR?', a: 'Stream the music, share with friends, join the email list, and engage on social media!' },
-  { q: 'Do you do live performances?', a: 'Live shows are planned for 2026. Join the email list for announcements and early ticket access.' }
+  { q: 'When is new music releasing?', a: 'New music is planned for 2026. Join the email list to be notified as soon as release dates are announced.' },
+  { q: 'Are you open to collaborations?', a: 'Yes! Send details about your project through the contact form. Include links to your work if available.' },
+  { q: 'Can I use your music in my content?', a: 'For licensing inquiries, select "Music Licensing" as your reason and describe your project in the message.' },
+  { q: 'How can I support JaZeR?', a: 'Stream the music, share with friends, join the email list, and engage on social media. Every bit helps!' },
+  { q: 'What should I include in my message?', a: 'Be specific about your inquiry. For collaborations, include links to your work. For licensing, describe the project and intended use.' },
+  { q: 'Is my information kept private?', a: 'Yes. Your contact information is only used to respond to your inquiry and is never shared or sold.' }
 ];
 
 // Social Links with descriptions
@@ -39,13 +40,8 @@ const socialLinks = [
   { name: 'SoundCloud', url: 'https://soundcloud.com/jazer', icon: 'soundcloud-round-icon.svg', desc: 'Exclusive tracks' }
 ];
 
-// Quick Links
-const quickLinks = [
-  { name: 'Music', url: '/music', icon: '🎵', desc: 'Latest releases' },
-  { name: 'Videos', url: '/videos', icon: '🎬', desc: 'Visual content' },
-  { name: 'About', url: '/about', icon: '👤', desc: 'The story' },
-  { name: 'Shop', url: '/shop', icon: '🛍️', desc: 'Merchandise' }
-];
+// Quick Links - Remove since footer already has navigation
+// Keeping social links as primary alternate contact
 ---
 <BaseLayout
   bodyClass="has-announcement contact-page"
@@ -88,28 +84,200 @@ const quickLinks = [
         width: 100%;
       }
       
-      /* Response Time */
-      .response-time {
+      /* Form States */
+      .form-field-wrapper {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+      
+      .field-hint {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-top: 0.5rem;
+      }
+      
+      .field-error {
+        font-size: 0.75rem;
+        color: #ef4444;
+        margin-top: 0.5rem;
+        display: none;
+      }
+      
+      .form-field-wrapper.error .field-error {
+        display: block;
+      }
+      
+      .form-field-wrapper.error .modern-input,
+      .form-field-wrapper.error .modern-textarea {
+        border-color: #ef4444;
+      }
+      
+      .form-field-wrapper.valid .modern-input,
+      .form-field-wrapper.valid .modern-textarea {
+        border-color: #10b981;
+      }
+      
+      /* Focus States */
+      .modern-input:focus,
+      .modern-textarea:focus,
+      .reason-card:focus,
+      .faq-question:focus {
+        outline: 2px solid var(--jazer-cyan);
+        outline-offset: 2px;
+      }
+      
+      /* Optional Label */
+      .optional-label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        font-weight: 400;
+        margin-left: 0.5rem;
+      }
+      
+      /* Honeypot - Hidden from users */
+      .hp-field {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      /* Submit Button States */
+      .submit-btn {
+        position: relative;
+        width: 100%;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple));
+        border: none;
+        border-radius: 12px;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 0.5rem;
+      }
+      
+      .submit-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+      }
+      
+      .submit-btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+      
+      .submit-btn .spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid transparent;
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        display: none;
+      }
+      
+      .submit-btn.loading .spinner {
+        display: block;
+      }
+      
+      .submit-btn.loading .btn-text {
+        opacity: 0;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Success State */
+      .form-success {
+        display: none;
+        text-align: center;
+        padding: 3rem 2rem;
+      }
+      
+      .form-success.show {
+        display: block;
+      }
+      
+      .success-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .success-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #10b981;
+      }
+      
+      .success-message {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      
+      /* Error State */
+      .form-error-banner {
+        display: none;
+        padding: 1rem;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        color: #ef4444;
+        font-size: 0.875rem;
+      }
+      
+      .form-error-banner.show {
+        display: block;
+      }
+      
+      /* Privacy Note */
+      .privacy-note {
+        display: flex;
+        align-items: flex-start;
         gap: 0.75rem;
         padding: 1rem;
-        background: rgba(16, 185, 129, 0.1);
-        border: 1px solid rgba(16, 185, 129, 0.3);
+        background: rgba(0, 0, 0, 0.2);
         border-radius: 8px;
-        margin-bottom: 2rem;
+        margin-top: 1.5rem;
+        font-size: 0.813rem;
+        color: var(--text-muted);
       }
-      .response-dot {
-        width: 10px;
-        height: 10px;
-        background: #10b981;
-        border-radius: 50%;
-        animation: pulse 2s infinite;
+      
+      .privacy-note-icon {
+        flex-shrink: 0;
+        font-size: 1rem;
       }
-      @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(1.2); }
+      
+      /* What to Expect Panel */
+      .expect-panel {
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        background: rgba(6, 182, 212, 0.05);
+        border: 1px solid rgba(6, 182, 212, 0.2);
+        border-radius: 12px;
+        text-align: center;
+      }
+      
+      .expect-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--jazer-cyan);
+        margin-bottom: 0.5rem;
+      }
+      
+      .expect-text {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        line-height: 1.6;
       }
       
       /* Reason Cards */
@@ -129,7 +297,8 @@ const quickLinks = [
         transition: all 0.3s ease;
       }
       .reason-card:hover,
-      .reason-card.active {
+      .reason-card.active,
+      .reason-card[aria-checked="true"] {
         border-color: var(--jazer-cyan);
         background: rgba(6, 182, 212, 0.1);
       }
@@ -210,6 +379,10 @@ const quickLinks = [
         transform: translateY(-4px);
         border-color: var(--jazer-cyan);
       }
+      .social-card:focus {
+        outline: 2px solid var(--jazer-cyan);
+        outline-offset: 2px;
+      }
       .social-card img {
         width: 40px;
         height: 40px;
@@ -224,42 +397,6 @@ const quickLinks = [
         color: var(--text-muted);
       }
       
-      /* Quick Links */
-      .quick-links-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-      }
-      .quick-link-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem 1rem;
-        background: rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        text-decoration: none;
-        color: inherit;
-        transition: all 0.3s ease;
-      }
-      .quick-link-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--jazer-purple);
-        background: rgba(139, 92, 246, 0.1);
-      }
-      .quick-link-icon {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
-      .quick-link-name {
-        font-weight: 600;
-        font-size: 0.938rem;
-      }
-      .quick-link-desc {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-      }
-      
       @media (max-width: 768px) {
         .contact-hero {
           padding: 4rem 1rem 2rem;
@@ -270,8 +407,21 @@ const quickLinks = [
         .reason-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .quick-links-grid {
+        .social-grid {
           grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .reason-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.75rem;
+        }
+        .reason-card {
+          padding: 0.875rem 0.5rem;
+        }
+        .reason-label {
+          font-size: 0.75rem;
         }
       }
     </style>
@@ -283,15 +433,17 @@ const quickLinks = [
       <img class="page-hero-title-logo" src={`${base}assets/images/Contact Me (450 x 94 px).svg`} alt="Contact Me">
     </h1>
     <p class="page-hero-subtitle">
-      Send a message, collaboration requests, press inquiries, or just say hello.
+      Have a question, idea, or just want to say hello? Send a message below.
     </p>
   </div>
 
-  <!-- Response Time Indicator -->
-  <div class="container" style="max-width: 700px;">
-    <div class="response-time" data-animate="fade-up">
-      <div class="response-dot"></div>
-      <span style="font-weight: 600;">Typical response time: 24-48 hours</span>
+  <!-- What to Expect Panel -->
+  <div class="container">
+    <div class="expect-panel" data-animate="fade-up">
+      <div class="expect-title">📬 What to Expect</div>
+      <div class="expect-text">
+        Messages are read personally. Responses may take some time depending on volume, but every message is appreciated.
+      </div>
     </div>
   </div>
 
@@ -299,54 +451,134 @@ const quickLinks = [
   <div class="container section">
     <div class="premium-glass-card contact-card" data-animate="fade-up">
       
-      <!-- Contact Reason Selector -->
-      <h3 style="text-align: center; margin-bottom: 1.5rem; font-weight: 600;">What's this about?</h3>
-      <div class="reason-grid">
-        {contactReasons.map((reason, index) => (
-          <div class="reason-card" data-reason={reason.value}>
-            <div class="reason-icon">{reason.icon}</div>
-            <div class="reason-label">{reason.label}</div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Contact Form -->
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="modern-form-group">
-          <label for="name" class="modern-label">Name</label>
-          <input id="name" type="text" name="name" class="modern-input" required placeholder="Your name">
+      <!-- Success State (hidden by default) -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✅</div>
+        <div class="success-title">Message Sent!</div>
+        <div class="success-message">
+          Thank you for reaching out. Your message has been received and will be reviewed as soon as possible.
         </div>
-        <div class="modern-form-group">
-          <label for="email" class="modern-label">Email</label>
-          <input id="email" type="email" name="email" class="modern-input" required placeholder="your@email.com">
-        </div>
-        <div class="modern-form-group">
-          <label for="reason" class="modern-label">Reason</label>
-          <select id="reason" name="reason" class="modern-input" required>
-            <option value="">Select a reason...</option>
-            {contactReasons.map((reason) => (
-              <option value={reason.value}>{reason.label}</option>
-            ))}
-          </select>
-        </div>
-        <div class="modern-form-group">
-          <label for="subject" class="modern-label">Subject</label>
-          <input id="subject" type="text" name="subject" class="modern-input" required placeholder="What's this about?">
-        </div>
-        <div class="modern-form-group">
-          <label for="message" class="modern-label">Message</label>
-          <textarea id="message" name="message" class="modern-textarea" required placeholder="Your message..." rows="5"></textarea>
-        </div>
-
-        <input type="hidden" name="_subject" value="New contact from JaZeR website">
-
-        <button type="submit" class="cta-button" style="width: 100%;">
-          <span>📤</span>
-          <span>Send Message</span>
+        <button type="button" class="submit-btn" id="sendAnother" style="max-width: 200px; margin: 0 auto;">
+          Send Another Message
         </button>
+      </div>
+      
+      <!-- Form Container -->
+      <div id="formContainer">
+        <!-- Contact Reason Selector -->
+        <h3 style="text-align: center; margin-bottom: 1.5rem; font-weight: 600;">What's this about?</h3>
+        <div class="reason-grid" role="radiogroup" aria-label="Select a reason for contact">
+          {contactReasons.map((reason, index) => (
+            <div 
+              class="reason-card" 
+              data-reason={reason.value}
+              role="radio"
+              aria-checked="false"
+              tabindex={index === 0 ? "0" : "-1"}
+            >
+              <div class="reason-icon" aria-hidden="true">{reason.icon}</div>
+              <div class="reason-label">{reason.label}</div>
+            </div>
+          ))}
+        </div>
 
-        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
-      </form>
+        <!-- Error Banner -->
+        <div class="form-error-banner" id="formErrorBanner" role="alert">
+          <strong>Unable to send message.</strong> Please check your connection and try again.
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          
+          <!-- Honeypot field (anti-spam) -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          
+          <div class="form-field-wrapper">
+            <label for="name" class="modern-label">Name</label>
+            <input 
+              id="name" 
+              type="text" 
+              name="name" 
+              class="modern-input" 
+              required 
+              placeholder="Your name"
+              autocomplete="name"
+              minlength="2"
+            >
+            <div class="field-error" id="nameError">Please enter your name</div>
+          </div>
+          
+          <div class="form-field-wrapper">
+            <label for="email" class="modern-label">Email</label>
+            <input 
+              id="email" 
+              type="email" 
+              name="email" 
+              class="modern-input" 
+              required 
+              placeholder="your@email.com"
+              autocomplete="email"
+              inputmode="email"
+            >
+            <div class="field-error" id="emailError">Please enter a valid email address</div>
+          </div>
+          
+          <div class="form-field-wrapper">
+            <label for="reason" class="modern-label">Reason</label>
+            <select id="reason" name="reason" class="modern-input" required>
+              <option value="">Select a reason...</option>
+              {contactReasons.map((reason) => (
+                <option value={reason.value}>{reason.label}</option>
+              ))}
+            </select>
+            <div class="field-error" id="reasonError">Please select a reason</div>
+          </div>
+          
+          <div class="form-field-wrapper">
+            <label for="subject" class="modern-label">
+              Subject <span class="optional-label">(optional)</span>
+            </label>
+            <input 
+              id="subject" 
+              type="text" 
+              name="subject" 
+              class="modern-input" 
+              placeholder="Brief subject line"
+            >
+          </div>
+          
+          <div class="form-field-wrapper">
+            <label for="message" class="modern-label">Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              class="modern-textarea" 
+              required 
+              placeholder="Tell me what's on your mind..."
+              rows="5"
+              minlength="20"
+            ></textarea>
+            <div class="field-hint">Please include relevant details to help me understand your inquiry.</div>
+            <div class="field-error" id="messageError">Please write at least 20 characters</div>
+          </div>
+
+          <input type="hidden" name="_subject" value="New contact from JaZeR website">
+          <input type="hidden" name="_timestamp" id="formTimestamp">
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-text">📤 Send Message</span>
+          </button>
+
+          <div class="privacy-note">
+            <span class="privacy-note-icon">🔒</span>
+            <span>Your information is kept private and only used to respond to your inquiry. It will never be shared or sold.</span>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -375,62 +607,21 @@ const quickLinks = [
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <h2 class="section-title text-center gradient-text">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Quick answers to common questions</p>
+        <p class="section-subtitle">Quick answers before you reach out</p>
       </div>
       
       <div style="max-width: 700px; margin: 3rem auto;" data-animate="fade-up">
         {faqs.map((faq, index) => (
           <div class="faq-item">
-            <button class="faq-question" type="button">
+            <button class="faq-question" type="button" aria-expanded="false">
               <span>{faq.q}</span>
-              <span class="faq-icon">+</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-content">{faq.a}</div>
             </div>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick Links -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Explore More</h2>
-        <p class="section-subtitle">Navigate to other sections</p>
-      </div>
-      
-      <div class="quick-links-grid" style="max-width: 600px; margin: 3rem auto;">
-        {quickLinks.map((link, index) => (
-          <a href={link.url} class="quick-link-card" data-animate="fade-up" data-animate-delay={index * 100}>
-            <span class="quick-link-icon">{link.icon}</span>
-            <span class="quick-link-name">{link.name}</span>
-            <span class="quick-link-desc">{link.desc}</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Office Hours / Availability -->
-  <section class="section" style="padding: 4rem 0;">
-    <div class="container">
-      <div class="premium-glass-card" style="max-width: 500px; margin: 0 auto; padding: 2rem; text-align: center;" data-animate="fade-up">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">🕐</div>
-        <h3 style="font-weight: 700; margin-bottom: 1rem;">Availability</h3>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Messages are typically answered within 24-48 hours during business days.</p>
-        <div style="display: flex; justify-content: center; gap: 2rem; font-size: 0.875rem;">
-          <div>
-            <div style="font-weight: 600;">Timezone</div>
-            <div style="color: var(--text-muted);">EST (UTC-5)</div>
-          </div>
-          <div>
-            <div style="font-weight: 600;">Best Time</div>
-            <div style="color: var(--text-muted);">10am - 6pm</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -442,7 +633,6 @@ const quickLinks = [
     subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
     subject="New subscriber from JaZeR Contact page"
     buttonLabel="Join the Beam"
-    proofText="Join <strong>500+</strong> fans on the beam"
   >
     <Fragment slot="subtitle">
       Be the first to hear new music, get exclusive updates, and <strong>join the community</strong>.
@@ -450,34 +640,206 @@ const quickLinks = [
   </JoinBeamCTA>
 
   <script>
+    // Set timestamp on page load (for anti-spam timing check)
+    document.getElementById('formTimestamp').value = Date.now();
+    
     // FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(button => {
       button.addEventListener('click', () => {
         const item = button.parentElement;
         const isOpen = item.classList.contains('open');
+        const expanded = button.getAttribute('aria-expanded') === 'true';
         
         // Close all items
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
         
         // Open clicked if it was closed
         if (!isOpen) {
           item.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
         }
       });
     });
 
-    // Reason Card Selection
+    // Reason Card Selection with keyboard support
     const reasonCards = document.querySelectorAll('.reason-card');
     const reasonSelect = document.getElementById('reason');
     
+    function selectReason(card) {
+      reasonCards.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-checked', 'false');
+        c.setAttribute('tabindex', '-1');
+      });
+      card.classList.add('active');
+      card.setAttribute('aria-checked', 'true');
+      card.setAttribute('tabindex', '0');
+      if (reasonSelect) {
+        reasonSelect.value = card.dataset.reason;
+        // Clear error state if present
+        reasonSelect.closest('.form-field-wrapper')?.classList.remove('error');
+      }
+    }
+    
     reasonCards.forEach(card => {
-      card.addEventListener('click', () => {
-        reasonCards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        if (reasonSelect) {
-          reasonSelect.value = card.dataset.reason;
+      card.addEventListener('click', () => selectReason(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectReason(card);
+        }
+        // Arrow key navigation
+        const cards = Array.from(reasonCards);
+        const currentIndex = cards.indexOf(card);
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          const nextCard = cards[(currentIndex + 1) % cards.length];
+          nextCard.focus();
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prevCard = cards[(currentIndex - 1 + cards.length) % cards.length];
+          prevCard.focus();
         }
       });
+    });
+
+    // Form validation
+    const form = document.getElementById('contactForm');
+    const formContainer = document.getElementById('formContainer');
+    const formSuccess = document.getElementById('formSuccess');
+    const formErrorBanner = document.getElementById('formErrorBanner');
+    const submitBtn = document.getElementById('submitBtn');
+    const sendAnotherBtn = document.getElementById('sendAnother');
+    
+    // Field validators
+    const validators = {
+      name: (value) => value.trim().length >= 2,
+      email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+      reason: (value) => value.trim().length > 0,
+      message: (value) => value.trim().length >= 20
+    };
+    
+    // Validate single field
+    function validateField(field) {
+      const wrapper = field.closest('.form-field-wrapper');
+      if (!wrapper) return true;
+      
+      const validator = validators[field.name];
+      if (!validator) return true;
+      
+      const isValid = validator(field.value);
+      wrapper.classList.toggle('error', !isValid && field.value.length > 0);
+      wrapper.classList.toggle('valid', isValid);
+      
+      return isValid;
+    }
+    
+    // Add blur validation to required fields
+    ['name', 'email', 'reason', 'message'].forEach(fieldName => {
+      const field = document.getElementById(fieldName);
+      if (field) {
+        field.addEventListener('blur', () => validateField(field));
+        field.addEventListener('input', () => {
+          const wrapper = field.closest('.form-field-wrapper');
+          if (wrapper?.classList.contains('error')) {
+            validateField(field);
+          }
+        });
+      }
+    });
+    
+    // Form submission
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Anti-spam: Check honeypot
+      const honeypot = document.getElementById('website');
+      if (honeypot && honeypot.value) {
+        // Bot detected, silently fail
+        showSuccess();
+        return;
+      }
+      
+      // Anti-spam: Check if form submitted too quickly (< 3 seconds)
+      const timestamp = parseInt(document.getElementById('formTimestamp').value, 10);
+      if (Date.now() - timestamp < 3000) {
+        // Too fast, likely a bot
+        showSuccess();
+        return;
+      }
+      
+      // Validate all required fields
+      let isValid = true;
+      ['name', 'email', 'reason', 'message'].forEach(fieldName => {
+        const field = document.getElementById(fieldName);
+        if (field && !validateField(field)) {
+          isValid = false;
+          if (fieldName === 'name') field.focus();
+        }
+      });
+      
+      if (!isValid) {
+        // Focus first invalid field
+        const firstError = form.querySelector('.form-field-wrapper.error input, .form-field-wrapper.error select, .form-field-wrapper.error textarea');
+        if (firstError) firstError.focus();
+        return;
+      }
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+      formErrorBanner.classList.remove('show');
+      
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          showSuccess();
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (error) {
+        // Show error banner
+        formErrorBanner.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+      }
+    });
+    
+    function showSuccess() {
+      formContainer.style.display = 'none';
+      formSuccess.classList.add('show');
+      // Scroll to success message
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    // Send another message
+    sendAnotherBtn?.addEventListener('click', () => {
+      form.reset();
+      reasonCards.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-checked', 'false');
+      });
+      reasonCards[0]?.setAttribute('tabindex', '0');
+      document.querySelectorAll('.form-field-wrapper').forEach(w => {
+        w.classList.remove('error', 'valid');
+      });
+      formContainer.style.display = 'block';
+      formSuccess.classList.remove('show');
+      document.getElementById('formTimestamp').value = Date.now();
+      // Focus first field
+      document.getElementById('name')?.focus();
     });
   </script>
 
