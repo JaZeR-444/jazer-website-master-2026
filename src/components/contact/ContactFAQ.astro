@@ -1,0 +1,137 @@
+---
+const faqs = [
+  { 
+    q: 'When is new music releasing?', 
+    a: 'New music is planned for release in 2026. Join the email list to be notified as soon as dates are announced.' 
+  },
+  { 
+    q: 'Are you open to collaborations?', 
+    a: 'Yes! Please select "Collaboration" on the contact form and include links to your previous work.' 
+  },
+  { 
+    q: 'Can I use your music in my content?', 
+    a: 'For licensing inquiries, select "Music Licensing" as your reason and describe your project in the message.' 
+  },
+  { 
+    q: 'What should I include in my message?', 
+    a: 'Be specific! For bookings, include dates and budget. For press, include your publication and deadline.' 
+  }
+];
+---
+
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-header animate-fade-up">
+      <h2 class="section-title">Common Questions</h2>
+      <p class="section-subtitle">Quick answers before you reach out</p>
+    </div>
+    
+    <div class="faq-grid animate-fade-up" style="animation-delay: 0.2s;">
+      {faqs.map((faq) => (
+        <div class="faq-item">
+          <details class="group">
+            <summary class="faq-question">
+              <span>{faq.q}</span>
+              <span class="faq-icon">▼</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.a}</p>
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: 6rem 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+
+  .faq-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    font-size: 0.75rem;
+    color: var(--jazer-cyan);
+    transition: transform 0.3s ease;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+</style>

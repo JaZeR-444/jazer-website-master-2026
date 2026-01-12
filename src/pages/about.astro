@@ -1,1340 +1,225 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+
 const base = import.meta.env.BASE_URL;
 const site = Astro.site;
 const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+const ogImage = site
+    ? new URL(`${base}assets/images/JaZeR Main Logo.jpg`, site).toString()
+    : `${base}assets/images/JaZeR Main Logo.jpg`;
 
 const announcement = {
-  href: `${base}music`,
-  text: '🎵 NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it'
+    href: `${base}music`,
+    text: 'New Era: Coming in 2026'
 };
 
-// Timeline/Journey
-const timeline = [
-  { year: '2020', title: 'The Beginning', description: 'Started producing beats in a small bedroom studio', icon: '🎹' },
-  { year: '2022', title: 'First Release', description: 'Released first track on SoundCloud, reaching 1K plays', icon: '🎵' },
-  { year: '2024', title: 'Growing Audience', description: 'Built a community of dedicated listeners across platforms', icon: '📈' },
-  { year: '2025', title: 'Studio Upgrade', description: 'Professional studio setup and refined sound signature', icon: '🎛️' },
-  { year: '2026', title: 'Official Launch', description: 'First major release: "In Due Time" single and debut album', icon: '🚀' }
+const pathways = [
+    {
+        title: 'Music',
+        href: `${base}music`,
+        desc: 'Sonic transmissions',
+        icon: `${base}assets/images/icons/music/headphones-black.svg`,
+        cta: 'Listen'
+    },
+    {
+        title: 'Videos',
+        href: `${base}videos`,
+        desc: 'Visual stories',
+        icon: `${base}assets/images/icons/navigation/videos.svg`,
+        cta: 'Watch'
+    },
+    {
+        title: 'Shop',
+        href: `${base}shop`,
+        desc: 'Apparel & Goods',
+        icon: `${base}assets/images/icons/navigation/shop.svg`,
+        cta: 'Browse'
+    },
+    {
+        title: 'Contact',
+        href: `${base}contact`,
+        desc: 'Inquiries',
+        icon: `${base}assets/images/icons/navigation/contact.svg`,
+        cta: 'Connect'
+    }
 ];
 
-// Skills & Expertise
-const skills = [
-  { name: 'Music Production', level: 95, icon: '🎧' },
-  { name: 'Mixing & Mastering', level: 85, icon: '🎚️' },
-  { name: 'Songwriting', level: 90, icon: '✍️' },
-  { name: 'Sound Design', level: 80, icon: '🔊' },
-  { name: 'Visual Direction', level: 75, icon: '🎬' },
-  { name: 'Brand Building', level: 85, icon: '💫' }
-];
-
-// Fun Facts
-const funFacts = [
-  { fact: 'Coffee cups consumed while producing', value: '1,000+', icon: '☕' },
-  { fact: 'Hours spent in the studio', value: '5,000+', icon: '⏰' },
-  { fact: 'Beats created (and scrapped)', value: '500+', icon: '🗑️' },
-  { fact: 'Times rewritten the same 8 bars', value: '∞', icon: '🔄' }
-];
-
-// Achievements
-const achievements = [
-  { title: 'First 1K Plays', platform: 'SoundCloud', year: '2022', icon: '🏆' },
-  { title: 'Community Growth', platform: '500+ Fans', year: '2024', icon: '👥' },
-  { title: 'Studio Complete', platform: 'Pro Setup', year: '2025', icon: '🎛️' },
-  { title: 'Debut Single', platform: 'All Platforms', year: '2026', icon: '💿' }
-];
-
-// Equipment/Gear
-const equipment = [
-  { name: 'FL Studio', type: 'DAW', icon: '💻' },
-  { name: 'MIDI Keyboard', type: 'Controller', icon: '🎹' },
-  { name: 'Studio Monitors', type: 'Audio', icon: '🔊' },
-  { name: 'Condenser Mic', type: 'Recording', icon: '🎤' },
-  { name: 'Audio Interface', type: 'Hardware', icon: '🎚️' },
-  { name: 'Headphones', type: 'Monitoring', icon: '🎧' }
-];
-
-// Social Proof
-const socialProof = [
-  { quote: "JaZeR's sound is incredibly unique and emotionally resonant.", author: "Early Supporter", platform: "Instagram" },
-  { quote: "Can't wait for the debut album. The snippets sound amazing!", author: "Day One Fan", platform: "YouTube" },
-  { quote: "Finally, an artist who puts real emotion into every track.", author: "Music Lover", platform: "Twitter" }
-];
-
-// Mission & Values
-const missionValues = {
-  mission: "To create music that serves as a sonic escape hatch — a focused beam of energy designed to cut through the noise, light up the dark, and remind people of what's possible.",
-  values: [
-    { name: 'Authenticity', desc: 'Every track reflects real emotions and experiences', icon: '💯' },
-    { name: 'Quality', desc: 'No shortcuts — every detail matters', icon: '💎' },
-    { name: 'Connection', desc: 'Building a community, not just an audience', icon: '🤝' },
-    { name: 'Growth', desc: 'Always learning, always evolving', icon: '🌱' }
-  ]
-};
-
-// Origin Story
-const originStory = {
-  location: 'United States',
-  timezone: 'EST',
-  started: '2020',
-  style: 'A blend of electronic, hip-hop, and melodic elements'
-};
-
-// Creative Process
-const creativeProcess = [
-  { step: 1, title: 'Inspiration', desc: 'Ideas come from everywhere — late night drives, conversations, emotions', icon: '💡' },
-  { step: 2, title: 'Sketching', desc: 'Quick beats and melodies captured in FL Studio', icon: '✏️' },
-  { step: 3, title: 'Building', desc: 'Layering sounds, refining arrangements, finding the groove', icon: '🏗️' },
-  { step: 4, title: 'Writing', desc: 'Lyrics that tell stories and connect emotionally', icon: '✍️' },
-  { step: 5, title: 'Mixing', desc: 'Balancing every element for clarity and impact', icon: '🎚️' },
-  { step: 6, title: 'Mastering', desc: 'Final polish for streaming-ready quality', icon: '💿' }
-];
-
-// Influences & Inspirations
-const influences = [
-  { name: 'Electronic Pioneers', examples: 'Daft Punk, Deadmau5, ODESZA', icon: '🎛️' },
-  { name: 'Hip-Hop Producers', examples: 'Metro Boomin, Pharrell, Kanye', icon: '🎤' },
-  { name: 'R&B Vibes', examples: 'The Weeknd, Frank Ocean, SZA', icon: '💜' },
-  { name: 'Cinematic Scores', examples: 'Hans Zimmer, Trent Reznor', icon: '🎬' }
-];
-
-// Availability
-const availability = {
-  status: 'Open',
-  openFor: ['Collaborations', 'Features', 'Remix Requests', 'Sync Licensing'],
-  notAvailable: ['Live performances (2026)', 'Ghost production'],
-  responseTime: '24-48 hours'
-};
-
-// Featured In / Media
-const featuredIn = [
-  { outlet: 'Podcast Feature', title: 'TBD Music Podcast', date: 'Coming 2026', icon: '🎙️' },
-  { outlet: 'Blog Interview', title: 'Artist Spotlight', date: 'Coming 2026', icon: '📝' },
-  { outlet: 'YouTube Feature', title: 'Producer Breakdown', date: 'Coming 2026', icon: '📺' }
-];
-
-// Vision & Goals
-const visionGoals = {
-  shortTerm: [
-    { goal: 'Release debut single', target: 'March 2026', status: 'In Progress' },
-    { goal: 'Reach 10K monthly listeners', target: 'Summer 2026', status: 'Goal' },
-    { goal: 'Launch merch store', target: 'March 2026', status: 'Planned' }
-  ],
-  longTerm: [
-    { goal: 'Debut album release', target: '2026', icon: '💿' },
-    { goal: 'First live performance', target: '2027', icon: '🎤' },
-    { goal: 'World tour', target: '2028+', icon: '🌍' },
-    { goal: 'Music for film/TV', target: 'Ongoing', icon: '🎬' }
-  ]
-};
-
-// Daily Routine
-const dailyRoutine = [
-  { time: '8 AM', activity: 'Wake up, coffee, morning inspiration', icon: '☕' },
-  { time: '10 AM', activity: 'Studio session — production & writing', icon: '🎹' },
-  { time: '1 PM', activity: 'Break, lunch, listen to new music', icon: '🎧' },
-  { time: '3 PM', activity: 'Mixing, editing, refining tracks', icon: '🎚️' },
-  { time: '6 PM', activity: 'Content creation, social media', icon: '📱' },
-  { time: '9 PM', activity: 'Creative exploration, new ideas', icon: '💡' },
-  { time: '12 AM', activity: 'Late night sessions (best ideas come here)', icon: '🌙' }
-];
-
-// Collaboration Philosophy
-const collabPhilosophy = {
-  approach: "I believe the best music comes from genuine connection. When I collaborate, I'm looking for artists who bring their authentic self to the table.",
-  lookingFor: ['Unique voices', 'Creative vision', 'Mutual respect', 'Good energy'],
-  process: "Usually starts with a conversation, then a shared session (virtual or in-person), and ends with something neither of us could have made alone."
-};
-
-// FAQ About Me
-const personalFAQ = [
-  { q: 'How did you get started in music?', a: 'Started making beats in my bedroom in 2020, fell in love with the process, and never looked back.' },
-  { q: 'What does JaZeR mean?', a: 'It represents a focused beam of energy — like a laser cutting through noise.' },
-  { q: 'Do you produce for other artists?', a: 'Open to collaborations! Reach out via the contact page.' },
-  { q: 'What\'s your favorite genre to produce?', a: 'Electronic with melodic hip-hop influences — emotional but energetic.' },
-  { q: 'Are you self-taught?', a: 'Mostly! Learned through YouTube, trial and error, and thousands of hours of practice.' }
+const faqs = [
+    {
+        q: "When is the debut release?",
+        a: "The first official project is expected to arrive in 2026. Stay tuned for announcements."
+    },
+    {
+        q: "Will there be live performances?",
+        a: "Live experiences are in the planning stages. Dates and locations are TBA."
+    },
+    {
+        q: "How can I collaborate?",
+        a: "JaZeR is open to creative partnerships. Reach out via the Contact page to start a conversation."
+    }
 ];
 ---
 <BaseLayout
-  bodyClass="has-announcement about-page"
+  bodyClass="about-page has-announcement"
   showAnnouncement={true}
   announcement={announcement}
-  showNoiseOverlay={true}
-  showPreloader={true}
+  showNoiseOverlay={false}
+  showPreloader={false}
   showNavEnhancements={true}
   showFooter={true}
-  showAudioPlayer={true}
+  showAudioPlayer={false}
   showBackToTop={true}
-  includeGsap={true}
+  includeGsap={false}
   extraStyles={[
-    '/css/pages-enhancements.css'
+    '/css/home.css' /* Reusing home styles for consistent hero/card look */
   ]}
 >
   <Fragment slot="head">
-    <title>About - JaZeR</title>
+    <title>About JaZeR - The Story</title>
+    <meta name="title" content="About JaZeR - The Story" />
     <meta
       name="description"
-      content="Learn more about JaZeR - Content creator, music artist, and digital storyteller. A sonic escape hatch for anyone who needs a place to belong."
+      content="JaZeR is a creative project exploring the intersection of cinematic music, visual storytelling, and digital identity."
     />
-    <meta name="keywords" content="JaZeR, about, artist bio, music producer, content creator, story" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
-
-    <style>
-      /* About Page Styles */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      .about-hero {
-        min-height: 70vh;
-        padding: 8rem 0 4rem;
-        position: relative;
-      }
-
-      .about-hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .hero-logo {
-        margin: 2rem auto;
-        display: block;
-        max-width: 100%;
-        height: auto;
-      }
-
-      .about-tagline {
-        max-width: 600px;
-        margin: 0 auto 2rem;
-        font-size: 1.25rem;
-        line-height: 1.6;
-      }
-
-      /* Profile Section */
-      .profile-section {
-        padding: 4rem 0;
-        position: relative;
-      }
-
-      .profile-image-container {
-        aspect-ratio: 1;
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        border-radius: 16px;
-      }
-
-      .profile-image {
-        width: 60%;
-        height: 60%;
-        object-fit: contain;
-        opacity: 0.8;
-      }
-
-      .profile-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(139, 92, 246, 0.2));
-        mix-blend-mode: overlay;
-      }
-
-      .profile-actions {
-        display: flex;
-        gap: 0.75rem;
-        margin-top: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .profile-action-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.875rem;
-        text-decoration: none;
-      }
-
-      /* Stats Grid */
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 2rem;
-      }
-
-      .stat-item {
-        text-align: center;
-      }
-
-      .stat-value {
-        font-size: 2.5rem;
-        font-weight: 800;
-        background: var(--gradient-text);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1.2;
-      }
-
-      .stat-label {
-        color: var(--text-muted);
-        font-size: 0.875rem;
-        margin-top: 0.5rem;
-      }
-
-      .mission-statement {
-        margin-top: 2.5rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
-      }
-
-      .mission-text {
-        font-size: 1.125rem;
-        line-height: 1.7;
-        color: var(--text-secondary);
-      }
-
-      /* Timeline */
-      .timeline-container {
-        position: relative;
-        padding-left: 2rem;
-      }
-
-      .timeline-line {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(to bottom, var(--jazer-pink), var(--jazer-purple), var(--jazer-cyan));
-      }
-
-      .timeline-item {
-        position: relative;
-        margin-bottom: 2rem;
-        padding-left: 1.5rem;
-      }
-
-      .timeline-item:last-child {
-        margin-bottom: 0;
-      }
-
-      .timeline-dot {
-        position: absolute;
-        left: -0.5rem;
-        top: 0.25rem;
-        width: 1rem;
-        height: 1rem;
-        border-radius: 50%;
-      }
-
-      .timeline-dot-pink {
-        background: var(--jazer-pink);
-        box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
-      }
-
-      .timeline-dot-purple {
-        background: var(--jazer-purple);
-        box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
-      }
-
-      .timeline-dot-cyan {
-        background: var(--jazer-cyan);
-        box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2);
-      }
-
-      .timeline-title {
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-      }
-
-      /* Callout Boxes */
-      .callout-box {
-        margin-top: 2rem;
-        padding: 1.5rem;
-        border-radius: 8px;
-        border-left: 3px solid;
-      }
-
-      .callout-pink {
-        background: rgba(239, 68, 68, 0.1);
-        border-color: var(--jazer-pink);
-      }
-
-      .callout-cyan {
-        background: rgba(6, 182, 212, 0.1);
-        border-color: var(--jazer-cyan);
-      }
-
-      .callout-purple {
-        background: rgba(139, 92, 246, 0.1);
-        border-color: var(--jazer-purple);
-      }
-
-      /* Genre Badges */
-      .genre-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin: 1.5rem 0;
-      }
-
-      .genre-badge {
-        color: white;
-        padding: 0.5rem 1rem;
-        font-size: 0.875rem;
-        border-radius: 8px;
-        font-weight: 600;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .genre-badge:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      }
-
-      /* Feature Cards */
-      .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-      }
-
-      .feature-card {
-        padding: 1.5rem;
-        background: rgba(255,255,255,0.03);
-        border-radius: 12px;
-        border: 1px solid rgba(255,255,255,0.1);
-        text-align: center;
-        transition: transform 0.2s ease, background 0.2s ease;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-4px);
-        background: rgba(255,255,255,0.05);
-      }
-
-      .feature-icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.75rem;
-        display: block;
-      }
-
-      .feature-title {
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-        font-size: 1.125rem;
-      }
-
-      .feature-description {
-        color: var(--text-muted);
-        font-size: 0.875rem;
-        line-height: 1.5;
-      }
-
-      /* Testimonials */
-      .testimonial-grid {
-        display: grid;
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .testimonial-card {
-        padding: 1.5rem;
-        background: rgba(255,255,255,0.03);
-        border-radius: 12px;
-        border-left: 3px solid;
-      }
-
-      .testimonial-quote {
-        font-style: italic;
-        margin-bottom: 1rem;
-        line-height: 1.7;
-      }
-
-      .testimonial-author {
-        font-size: 0.875rem;
-        font-weight: 600;
-      }
-
-      /* CTA Buttons */
-      .cta-section {
-        text-align: center;
-        margin: 3rem 0;
-      }
-
-      /* Section Spacing */
-      .section-spacer {
-        padding: 4rem 0;
-      }
-
-      .section-spacer-sm {
-        padding: 2rem 0;
-      }
-
-      /* Content Width */
-      .content-narrow {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .about-hero {
-          min-height: auto;
-          padding: 6rem 0 3rem;
-        }
-
-        .about-tagline {
-          font-size: 1.125rem;
-        }
-
-        .stat-value {
-          font-size: 2rem;
-        }
-
-        .feature-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .stats-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem;
-        }
-        
-        .profile-section {
-          padding: 2rem 0;
-        }
-        
-        .bento-grid .grid-span-2 {
-          grid-column: 1;
-        }
-        
-        .profile-actions {
-          justify-content: center;
-        }
-        
-        .hero-logo {
-          max-width: 80%;
-        }
-      }
-
-      /* Smooth animations */
-      .fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
   </Fragment>
 
-  <!-- Hero Section -->
-  <section class="hero hero-animated about-hero">
-    <div class="hero-particles"></div>
-    <div class="hero-content about-hero-content" data-animate="zoom-in">
-      <span class="hero-eyebrow" data-animate="fade-up">
-        <span class="eyebrow-word" style="--i: 0">Meet</span>
-        <span class="eyebrow-divider">✦</span>
-        <span class="eyebrow-word" style="--i: 1">The</span>
-        <span class="eyebrow-divider">✦</span>
-        <span class="eyebrow-word" style="--i: 2">Artist</span>
-      </span>
-      <img class="hero-logo" src={`${base}assets/images/About JaZeR (441 x 94 px).svg`} alt="About JaZeR" loading="eager" />
-      <p class="tagline-roles about-tagline">
-        A sonic escape hatch — a beam of color for anyone who needs a place to belong.
+  <section class="hero home-hero about-hero">
+    <div class="hero-content home-hero-content" data-animate="fade-up">
+      <div class="hero-status">
+        <span class="status-chip">Established 2026</span>
+      </div>
+      <h1 class="jazer-h1 hero-title">
+        The signal behind the sound.
+      </h1>
+      <p class="jazer-body-lg hero-subhead">
+        JaZeR is a creative project exploring the intersection of cinematic music, visual storytelling, and digital identity.
       </p>
     </div>
   </section>
 
-  <!-- Artist Profile Section -->
-  <section class="section profile-section">
+  <section class="section about-mission">
     <div class="container">
-      <!-- Ambient Glow Orbs -->
-      <div class="ambient-glow magenta" aria-hidden="true"></div>
-      <div class="ambient-glow blue" aria-hidden="true"></div>
-
-      <div class="bento-grid" style="align-items: center;">
-        <!-- Profile Card -->
-        <article class="card premium-card" data-animate="fade-up" data-animate-delay="100">
-          <div class="profile-image-container">
-            <img src={`${base}assets/images/vibrant-jzr-monogram-logo (250 x 250 px).svg`} alt="JaZeR Logo" class="profile-image" loading="lazy" />
-            <div class="profile-overlay" aria-hidden="true"></div>
-          </div>
-          <div class="track-info">
-            <h2 class="track-title">JaZeR</h2>
-            <p class="track-artist">Content Creator • Musician • Storyteller</p>
-            <div class="profile-actions">
-              <a href="https://instagram.com/jazer_music" class="cta-secondary profile-action-btn" target="_blank" rel="noopener noreferrer" aria-label="Follow JaZeR on Instagram">
-                <span>Follow</span>
-              </a>
-              <a href="#connect" class="cta-secondary profile-action-btn" aria-label="Contact JaZeR">
-                <span>Contact</span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Stats Card -->
-        <article class="card premium-card grid-span-2" data-animate="fade-up" data-animate-delay="200" style="padding: 2.5rem;">
-          <h2 class="track-title" style="margin-bottom: 2rem;">At a Glance</h2>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-value">2026</div>
-              <div class="stat-label">Launch Year</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">25+</div>
-              <div class="stat-label">Original Tracks</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">∞</div>
-              <div class="stat-label">Creative Energy</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">100%</div>
-              <div class="stat-label">Authentic</div>
-            </div>
-          </div>
-
-          <div class="mission-statement">
-            <p class="mission-text">
-              <strong>Mission:</strong> To create music that feels like home for the people who don't always feel like they have one.
-            </p>
-          </div>
-        </article>
+      <div class="brand-banner-inner" data-animate="fade-up" style="max-width: 900px; margin: 0 auto;">
+        <p class="jazer-eyebrow">Mission</p>
+        <h2 class="jazer-h2">A sonic escape hatch.</h2>
+        <p class="jazer-body-lg text-muted" style="max-width: 60ch; margin: 0 auto;">
+          To create a focused beam of energy designed to cut through the noise, light up the dark, and remind people of what's possible.
+        </p>
+        <div class="brand-banner-tags">
+            <span class="tag-chip">Cinematic</span>
+            <span class="tag-chip">Emotive</span>
+            <span class="tag-chip">Futuristic</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="container section-spacer">
-    <div class="content-narrow">
+  <section class="section about-story">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">The Narrative</h2>
+        <p class="section-subtitle">Origins and evolution</p>
+      </div>
 
-      <!-- The Journey -->
-      <div class="premium-glass-card mb-lg" data-animate="fade-up">
-        <h2 class="mb-md gradient-text">The Journey</h2>
+      <div class="premium-card" data-animate="fade-up" style="max-width: 800px; margin: 0 auto;">
+        <h3 class="jazer-h3">Digital Roots</h3>
+        <p class="text-muted jazer-body-lg" style="margin-top: 1rem;">
+          Born from a desire to merge sound and vision, JaZeR represents the evolution of digital artistry. In a world of infinite noise, this project aims to be a clear, resonant frequency.
+        </p>
+        <p class="text-muted jazer-body-lg" style="margin-top: 1rem;">
+          What began as an experiment in sound design is growing into a full-spectrum media experience. The journey is just beginning.
+        </p>
+      </div>
+    </div>
+  </section>
 
-        <div class="timeline-container">
-          <div class="timeline-line" aria-hidden="true"></div>
+  <section class="section about-status">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Status</h2>
+        <p class="section-subtitle">Current transmission state</p>
+      </div>
 
-          <div class="timeline-item">
-            <div class="timeline-dot timeline-dot-pink" aria-hidden="true"></div>
-            <div>
-              <h3 class="timeline-title" style="color: var(--jazer-pink);">The Struggle</h3>
-              <p class="text-muted">
-                JaZeR was born out of transition — a long stretch of struggle, constraint, and feeling like my light was dimmed.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot timeline-dot-purple" aria-hidden="true"></div>
-            <div>
-              <h3 class="timeline-title" style="color: var(--jazer-purple);">The Discovery</h3>
-              <p class="text-muted">
-                Music has always been the one thing that made me feel truly special. When I didn't know my purpose, sound gave me one. When I felt lost, rhythm felt like home.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot timeline-dot-cyan" aria-hidden="true"></div>
-            <div>
-              <h3 class="timeline-title" style="color: var(--jazer-cyan);">The Mission - 2026</h3>
-              <p class="text-muted">
-                Now that I'm finally at a point where I feel free, JaZeR is my way of giving that feeling back. Creating music that feels like home for those who don't always have one.
-              </p>
-            </div>
-          </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 0;">
+        <div class="premium-card" data-animate="fade-up" data-animate-delay="100">
+          <span class="status-chip is-muted">Now</span>
+          <h3 class="jazer-h4">Production Mode</h3>
+          <p class="text-muted">
+            Currently in the studio crafting the sonic palette for the debut collection. Focusing on sound design and visual identity.
+          </p>
         </div>
-
-        <div class="callout-box callout-pink">
-          <p class="text-strong text-lg">
-            The mission is simple: to create music that feels like home for the people who don't always feel like they have one.
+        <div class="premium-card" data-animate="fade-up" data-animate-delay="200">
+          <span class="status-chip">Next</span>
+          <h3 class="jazer-h4">The Debut</h3>
+          <p class="text-muted">
+            The first major release is in development. Expect a fusion of audio and visual art. Coming in 2026.
           </p>
         </div>
       </div>
-
-      <!-- CTA: Listen Now -->
-      <div class="cta-section" data-animate="fade-up">
-        <a href={`${base}music`} class="cta-button" aria-label="Listen to JaZeR's music">
-          <img src={`${base}assets/images/icons/music/headphones-black.svg`} class="cta-icon" alt="" style="width: 24px; height: 24px; filter: invert(1);" aria-hidden="true" />
-          <span>Listen Now</span>
-        </a>
-      </div>
-
-      <!-- Core Values -->
-      <div class="grid mb-lg" data-animate="fade-up">
-        <div class="premium-glass-card">
-          <h3>A sense of belonging</h3>
-          <p>For those who don't always feel like they have one</p>
-        </div>
-        <div class="premium-glass-card">
-          <h3>A sense of purpose</h3>
-          <p>Finding meaning through sound and rhythm</p>
-        </div>
-        <div class="premium-glass-card">
-          <h3>Limitless potential</h3>
-          <p>A reminder that you're capable of far more than you were told</p>
-        </div>
-      </div>
-
-      <!-- Sound & Style -->
-      <div class="premium-glass-card mb-lg" data-animate="fade-up">
-        <h2 class="mb-md gradient-text">Vibe, Sound & Style</h2>
-        <p class="mb-md text-lg" style="line-height: 1.7;">
-          <strong>Upbeat, positive, and lyrically sharp</strong> — with a lot of choppy wordplay and rhythmic twists.
-        </p>
-
-        <p class="mb-sm text-strong" style="font-size: 1.125rem; margin-top: 2rem;">Genre Influences:</p>
-        <div class="genre-badges">
-          <span class="genre-badge" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🎸 Southern Rock</span>
-          <span class="genre-badge" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">🔊 Heavy Bass</span>
-          <span class="genre-badge" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">⚡ Electronic</span>
-          <span class="genre-badge" style="background: linear-gradient(135deg, #ec4899, #db2777);">🎤 Hip-Hop & Rap</span>
-          <span class="genre-badge" style="background: linear-gradient(135deg, #f59e0b, #d97706);">🎷 Jazz & Blues</span>
-          <span class="genre-badge" style="background: linear-gradient(135deg, #10b981, #059669);">🎹 Boom Bap</span>
-          <span class="genre-badge" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">💎 Trap-Soul</span>
-        </div>
-
-        <div class="callout-box callout-cyan">
-          <p style="line-height: 1.7;">
-            Whenever I'm in the lab, I'm chasing emotion. Good, bad, beautiful, or painful — it all belongs. For me, the point of music is to take even the worst situations and transform them into something beautiful.
-          </p>
-        </div>
-      </div>
-
-      <!-- Behind the Scenes -->
-      <div class="premium-glass-card mb-lg" data-animate="fade-up">
-        <h2 class="mb-md gradient-text">Behind the Scenes</h2>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <img src={`${base}assets/images/icons/music/mixer-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
-            <h3 class="feature-title">Production</h3>
-            <p class="feature-description">FL Studio, Ableton, and a coffee addiction</p>
-          </div>
-          <div class="feature-card">
-            <img src={`${base}assets/images/icons/music/mic-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
-            <h3 class="feature-title">Recording</h3>
-            <p class="feature-description">Home studio vibes, late-night sessions</p>
-          </div>
-          <div class="feature-card">
-            <img src={`${base}assets/images/icons/music/lyrics-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
-            <h3 class="feature-title">Writing</h3>
-            <p class="feature-description">Life experiences, emotions, and raw truth</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Themes -->
-      <div class="premium-glass-card mb-lg" data-animate="fade-up">
-        <h2 class="mb-md gradient-text">Themes & The World of JaZeR</h2>
-        <p class="mb-md text-italic">
-          JaZeR lives in a "funky futuristic" lane — a blend of soulful humanity and cosmic, digital energy.
-        </p>
-        <div class="grid mt-lg">
-          <div>
-            <h3>Self-belief & perseverance</h3>
-            <p class="text-sm text-muted">Never stopping, never shrinking</p>
-          </div>
-          <div>
-            <h3>Freedom & transformation</h3>
-            <p class="text-sm text-muted">Breaking out of old versions of yourself</p>
-          </div>
-          <div>
-            <h3>Authenticity & purpose</h3>
-            <p class="text-sm text-muted">Staying true while you build something new</p>
-          </div>
-          <div>
-            <h3>Mental & emotional growth</h3>
-            <p class="text-sm text-muted">Clarity, healing, evolution</p>
-          </div>
-          <div>
-            <h3>Technology & consciousness</h3>
-            <p class="text-sm text-muted">Metaphysical vibes, digital dreams, cosmic imagery</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Why JaZeR -->
-      <div class="premium-glass-card mb-lg" data-animate="fade-up">
-        <h2 class="mb-md gradient-text">Why "JaZeR"?</h2>
-        <p class="mb-md" style="font-size: 1.125rem; line-height: 1.7;">
-          The name is a play on my real name, Jay, and the way people have described me over time — an infinite beam of light.
-        </p>
-        <div class="callout-box callout-purple">
-          <p class="text-strong text-lg">
-            So JaZeR is like "J-Laser": a focused beam of energy designed to cut through the noise, light up the dark, and remind you of what's possible.
-          </p>
-        </div>
-      </div>
-
-      <!-- Testimonials -->
-      <div class="premium-glass-card mb-lg" data-animate="fade-up">
-        <h2 class="mb-md gradient-text text-center">What Early Listeners Say</h2>
-        <div class="testimonial-grid">
-          <div class="testimonial-card" style="border-color: var(--jazer-pink);">
-            <p class="testimonial-quote">
-              "The energy is unmatched. Every track feels like it's speaking directly to where I am in life."
-            </p>
-            <p class="testimonial-author" style="color: var(--jazer-pink);">— Early Supporter</p>
-          </div>
-
-          <div class="testimonial-card" style="border-color: var(--jazer-cyan);">
-            <p class="testimonial-quote">
-              "This is exactly what I needed to hear. The wordplay is insane and the vibe is perfect."
-            </p>
-            <p class="testimonial-author" style="color: var(--jazer-cyan);">— Beta Listener</p>
-          </div>
-
-          <div class="testimonial-card" style="border-color: var(--jazer-purple);">
-            <p class="testimonial-quote">
-              "JaZeR's music makes me feel like I'm not alone in this. It's fuel for the journey."
-            </p>
-            <p class="testimonial-author" style="color: var(--jazer-purple);">— Community Member</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA: Watch the Journey -->
-      <div class="cta-section" data-animate="fade-up">
-        <a href={`${base}videos`} class="cta-button" aria-label="Watch JaZeR's video content">
-          <img src={`${base}assets/images/icons/music/video-black.svg`} class="cta-icon" alt="" style="width: 24px; height: 24px; filter: invert(1);" aria-hidden="true" />
-          <span>Watch the Journey</span>
-        </a>
-      </div>
-
     </div>
-  </div>
+  </section>
 
-  <!-- Interactive Timeline -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+  <section class="section about-pathways">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">The Journey</h2>
-        <p class="section-subtitle">From bedroom producer to official launch</p>
+        <h2 class="section-title text-center gradient-text">Explore</h2>
+        <p class="section-subtitle">Discover the ecosystem</p>
       </div>
-      
-      <div style="max-width: 700px; margin: 3rem auto; position: relative;">
-        <div style="position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--jazer-cyan), var(--jazer-purple));" aria-hidden="true"></div>
-        
-        {timeline.map((item, index) => (
-          <div style="display: flex; gap: 2rem; margin-bottom: 2rem; position: relative;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; z-index: 1;">{item.icon}</div>
-            <div class="premium-card" style="flex: 1; padding: 1.5rem;">
-              <span style="font-size: 0.875rem; color: var(--jazer-cyan); font-weight: 700;">{item.year}</span>
-              <h3 style="font-weight: 700; margin: 0.5rem 0;">{item.title}</h3>
-              <p style="font-size: 0.875rem; color: var(--text-muted);">{item.description}</p>
+
+      <div class="pathways-grid">
+        {pathways.map((pathway, index) => (
+          <a
+            href={pathway.href}
+            class="pathway-card premium-card"
+            data-animate="fade-up"
+            data-animate-delay={index * 80}
+          >
+            <div class="pathway-icon" aria-hidden="true">
+              <img src={pathway.icon} alt="" loading="lazy" decoding="async" />
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills & Expertise -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Skills & Expertise</h2>
-        <p class="section-subtitle">Crafting sound with precision</p>
-      </div>
-      
-      <div style="max-width: 600px; margin: 3rem auto;">
-        {skills.map((skill, index) => (
-          <div style="margin-bottom: 1.5rem;" data-animate="fade-up" data-animate-delay={index * 50}>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span style="font-weight: 600;">{skill.icon} {skill.name}</span>
-              <span style="color: var(--jazer-cyan); font-weight: 700;">{skill.level}%</span>
-            </div>
-            <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
-              <div style={`width: ${skill.level}%; height: 100%; background: linear-gradient(90deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 4px; transition: width 1s ease;`}></div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Fun Facts -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Fun Facts</h2>
-        <p class="section-subtitle">Behind the music numbers</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-        {funFacts.map((fact, index) => (
-          <div class="premium-card" style="text-align: center; padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">{fact.icon}</div>
-            <div style="font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-pink), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{fact.value}</div>
-            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">{fact.fact}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Achievements -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Milestones</h2>
-        <p class="section-subtitle">Key moments in the journey</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-        {achievements.map((achievement, index) => (
-          <div class="premium-card" style="padding: 2rem; text-align: center; border-top: 3px solid var(--jazer-cyan);" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">{achievement.icon}</div>
-            <h3 style="font-weight: 700; margin-bottom: 0.5rem;">{achievement.title}</h3>
-            <p style="font-size: 0.875rem; color: var(--jazer-cyan);">{achievement.platform}</p>
-            <p style="font-size: 0.813rem; color: var(--text-muted); margin-top: 0.5rem;">{achievement.year}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Equipment & Gear -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Studio Gear</h2>
-        <p class="section-subtitle">The tools behind the sound</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; max-width: 800px; margin: 3rem auto;">
-        {equipment.map((item, index) => (
-          <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 50}>
-            <div style="font-size: 2rem; margin-bottom: 0.75rem;">{item.icon}</div>
-            <h4 style="font-weight: 600; font-size: 0.938rem;">{item.name}</h4>
-            <p style="font-size: 0.75rem; color: var(--text-muted);">{item.type}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Press Kit Download -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="premium-glass-card" style="max-width: 600px; margin: 0 auto; padding: 3rem; text-align: center;" data-animate="fade-up">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">📁</div>
-        <h2 class="gradient-text" style="margin-bottom: 1rem;">Press Kit</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;">Download official press materials, high-res photos, logos, and bio for media use.</p>
-        
-        <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px; margin: 0 auto;">
-          <button class="cta-button" style="width: 100%; justify-content: center;">
-            <span>📥</span>
-            <span>Download Press Kit</span>
-          </button>
-          <a href="/contact" class="cta-secondary" style="justify-content: center;">
-            <span>Media Inquiries</span>
-            <span class="cta-arrow">→</span>
+            <h3 class="jazer-h4">{pathway.title}</h3>
+            <p class="text-muted text-sm">{pathway.desc}</p>
+            <span class="pathway-cta">{pathway.cta}</span>
           </a>
-        </div>
-        
-        <p style="font-size: 0.813rem; color: var(--text-muted); margin-top: 1.5rem;">Last updated: January 2026</p>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Social Proof -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+  <section class="section about-faq">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Community Voices</h2>
-        <p class="section-subtitle">What fans are saying</p>
+        <h2 class="section-title text-center gradient-text">FAQ</h2>
+        <p class="section-subtitle">Common questions</p>
       </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-        {socialProof.map((item, index) => (
-          <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <p style="font-style: italic; line-height: 1.6; margin-bottom: 1.5rem;">"{item.quote}"</p>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-weight: 600; font-size: 0.875rem;">{item.author}</span>
-              <span style="font-size: 0.75rem; color: var(--jazer-cyan);">via {item.platform}</span>
-            </div>
+
+      <div style="max-width: 700px; margin: 0 auto; display: grid; gap: 1rem;">
+        {faqs.map((faq, index) => (
+          <div class="premium-card" data-animate="fade-up" data-animate-delay={index * 50} style="padding: 1.5rem;">
+            <h3 class="jazer-h5" style="margin-bottom: 0.5rem; color: var(--text-light);">{faq.q}</h3>
+            <p class="text-muted">{faq.a}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Mission & Values -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Mission & Values</h2>
-        <p class="section-subtitle">What drives the music</p>
-      </div>
-      
-      <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; padding: 3rem; text-align: center;" data-animate="fade-up">
-        <p style="font-size: 1.25rem; line-height: 1.8; font-style: italic; color: var(--text-light);">"{missionValues.mission}"</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-        {missionValues.values.map((value, index) => (
-          <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="font-size: 2rem; margin-bottom: 0.75rem;">{value.icon}</div>
-            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">{value.name}</h4>
-            <p style="font-size: 0.813rem; color: var(--text-muted);">{value.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Where I'm From -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Where I'm From</h2>
-        <p class="section-subtitle">The origin of the sound</p>
-      </div>
-      
-      <div class="premium-glass-card" style="max-width: 600px; margin: 3rem auto; padding: 2.5rem;" data-animate="fade-up">
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-          <div style="text-align: center;">
-            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📍</div>
-            <div style="font-weight: 700; color: var(--jazer-cyan);">{originStory.location}</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">Location</div>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🕐</div>
-            <div style="font-weight: 700; color: var(--jazer-purple);">{originStory.timezone}</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">Timezone</div>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎹</div>
-            <div style="font-weight: 700; color: var(--jazer-pink);">{originStory.started}</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">Started</div>
-          </div>
-          <div style="text-align: center;">
-            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎵</div>
-            <div style="font-weight: 700; color: #10b981;">Unique</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">Sound</div>
-          </div>
-        </div>
-        <p style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);">{originStory.style}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Creative Process -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Creative Process</h2>
-        <p class="section-subtitle">How a track comes to life</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 3rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        {creativeProcess.map((step, index) => (
-          <div class="premium-card" style="padding: 1.5rem; text-align: center; position: relative;" data-animate="fade-up" data-animate-delay={index * 50}>
-            <span style="position: absolute; top: -0.75rem; left: 50%; transform: translateX(-50%); background: var(--jazer-cyan); color: #000; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.875rem;">{step.step}</span>
-            <div style="font-size: 2rem; margin-bottom: 0.75rem; margin-top: 0.5rem;">{step.icon}</div>
-            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">{step.title}</h4>
-            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">{step.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Influences & Inspirations -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Influences & Inspirations</h2>
-        <p class="section-subtitle">Artists and sounds that shaped the style</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-        {influences.map((influence, index) => (
-          <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-              <div style="font-size: 2rem;">{influence.icon}</div>
-              <h4 style="font-weight: 700;">{influence.name}</h4>
-            </div>
-            <p style="font-size: 0.875rem; color: var(--jazer-cyan);">{influence.examples}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Daily Routine -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">A Day in the Life</h2>
-        <p class="section-subtitle">The typical creative schedule</p>
-      </div>
-      
-      <div style="max-width: 600px; margin: 3rem auto;">
-        {dailyRoutine.map((item, index) => (
-          <div class="premium-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem;" data-animate="fade-up" data-animate-delay={index * 50}>
-            <div style="font-size: 1.5rem;">{item.icon}</div>
-            <div style="width: 70px; font-weight: 700; color: var(--jazer-cyan); font-size: 0.875rem;">{item.time}</div>
-            <div style="flex: 1; font-size: 0.875rem; color: var(--text-light);">{item.activity}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Availability -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Availability</h2>
-        <p class="section-subtitle">Open for opportunities</p>
-      </div>
-      
-      <div class="premium-glass-card" style="max-width: 700px; margin: 3rem auto; padding: 2.5rem;" data-animate="fade-up">
-        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-          <span style="width: 12px; height: 12px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
-          <span style="font-weight: 700; font-size: 1.25rem; color: #10b981;">Currently {availability.status}</span>
-        </div>
-        
-        <style>
-          @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-          }
-        </style>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-          <div>
-            <h4 style="font-weight: 600; color: #10b981; margin-bottom: 1rem;">✅ Open For</h4>
-            {availability.openFor.map((item) => (
-              <p style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--text-light);">• {item}</p>
-            ))}
-          </div>
-          <div>
-            <h4 style="font-weight: 600; color: #ef4444; margin-bottom: 1rem;">❌ Not Available</h4>
-            {availability.notAvailable.map((item) => (
-              <p style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--text-muted);">• {item}</p>
-            ))}
-          </div>
-        </div>
-        
-        <div style="text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p style="font-size: 0.875rem; color: var(--text-muted);">Response time: <strong style="color: var(--jazer-cyan);">{availability.responseTime}</strong></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured In -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Featured In</h2>
-        <p class="section-subtitle">Media appearances and mentions</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-        {featuredIn.map((feature, index) => (
-          <div class="premium-card" style="padding: 2rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">{feature.icon}</div>
-            <span style="padding: 0.25rem 0.75rem; background: rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.75rem;">{feature.outlet}</span>
-            <h4 style="font-weight: 700; margin: 1rem 0 0.5rem;">{feature.title}</h4>
-            <p style="font-size: 0.813rem; color: var(--jazer-cyan);">{feature.date}</p>
-          </div>
-        ))}
-      </div>
-      
-      <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);" data-animate="fade-up">More media features coming in 2026!</p>
-    </div>
-  </section>
-
-  <!-- Vision & Goals -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Vision & Goals</h2>
-        <p class="section-subtitle">Where this journey is heading</p>
-      </div>
-      
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 3rem auto;">
-        <!-- Short Term -->
-        <div data-animate="fade-up">
-          <h3 style="font-weight: 700; margin-bottom: 1.5rem; color: var(--jazer-cyan);">📅 Short Term (2026)</h3>
-          {visionGoals.shortTerm.map((goal, index) => (
-            <div class="premium-card" style="padding: 1.25rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <div style="font-weight: 600; font-size: 0.938rem;">{goal.goal}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">{goal.target}</div>
-              </div>
-              <span style={`padding: 0.25rem 0.75rem; background: ${goal.status === 'In Progress' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255,255,255,0.1)'}; color: ${goal.status === 'In Progress' ? '#10b981' : 'var(--text-muted)'}; border-radius: 4px; font-size: 0.625rem; font-weight: 700;`}>{goal.status}</span>
-            </div>
-          ))}
-        </div>
-        
-        <!-- Long Term -->
-        <div data-animate="fade-up" data-animate-delay="100">
-          <h3 style="font-weight: 700; margin-bottom: 1.5rem; color: var(--jazer-purple);">🔮 Long Term</h3>
-          {visionGoals.longTerm.map((goal, index) => (
-            <div class="premium-card" style="padding: 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
-              <div style="font-size: 1.5rem;">{goal.icon}</div>
-              <div>
-                <div style="font-weight: 600; font-size: 0.938rem;">{goal.goal}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">{goal.target}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Collaboration Philosophy -->
-  <section class="section" style="padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Collaboration Philosophy</h2>
-        <p class="section-subtitle">How I approach working with others</p>
-      </div>
-      
-      <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; padding: 3rem;" data-animate="fade-up">
-        <p style="font-size: 1.125rem; line-height: 1.8; text-align: center; margin-bottom: 2rem; color: var(--text-light);">"{collabPhilosophy.approach}"</p>
-        
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-bottom: 2rem;">
-          {collabPhilosophy.lookingFor.map((item) => (
-            <span style="padding: 0.5rem 1rem; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 20px; font-size: 0.875rem; font-weight: 600;">✓ {item}</span>
-          ))}
-        </div>
-        
-        <p style="font-size: 0.875rem; color: var(--text-muted); text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">{collabPhilosophy.process}</p>
-      </div>
-      
-      <div style="text-align: center;" data-animate="fade-up">
-        <a href="/contact" class="cta-button">
-          <span>🤝</span>
-          <span>Let's Collaborate</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ About Me -->
-  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">FAQ About Me</h2>
-        <p class="section-subtitle">Common questions answered</p>
-      </div>
-      
-      <div style="max-width: 700px; margin: 3rem auto;">
-        {personalFAQ.map((faq, index) => (
-          <details class="premium-card" style="padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;" data-animate="fade-up" data-animate-delay={index * 50}>
-            <summary style="font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-              {faq.q}
-              <span style="font-size: 1.25rem;">+</span>
-            </summary>
-            <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-light); line-height: 1.6;">{faq.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Email Signup CTA -->
   <JoinBeamCTA
-    sectionStyle="padding: 6rem 0;"
-    captureStyle="max-width: 700px; margin: 0 auto;"
-    subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
+    id="updates"
+    sectionClass="section home-updates"
+    sectionStyle="padding: var(--section-spacing) 0;"
+    captureStyle="max-width: 720px; margin: 0 auto;"
+    subtitleStyle="font-size: 1.125rem; max-width: 520px; margin: 1.5rem auto;"
     subject="New subscriber from JaZeR About page"
-    buttonLabel="Join the Beam"
-    proofText="Join <strong>500+</strong> fans on the beam"
+    buttonLabel="Get updates"
+    proofText="Updates: <strong>Expected in 2026</strong>"
   >
     <Fragment slot="subtitle">
-      Be the first to hear new music, get exclusive updates, and <strong>join the community</strong>.
+      Stay connected with the journey. New drops expected in <strong>2026</strong>.
     </Fragment>
   </JoinBeamCTA>
-
-  <!-- Collaborate Section -->
-  <section class="section section-spacer" id="connect">
-    <div class="container">
-      <div class="content-narrow">
-        <div class="premium-glass-card" data-animate="fade-up">
-          <h2 class="mb-md gradient-text text-center">Let's Work Together</h2>
-          <p class="text-center mb-lg" style="font-size: 1.125rem; line-height: 1.7;">
-            Open to collaborations, features, production work, and creative partnerships.
-          </p>
-
-          <div class="feature-grid">
-            <div class="feature-card">
-              <img src={`${base}assets/images/icons/music/mic-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
-              <h3 class="feature-title">Features</h3>
-              <p class="feature-description">Guest verses and vocal features</p>
-            </div>
-
-            <div class="feature-card">
-              <img src={`${base}assets/images/icons/music/synth-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
-              <h3 class="feature-title">Production</h3>
-              <p class="feature-description">Beats, mixing, and sound design</p>
-            </div>
-
-            <div class="feature-card">
-              <img src={`${base}assets/images/icons/utility/star.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
-              <h3 class="feature-title">Business</h3>
-              <p class="feature-description">Bookings, partnerships, licensing</p>
-            </div>
-          </div>
-
-          <div class="cta-section">
-            <a href={`${base}contact`} class="cta-button" aria-label="Contact JaZeR">
-              <img src={`${base}assets/images/icons/utility/contact.svg`} class="cta-icon" alt="" style="width: 24px; height: 24px; filter: invert(1);" aria-hidden="true" />
-              <span>Get in Touch</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- For New Listeners -->
-  <div class="container section-spacer">
-    <div class="content-narrow">
-      <div class="premium-glass-card callout-gradient-soft" data-animate="fade-up">
-        <h2 class="mb-md text-center">For New Listeners</h2>
-        <p class="mb-md text-center text-lg">
-          If you're reading this, here's what I want you to feel:
-        </p>
-        <p class="text-center text-strong text-xl leading-relaxed">
-          That your light is real.<br>
-          That your dream is valid.<br>
-          That you're closer than you think.
-        </p>
-        <p class="mt-lg text-center">
-          My music is for the dreamers, the builders, the ones trying to turn pain into power and visions into
-          reality. It's fuel to keep going when you're tired, to keep building when it feels heavy, and to remind you
-          that there's still magic in all of this.
-        </p>
-        <div class="cta-section">
-          <a href={`${base}music`} class="cta-button" aria-label="Start listening to JaZeR's music">Press Play</a>
-        </div>
-      </div>
-
-      <p class="text-center text-2xl mt-xl text-strong">
-        This is JaZeR. Welcome home. 🌌✨
-      </p>
-    </div>
-  </div>
 
 </BaseLayout>

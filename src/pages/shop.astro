@@ -7,161 +7,103 @@ const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.ur
 
 const announcement = {
   href: `${base}shop`,
-  text: '🛍️ MERCH COMING IN 2026 - Join the waitlist for early access!'
+  text: '🛍️ STOREFRONT OPENING IN 2026 — Join the waitlist for early access'
 };
 
-// Product Categories
-const productCategories = [
-  { name: 'All', filter: 'all', icon: '🎯', active: true },
-  { name: 'Apparel', filter: 'apparel', icon: '👕', active: false },
-  { name: 'Accessories', filter: 'accessories', icon: '🧢', active: false },
-  { name: 'Music', filter: 'music', icon: '💿', active: false },
-  { name: 'Bundles', filter: 'bundles', icon: '📦', active: false }
-];
-
-// Featured Upcoming Products (standardized cards)
+// Featured Upcoming Products (Placeholders)
 const upcomingProducts = [
   { 
     id: 1,
-    title: 'Beam Hoodie',
+    title: 'Signature Hoodie (TBA)',
     category: 'Apparel',
-    description: 'Premium heavyweight hoodie with signature gradient embroidery.',
-    priceRange: 'Est. $65-$85',
-    badge: 'Coming in 2026',
-    icon: '🧥',
-    featured: true
+    description: 'Heavyweight construction. Gradient embroidery.',
+    status: 'Coming in 2026',
+    icon: '🧥'
   },
   { 
     id: 2,
-    title: 'Signal Tee',
+    title: 'Graphic Tee (TBA)',
     category: 'Apparel',
-    description: 'Oversized cotton tee with reflective back print.',
-    priceRange: 'Est. $35-$45',
-    badge: 'Coming in 2026',
-    icon: '👕',
-    featured: true
+    description: 'Oversized fit. Reflective back print.',
+    status: 'Expected in 2026',
+    icon: '👕'
   },
   { 
     id: 3,
-    title: 'Orbit Cap',
+    title: 'Orbit Cap (TBA)',
     category: 'Accessories',
-    description: 'Structured snapback with embossed logo patch.',
-    priceRange: 'Est. $30-$40',
-    badge: 'Coming in 2026',
-    icon: '🧢',
-    featured: true
+    description: 'Structured fit with 3D puff embroidery.',
+    status: 'Coming in 2026',
+    icon: '🧢'
   },
   { 
     id: 4,
-    title: 'Vinyl Bundle',
+    title: 'Collector Vinyl (TBA)',
     category: 'Music',
-    description: 'Limited edition vinyl with exclusive artwork and inserts.',
-    priceRange: 'Est. $40-$60',
-    badge: 'Coming in 2026',
-    icon: '💿',
-    featured: false
+    description: 'Limited edition pressing. Exclusive artwork.',
+    status: 'Coming in 2026',
+    icon: '💿'
   },
   { 
     id: 5,
-    title: 'Sticker Pack',
+    title: 'Sticker Pack (TBA)',
     category: 'Accessories',
-    description: 'Holographic sticker set featuring album art and logos.',
-    priceRange: 'Est. $12-$18',
-    badge: 'Coming in 2026',
-    icon: '✨',
-    featured: false
+    description: 'Holographic die-cut decals.',
+    status: 'Coming in 2026',
+    icon: '✨'
   },
   { 
     id: 6,
-    title: 'Starter Bundle',
+    title: 'Launch Bundle (TBA)',
     category: 'Bundles',
-    description: 'Tee + Cap + Stickers at a discounted bundle price.',
-    priceRange: 'Est. $60-$80',
-    badge: 'Coming in 2026',
-    icon: '📦',
-    featured: false
+    description: 'The complete starter kit. Details TBD.',
+    status: 'Expected in 2026',
+    icon: '📦'
   }
 ];
 
-// Size Guide Data
-const sizeGuide = {
-  tees: [
-    { size: 'S', chest: '36"', length: '28"', shoulder: '17"' },
-    { size: 'M', chest: '40"', length: '29"', shoulder: '18"' },
-    { size: 'L', chest: '44"', length: '30"', shoulder: '19"' },
-    { size: 'XL', chest: '48"', length: '31"', shoulder: '20"' },
-    { size: '2XL', chest: '52"', length: '32"', shoulder: '21"' }
-  ]
-};
-
-// Customer Reviews (social proof)
-const reviews = [
-  { name: 'Early Supporter', rating: 5, text: "Can't wait for the drop! The mockups look fire 🔥", date: '2026' },
-  { name: 'Day One Fan', rating: 5, text: "Finally merch from JaZeR! Take my money already!", date: '2026' },
-  { name: 'Music Lover', rating: 5, text: "The designs are so clean. Definitely copping the hoodie.", date: '2026' }
-];
-
-// Shipping Info (safe copy - no specific dates)
-const shippingInfo = [
-  { region: 'United States', time: 'Priority Shipping', cost: 'Free over $75' },
-  { region: 'Canada', time: 'Standard Shipping', cost: 'Flat rate available' },
-  { region: 'International', time: 'Phased rollout in 2026', cost: 'TBD at launch' }
-];
-
-// Shop FAQ (safe copy - no specific dates)
-const shopFAQ = [
-  { 
-    q: 'When does the shop open?', 
-    a: "We're planning to launch sometime in 2026. Join the waitlist to be the first to know when drops go live." 
-  },
-  { 
-    q: 'What will be available?', 
-    a: 'Apparel, accessories, music collectibles, and exclusive bundles. The final lineup is still being finalized.' 
-  },
-  { 
-    q: 'Will you ship internationally?', 
-    a: 'We plan to offer international shipping. Exact regions and rates will be confirmed at launch.' 
-  },
-  { 
-    q: "What's your return policy?", 
-    a: 'Our return and exchange policy will be published when the shop opens. We aim to make it hassle-free.' 
-  },
-  { 
-    q: 'How do I get early access?', 
-    a: 'Join our email waitlist to receive early access notifications and exclusive drop alerts.' 
-  }
-];
-
-// Trust & Policy Links
-const policyLinks = [
-  { name: 'Shipping Info', href: '#shipping', status: 'Available at launch' },
-  { name: 'Returns & Exchanges', href: '#returns', status: 'TBD' },
-  { name: 'Size Guide', href: '#sizing', status: 'Available' },
-  { name: 'Contact Support', href: '/contact', status: 'Active' }
-];
-
-// Drop Timeline Phases (safe copy)
+// Drop Timeline Phases (Safe Copy)
 const dropPhases = [
   { 
     phase: '01', 
-    title: 'Core Collection', 
-    description: 'Essentials + Sticker Packs', 
+    title: 'Foundation Drop', 
+    description: 'Core apparel essentials.', 
     timing: 'Coming in 2026',
     status: 'In Development'
   },
   { 
     phase: '02', 
-    title: 'Orbit Collection', 
-    description: 'Premium Outerwear & Embossed Fabrics', 
+    title: 'Expansion Pack', 
+    description: 'Accessories and collectibles.', 
     timing: 'Expected in 2026',
     status: 'Planned'
   },
   { 
     phase: '03', 
-    title: 'Horizon Collection', 
-    description: 'Limited Edition Collectors Items', 
+    title: 'Limited Edition', 
+    description: 'Exclusive small-batch releases.', 
     timing: 'Later in 2026',
     status: 'Planned'
+  }
+];
+
+// Shop FAQ (Safe Copy)
+const shopFAQ = [
+  { 
+    q: 'When does the shop open?', 
+    a: "We are preparing for a 2026 launch. Join the waitlist to be notified as soon as we go live." 
+  },
+  { 
+    q: 'What products will be available?', 
+    a: 'We are developing a range of premium apparel, accessories, and music collectibles. Full lineup TBD.' 
+  },
+  { 
+    q: 'Will you ship internationally?', 
+    a: 'Yes, international shipping is planned for the launch. Specific regions and rates will be confirmed later.' 
+  },
+  { 
+    q: "How do I get early access?", 
+    a: 'Subscribers to the "Beam" waitlist will receive priority access codes when the store opens.' 
   }
 ];
 ---
@@ -169,7 +111,7 @@ const dropPhases = [
   bodyClass="shop-page has-announcement"
   showAnnouncement={true}
   announcement={announcement}
-  showNoiseOverlay={false}
+  showNoiseOverlay={true}
   showPreloader={true}
   showNavEnhancements={true}
   showFooter={true}
@@ -177,2074 +119,310 @@ const dropPhases = [
   showBackToTop={true}
   includeGsap={true}
   extraStyles={[
-    '/css/pages-enhancements.css'
+    '/css/pages-enhancements.css',
+    '/css/music-enhancements.css' // Reusing premium card styles
   ]}
 >
   <Fragment slot="head">
     <title>Shop - JaZeR | Coming in 2026</title>
-    <meta name="description" content="The Official JaZeR Shop. Premium merchandise designed for the community. All items coming in 2026 — join the waitlist for early access." />
-    <meta name="keywords" content="JaZeR shop, merchandise, merch, apparel, clothing, hoodies, t-shirts, limited edition, coming soon" />
+    <meta name="description" content="The Official JaZeR Shop. Premium merchandise coming in 2026. Join the waitlist for early access." />
+    <meta name="keywords" content="JaZeR shop, merchandise, merch, apparel, clothing, coming soon, 2026" />
     <link rel="canonical" href={canonical} />
-    <link
-      rel="preload"
-      as="image"
-      href={`${base}assets/images/Shop (234 x 96 px).svg`}
-      type="image/svg+xml"
-    />
-
+    
     <style>
-      /* ========================================
-         SHOP PAGE - UNIFIED DESIGN SYSTEM
-         ======================================== */
-      
-      html {
-        scroll-behavior: smooth;
-      }
-
-      .shop-page {
-        --shop-pink: #ef4444;
-        --shop-purple: #8b5cf6;
-        --shop-cyan: #06b6d4;
-        --section-padding: 6rem 0;
-        --card-radius: 16px;
-        --card-border: 1px solid rgba(255, 255, 255, 0.1);
-        --card-hover-border: rgba(6, 182, 212, 0.5);
-        --focus-ring: 2px solid var(--jazer-cyan);
-        --focus-offset: 2px;
-      }
-
-      /* ========================================
-         FOCUS STATES (Accessibility)
-         ======================================== */
-      .shop-page a:focus-visible,
-      .shop-page button:focus-visible,
-      .shop-page input:focus-visible,
-      .shop-page details:focus-visible {
-        outline: var(--focus-ring);
-        outline-offset: var(--focus-offset);
-      }
-
-      .shop-page .product-card:focus-within {
-        border-color: var(--card-hover-border);
-        box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.3);
-      }
-
-      /* ========================================
-         HERO SECTION
-         ======================================== */
-      .shop-hero {
-        min-height: 50vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 8rem 2rem 4rem;
-        position: relative;
-      }
-
-      .shop-hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1.25rem;
-        background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15));
-        border: 1px solid rgba(6, 182, 212, 0.4);
-        border-radius: 24px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--jazer-cyan);
-        margin-bottom: 1.5rem;
-        animation: badgePulse 3s ease infinite;
-      }
-
-      .shop-hero-badge::before {
-        content: '';
-        width: 8px;
-        height: 8px;
-        background: var(--jazer-cyan);
-        border-radius: 50%;
-        animation: blink 1.5s infinite;
-      }
-
-      .shop-hero h1 {
-        font-size: clamp(2.5rem, 6vw, 4rem);
-        font-weight: 800;
-        background: linear-gradient(135deg, #fff 0%, var(--jazer-cyan) 50%, var(--jazer-purple) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 1rem;
-        line-height: 1.1;
-      }
-
-      .shop-hero-subtitle {
-        font-size: 1.125rem;
-        color: var(--text-muted);
-        max-width: 600px;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-      }
-
-      .shop-hero-cta {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      /* ========================================
-         CATEGORY FILTER TABS
-         ======================================== */
-      .category-filter {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        margin-bottom: 3rem;
-        padding: 0 1rem;
-      }
-
-      .category-tab {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1.25rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--text-muted);
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .category-tab:hover {
-        background: rgba(6, 182, 212, 0.1);
-        border-color: rgba(6, 182, 212, 0.3);
-        color: var(--text-light);
-      }
-
-      .category-tab.active {
-        background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
-        border-color: var(--jazer-cyan);
-        color: var(--jazer-cyan);
-      }
-
-      /* ========================================
-         PRODUCT CARDS (Standardized)
-         ======================================== */
-      .product-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .product-card {
-        position: relative;
-        background: rgba(10, 10, 20, 0.8);
-        border: var(--card-border);
-        border-radius: var(--card-radius);
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .product-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-      }
-
-      .product-card:hover::before {
-        opacity: 1;
-      }
-
-      .product-card:hover {
-        transform: translateY(-6px);
-        border-color: var(--card-hover-border);
-        box-shadow: 
-          0 20px 40px rgba(0, 0, 0, 0.3),
-          0 0 20px rgba(6, 182, 212, 0.15);
-      }
-
-      .product-card-badge {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.75rem;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(8px);
-        border-radius: 16px;
-        font-size: 0.625rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--jazer-cyan);
-        z-index: 2;
-      }
-
-      .product-card-badge::before {
-        content: '';
-        width: 6px;
-        height: 6px;
-        background: var(--jazer-cyan);
-        border-radius: 50%;
-        animation: blink 1.5s infinite;
-      }
-
-      .product-card-image {
-        position: relative;
-        aspect-ratio: 1;
-        background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0f0f1f 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        overflow: hidden;
-      }
-
-      .product-card-image::before {
-        content: '';
-        position: absolute;
-        width: 150%;
-        height: 150%;
-        background: conic-gradient(
-          from 0deg,
-          transparent 0%,
-          rgba(6, 182, 212, 0.08) 25%,
-          transparent 50%,
-          rgba(139, 92, 246, 0.08) 75%,
-          transparent 100%
-        );
-        animation: rotateSlow 25s linear infinite;
-      }
-
-      .product-card-icon {
-        font-size: 3rem;
-        z-index: 1;
-        opacity: 0.4;
-      }
-
-      .product-card-body {
-        padding: 1.5rem;
-      }
-
-      .product-card-category {
-        display: inline-block;
-        padding: 0.25rem 0.625rem;
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 4px;
-        font-size: 0.625rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text-muted);
-        margin-bottom: 0.75rem;
-      }
-
-      .product-card-title {
-        font-size: 1.125rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--text-light);
-      }
-
-      .product-card-description {
-        font-size: 0.875rem;
-        color: var(--text-muted);
-        line-height: 1.5;
-        margin-bottom: 1rem;
-      }
-
-      .product-card-price {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--jazer-cyan);
-        margin-bottom: 1rem;
-      }
-
-      .product-card-cta {
-        width: 100%;
-      }
-
-      /* ========================================
-         BUTTONS (Unified)
-         ======================================== */
-      .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-        padding: 0.875rem 1.5rem;
-        background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple));
-        border: none;
-        border-radius: 8px;
-        font-size: 0.875rem;
-        font-weight: 700;
-        color: white;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
-      }
-
-      .btn-secondary {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        padding: 0.875rem 1.5rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--text-light);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-      }
-
-      .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: var(--jazer-cyan);
-      }
-
-      .btn-disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        pointer-events: none;
-      }
-
-      /* ========================================
-         ANIMATIONS
-         ======================================== */
-      @keyframes badgePulse {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
-        50% { box-shadow: 0 0 20px 5px rgba(6, 182, 212, 0.15); }
-      }
-
-      @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.3; }
-      }
-
-      @keyframes rotateSlow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      /* Coming Soon Badge Animation */
-      .coming-soon-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
-        border: 1px solid rgba(6, 182, 212, 0.4);
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--jazer-cyan);
-        animation: badgePulse 2s ease infinite;
-      }
-
-      .coming-soon-badge::before {
-        content: '';
-        width: 8px;
-        height: 8px;
-        background: var(--jazer-cyan);
-        border-radius: 50%;
-        animation: blink 1.5s infinite;
-      }
-
-      @keyframes badgePulse {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
-        50% { box-shadow: 0 0 20px 5px rgba(6, 182, 212, 0.2); }
-      }
-
-      /* Enhanced Shop Cards with Glow */
-      .shop-card-enhanced {
-        position: relative;
-        background: rgba(10, 10, 20, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .shop-card-enhanced::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .shop-card-enhanced:hover::before {
-        opacity: 1;
-      }
-
-      .shop-card-enhanced:hover {
-        transform: translateY(-8px) scale(1.02);
-        border-color: rgba(6, 182, 212, 0.5);
-        box-shadow: 
-          0 20px 40px rgba(0, 0, 0, 0.4),
-          0 0 30px rgba(6, 182, 212, 0.2),
-          inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      }
-
-      /* Floating Status Indicator */
-      .status-indicator {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.4rem 0.8rem;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(8px);
-        border-radius: 20px;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--jazer-cyan);
-        z-index: 2;
-      }
-
-      .status-indicator::before {
-        content: '';
-        width: 6px;
-        height: 6px;
-        background: var(--jazer-cyan);
-        border-radius: 50%;
-        animation: blink 1.5s infinite;
-      }
-
-      /* Improved Product Image Placeholder */
-      .product-placeholder {
-        position: relative;
-        aspect-ratio: 1;
-        background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0f0f1f 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        overflow: hidden;
-      }
-
-      .product-placeholder::before {
-        content: '';
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        background: conic-gradient(
-          from 0deg,
-          transparent 0%,
-          rgba(6, 182, 212, 0.1) 25%,
-          transparent 50%,
-          rgba(139, 92, 246, 0.1) 75%,
-          transparent 100%
-        );
-        animation: rotateSlow 20s linear infinite;
-      }
-
-      @keyframes rotateSlow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      .product-placeholder-icon {
-        font-size: 3rem;
-        opacity: 0.3;
-        z-index: 1;
-      }
-
-      .product-placeholder-text {
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.3);
-        z-index: 1;
-      }
-
-      /* Improved Timeline */
-      .timeline-step-enhanced {
-        position: relative;
-        padding: 2rem 2.5rem;
-        background: rgba(10, 10, 20, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        margin-bottom: 1.5rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
-      }
-
-      .timeline-step-enhanced::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(180deg, var(--jazer-cyan), var(--jazer-purple));
-        opacity: 0.5;
-        transition: opacity 0.3s ease;
-      }
-
-      .timeline-step-enhanced:hover::before {
-        opacity: 1;
-      }
-
-      .timeline-step-enhanced:hover {
-        transform: translateX(8px);
-        background: rgba(6, 182, 212, 0.05);
-        border-color: rgba(6, 182, 212, 0.3);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      }
-
-      .timeline-phase-tag {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        background: rgba(6, 182, 212, 0.2);
-        border: 1px solid rgba(6, 182, 212, 0.3);
-        border-radius: 4px;
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--jazer-cyan);
-        margin-bottom: 0.75rem;
-      }
-
-      /* Notify Button Enhancement */
-      .notify-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1.25rem;
-        background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple));
-        border: none;
-        border-radius: 8px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: white;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .notify-btn::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, var(--jazer-purple), var(--jazer-pink));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .notify-btn:hover::before {
-        opacity: 1;
-      }
-
-      .notify-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(6, 182, 212, 0.4);
-      }
-
-      .notify-btn span {
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Section Divider */
-      .section-divider {
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), rgba(139, 92, 246, 0.3), transparent);
-        margin: 4rem 0;
-      }
-
-      /* Hero Section */
-      .page-hero {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 4rem 1rem;
-        text-align: center;
-      }
-
-      .page-hero-title-logo {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 1.5rem;
-      }
-
-      .page-hero-subtitle {
-        font-size: 1.25rem;
-        line-height: 1.6;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-      }
-
-      /* Drop Countdown */
-      .drop-countdown {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 2rem;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        margin-bottom: 2rem;
-      }
-
-      .countdown-label {
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text-muted);
-      }
-
-      .countdown-time {
-        font-size: 3rem;
-        font-weight: 800;
-        background: var(--gradient-text);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .countdown-note {
-        font-size: 0.875rem;
-        color: var(--text-muted);
-      }
-
-      /* Email Capture */
-      .hero-email-capture {
-        max-width: 500px;
-        margin: 2rem auto;
-      }
-
-      .hero-email-copy {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        color: var(--text-secondary);
-      }
-
-      .hero-email-form {
-        display: flex;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero-email-form .modern-input {
-        flex: 1;
-        min-width: 250px;
-      }
-
-      /* Page Intro */
-      .page-intro-icon {
-        font-size: 1.125rem;
-        color: var(--text-secondary);
-        line-height: 1.7;
-      }
-
-      /* Shop Sections */
-      .shop-section {
-        margin-bottom: 4rem;
-      }
-
-      .shop-section-header {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .shop-section-title {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-        background: var(--gradient-text);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .shop-section-subtitle {
-        font-size: 1rem;
-        color: var(--text-muted);
-        line-height: 1.6;
-      }
-
-      /* Shop Cards */
-      .shop-featured-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .shop-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .shop-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      }
-
-      .shop-card-media {
-        position: relative;
-        aspect-ratio: 1;
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .shop-card-badge {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: var(--jazer-pink);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .shop-card-placeholder {
-        font-size: 1.5rem;
-        color: var(--text-muted);
-        font-weight: 600;
-      }
-
-      .shop-card-title {
-        padding: 1.5rem 1.5rem 0.5rem;
-        font-size: 1.25rem;
-        font-weight: 600;
-      }
-
-      .shop-card-meta {
-        padding: 0 1.5rem 1rem;
-        color: var(--text-muted);
-        font-size: 0.875rem;
-      }
-
-      .shop-interest-form {
-        padding: 0 1.5rem 1.5rem;
-        display: flex;
-        gap: 0.5rem;
-      }
-
-      .shop-interest-input {
-        flex: 1;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--text-primary);
-        padding: 0.5rem 0.75rem;
-        border-radius: 8px;
-        font-size: 0.875rem;
-        transition: border-color 0.2s ease;
-      }
-
-      .shop-interest-input:focus {
-        outline: none;
-        border-color: var(--jazer-cyan);
-      }
-
-      .shop-interest-input::placeholder {
-        color: var(--text-muted);
-      }
-
-      .shop-interest-button {
-        background: var(--jazer-cyan);
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.2s ease, transform 0.2s ease;
-      }
-
-      .shop-interest-button:hover {
-        background: #0891b2;
-        transform: translateY(-2px);
-      }
-
-      /* Drop Timeline System Log */
-      .drop-timeline {
-        position: relative;
-        max-width: 600px;
-        margin: 0 auto;
-        padding-left: 2rem;
-        border-left: 2px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .timeline-step {
-        position: relative;
-        padding: 1.5rem 2rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        margin-bottom: 2rem;
-        text-align: left;
-        transition: all 0.3s ease;
-      }
-
-      .timeline-step::before {
-        content: '';
-        position: absolute;
-        left: -2.6rem; /* Adjust to align with border */
-        top: 50%;
-        transform: translateY(-50%);
-        width: 12px; height: 12px;
-        background: #000;
-        border: 2px solid var(--jazer-cyan);
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
-      }
-
-      .timeline-step:hover {
-        transform: translateX(10px);
-        border-color: var(--jazer-cyan);
-        box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
-      }
-      .timeline-step:hover::before {
-        background: var(--jazer-cyan);
-      }
-
-      .timeline-title {
-        font-family: 'Courier New', monospace;
-        font-size: 1.125rem;
-        font-weight: 700;
-        color: var(--jazer-cyan);
-        margin-bottom: 0.25rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .timeline-meta {
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-      }
-
-      /* Tech Specs Bento */
-      .tech-specs-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .spec-card {
-        background: rgba(10, 10, 20, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 2rem;
-        transition: border-color 0.3s ease;
-      }
-      .spec-card:hover { border-color: var(--jazer-purple); }
-      
-      .spec-header {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-          border-bottom: 1px solid rgba(255,255,255,0.1);
-          padding-bottom: 1rem;
-      }
-      .spec-icon { width: 24px; height: 24px; filter: invert(1); opacity: 0.7; }
-      
-      .spec-title {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: white;
-      }
-      
-      .spec-list {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-      }
-      
-      .spec-row {
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.9rem;
-      }
-      .spec-key { color: var(--text-muted); }
-      .spec-val { color: white; font-weight: 500; text-align: right; }
-      
-      .grid-span-2 { grid-column: span 2; }
-      @media (max-width: 768px) { .grid-span-2 { grid-column: 1; } }
-
-      /* Design Story */
-      .design-story {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        align-items: center;
-        margin-top: 2rem;
-      }
-
-      .design-visual {
-        aspect-ratio: 16 / 9;
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: var(--text-muted);
-        font-weight: 600;
-      }
-
-      .design-copy {
-        padding: 1rem;
-      }
-
-      .design-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-
-      .design-text {
-        margin-bottom: 1rem;
-        line-height: 1.7;
-        color: var(--text-secondary);
-      }
-
-      .design-text:last-child {
-        margin-bottom: 0;
-      }
-
-      /* Materials Grid */
-      .materials-grid,
-      .shipping-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .material-card,
-      .shipping-card {
-        padding: 2rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        transition: transform 0.2s ease;
-      }
-
-      .material-card:hover,
-      .shipping-card:hover {
-        transform: translateY(-4px);
-      }
-
-      .material-title,
-      .shipping-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        color: var(--jazer-purple);
-      }
-
-      .material-text,
-      .shipping-text {
-        color: var(--text-muted);
-        line-height: 1.6;
-      }
-
-      /* Size Guide */
-      .size-guide {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .size-card {
-        padding: 2rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        text-align: center;
-        transition: transform 0.2s ease;
-      }
-
-      .size-card:hover {
-        transform: translateY(-4px);
-      }
-
-      .size-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-      }
-
-      .size-text {
-        color: var(--text-muted);
-        font-size: 0.875rem;
-      }
-
-      /* Bundle Builder */
-      .bundle-builder {
-        margin-top: 2rem;
-      }
-
-      .bundle-card {
-        padding: 3rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        text-align: center;
-        position: relative;
-      }
-
-      .bundle-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-
-      .bundle-text {
-        color: var(--text-muted);
-        margin-bottom: 1.5rem;
-      }
-
-      .bundle-tag {
-        display: inline-block;
-        background: var(--jazer-cyan);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.875rem;
-        font-weight: 600;
-      }
-
-      /* Mockup Carousel */
-      .mockup-carousel {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .mockup-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        overflow: hidden;
-        transition: transform 0.2s ease;
-      }
-
-      .mockup-card:hover {
-        transform: translateY(-4px);
-      }
-
-      .mockup-art {
-        aspect-ratio: 1;
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-        color: var(--text-muted);
-        font-weight: 600;
-      }
-
-      .mockup-caption {
-        padding: 1rem;
-        text-align: center;
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-      }
-
-      .mockup-note {
-        text-align: center;
-        margin-top: 1.5rem;
-        font-size: 0.875rem;
-      }
-
-      /* Tier Grid */
-      .tier-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .tier-card {
-        padding: 2rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        transition: transform 0.3s ease, border-color 0.3s ease;
-      }
-
-      .tier-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--jazer-cyan);
-      }
-
-      .tier-name {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-
-      .tier-price {
-        color: var(--jazer-cyan);
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-      }
-
-      .tier-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .tier-list li {
-        padding: 0.5rem 0;
-        color: var(--text-secondary);
-        position: relative;
-        padding-left: 1.5rem;
-      }
-
-      .tier-list li::before {
-        content: "✦";
-        position: absolute;
-        left: 0;
-        color: var(--jazer-cyan);
-      }
-
-      /* Community Strip */
-      .community-strip {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 3rem 2rem;
-        text-align: center;
-      }
-
-      .community-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-      }
-
-      .community-avatars {
-        display: flex;
-        gap: 0.5rem;
-      }
-
-      .social-avatar-gradient {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--jazer-pink), var(--jazer-purple));
-        border: 2px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .community-stats {
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .community-stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .community-stat-number {
-        font-size: 2rem;
-        font-weight: 800;
-        background: var(--gradient-text);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .community-stat-label {
-        color: var(--text-muted);
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-      }
-
-      /* FAQ */
-      .faq-list {
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .faq-item {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 1.5rem;
-        transition: background 0.2s ease;
-      }
-
-      .faq-item:hover {
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .faq-item summary {
-        font-weight: 600;
-        cursor: pointer;
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .faq-item summary::after {
-        content: "+";
-        font-size: 1.5rem;
-        color: var(--jazer-cyan);
-        transition: transform 0.2s ease;
-      }
-
-      .faq-item[open] summary::after {
-        transform: rotate(45deg);
-      }
-
-      .faq-item p {
-        margin-top: 1rem;
-        color: var(--text-secondary);
-        line-height: 1.6;
-      }
-
-      /* ========================================
-         TRUST BLOCK
-         ======================================== */
-      .trust-block {
-        background: rgba(10, 10, 20, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: var(--card-radius);
-        padding: 2.5rem;
-        margin-top: 3rem;
-      }
-
-      .trust-block-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 2rem;
-        color: var(--text-light);
-      }
-
-      .trust-links {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-      }
-
-      .trust-link {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 1.25rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 8px;
-        text-decoration: none;
-        color: var(--text-light);
-        transition: all 0.3s ease;
-      }
-
-      .trust-link:hover {
-        background: rgba(6, 182, 212, 0.1);
-        border-color: rgba(6, 182, 212, 0.3);
-      }
-
-      .trust-link-name {
-        font-weight: 600;
-        font-size: 0.875rem;
-      }
-
-      .trust-link-status {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        padding: 0.25rem 0.5rem;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 4px;
-      }
-
-      .trust-link-status.active {
-        background: rgba(16, 185, 129, 0.2);
-        color: #10b981;
-      }
-
-      /* ========================================
-         FOOTER RELEASE LINE
-         ======================================== */
-      .shop-footer-note {
-        text-align: center;
-        padding: 2rem;
-        margin-top: 3rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.875rem;
-        color: var(--text-muted);
-      }
-
-      .shop-footer-note strong {
-        color: var(--jazer-cyan);
-      }
-
-      /* Email Capture Section */
-      .email-capture {
-        padding: 3rem;
-        text-align: center;
-        max-width: 600px;
-        margin: 4rem auto;
-      }
-
-      .email-capture-title {
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
-
-      .email-capture-subtitle {
-        color: var(--text-muted);
-        margin-bottom: 2rem;
-      }
-
-      .email-capture-form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-      }
-
-      .email-capture-status {
-        margin-top: 1rem;
-        font-size: 0.875rem;
-        min-height: 1.5rem;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .page-hero {
-          padding: 3rem 1rem;
-        }
-
-        .page-hero-subtitle {
-          font-size: 1.125rem;
-        }
-
-        .coming-soon-text {
-          font-size: 1.75rem;
-          letter-spacing: 0.1em;
-        }
-
-        .hero-email-form {
-          flex-direction: column;
-        }
-
-        .hero-email-form .modern-input {
-          min-width: 100%;
-        }
-
-        .shop-featured-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .product-placeholder-icon {
-          font-size: 2.5rem;
-        }
-
-        .product-placeholder-text {
-          font-size: 0.75rem;
-        }
-
-        .status-indicator {
-          font-size: 0.6rem;
-          padding: 0.3rem 0.6rem;
-        }
-
-        .design-story {
-          grid-template-columns: 1fr;
-        }
-
-        .drop-timeline {
-          grid-template-columns: 1fr;
-        }
-
-        .timeline-step-enhanced {
-          padding: 1.5rem;
-        }
-
-        .community-stats {
-          gap: 2rem;
-        }
-
-        .tier-grid,
-        .materials-grid,
-        .shipping-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .mockup-carousel {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .notify-btn {
-          width: 100%;
-          justify-content: center;
-        }
-
-        .shop-interest-form {
-          flex-direction: column;
-        }
-
-        .shop-interest-input {
-          width: 100%;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .mockup-carousel {
-          grid-template-columns: 1fr;
-        }
-
-        .community-stats {
-          flex-direction: column;
-          gap: 1.5rem;
-        }
-      }
-      /* New Shop Hero Styles */
-      .shop-hero {
+      .shop-hero-section {
           min-height: 80vh;
           display: flex;
           align-items: center;
-          justify-content: center;
           position: relative;
-          background: radial-gradient(circle at center, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+          background: radial-gradient(circle at top right, rgba(236, 72, 153, 0.05), transparent 60%),
+                      radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.05), transparent 60%);
+          overflow: hidden;
       }
-      .shop-hero-content {
-          text-align: center;
-          z-index: 2;
-          width: 100%;
-          max-width: 900px;
+
+      .hero-eyebrow {
+          font-family: 'Courier New', monospace;
+          color: var(--jazer-pink);
+          font-size: 0.875rem;
+          margin-bottom: 1.5rem;
+          letter-spacing: 0.2em;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.5rem 1rem;
+          background: rgba(236, 72, 153, 0.1);
+          border-radius: 4px;
+          border: 1px solid rgba(236, 72, 153, 0.2);
       }
-      .shop-logo {
-          max-width: 500px;
-          height: auto;
-          margin-bottom: 2.5rem;
-          filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.3));
+      .eyebrow-dot {
+          width: 6px; height: 6px;
+          background: var(--jazer-pink);
+          box-shadow: 0 0 8px var(--jazer-pink);
+          border-radius: 50%;
+          animation: blink 2s infinite;
       }
-      .countdown-wrapper {
-          background: rgba(10, 10, 20, 0.6);
-          border: 1px solid rgba(6, 182, 212, 0.3);
-          box-shadow: 0 0 40px rgba(6, 182, 212, 0.1), inset 0 0 20px rgba(6, 182, 212, 0.05);
-          padding: 2.5rem;
-          border-radius: 12px;
-          position: relative;
-          backdrop-filter: blur(12px);
-          max-width: 600px;
-          margin: 0 auto;
-      }
-      .countdown-wrapper::before, .countdown-wrapper::after {
-          content: '';
-          position: absolute;
-          width: 20px; height: 20px;
-          border: 2px solid var(--jazer-cyan);
-          transition: all 0.3s ease;
-      }
-      .countdown-wrapper::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
-      .countdown-wrapper::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
       
-      .countdown-header {
+      .shop-hero-title {
+          font-family: var(--font-primary);
+          font-size: clamp(3rem, 8vw, 6rem);
+          font-weight: 900;
+          line-height: 1;
+          margin-bottom: 1.5rem;
+          background: linear-gradient(135deg, #fff 0%, #fbcfe8 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
+      }
+
+      .product-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+      }
+
+      .product-card {
+          background: rgba(15, 15, 20, 0.6);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 16px;
+          overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+          display: flex;
+          flex-direction: column;
+      }
+      .product-card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(236, 72, 153, 0.3);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .product-image-placeholder {
+          aspect-ratio: 1;
+          background: linear-gradient(135deg, #1f1f2e 0%, #1a1a24 100%);
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.75rem;
-          margin-bottom: 1rem;
-      }
-      .status-dot {
-          width: 8px; height: 8px;
-          background: var(--jazer-cyan);
-          border-radius: 50%;
-          box-shadow: 0 0 10px var(--jazer-cyan);
-      }
-      .blink { animation: blink 1.5s infinite; }
-      .digital-clock {
-          font-family: 'Courier New', monospace;
-          font-size: 3.5rem;
-          font-weight: 700;
-          letter-spacing: 0.15em;
-          color: var(--jazer-cyan);
-          text-shadow: 0 0 25px rgba(6, 182, 212, 0.8);
-          margin: 1rem 0;
-          line-height: 1;
-      }
-      .coming-soon-text {
-          font-family: 'Courier New', monospace;
-          font-size: 2.5rem;
-          font-weight: 700;
-          letter-spacing: 0.2em;
-          background: linear-gradient(135deg, var(--jazer-cyan) 0%, var(--jazer-purple) 50%, var(--jazer-pink) 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-shadow: none;
-          margin: 1.5rem 0;
-          line-height: 1.2;
-          animation: gradientShift 4s ease infinite;
-      }
-      @keyframes gradientShift {
-          0%, 100% { filter: hue-rotate(0deg); }
-          50% { filter: hue-rotate(30deg); }
-      }
-      .countdown-footer {
-          font-size: 0.75rem;
-          color: rgba(6, 182, 212, 0.7);
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          margin-top: 1rem;
-      }
-      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-      /* Refined Shop Card */
-      .shop-card-refined {
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .shop-card-refined:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
-          border-color: var(--jazer-cyan);
-      }
-      .shop-interest-button {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding-left: 1.25rem;
-          padding-right: 1.25rem;
-      }
-      .button-icon {
-          width: 16px; height: 16px;
-          filter: invert(1);
-      }
-
-      /* Mockup Carousel Wrapper */
-      .mockup-wrapper {
           position: relative;
+          overflow: hidden;
+      }
+      .product-image-placeholder::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+        opacity: 0.3;
+        mix-blend-mode: overlay;
+      }
+      
+      .product-icon {
+          font-size: 4rem;
+          opacity: 0.2;
+          filter: grayscale(1);
+          transition: all 0.4s ease;
+      }
+      .product-card:hover .product-icon {
+          opacity: 0.8;
+          filter: grayscale(0);
+          transform: scale(1.1);
+      }
+
+      .status-badge {
+          position: absolute;
+          top: 1rem; right: 1rem;
+          background: rgba(0, 0, 0, 0.8);
+          backdrop-filter: blur(4px);
+          color: var(--jazer-pink);
+          font-family: 'Courier New', monospace;
+          font-size: 0.75rem;
+          font-weight: 700;
+          padding: 0.35rem 0.75rem;
+          border-radius: 4px;
+          border: 1px solid rgba(236, 72, 153, 0.3);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          z-index: 2;
+      }
+
+      .product-info {
+          padding: 1.5rem;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+      }
+      
+      .product-category {
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--text-muted);
+          margin-bottom: 0.5rem;
+      }
+
+      .product-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: white;
+          margin-bottom: 0.5rem;
+      }
+
+      .product-price {
+          color: var(--jazer-pink);
+          font-weight: 600;
+          font-size: 0.9rem;
+          margin-top: auto;
+          padding-top: 1rem;
+      }
+
+      .notify-btn {
+          margin-top: 1rem;
+          width: 100%;
+          padding: 0.75rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: white;
+          font-weight: 600;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+      }
+      .notify-btn:hover {
+          background: var(--jazer-pink);
+          border-color: var(--jazer-pink);
+          color: white;
+      }
+
+      /* Tech Specs / Timeline */
+      .timeline-step {
           padding: 1.5rem;
           background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 20px;
-          margin-top: 2rem;
-      }
-
-      @media (max-width: 768px) {
-        .shop-hero {
-          min-height: auto;
-          padding: 6rem 1rem 4rem;
-        }
-        .countdown-wrapper {
-          padding: 1.5rem;
-        }
-        .digital-clock {
-          font-size: 2rem;
-        }
-        .shop-logo {
-          max-width: 80%;
-          margin-bottom: 2rem;
-        }
+          border-left: 2px solid var(--jazer-pink);
+          margin-bottom: 1rem;
       }
     </style>
   </Fragment>
 
-  <!-- ========================================
-       SHOP HERO (Improved)
-       ======================================== -->
-  <section class="shop-hero">
-    <span class="shop-hero-badge">Coming in 2026</span>
-    
-    <h1>The Official JaZeR Shop</h1>
-    
-    <p class="shop-hero-subtitle">
-      Premium merchandise designed for the community. All items are in development — 
-      sign up to be notified when drops go live.
-    </p>
-    
-    <div class="shop-hero-cta">
-      <a href="#waitlist" class="btn-primary">
-        <span>🔔</span>
-        <span>Get Notified</span>
-      </a>
-      <a href="#products" class="btn-secondary">
-        <span>View Upcoming Drops</span>
-        <span>↓</span>
-      </a>
+  <!-- Hero Section -->
+  <section class="shop-hero-section">
+    <div class="container text-center" data-animate="fade-up">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        <span>SYSTEM STATUS: STANDBY</span>
+      </div>
+      
+      <h1 class="shop-hero-title">
+        OFFICIAL<br/>STOREFRONT
+      </h1>
+      
+      <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
+        Premium apparel and collectibles designed for the JaZeR community.
+        <br/><strong style="color: var(--text-light);">Opening in 2026.</strong>
+      </p>
+      
+      <div style="display: flex; justify-content: center; gap: 1rem;">
+        <a href="#featured-drops" class="system-button" style="border-color: var(--jazer-pink); color: var(--jazer-pink);">
+          View Drops
+        </a>
+        <a href="#join-waitlist" class="system-button" style="background: var(--jazer-pink); border-color: var(--jazer-pink); color: white;">
+          Get Notified
+        </a>
+      </div>
     </div>
   </section>
 
-  <div class="container section">
-    
-    <!-- ========================================
-         CATEGORY FILTER (Visual)
-         ======================================== -->
-    <div class="category-filter" role="tablist" aria-label="Product categories">
-      {productCategories.map((cat) => (
-        <button 
-          class={`category-tab ${cat.active ? 'active' : ''}`}
-          role="tab"
-          aria-selected={cat.active}
-        >
-          <span>{cat.icon}</span>
-          <span>{cat.name}</span>
-        </button>
-      ))}
-    </div>
-
-    <!-- ========================================
-         FEATURED PRODUCT GRID (Standardized Cards)
-         ======================================== -->
-    <section class="shop-section" id="products" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Upcoming Drops</h2>
-        <p class="shop-section-subtitle">Preview what's coming. All items expected in 2026.</p>
+  <!-- Featured Drops -->
+  <section id="featured-drops" class="section">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <h2 class="section-title gradient-text" style="--gradient: linear-gradient(135deg, #ec4899, #8b5cf6);">Featured Drops</h2>
+        <p class="section-subtitle">Preview the 2026 Collection</p>
       </div>
       
       <div class="product-grid">
-        {upcomingProducts.map((product) => (
-          <article class="product-card" data-category={product.category.toLowerCase()}>
-            <span class="product-card-badge">{product.badge}</span>
-            
-            <div class="product-card-image">
-              <span class="product-card-icon">{product.icon}</span>
+        {upcomingProducts.map((product, index) => (
+          <article class="product-card" data-animate="fade-up" style={`--delay: ${index * 0.1}s`}>
+            <div class="product-image-placeholder">
+              <div class="status-badge">{product.status}</div>
+              <div class="product-icon">{product.icon}</div>
             </div>
-            
-            <div class="product-card-body">
-              <span class="product-card-category">{product.category}</span>
-              <h3 class="product-card-title">{product.title}</h3>
-              <p class="product-card-description">{product.description}</p>
-              <p class="product-card-price">{product.priceRange}</p>
-              
-              <a href="#waitlist" class="btn-primary product-card-cta">
-                <span>🔔</span>
-                <span>Get Notified</span>
+            <div class="product-info">
+              <span class="product-category">{product.category}</span>
+              <h3 class="product-title">{product.title}</h3>
+              <p style="color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem;">
+                {product.description}
+              </p>
+              <div class="product-price">Price: TBD</div>
+              <a href="#join-waitlist" class="notify-btn text-center" style="text-decoration: none;">
+                Notify Me
               </a>
             </div>
           </article>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="section-divider"></div>
-
-    <!-- ========================================
-         DROP TIMELINE (Safe Copy)
-         ======================================== -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Drop Sequence</h2>
-        <p class="shop-section-subtitle">Planned rollout phases. Dates subject to change.</p>
-      </div>
-      <div class="drop-timeline" style="border-left: none; padding-left: 0;">
-        {dropPhases.map((phase) => (
-          <div class="timeline-step-enhanced">
-            <span class="timeline-phase-tag">Phase {phase.phase}</span>
-            <div class="timeline-title" style="font-size: 1.25rem; margin-bottom: 0.5rem;">{phase.title}</div>
-            <div class="timeline-meta">{phase.description} • {phase.timing}</div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Behind the Design -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Behind the Design</h2>
-        <p class="shop-section-subtitle">Moodboards, sketches, and color studies driving the 2026 line.</p>
-      </div>
-      <div class="design-story">
-        <div class="design-visual" aria-hidden="true">Concept art</div>
-        <div class="design-copy">
-          <h3 class="design-title">Signal to Beam</h3>
-          <p class="design-text">The 2026 line blends neon gradients, analog textures, and cosmic symbolism. Every piece is built to feel like a wearable track.</p>
-          <p class="design-text">Expect reflective ink hits, holographic patches, and hidden details throughout the drops.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tech Specs (Materials, Care, Size, Shipping) -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Technical Specifications</h2>
-        <p class="shop-section-subtitle">Fabrication data and system logistics.</p>
-      </div>
-      
-      <div class="tech-specs-grid">
-        <!-- Materials -->
-        <article class="spec-card">
-            <div class="spec-header">
-                <img src={`${base}assets/images/icons/utility/star.svg`} alt="" class="spec-icon" />
-                <h3 class="spec-title">Materials</h3>
-            </div>
-            <div class="spec-list">
-                <div class="spec-row">
-                    <span class="spec-key">Tees</span>
-                    <span class="spec-val">Heavyweight Cotton (240gsm)</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-key">Hoodies</span>
-                    <span class="spec-val">French Terry (400gsm)</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-key">Prints</span>
-                    <span class="spec-val">High-Density Puff Print</span>
-                </div>
-            </div>
-        </article>
-
-        <!-- Sizing -->
-        <article class="spec-card">
-             <div class="spec-header">
-                <img src={`${base}assets/images/icons/utility/alert.svg`} alt="" class="spec-icon" />
-                <h3 class="spec-title">Fit Guide</h3>
-            </div>
-            <div class="spec-list">
-                <div class="spec-row">
-                    <span class="spec-key">Standard</span>
-                    <span class="spec-val">True to Size</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-key">Oversized</span>
-                    <span class="spec-val">Size Down for Regular Fit</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-key">Measurements</span>
-                    <span class="spec-val">Available on Drop</span>
-                </div>
-            </div>
-        </article>
-        
-        <!-- Shipping -->
-        <article class="spec-card grid-span-2">
-             <div class="spec-header">
-                <img src={`${base}assets/images/icons/utility/contact.svg`} alt="" class="spec-icon" />
-                <h3 class="spec-title">Global Logistics</h3>
-            </div>
-            <div class="spec-list">
-                <div class="spec-row">
-                    <span class="spec-key">North America</span>
-                    <span class="spec-val">Priority Shipping (3-5 Days)</span>
-                </div>
-                <div class="spec-row">
-                    <span class="spec-key">International</span>
-                    <span class="spec-val">Phased Rollout in 2026</span>
-                </div>
-                 <div class="spec-row">
-                    <span class="spec-key">Handling</span>
-                    <span class="spec-val">All orders ship in eco-friendly mailers</span>
-                </div>
-            </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Bundle Builder -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Bundle Builder</h2>
-        <p class="shop-section-subtitle">Mix pieces, add exclusives, and build your drop kit in 2026.</p>
-      </div>
-      <div class="bundle-builder">
-        <div class="bundle-card">
-          <h3 class="bundle-title">Build your bundle</h3>
-          <p class="bundle-text">Select apparel, vinyl, and bonus items once the shop opens.</p>
-          <span class="bundle-tag">Teaser</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Visual Mockups -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Visual Mockups</h2>
-        <p class="shop-section-subtitle">Swipe for early print directions and textures.</p>
-      </div>
-      <div class="mockup-wrapper">
-          <div class="mockup-carousel" aria-label="Product mockups">
-            <figure class="mockup-card">
-              <div class="mockup-art" aria-hidden="true">Front print</div>
-              <figcaption class="mockup-caption">Beam hoodie front</figcaption>
-            </figure>
-            <figure class="mockup-card">
-              <div class="mockup-art" aria-hidden="true">Back print</div>
-              <figcaption class="mockup-caption">Signal tee back</figcaption>
-            </figure>
-            <figure class="mockup-card">
-              <div class="mockup-art" aria-hidden="true">Texture</div>
-              <figcaption class="mockup-caption">Embossed patch</figcaption>
-            </figure>
-            <figure class="mockup-card">
-              <div class="mockup-art" aria-hidden="true">Poster</div>
-              <figcaption class="mockup-caption">Neon poster gloss</figcaption>
-            </figure>
-          </div>
-      </div>
-      <p class="mockup-note text-muted">Store opening soon. Final designs may evolve.</p>
-    </section>
-
-    <!-- Merch Tiers -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Merch Tiers</h2>
-        <p class="shop-section-subtitle">Pick your level and plan your pickup.</p>
-      </div>
-      <div class="grid tier-grid">
-        <article class="tier-card">
-          <h3 class="tier-name">Essentials</h3>
-          <p class="tier-price">Est. $20-$45</p>
-          <ul class="tier-list list-clean">
-            <li>Tees and caps</li>
-            <li>Everyday colorways</li>
-            <li>Fast restocks</li>
-          </ul>
-        </article>
-        <article class="tier-card">
-          <h3 class="tier-name">Premium</h3>
-          <p class="tier-price">Est. $50-$85</p>
-          <ul class="tier-list list-clean">
-            <li>Hoodies and jackets</li>
-            <li>Custom trims</li>
-            <li>Limited runs</li>
-          </ul>
-        </article>
-        <article class="tier-card">
-          <h3 class="tier-name">Limited</h3>
-          <p class="tier-price">Est. $90+</p>
-          <ul class="tier-list list-clean">
-            <li>Numbered drops</li>
-            <li>Signed inserts</li>
-            <li>Collector extras</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- Community Section -->
-    <section class="shop-section community-strip" data-animate="fade-up">
-      <div class="community-content">
-        <div class="community-avatars" aria-hidden="true">
-          <span class="social-avatar-gradient"></span>
-          <span class="social-avatar-gradient"></span>
-          <span class="social-avatar-gradient"></span>
-          <span class="social-avatar-gradient"></span>
-        </div>
-        <div class="community-text">
-          <h2 class="shop-section-title">Join the Beam</h2>
-          <p class="shop-section-subtitle">Early access, behind-the-scenes drops, and fan-only bundles.</p>
-        </div>
-      </div>
-      <div class="community-stats">
-        <div class="community-stat">
-          <span class="community-stat-number">32k</span>
-          <span class="community-stat-label">Listeners</span>
-        </div>
-        <div class="community-stat">
-          <span class="community-stat-number">8k</span>
-          <span class="community-stat-label">Followers</span>
-        </div>
-        <div class="community-stat">
-          <span class="community-stat-number">120+</span>
-          <span class="community-stat-label">Cities</span>
-        </div>
-      </div>
-      <a class="cta-button" href="#shop-updates" aria-label="Get shop alert notifications">Get shop alerts</a>
-    </section>
-
-    <!-- FAQ (Safe Copy) -->
-    <section class="shop-section" id="faq" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Frequently Asked Questions</h2>
-        <p class="shop-section-subtitle">Everything you need to know before the shop opens.</p>
-      </div>
-      <div class="faq-list" style="max-width: 700px; margin: 0 auto;">
-        {shopFAQ.map((faq, index) => (
-          <details class="faq-item" data-animate="fade-up" data-animate-delay={index * 50}>
-            <summary>{faq.q}</summary>
-            <p>{faq.a}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Trust & Policies Block -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="trust-block">
-        <h3 class="trust-block-title">Policies & Support</h3>
-        <div class="trust-links">
-          {policyLinks.map((link) => (
-            <a href={link.href} class="trust-link">
-              <span class="trust-link-name">{link.name}</span>
-              <span class={`trust-link-status ${link.status === 'Active' || link.status === 'Available' ? 'active' : ''}`}>{link.status}</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Size Guide</h2>
-        <p class="shop-section-subtitle">Find your perfect fit.</p>
-      </div>
-      <div class="premium-glass-card" style="max-width: 700px; margin: 2rem auto; padding: 2rem; overflow-x: auto;">
-        <h3 style="text-align: center; margin-bottom: 1.5rem; font-weight: 600;">T-Shirts (Unisex)</h3>
-        <table style="width: 100%; border-collapse: collapse; text-align: center;">
-          <thead>
-            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2);">
-              <th style="padding: 1rem; font-weight: 700;">Size</th>
-              <th style="padding: 1rem; font-weight: 700;">Chest</th>
-              <th style="padding: 1rem; font-weight: 700;">Length</th>
-              <th style="padding: 1rem; font-weight: 700;">Shoulder</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sizeGuide.tees.map((row, i) => (
-              <tr style={`border-bottom: 1px solid rgba(255,255,255,0.1); ${i % 2 === 0 ? 'background: rgba(0,0,0,0.2);' : ''}`}>
-                <td style="padding: 0.75rem; font-weight: 600; color: var(--jazer-cyan);">{row.size}</td>
-                <td style="padding: 0.75rem;">{row.chest}</td>
-                <td style="padding: 0.75rem;">{row.length}</td>
-                <td style="padding: 0.75rem;">{row.shoulder}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">💡 Tip: For oversized fit, size up. For fitted look, go true to size.</p>
-      </div>
-    </section>
-
-    <!-- Customer Reviews -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Community Hype</h2>
-        <p class="shop-section-subtitle">What fans are saying about the upcoming drop.</p>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-        {reviews.map((review, index) => (
-          <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <div style="display: flex; gap: 0.25rem; margin-bottom: 1rem;">
-              {[...Array(review.rating)].map(() => (
-                <span style="color: #f59e0b;">⭐</span>
-              ))}
-            </div>
-            <p style="font-style: italic; line-height: 1.6; margin-bottom: 1rem;">"{review.text}"</p>
-            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
-              <span style="font-weight: 600;">{review.name}</span>
-              <span style="color: var(--text-muted);">{review.date}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Shipping Information -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="shop-section-header">
-        <h2 class="shop-section-title">Shipping Info</h2>
-        <p class="shop-section-subtitle">Worldwide delivery planned for launch.</p>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem;">
-        {shippingInfo.map((info, index) => (
-          <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
-            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">{info.region}</h4>
-            <p style="font-size: 0.875rem; color: var(--jazer-cyan); margin-bottom: 0.25rem;">{info.time}</p>
-            <p style="font-size: 0.813rem; color: var(--text-muted);">{info.cost}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Wishlist Feature -->
-    <section class="shop-section" data-animate="fade-up">
-      <div class="premium-glass-card" style="max-width: 600px; margin: 0 auto; padding: 3rem; text-align: center;">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">💜</div>
-        <h2 class="shop-section-title">Create Your Wishlist</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;">Save items you want and get notified when they drop.</p>
-        <button class="cta-button" style="margin: 0 auto;">
-          <span>📋</span>
-          <span>Start Wishlist</span>
-        </button>
-        <p style="font-size: 0.813rem; color: var(--text-muted); margin-top: 1rem;">Feature available at shop launch</p>
-      </div>
-    </section>
-
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true" style="opacity: 0.3;">
+    <div class="tech-line"></div>
+    <div class="tech-node" style="background: var(--jazer-pink); box-shadow: 0 0 10px var(--jazer-pink);"></div>
+    <div class="tech-line"></div>
   </div>
 
-  <!-- ========================================
-       EMAIL WAITLIST CTA
-       ======================================== -->
-  <section id="waitlist">
+  <!-- Drop Timeline -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <h2 class="section-title">Drop Sequence</h2>
+        <p class="section-subtitle">Planned rollout schedule</p>
+      </div>
+      
+      <div style="max-width: 700px; margin: 3rem auto;">
+        {dropPhases.map((phase, index) => (
+          <div class="timeline-step" data-animate="fade-left" style={`--delay: ${index * 0.15}s`}>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-family: 'Courier New'; color: var(--jazer-pink); font-weight: 700;">PHASE {phase.phase}</span>
+              <span style="font-size: 0.75rem; text-transform: uppercase; opacity: 0.7;">{phase.status}</span>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem;">{phase.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">{phase.description} • <strong>{phase.timing}</strong></p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <h2 class="section-title">Store FAQ</h2>
+      </div>
+      <div style="max-width: 700px; margin: 0 auto; display: grid; gap: 1rem;">
+        {shopFAQ.map((item, index) => (
+          <div class="premium-glass-card" style="padding: 1.5rem; border-left: 3px solid var(--jazer-pink);" data-animate="fade-up">
+            <h3 style="font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">{item.q}</h3>
+            <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist CTA -->
+  <div id="join-waitlist" style="scroll-margin-top: 100px;">
     <JoinBeamCTA
-      sectionStyle="padding: 6rem 0; background: rgba(0,0,0,0.2);"
+      sectionStyle="padding: 6rem 0;"
       captureStyle="max-width: 700px; margin: 0 auto;"
       subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
-      subject="Shop Waitlist - JaZeR"
-      buttonLabel="Join the Waitlist"
-      proofText="Join <strong>500+</strong> fans waiting for the drop"
+      subject="New subscriber from JaZeR Shop"
+      buttonLabel="Join Store Waitlist"
+      proofText="Get priority access codes"
     >
       <Fragment slot="subtitle">
-        Be the first to hear about new merch drops, exclusive bundles, and <strong>early access</strong> when the shop opens in 2026.
+        Don't miss the first drop. Secure your spot in line for the 2026 launch.
       </Fragment>
     </JoinBeamCTA>
-  </section>
+  </div>
 
   <!-- Shop Footer Note -->
   <div class="shop-footer-note">
