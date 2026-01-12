@@ -61,6 +61,100 @@ const socialProof = [
   { quote: "Can't wait for the debut album. The snippets sound amazing!", author: "Day One Fan", platform: "YouTube" },
   { quote: "Finally, an artist who puts real emotion into every track.", author: "Music Lover", platform: "Twitter" }
 ];
+
+// Mission & Values
+const missionValues = {
+  mission: "To create music that serves as a sonic escape hatch — a focused beam of energy designed to cut through the noise, light up the dark, and remind people of what's possible.",
+  values: [
+    { name: 'Authenticity', desc: 'Every track reflects real emotions and experiences', icon: '💯' },
+    { name: 'Quality', desc: 'No shortcuts — every detail matters', icon: '💎' },
+    { name: 'Connection', desc: 'Building a community, not just an audience', icon: '🤝' },
+    { name: 'Growth', desc: 'Always learning, always evolving', icon: '🌱' }
+  ]
+};
+
+// Origin Story
+const originStory = {
+  location: 'United States',
+  timezone: 'EST',
+  started: '2020',
+  style: 'A blend of electronic, hip-hop, and melodic elements'
+};
+
+// Creative Process
+const creativeProcess = [
+  { step: 1, title: 'Inspiration', desc: 'Ideas come from everywhere — late night drives, conversations, emotions', icon: '💡' },
+  { step: 2, title: 'Sketching', desc: 'Quick beats and melodies captured in FL Studio', icon: '✏️' },
+  { step: 3, title: 'Building', desc: 'Layering sounds, refining arrangements, finding the groove', icon: '🏗️' },
+  { step: 4, title: 'Writing', desc: 'Lyrics that tell stories and connect emotionally', icon: '✍️' },
+  { step: 5, title: 'Mixing', desc: 'Balancing every element for clarity and impact', icon: '🎚️' },
+  { step: 6, title: 'Mastering', desc: 'Final polish for streaming-ready quality', icon: '💿' }
+];
+
+// Influences & Inspirations
+const influences = [
+  { name: 'Electronic Pioneers', examples: 'Daft Punk, Deadmau5, ODESZA', icon: '🎛️' },
+  { name: 'Hip-Hop Producers', examples: 'Metro Boomin, Pharrell, Kanye', icon: '🎤' },
+  { name: 'R&B Vibes', examples: 'The Weeknd, Frank Ocean, SZA', icon: '💜' },
+  { name: 'Cinematic Scores', examples: 'Hans Zimmer, Trent Reznor', icon: '🎬' }
+];
+
+// Availability
+const availability = {
+  status: 'Open',
+  openFor: ['Collaborations', 'Features', 'Remix Requests', 'Sync Licensing'],
+  notAvailable: ['Live performances (2026)', 'Ghost production'],
+  responseTime: '24-48 hours'
+};
+
+// Featured In / Media
+const featuredIn = [
+  { outlet: 'Podcast Feature', title: 'TBD Music Podcast', date: 'Coming 2026', icon: '🎙️' },
+  { outlet: 'Blog Interview', title: 'Artist Spotlight', date: 'Coming 2026', icon: '📝' },
+  { outlet: 'YouTube Feature', title: 'Producer Breakdown', date: 'Coming 2026', icon: '📺' }
+];
+
+// Vision & Goals
+const visionGoals = {
+  shortTerm: [
+    { goal: 'Release debut single', target: 'March 2026', status: 'In Progress' },
+    { goal: 'Reach 10K monthly listeners', target: 'Summer 2026', status: 'Goal' },
+    { goal: 'Launch merch store', target: 'March 2026', status: 'Planned' }
+  ],
+  longTerm: [
+    { goal: 'Debut album release', target: '2026', icon: '💿' },
+    { goal: 'First live performance', target: '2027', icon: '🎤' },
+    { goal: 'World tour', target: '2028+', icon: '🌍' },
+    { goal: 'Music for film/TV', target: 'Ongoing', icon: '🎬' }
+  ]
+};
+
+// Daily Routine
+const dailyRoutine = [
+  { time: '8 AM', activity: 'Wake up, coffee, morning inspiration', icon: '☕' },
+  { time: '10 AM', activity: 'Studio session — production & writing', icon: '🎹' },
+  { time: '1 PM', activity: 'Break, lunch, listen to new music', icon: '🎧' },
+  { time: '3 PM', activity: 'Mixing, editing, refining tracks', icon: '🎚️' },
+  { time: '6 PM', activity: 'Content creation, social media', icon: '📱' },
+  { time: '9 PM', activity: 'Creative exploration, new ideas', icon: '💡' },
+  { time: '12 AM', activity: 'Late night sessions (best ideas come here)', icon: '🌙' }
+];
+
+// Collaboration Philosophy
+const collabPhilosophy = {
+  approach: "I believe the best music comes from genuine connection. When I collaborate, I'm looking for artists who bring their authentic self to the table.",
+  lookingFor: ['Unique voices', 'Creative vision', 'Mutual respect', 'Good energy'],
+  process: "Usually starts with a conversation, then a shared session (virtual or in-person), and ends with something neither of us could have made alone."
+};
+
+// FAQ About Me
+const personalFAQ = [
+  { q: 'How did you get started in music?', a: 'Started making beats in my bedroom in 2020, fell in love with the process, and never looked back.' },
+  { q: 'What does JaZeR mean?', a: 'It represents a focused beam of energy — like a laser cutting through noise.' },
+  { q: 'Do you produce for other artists?', a: 'Open to collaborations! Reach out via the contact page.' },
+  { q: 'What\'s your favorite genre to produce?', a: 'Electronic with melodic hip-hop influences — emotional but energetic.' },
+  { q: 'Are you self-taught?', a: 'Mostly! Learned through YouTube, trial and error, and thousands of hours of practice.' }
+];
 ---
 <BaseLayout
   bodyClass="has-announcement about-page"
@@ -874,6 +968,286 @@ const socialProof = [
               <span style="font-size: 0.75rem; color: var(--jazer-cyan);">via {item.platform}</span>
             </div>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Values -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Mission & Values</h2>
+        <p class="section-subtitle">What drives the music</p>
+      </div>
+      
+      <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; padding: 3rem; text-align: center;" data-animate="fade-up">
+        <p style="font-size: 1.25rem; line-height: 1.8; font-style: italic; color: var(--text-light);">"{missionValues.mission}"</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+        {missionValues.values.map((value, index) => (
+          <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">{value.icon}</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">{value.name}</h4>
+            <p style="font-size: 0.813rem; color: var(--text-muted);">{value.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Where I'm From -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Where I'm From</h2>
+        <p class="section-subtitle">The origin of the sound</p>
+      </div>
+      
+      <div class="premium-glass-card" style="max-width: 600px; margin: 3rem auto; padding: 2.5rem;" data-animate="fade-up">
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          <div style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📍</div>
+            <div style="font-weight: 700; color: var(--jazer-cyan);">{originStory.location}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Location</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🕐</div>
+            <div style="font-weight: 700; color: var(--jazer-purple);">{originStory.timezone}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Timezone</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎹</div>
+            <div style="font-weight: 700; color: var(--jazer-pink);">{originStory.started}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Started</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎵</div>
+            <div style="font-weight: 700; color: #10b981;">Unique</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Sound</div>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);">{originStory.style}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creative Process -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Creative Process</h2>
+        <p class="section-subtitle">How a track comes to life</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 3rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        {creativeProcess.map((step, index) => (
+          <div class="premium-card" style="padding: 1.5rem; text-align: center; position: relative;" data-animate="fade-up" data-animate-delay={index * 50}>
+            <span style="position: absolute; top: -0.75rem; left: 50%; transform: translateX(-50%); background: var(--jazer-cyan); color: #000; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.875rem;">{step.step}</span>
+            <div style="font-size: 2rem; margin-bottom: 0.75rem; margin-top: 0.5rem;">{step.icon}</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">{step.title}</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Influences & Inspirations -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Influences & Inspirations</h2>
+        <p class="section-subtitle">Artists and sounds that shaped the style</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+        {influences.map((influence, index) => (
+          <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <div style="font-size: 2rem;">{influence.icon}</div>
+              <h4 style="font-weight: 700;">{influence.name}</h4>
+            </div>
+            <p style="font-size: 0.875rem; color: var(--jazer-cyan);">{influence.examples}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Routine -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">A Day in the Life</h2>
+        <p class="section-subtitle">The typical creative schedule</p>
+      </div>
+      
+      <div style="max-width: 600px; margin: 3rem auto;">
+        {dailyRoutine.map((item, index) => (
+          <div class="premium-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem;" data-animate="fade-up" data-animate-delay={index * 50}>
+            <div style="font-size: 1.5rem;">{item.icon}</div>
+            <div style="width: 70px; font-weight: 700; color: var(--jazer-cyan); font-size: 0.875rem;">{item.time}</div>
+            <div style="flex: 1; font-size: 0.875rem; color: var(--text-light);">{item.activity}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Availability -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Availability</h2>
+        <p class="section-subtitle">Open for opportunities</p>
+      </div>
+      
+      <div class="premium-glass-card" style="max-width: 700px; margin: 3rem auto; padding: 2.5rem;" data-animate="fade-up">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+          <span style="width: 12px; height: 12px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+          <span style="font-weight: 700; font-size: 1.25rem; color: #10b981;">Currently {availability.status}</span>
+        </div>
+        
+        <style>
+          @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+          }
+        </style>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+          <div>
+            <h4 style="font-weight: 600; color: #10b981; margin-bottom: 1rem;">✅ Open For</h4>
+            {availability.openFor.map((item) => (
+              <p style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--text-light);">• {item}</p>
+            ))}
+          </div>
+          <div>
+            <h4 style="font-weight: 600; color: #ef4444; margin-bottom: 1rem;">❌ Not Available</h4>
+            {availability.notAvailable.map((item) => (
+              <p style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--text-muted);">• {item}</p>
+            ))}
+          </div>
+        </div>
+        
+        <div style="text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Response time: <strong style="color: var(--jazer-cyan);">{availability.responseTime}</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured In -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Featured In</h2>
+        <p class="section-subtitle">Media appearances and mentions</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+        {featuredIn.map((feature, index) => (
+          <div class="premium-card" style="padding: 2rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">{feature.icon}</div>
+            <span style="padding: 0.25rem 0.75rem; background: rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.75rem;">{feature.outlet}</span>
+            <h4 style="font-weight: 700; margin: 1rem 0 0.5rem;">{feature.title}</h4>
+            <p style="font-size: 0.813rem; color: var(--jazer-cyan);">{feature.date}</p>
+          </div>
+        ))}
+      </div>
+      
+      <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);" data-animate="fade-up">More media features coming in 2026!</p>
+    </div>
+  </section>
+
+  <!-- Vision & Goals -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Vision & Goals</h2>
+        <p class="section-subtitle">Where this journey is heading</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 3rem auto;">
+        <!-- Short Term -->
+        <div data-animate="fade-up">
+          <h3 style="font-weight: 700; margin-bottom: 1.5rem; color: var(--jazer-cyan);">📅 Short Term (2026)</h3>
+          {visionGoals.shortTerm.map((goal, index) => (
+            <div class="premium-card" style="padding: 1.25rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-weight: 600; font-size: 0.938rem;">{goal.goal}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">{goal.target}</div>
+              </div>
+              <span style={`padding: 0.25rem 0.75rem; background: ${goal.status === 'In Progress' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255,255,255,0.1)'}; color: ${goal.status === 'In Progress' ? '#10b981' : 'var(--text-muted)'}; border-radius: 4px; font-size: 0.625rem; font-weight: 700;`}>{goal.status}</span>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Long Term -->
+        <div data-animate="fade-up" data-animate-delay="100">
+          <h3 style="font-weight: 700; margin-bottom: 1.5rem; color: var(--jazer-purple);">🔮 Long Term</h3>
+          {visionGoals.longTerm.map((goal, index) => (
+            <div class="premium-card" style="padding: 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+              <div style="font-size: 1.5rem;">{goal.icon}</div>
+              <div>
+                <div style="font-weight: 600; font-size: 0.938rem;">{goal.goal}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">{goal.target}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaboration Philosophy -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Collaboration Philosophy</h2>
+        <p class="section-subtitle">How I approach working with others</p>
+      </div>
+      
+      <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; padding: 3rem;" data-animate="fade-up">
+        <p style="font-size: 1.125rem; line-height: 1.8; text-align: center; margin-bottom: 2rem; color: var(--text-light);">"{collabPhilosophy.approach}"</p>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-bottom: 2rem;">
+          {collabPhilosophy.lookingFor.map((item) => (
+            <span style="padding: 0.5rem 1rem; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 20px; font-size: 0.875rem; font-weight: 600;">✓ {item}</span>
+          ))}
+        </div>
+        
+        <p style="font-size: 0.875rem; color: var(--text-muted); text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">{collabPhilosophy.process}</p>
+      </div>
+      
+      <div style="text-align: center;" data-animate="fade-up">
+        <a href="/contact" class="cta-button">
+          <span>🤝</span>
+          <span>Let's Collaborate</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ About Me -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">FAQ About Me</h2>
+        <p class="section-subtitle">Common questions answered</p>
+      </div>
+      
+      <div style="max-width: 700px; margin: 3rem auto;">
+        {personalFAQ.map((faq, index) => (
+          <details class="premium-card" style="padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;" data-animate="fade-up" data-animate-delay={index * 50}>
+            <summary style="font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              {faq.q}
+              <span style="font-size: 1.25rem;">+</span>
+            </summary>
+            <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-light); line-height: 1.6;">{faq.a}</p>
+          </details>
         ))}
       </div>
     </div>
