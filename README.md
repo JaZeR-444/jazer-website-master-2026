@@ -341,6 +341,8 @@ Get the JaZeR website running locally in under 60 seconds:
 
 ### Installation
 
+> **💾 Clone the Repository**: Get started by downloading the project
+
 ```bash
 # Clone the repository
 git clone https://github.com/JaZeR-444/TEST-Website-Import.git
@@ -351,6 +353,8 @@ cd TEST-Website-Import
 # Install dependencies
 npm install
 ```
+
+> **💡 Note**: Make sure you have Node.js 18+ installed before running these commands.
 
 ### Run Locally
 
@@ -367,6 +371,8 @@ npm run build
 # Option 3: Preview production build
 npm run preview
 ```
+
+> **🔥 Hot Reload**: The dev server automatically refreshes when you make changes to files.
 
 ### View in Browser
 
@@ -1233,17 +1239,27 @@ Need help or have questions?
 > *"This is JaZeR. Welcome home."*  
 > *"Keep the beat, keep the lights warm, and bring the volume."* 🎚️🎧✨
 
-**[Visit the Live Site →](https://jazer-444.github.io/TEST-Website-Import/)**
+---
+
+**[🌐 Visit the Live Site →](https://jazer-444.github.io/TEST-Website-Import/)**
 
 ---
 
 **Made with 💜 by JaZeR**  
 *Powered by Astro 5.0 + GitHub Pages • Built with HTML, CSS, and JavaScript*
 
-**Latest Update**: January 2026 — Enhanced README with improved structure and visual design ✨
+**Latest Update**: January 12, 2026 — Enhanced README with comprehensive UX improvements ✨
 
 ---
 
-<sub>**Note**: This is an artist website for JaZeR. All content, branding, and creative materials are © 2026 JaZeR. See [License](#️-license--legal) for usage terms.</sub>
+<sub>**📜 Legal Notice**: This is an artist website for JaZeR. All content, branding, and creative materials are © 2026 JaZeR. See [License](#️-license--legal) for usage terms.</sub>
+
+<br/>
+
+<div align="center">
+
+**Quick Links**: [Top](#-jazer-official-website) • [Features](#-features) • [Roadmap](#️-roadmap--vision) • [FAQ](#-faq) • [Connect](#-connect-with-jazer)
+
+</div>
 
 </div>
