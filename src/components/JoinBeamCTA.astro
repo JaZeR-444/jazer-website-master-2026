@@ -1,0 +1,58 @@
+---
+const base = import.meta.env.BASE_URL;
+const {
+  id,
+  sectionClass = 'section email-section',
+  sectionStyle,
+  captureStyle,
+  subtitleStyle,
+  subject,
+  buttonLabel,
+  proofText
+} = Astro.props;
+---
+<section class={sectionClass} id={id} style={sectionStyle}>
+  <div class="container">
+    <div class="email-capture" data-animate="fade-up" style={captureStyle}>
+      <img
+        src={`${base}assets/images/join-the-beam (1500 x 500 px) (300 x 100 px).svg`}
+        alt="Join the Beam"
+        class="email-capture-title-img"
+        data-animate="fade-up"
+      />
+      <p class="email-capture-subtitle" style={subtitleStyle}>
+        <slot name="subtitle" />
+      </p>
+      <form
+        class="email-capture-form"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+      >
+        <input
+          type="email"
+          name="email"
+          class="email-capture-input"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        />
+        <input type="hidden" name="_subject" value={subject} />
+        <button type="submit" class="email-capture-btn">
+          <span>{buttonLabel}</span>
+          <span class="btn-arrow"></span>
+        </button>
+      </form>
+      <p class="email-capture-status" role="status" aria-live="polite"></p>
+      <div class="email-capture-proof">
+        <div class="email-capture-avatars">
+          <span class="social-avatar-gradient"></span>
+          <span class="social-avatar-gradient"></span>
+          <span class="social-avatar-gradient"></span>
+          <span class="social-avatar-gradient"></span>
+        </div>
+        <span set:html={proofText}></span>
+      </div>
+    </div>
+  </div>
+</section>
+

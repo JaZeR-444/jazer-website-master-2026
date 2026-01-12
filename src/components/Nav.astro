@@ -1,0 +1,135 @@
+---
+const base = import.meta.env.BASE_URL;
+const { currentPath = '/' } = Astro.props;
+const basePath = base.endsWith('/') ? base.slice(0, -1) : base;
+const normalizedPath = basePath && currentPath.startsWith(basePath)
+  ? currentPath.slice(basePath.length) || '/'
+  : currentPath;
+const isHome = normalizedPath === '/';
+const isMusic = normalizedPath.startsWith('/music');
+const isVideos = normalizedPath.startsWith('/videos');
+const isAbout = normalizedPath.startsWith('/about');
+const isShop = normalizedPath.startsWith('/shop');
+const isContact = normalizedPath.startsWith('/contact');
+---
+<nav class="site-nav" role="navigation" aria-label="Primary">
+  <div class="container nav-inner">
+    <div class="nav-background"></div>
+    <a class="logo" href={`${base}`} aria-label="Go to home">
+      <img
+        src={`${base}assets/images/vibrant-jzr-monogram-logo (100 x 100 px).svg`}
+        alt="JaZeR logo"
+        style="height: 40px; width: auto;"
+      />
+    </a>
+
+    <button
+      id="mobileMenu"
+      class="mobile-menu"
+      aria-expanded="false"
+      aria-controls="navLinks"
+      aria-label="Toggle navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <a
+          href={`${base}`}
+          class={isHome ? 'active' : ''}
+          aria-current={isHome ? 'page' : undefined}
+        >
+          Home
+        </a>
+      </li>
+      <li class="nav-dropdown">
+        <a
+          href={`${base}music`}
+          class={isMusic ? 'active' : ''}
+          aria-current={isMusic ? 'page' : undefined}
+        >
+          Music
+        </a>
+        <div class="nav-dropdown-content">
+          <div class="dropdown-grid">
+            <a href={`${base}music#singles`} class="dropdown-item">
+              <span class="dropdown-item-icon">
+                <img src={`${base}assets/images/icons/music/music-note-black.svg`} alt="Singles" style="width: 20px; height: 20px;" />
+              </span>
+              <span class="dropdown-item-text">
+                <span class="dropdown-item-title">Singles</span>
+                <span class="dropdown-item-desc">Latest releases</span>
+              </span>
+            </a>
+            <a href={`${base}music#albums`} class="dropdown-item">
+              <span class="dropdown-item-icon">
+                <img src={`${base}assets/images/icons/music/album-black.svg`} alt="Albums" style="width: 20px; height: 20px;" />
+              </span>
+              <span class="dropdown-item-text">
+                <span class="dropdown-item-title">Albums</span>
+                <span class="dropdown-item-desc">Full projects</span>
+              </span>
+            </a>
+            <a href={`${base}music#remixes`} class="dropdown-item">
+              <span class="dropdown-item-icon">
+                <img src={`${base}assets/images/icons/music/mixer-black.svg`} alt="Remixes" style="width: 20px; height: 20px;" />
+              </span>
+              <span class="dropdown-item-text">
+                <span class="dropdown-item-title">Remixes</span>
+                <span class="dropdown-item-desc">Fresh takes</span>
+              </span>
+            </a>
+            <a href={`${base}music#playlists`} class="dropdown-item">
+              <span class="dropdown-item-icon">
+                <img src={`${base}assets/images/icons/music/playlist-black.svg`} alt="Playlists" style="width: 20px; height: 20px;" />
+              </span>
+              <span class="dropdown-item-text">
+                <span class="dropdown-item-title">Playlists</span>
+                <span class="dropdown-item-desc">Curated vibes</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a
+          href={`${base}videos`}
+          class={isVideos ? 'active' : ''}
+          aria-current={isVideos ? 'page' : undefined}
+        >
+          Videos
+        </a>
+      </li>
+      <li>
+        <a
+          href={`${base}about`}
+          class={isAbout ? 'active' : ''}
+          aria-current={isAbout ? 'page' : undefined}
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href={`${base}shop`}
+          class={isShop ? 'active' : ''}
+          aria-current={isShop ? 'page' : undefined}
+        >
+          Shop
+        </a>
+      </li>
+      <li>
+        <a
+          href={`${base}contact`}
+          class={isContact ? 'active' : ''}
+          aria-current={isContact ? 'page' : undefined}
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

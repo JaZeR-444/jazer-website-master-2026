@@ -1,0 +1,742 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+const base = import.meta.env.BASE_URL;
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+
+const announcement = {
+  href: `${base}music`,
+  text: '?? NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it  '
+};
+---
+<BaseLayout
+  bodyClass="has-announcement about-page"
+  showAnnouncement={true}
+  announcement={announcement}
+  showNoiseOverlay={true}
+  showPreloader={true}
+  showNavEnhancements={true}
+  showFooter={true}
+  showAudioPlayer={true}
+  showBackToTop={true}
+  includeGsap={true}
+  extraStyles={[
+    '/css/pages-enhancements.css'
+  ]}
+>
+  <Fragment slot="head">
+    <title>About - JaZeR</title>
+    <meta
+      name="description"
+      content="Learn more about JaZeR - Content creator, music artist, and digital storyteller. A sonic escape hatch for anyone who needs a place to belong."
+    />
+    <meta name="keywords" content="JaZeR, about, artist bio, music producer, content creator, story" />
+    <link rel="canonical" href={canonical} />
+
+    <style>
+      /* About Page Styles */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .about-hero {
+        min-height: 70vh;
+        padding: 8rem 0 4rem;
+        position: relative;
+      }
+
+      .about-hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .hero-logo {
+        margin: 2rem auto;
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .about-tagline {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        font-size: 1.25rem;
+        line-height: 1.6;
+      }
+
+      /* Profile Section */
+      .profile-section {
+        padding: 4rem 0;
+        position: relative;
+      }
+
+      .profile-image-container {
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+      }
+
+      .profile-image {
+        width: 60%;
+        height: 60%;
+        object-fit: contain;
+        opacity: 0.8;
+      }
+
+      .profile-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(139, 92, 246, 0.2));
+        mix-blend-mode: overlay;
+      }
+
+      .profile-actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .profile-action-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        text-decoration: none;
+      }
+
+      /* Stats Grid */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+      }
+
+      .stat-label {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+      }
+
+      .mission-statement {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .mission-text {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        color: var(--text-secondary);
+      }
+
+      /* Timeline */
+      .timeline-container {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--jazer-pink), var(--jazer-purple), var(--jazer-cyan));
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -0.5rem;
+        top: 0.25rem;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+      }
+
+      .timeline-dot-pink {
+        background: var(--jazer-pink);
+        box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+      }
+
+      .timeline-dot-purple {
+        background: var(--jazer-purple);
+        box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+      }
+
+      .timeline-dot-cyan {
+        background: var(--jazer-cyan);
+        box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2);
+      }
+
+      .timeline-title {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      /* Callout Boxes */
+      .callout-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 3px solid;
+      }
+
+      .callout-pink {
+        background: rgba(239, 68, 68, 0.1);
+        border-color: var(--jazer-pink);
+      }
+
+      .callout-cyan {
+        background: rgba(6, 182, 212, 0.1);
+        border-color: var(--jazer-cyan);
+      }
+
+      .callout-purple {
+        background: rgba(139, 92, 246, 0.1);
+        border-color: var(--jazer-purple);
+      }
+
+      /* Genre Badges */
+      .genre-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+      }
+
+      .genre-badge {
+        color: white;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .genre-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+
+      /* Feature Cards */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+        background: rgba(255,255,255,0.03);
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-4px);
+        background: rgba(255,255,255,0.05);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+
+      .feature-title {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 1.125rem;
+      }
+
+      .feature-description {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+
+      /* Testimonials */
+      .testimonial-grid {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .testimonial-card {
+        padding: 1.5rem;
+        background: rgba(255,255,255,0.03);
+        border-radius: 12px;
+        border-left: 3px solid;
+      }
+
+      .testimonial-quote {
+        font-style: italic;
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .testimonial-author {
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      /* CTA Buttons */
+      .cta-section {
+        text-align: center;
+        margin: 3rem 0;
+      }
+
+      /* Section Spacing */
+      .section-spacer {
+        padding: 4rem 0;
+      }
+
+      .section-spacer-sm {
+        padding: 2rem 0;
+      }
+
+      /* Content Width */
+      .content-narrow {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .about-hero {
+          min-height: 60vh;
+          padding: 6rem 0 3rem;
+        }
+
+        .about-tagline {
+          font-size: 1.125rem;
+        }
+
+        .stat-value {
+          font-size: 2rem;
+        }
+
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+      }
+
+      /* Smooth animations */
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero hero-animated about-hero">
+    <div class="hero-particles"></div>
+    <div class="hero-content about-hero-content" data-animate="zoom-in">
+      <span class="hero-eyebrow" data-animate="fade-up">
+        <span class="eyebrow-word" style="--i: 0">Meet</span>
+        <span class="eyebrow-divider">✦</span>
+        <span class="eyebrow-word" style="--i: 1">The</span>
+        <span class="eyebrow-divider">✦</span>
+        <span class="eyebrow-word" style="--i: 2">Artist</span>
+      </span>
+      <img class="hero-logo" src={`${base}assets/images/About JaZeR (441 x 94 px).svg`} alt="About JaZeR" loading="eager" />
+      <p class="tagline-roles about-tagline">
+        A sonic escape hatch — a beam of color for anyone who needs a place to belong.
+      </p>
+    </div>
+  </section>
+
+  <!-- Artist Profile Section -->
+  <section class="section profile-section">
+    <div class="container">
+      <!-- Ambient Glow Orbs -->
+      <div class="ambient-glow magenta" aria-hidden="true"></div>
+      <div class="ambient-glow blue" aria-hidden="true"></div>
+
+      <div class="bento-grid" style="align-items: center;">
+        <!-- Profile Card -->
+        <article class="card premium-card" data-animate="fade-up" data-animate-delay="100">
+          <div class="profile-image-container">
+            <img src={`${base}assets/images/vibrant-jzr-monogram-logo (250 x 250 px).svg`} alt="JaZeR Logo" class="profile-image" loading="lazy" />
+            <div class="profile-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="track-info">
+            <h2 class="track-title">JaZeR</h2>
+            <p class="track-artist">Content Creator • Musician • Storyteller</p>
+            <div class="profile-actions">
+              <a href="https://instagram.com/jazer_music" class="cta-secondary profile-action-btn" target="_blank" rel="noopener noreferrer" aria-label="Follow JaZeR on Instagram">
+                <span>Follow</span>
+              </a>
+              <a href="#connect" class="cta-secondary profile-action-btn" aria-label="Contact JaZeR">
+                <span>Contact</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Stats Card -->
+        <article class="card premium-card grid-span-2" data-animate="fade-up" data-animate-delay="200" style="padding: 2.5rem;">
+          <h2 class="track-title" style="margin-bottom: 2rem;">At a Glance</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value">2026</div>
+              <div class="stat-label">Launch Year</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">25+</div>
+              <div class="stat-label">Original Tracks</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">Creative Energy</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">Authentic</div>
+            </div>
+          </div>
+
+          <div class="mission-statement">
+            <p class="mission-text">
+              <strong>Mission:</strong> To create music that feels like home for the people who don't always feel like they have one.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container section-spacer">
+    <div class="content-narrow">
+
+      <!-- The Journey -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text">The Journey</h2>
+
+        <div class="timeline-container">
+          <div class="timeline-line" aria-hidden="true"></div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot timeline-dot-pink" aria-hidden="true"></div>
+            <div>
+              <h3 class="timeline-title" style="color: var(--jazer-pink);">The Struggle</h3>
+              <p class="text-muted">
+                JaZeR was born out of transition — a long stretch of struggle, constraint, and feeling like my light was dimmed.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot timeline-dot-purple" aria-hidden="true"></div>
+            <div>
+              <h3 class="timeline-title" style="color: var(--jazer-purple);">The Discovery</h3>
+              <p class="text-muted">
+                Music has always been the one thing that made me feel truly special. When I didn't know my purpose, sound gave me one. When I felt lost, rhythm felt like home.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot timeline-dot-cyan" aria-hidden="true"></div>
+            <div>
+              <h3 class="timeline-title" style="color: var(--jazer-cyan);">The Mission - 2026</h3>
+              <p class="text-muted">
+                Now that I'm finally at a point where I feel free, JaZeR is my way of giving that feeling back. Creating music that feels like home for those who don't always have one.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout-box callout-pink">
+          <p class="text-strong text-lg">
+            The mission is simple: to create music that feels like home for the people who don't always feel like they have one.
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA: Listen Now -->
+      <div class="cta-section" data-animate="fade-up">
+        <a href={`${base}music`} class="cta-button" aria-label="Listen to JaZeR's music">
+          <img src={`${base}assets/images/icons/music/headphones-black.svg`} class="cta-icon" alt="" style="width: 24px; height: 24px; filter: invert(1);" aria-hidden="true" />
+          <span>Listen Now</span>
+        </a>
+      </div>
+
+      <!-- Core Values -->
+      <div class="grid mb-lg" data-animate="fade-up">
+        <div class="premium-glass-card">
+          <h3>A sense of belonging</h3>
+          <p>For those who don't always feel like they have one</p>
+        </div>
+        <div class="premium-glass-card">
+          <h3>A sense of purpose</h3>
+          <p>Finding meaning through sound and rhythm</p>
+        </div>
+        <div class="premium-glass-card">
+          <h3>Limitless potential</h3>
+          <p>A reminder that you're capable of far more than you were told</p>
+        </div>
+      </div>
+
+      <!-- Sound & Style -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text">Vibe, Sound & Style</h2>
+        <p class="mb-md text-lg" style="line-height: 1.7;">
+          <strong>Upbeat, positive, and lyrically sharp</strong> — with a lot of choppy wordplay and rhythmic twists.
+        </p>
+
+        <p class="mb-sm text-strong" style="font-size: 1.125rem; margin-top: 2rem;">Genre Influences:</p>
+        <div class="genre-badges">
+          <span class="genre-badge" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🎸 Southern Rock</span>
+          <span class="genre-badge" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">🔊 Heavy Bass</span>
+          <span class="genre-badge" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">⚡ Electronic</span>
+          <span class="genre-badge" style="background: linear-gradient(135deg, #ec4899, #db2777);">🎤 Hip-Hop & Rap</span>
+          <span class="genre-badge" style="background: linear-gradient(135deg, #f59e0b, #d97706);">🎷 Jazz & Blues</span>
+          <span class="genre-badge" style="background: linear-gradient(135deg, #10b981, #059669);">🎹 Boom Bap</span>
+          <span class="genre-badge" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">💎 Trap-Soul</span>
+        </div>
+
+        <div class="callout-box callout-cyan">
+          <p style="line-height: 1.7;">
+            Whenever I'm in the lab, I'm chasing emotion. Good, bad, beautiful, or painful — it all belongs. For me, the point of music is to take even the worst situations and transform them into something beautiful.
+          </p>
+        </div>
+      </div>
+
+      <!-- Behind the Scenes -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text">Behind the Scenes</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <img src={`${base}assets/images/icons/music/mixer-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
+            <h3 class="feature-title">Production</h3>
+            <p class="feature-description">FL Studio, Ableton, and a coffee addiction</p>
+          </div>
+          <div class="feature-card">
+            <img src={`${base}assets/images/icons/music/mic-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
+            <h3 class="feature-title">Recording</h3>
+            <p class="feature-description">Home studio vibes, late-night sessions</p>
+          </div>
+          <div class="feature-card">
+            <img src={`${base}assets/images/icons/music/lyrics-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
+            <h3 class="feature-title">Writing</h3>
+            <p class="feature-description">Life experiences, emotions, and raw truth</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Themes -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text">Themes & The World of JaZeR</h2>
+        <p class="mb-md text-italic">
+          JaZeR lives in a "funky futuristic" lane — a blend of soulful humanity and cosmic, digital energy.
+        </p>
+        <div class="grid mt-lg">
+          <div>
+            <h3>Self-belief & perseverance</h3>
+            <p class="text-sm text-muted">Never stopping, never shrinking</p>
+          </div>
+          <div>
+            <h3>Freedom & transformation</h3>
+            <p class="text-sm text-muted">Breaking out of old versions of yourself</p>
+          </div>
+          <div>
+            <h3>Authenticity & purpose</h3>
+            <p class="text-sm text-muted">Staying true while you build something new</p>
+          </div>
+          <div>
+            <h3>Mental & emotional growth</h3>
+            <p class="text-sm text-muted">Clarity, healing, evolution</p>
+          </div>
+          <div>
+            <h3>Technology & consciousness</h3>
+            <p class="text-sm text-muted">Metaphysical vibes, digital dreams, cosmic imagery</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why JaZeR -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text">Why "JaZeR"?</h2>
+        <p class="mb-md" style="font-size: 1.125rem; line-height: 1.7;">
+          The name is a play on my real name, Jay, and the way people have described me over time — an infinite beam of light.
+        </p>
+        <div class="callout-box callout-purple">
+          <p class="text-strong text-lg">
+            So JaZeR is like "J-Laser": a focused beam of energy designed to cut through the noise, light up the dark, and remind you of what's possible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md gradient-text text-center">What Early Listeners Say</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card" style="border-color: var(--jazer-pink);">
+            <p class="testimonial-quote">
+              "The energy is unmatched. Every track feels like it's speaking directly to where I am in life."
+            </p>
+            <p class="testimonial-author" style="color: var(--jazer-pink);">— Early Supporter</p>
+          </div>
+
+          <div class="testimonial-card" style="border-color: var(--jazer-cyan);">
+            <p class="testimonial-quote">
+              "This is exactly what I needed to hear. The wordplay is insane and the vibe is perfect."
+            </p>
+            <p class="testimonial-author" style="color: var(--jazer-cyan);">— Beta Listener</p>
+          </div>
+
+          <div class="testimonial-card" style="border-color: var(--jazer-purple);">
+            <p class="testimonial-quote">
+              "JaZeR's music makes me feel like I'm not alone in this. It's fuel for the journey."
+            </p>
+            <p class="testimonial-author" style="color: var(--jazer-purple);">— Community Member</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA: Watch the Journey -->
+      <div class="cta-section" data-animate="fade-up">
+        <a href={`${base}videos`} class="cta-button" aria-label="Watch JaZeR's video content">
+          <img src={`${base}assets/images/icons/music/video-black.svg`} class="cta-icon" alt="" style="width: 24px; height: 24px; filter: invert(1);" aria-hidden="true" />
+          <span>Watch the Journey</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Email Signup CTA -->
+  <JoinBeamCTA
+    sectionStyle="padding: 6rem 0; background: rgba(0,0,0,0.2);"
+    captureStyle="max-width: 700px; margin: 0 auto;"
+    subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
+    subject="New subscriber from JaZeR About page"
+    buttonLabel="Join the Beam"
+    proofText="Join <strong>500+</strong> fans on the beam"
+  >
+    <Fragment slot="subtitle">
+      Be the first to hear new music, get exclusive updates, and <strong>join the community</strong>.
+    </Fragment>
+  </JoinBeamCTA>
+
+  <!-- Collaborate Section -->
+  <section class="section section-spacer" id="connect">
+    <div class="container">
+      <div class="content-narrow">
+        <div class="premium-glass-card" data-animate="fade-up">
+          <h2 class="mb-md gradient-text text-center">Let's Work Together</h2>
+          <p class="text-center mb-lg" style="font-size: 1.125rem; line-height: 1.7;">
+            Open to collaborations, features, production work, and creative partnerships.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <img src={`${base}assets/images/icons/music/mic-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
+              <h3 class="feature-title">Features</h3>
+              <p class="feature-description">Guest verses and vocal features</p>
+            </div>
+
+            <div class="feature-card">
+              <img src={`${base}assets/images/icons/music/synth-black.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
+              <h3 class="feature-title">Production</h3>
+              <p class="feature-description">Beats, mixing, and sound design</p>
+            </div>
+
+            <div class="feature-card">
+              <img src={`${base}assets/images/icons/utility/star.svg`} class="feature-icon" alt="" style="width: 40px; height: 40px; margin: 0 auto 0.75rem; filter: invert(1);" aria-hidden="true" />
+              <h3 class="feature-title">Business</h3>
+              <p class="feature-description">Bookings, partnerships, licensing</p>
+            </div>
+          </div>
+
+          <div class="cta-section">
+            <a href={`${base}contact`} class="cta-button" aria-label="Contact JaZeR">
+              <img src={`${base}assets/images/icons/utility/contact.svg`} class="cta-icon" alt="" style="width: 24px; height: 24px; filter: invert(1);" aria-hidden="true" />
+              <span>Get in Touch</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- For New Listeners -->
+  <div class="container section-spacer">
+    <div class="content-narrow">
+      <div class="premium-glass-card callout-gradient-soft" data-animate="fade-up">
+        <h2 class="mb-md text-center">For New Listeners</h2>
+        <p class="mb-md text-center text-lg">
+          If you're reading this, here's what I want you to feel:
+        </p>
+        <p class="text-center text-strong text-xl leading-relaxed">
+          That your light is real.<br>
+          That your dream is valid.<br>
+          That you're closer than you think.
+        </p>
+        <p class="mt-lg text-center">
+          My music is for the dreamers, the builders, the ones trying to turn pain into power and visions into
+          reality. It's fuel to keep going when you're tired, to keep building when it feels heavy, and to remind you
+          that there's still magic in all of this.
+        </p>
+        <div class="cta-section">
+          <a href={`${base}music`} class="cta-button" aria-label="Start listening to JaZeR's music">Press Play</a>
+        </div>
+      </div>
+
+      <p class="text-center text-2xl mt-xl text-strong">
+        This is JaZeR. Welcome home. 🌌✨
+      </p>
+    </div>
+  </div>
+
+</BaseLayout>

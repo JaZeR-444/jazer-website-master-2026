@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  bodyClass=""
+  showAnnouncement={false}
+  showNoiseOverlay={false}
+  showPreloader={false}
+  showNavEnhancements={false}
+  showFooter={false}
+  showAudioPlayer={false}
+  showBackToTop={false}
+  showSkipLink={false}
+  includeGsap={false}
+>
+  <Fragment slot="head">
+    <title>Page Not Found - JaZeR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      .main {
+        text-align: center;
+        padding: 6rem 1rem 4rem;
+      }
+
+      .back-link {
+        display: inline-block;
+        padding: .75rem 1.25rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: var(--text-light);
+        text-decoration: none;
+      }
+    </style>
+  </Fragment>
+
+  <div class="main">
+    <h1 class="jazer-hero">404</h1>
+    <p class="jazer-lead">
+      The page you were looking for doesn't exist, moved, or is still in production. Return to the site and keep exploring the JaZeR universe.
+    </p>
+    <a class="back-link jazer-button-text" href={`${base}`}>Back Home</a>
+  </div>
+
+  <Fragment slot="afterMain">
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 JaZeR. All rights reserved.</p>
+        <nav class="footer-sitemap" aria-label="Site navigation">
+          <a href={`${base}`}>Home</a>
+          <a href={`${base}music`}>Music</a>
+          <a href={`${base}videos`}>Videos</a>
+          <a href={`${base}about`}>About</a>
+          <a href={`${base}shop`}>Shop</a>
+          <a href={`${base}contact`}>Contact</a>
+        </nav>
+        <div class="social-links">
+          <a href="https://instagram.com/jazer_music" title="Instagram"><img src={`${base}assets/images/icons/social/instagram-round-icon.svg`} alt="Instagram" width="28" height="28"></a>
+          <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src={`${base}assets/images/icons/social/tiktok-round-logo.svg`} alt="TikTok" width="28" height="28"></a>
+          <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src={`${base}assets/images/icons/social/round-x(twitter)-icon.svg`} alt="X/Twitter" width="28" height="28"></a>
+          <a href="https://youtube.com/@jazer" title="YouTube"><img src={`${base}assets/images/icons/social/youtube-round-icon.svg`} alt="YouTube" width="28" height="28"></a>
+          <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src={`${base}assets/images/icons/social/spotify-round-icon.svg`} alt="Spotify" width="28" height="28"></a>
+          <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src={`${base}assets/images/icons/social/apple-music-round-icon.svg`} alt="Apple Music" width="28" height="28"></a>
+          <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src={`${base}assets/images/icons/social/soundcloud-round-icon.svg`} alt="SoundCloud" width="28" height="28"></a>
+          <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src={`${base}assets/images/icons/social/round-facebook-icon.svg`} alt="Facebook" width="28" height="28"></a>
+        </div>
+      </div>
+    </footer>
+  </Fragment>
+</BaseLayout>
+

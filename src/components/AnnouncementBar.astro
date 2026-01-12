@@ -1,0 +1,13 @@
+---
+const { href, text } = Astro.props;
+---
+<div class="announcement-bar" id="announcementBar">
+  <a href={href}>{text}</a>
+  <button
+    class="announcement-close"
+    aria-label="Close announcement"
+    onclick="document.getElementById('announcementBar').remove(); document.body.classList.remove('has-announcement');"
+  >
+    ?
+  </button>
+</div>

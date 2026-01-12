@@ -1,0 +1,1309 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+const base = import.meta.env.BASE_URL;
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+
+const announcement = {
+  href: `${base}music`,
+  text: '?? NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it  '
+};
+---
+<BaseLayout
+  bodyClass="shop-page has-announcement"
+  showAnnouncement={true}
+  announcement={announcement}
+  showNoiseOverlay={false}
+  showPreloader={true}
+  showNavEnhancements={true}
+  showFooter={true}
+  showAudioPlayer={true}
+  showBackToTop={true}
+  includeGsap={true}
+  extraStyles={[
+    '/css/pages-enhancements.css'
+  ]}
+>
+  <Fragment slot="head">
+    <title>Shop - JaZeR</title>
+    <meta name="description" content="Shop JaZeR merchandise and exclusive items. Get early access to limited drops, premium apparel, and exclusive bundles." />
+    <meta name="keywords" content="JaZeR shop, merchandise, merch, apparel, clothing, hoodies, t-shirts, limited edition" />
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="preload"
+      as="image"
+      href={`${base}assets/images/Shop (234 x 96 px).svg`}
+      type="image/svg+xml"
+    />
+
+    <style>
+      /* Shop Page Styles */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .shop-page {
+        --shop-pink: #ef4444;
+        --shop-purple: #8b5cf6;
+        --shop-cyan: #06b6d4;
+      }
+
+      /* Hero Section */
+      .page-hero {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 4rem 1rem;
+        text-align: center;
+      }
+
+      .page-hero-title-logo {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .page-hero-subtitle {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+      }
+
+      /* Drop Countdown */
+      .drop-countdown {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .countdown-label {
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+      }
+
+      .countdown-time {
+        font-size: 3rem;
+        font-weight: 800;
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .countdown-note {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+
+      /* Email Capture */
+      .hero-email-capture {
+        max-width: 500px;
+        margin: 2rem auto;
+      }
+
+      .hero-email-copy {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+
+      .hero-email-form {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-email-form .modern-input {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      /* Page Intro */
+      .page-intro-icon {
+        font-size: 1.125rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      /* Shop Sections */
+      .shop-section {
+        margin-bottom: 4rem;
+      }
+
+      .shop-section-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .shop-section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .shop-section-subtitle {
+        font-size: 1rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* Shop Cards */
+      .shop-featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .shop-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .shop-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      .shop-card-media {
+        position: relative;
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .shop-card-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--jazer-pink);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .shop-card-placeholder {
+        font-size: 1.5rem;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      .shop-card-title {
+        padding: 1.5rem 1.5rem 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .shop-card-meta {
+        padding: 0 1.5rem 1rem;
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
+      .shop-interest-form {
+        padding: 0 1.5rem 1.5rem;
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .shop-interest-input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        transition: border-color 0.2s ease;
+      }
+
+      .shop-interest-input:focus {
+        outline: none;
+        border-color: var(--jazer-cyan);
+      }
+
+      .shop-interest-input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .shop-interest-button {
+        background: var(--jazer-cyan);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .shop-interest-button:hover {
+        background: #0891b2;
+        transform: translateY(-2px);
+      }
+
+      /* Drop Timeline System Log */
+      .drop-timeline {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        padding-left: 2rem;
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .timeline-step {
+        position: relative;
+        padding: 1.5rem 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        text-align: left;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-step::before {
+        content: '';
+        position: absolute;
+        left: -2.6rem; /* Adjust to align with border */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px; height: 12px;
+        background: #000;
+        border: 2px solid var(--jazer-cyan);
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+      }
+
+      .timeline-step:hover {
+        transform: translateX(10px);
+        border-color: var(--jazer-cyan);
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+      }
+      .timeline-step:hover::before {
+        background: var(--jazer-cyan);
+      }
+
+      .timeline-title {
+        font-family: 'Courier New', monospace;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--jazer-cyan);
+        margin-bottom: 0.25rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .timeline-meta {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      /* Tech Specs Bento */
+      .tech-specs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .spec-card {
+        background: rgba(10, 10, 20, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: border-color 0.3s ease;
+      }
+      .spec-card:hover { border-color: var(--jazer-purple); }
+      
+      .spec-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
+          padding-bottom: 1rem;
+      }
+      .spec-icon { width: 24px; height: 24px; filter: invert(1); opacity: 0.7; }
+      
+      .spec-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: white;
+      }
+      
+      .spec-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+      }
+      
+      .spec-row {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.9rem;
+      }
+      .spec-key { color: var(--text-muted); }
+      .spec-val { color: white; font-weight: 500; text-align: right; }
+      
+      .grid-span-2 { grid-column: span 2; }
+      @media (max-width: 768px) { .grid-span-2 { grid-column: 1; } }
+
+      /* Design Story */
+      .design-story {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+
+      .design-visual {
+        aspect-ratio: 16 / 9;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      .design-copy {
+        padding: 1rem;
+      }
+
+      .design-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .design-text {
+        margin-bottom: 1rem;
+        line-height: 1.7;
+        color: var(--text-secondary);
+      }
+
+      .design-text:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Materials Grid */
+      .materials-grid,
+      .shipping-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .material-card,
+      .shipping-card {
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        transition: transform 0.2s ease;
+      }
+
+      .material-card:hover,
+      .shipping-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .material-title,
+      .shipping-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--jazer-purple);
+      }
+
+      .material-text,
+      .shipping-text {
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* Size Guide */
+      .size-guide {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .size-card {
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        text-align: center;
+        transition: transform 0.2s ease;
+      }
+
+      .size-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .size-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+
+      .size-text {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
+      /* Bundle Builder */
+      .bundle-builder {
+        margin-top: 2rem;
+      }
+
+      .bundle-card {
+        padding: 3rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        text-align: center;
+        position: relative;
+      }
+
+      .bundle-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .bundle-text {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+      }
+
+      .bundle-tag {
+        display: inline-block;
+        background: var(--jazer-cyan);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      /* Mockup Carousel */
+      .mockup-carousel {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .mockup-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.2s ease;
+      }
+
+      .mockup-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .mockup-art {
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      .mockup-caption {
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      .mockup-note {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.875rem;
+      }
+
+      /* Tier Grid */
+      .tier-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .tier-card {
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .tier-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--jazer-cyan);
+      }
+
+      .tier-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .tier-price {
+        color: var(--jazer-cyan);
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .tier-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .tier-list li {
+        padding: 0.5rem 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .tier-list li::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        color: var(--jazer-cyan);
+      }
+
+      /* Community Strip */
+      .community-strip {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      .community-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .community-avatars {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .social-avatar-gradient {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--jazer-pink), var(--jazer-purple));
+        border: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .community-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .community-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .community-stat-number {
+        font-size: 2rem;
+        font-weight: 800;
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .community-stat-label {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+
+      /* FAQ */
+      .faq-list {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .faq-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: background 0.2s ease;
+      }
+
+      .faq-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .faq-item summary {
+        font-weight: 600;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-item summary::after {
+        content: "+";
+        font-size: 1.5rem;
+        color: var(--jazer-cyan);
+        transition: transform 0.2s ease;
+      }
+
+      .faq-item[open] summary::after {
+        transform: rotate(45deg);
+      }
+
+      .faq-item p {
+        margin-top: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Email Capture Section */
+      .email-capture {
+        padding: 3rem;
+        text-align: center;
+        max-width: 600px;
+        margin: 4rem auto;
+      }
+
+      .email-capture-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .email-capture-subtitle {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+      }
+
+      .email-capture-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .email-capture-status {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        min-height: 1.5rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .page-hero {
+          padding: 3rem 1rem;
+        }
+
+        .page-hero-subtitle {
+          font-size: 1.125rem;
+        }
+
+        .countdown-time {
+          font-size: 2.5rem;
+        }
+
+        .hero-email-form {
+          flex-direction: column;
+        }
+
+        .hero-email-form .modern-input {
+          min-width: 100%;
+        }
+
+        .shop-featured-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .design-story {
+          grid-template-columns: 1fr;
+        }
+
+        .drop-timeline {
+          grid-template-columns: 1fr;
+        }
+
+        .community-stats {
+          gap: 2rem;
+        }
+
+        .tier-grid,
+        .materials-grid,
+        .shipping-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .mockup-carousel {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .mockup-carousel {
+          grid-template-columns: 1fr;
+        }
+
+        .community-stats {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+      }
+      /* New Shop Hero Styles */
+      .shop-hero {
+          min-height: 80vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          background: radial-gradient(circle at center, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+      }
+      .shop-hero-content {
+          text-align: center;
+          z-index: 2;
+          width: 100%;
+          max-width: 900px;
+      }
+      .shop-logo {
+          max-width: 500px;
+          height: auto;
+          margin-bottom: 2.5rem;
+          filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.3));
+      }
+      .countdown-wrapper {
+          background: rgba(10, 10, 20, 0.6);
+          border: 1px solid rgba(6, 182, 212, 0.3);
+          box-shadow: 0 0 40px rgba(6, 182, 212, 0.1), inset 0 0 20px rgba(6, 182, 212, 0.05);
+          padding: 2.5rem;
+          border-radius: 12px;
+          position: relative;
+          backdrop-filter: blur(12px);
+          max-width: 600px;
+          margin: 0 auto;
+      }
+      .countdown-wrapper::before, .countdown-wrapper::after {
+          content: '';
+          position: absolute;
+          width: 20px; height: 20px;
+          border: 2px solid var(--jazer-cyan);
+          transition: all 0.3s ease;
+      }
+      .countdown-wrapper::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+      .countdown-wrapper::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+      
+      .countdown-header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+      }
+      .status-dot {
+          width: 8px; height: 8px;
+          background: var(--jazer-cyan);
+          border-radius: 50%;
+          box-shadow: 0 0 10px var(--jazer-cyan);
+      }
+      .blink { animation: blink 1.5s infinite; }
+      .digital-clock {
+          font-family: 'Courier New', monospace;
+          font-size: 3.5rem;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          color: var(--jazer-cyan);
+          text-shadow: 0 0 25px rgba(6, 182, 212, 0.8);
+          margin: 1rem 0;
+          line-height: 1;
+      }
+      .countdown-footer {
+          font-size: 0.75rem;
+          color: rgba(6, 182, 212, 0.7);
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          margin-top: 1rem;
+      }
+      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+      /* Refined Shop Card */
+      .shop-card-refined {
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .shop-card-refined:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
+          border-color: var(--jazer-cyan);
+      }
+      .shop-interest-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+      }
+      .button-icon {
+          width: 16px; height: 16px;
+          filter: invert(1);
+      }
+
+      /* Mockup Carousel Wrapper */
+      .mockup-wrapper {
+          position: relative;
+          padding: 1.5rem;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 20px;
+          margin-top: 2rem;
+      }
+    </style>
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero hero-animated shop-hero">
+    <div class="hero-particles"></div>
+    <div class="hero-content shop-hero-content" data-animate="zoom-in">
+        <span class="hero-eyebrow" data-animate="fade-up">
+            <span class="eyebrow-word" style="--i: 0">System</span>
+            <span class="eyebrow-divider">✦</span>
+            <span class="eyebrow-word" style="--i: 1">Status</span>
+            <span class="eyebrow-divider">✦</span>
+            <span class="eyebrow-word" style="--i: 2">Online</span>
+        </span>
+        
+        <img class="shop-logo" src={`${base}assets/images/Merch Drop 01 (450 x 150 px).svg`} alt="Merch Drop 01" loading="eager" />
+        
+        <div class="countdown-wrapper" data-animate="fade-up" data-animate-delay="100">
+            <div class="countdown-header">
+                <span class="status-dot blink"></span>
+                <span class="countdown-label" style="color: var(--jazer-cyan); letter-spacing: 0.1em; font-size: 0.875rem;">NEXT DROP SEQUENCE</span>
+            </div>
+            <div id="countdown" class="digital-clock">00:00:00:00</div>
+            <div class="countdown-footer">
+                <span>D : HH : MM : SS</span>
+            </div>
+        </div>
+
+        <div class="hero-email-capture" data-animate="fade-up" style="margin-top: 3rem;">
+           <p class="hero-email-copy" style="color: rgba(255,255,255,0.7);">Initialize notifications for Drop 01.</p>
+           <form class="hero-email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+             <label for="hero-email" class="sr-only">Email address</label>
+             <input type="email" id="hero-email" name="email" class="modern-input" placeholder="enter_email_address" required style="background: rgba(0,0,0,0.5); border-color: rgba(6,182,212,0.3);">
+             <button type="submit" class="cta-button" style="background: var(--jazer-cyan); color: #000; box-shadow: 0 0 15px rgba(6,182,212,0.4);">Notify Me</button>
+           </form>
+         </div>
+    </div>
+  </section>
+
+  <div class="container section">
+    <p class="page-intro-icon text-center mb-lg">
+      Preview the pipeline and lock in your spot for the first drop.
+    </p>
+
+    <!-- Featured Drops -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="shop-section-header">
+        <h2 class="shop-section-title">Featured Drops</h2>
+        <p class="shop-section-subtitle">Early teasers with projected pricing and launch windows.</p>
+      </div>
+      <div class="grid shop-featured-grid">
+        <article class="shop-card shop-card-refined">
+          <div class="shop-card-media">
+            <span class="shop-card-badge">Limited</span>
+            <div class="shop-card-placeholder" aria-hidden="true">Mockup</div>
+          </div>
+          <h3 class="shop-card-title">Beam Hoodie</h3>
+          <p class="shop-card-meta">Est. $60 - 2026</p>
+          <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+             <label for="beam-hoodie-email" class="sr-only">Email for Beam Hoodie alerts</label>
+             <input type="email" id="beam-hoodie-email" name="email" class="shop-interest-input" placeholder="Get notified" required>
+             <input type="hidden" name="_subject" value="Shop interest: Beam Hoodie">
+             <button type="submit" class="shop-interest-button">
+                 <img src={`${base}assets/images/icons/utility/bell.svg`} alt="" class="button-icon" /> Notify
+             </button>
+          </form>
+        </article>
+
+        <article class="shop-card shop-card-refined">
+          <div class="shop-card-media">
+            <span class="shop-card-badge">Core</span>
+            <div class="shop-card-placeholder" aria-hidden="true">Mockup</div>
+          </div>
+          <h3 class="shop-card-title">Signal Tee</h3>
+          <p class="shop-card-meta">Est. $30 - 2026</p>
+          <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+             <label for="signal-tee-email" class="sr-only">Email for Signal Tee alerts</label>
+             <input type="email" id="signal-tee-email" name="email" class="shop-interest-input" placeholder="Get notified" required>
+             <input type="hidden" name="_subject" value="Shop interest: Signal Tee">
+             <button type="submit" class="shop-interest-button">
+                 <img src={`${base}assets/images/icons/utility/bell.svg`} alt="" class="button-icon" /> Notify
+             </button>
+          </form>
+        </article>
+
+        <article class="shop-card shop-card-refined">
+          <div class="shop-card-media">
+            <span class="shop-card-badge">Bundle</span>
+            <div class="shop-card-placeholder" aria-hidden="true">Mockup</div>
+          </div>
+          <h3 class="shop-card-title">Orbit Sticker Pack</h3>
+          <p class="shop-card-meta">Est. $12 - 2026</p>
+          <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+             <label for="sticker-pack-email" class="sr-only">Email for Orbit Sticker Pack alerts</label>
+             <input type="email" id="sticker-pack-email" name="email" class="shop-interest-input" placeholder="Get notified" required>
+             <input type="hidden" name="_subject" value="Shop interest: Orbit Sticker Pack">
+             <button type="submit" class="shop-interest-button">
+                 <img src={`${base}assets/images/icons/utility/bell.svg`} alt="" class="button-icon" /> Notify
+             </button>
+          </form>
+        </article>
+
+        <article class="shop-card shop-card-refined">
+          <div class="shop-card-media">
+            <span class="shop-card-badge">Limited</span>
+            <div class="shop-card-placeholder" aria-hidden="true">Mockup</div>
+          </div>
+          <h3 class="shop-card-title">Neon Poster</h3>
+          <p class="shop-card-meta">Est. $25 - 2026</p>
+          <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+             <label for="neon-poster-email" class="sr-only">Email for Neon Poster alerts</label>
+             <input type="email" id="neon-poster-email" name="email" class="shop-interest-input" placeholder="Get notified" required>
+             <input type="hidden" name="_subject" value="Shop interest: Neon Poster">
+             <button type="submit" class="shop-interest-button">
+                 <img src={`${base}assets/images/icons/utility/bell.svg`} alt="" class="button-icon" /> Notify
+             </button>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <!-- Drop Schedule -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="shop-section-header">
+        <h2 class="shop-section-title">Drop Sequence</h2>
+        <p class="shop-section-subtitle">System rollout phases for 2026.</p>
+      </div>
+      <div class="drop-timeline">
+        <div class="timeline-step">
+          <div class="timeline-title">Phase 01: Core</div>
+          <div class="timeline-meta">Essentials + Sticker Packs. Launching Q1.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-title">Phase 02: Orbit</div>
+          <div class="timeline-meta">Premium Outerwear. Embossed Fabrics. Launching Q2.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-title">Phase 03: Horizon</div>
+          <div class="timeline-meta">Limited Edition Collectors Items. Launching Q4.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Behind the Design -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="shop-section-header">
+        <h2 class="shop-section-title">Behind the Design</h2>
+        <p class="shop-section-subtitle">Moodboards, sketches, and color studies driving the 2026 line.</p>
+      </div>
+      <div class="design-story">
+        <div class="design-visual" aria-hidden="true">Concept art</div>
+        <div class="design-copy">
+          <h3 class="design-title">Signal to Beam</h3>
+          <p class="design-text">The 2026 line blends neon gradients, analog textures, and cosmic symbolism. Every piece is built to feel like a wearable track.</p>
+          <p class="design-text">Expect reflective ink hits, holographic patches, and hidden details throughout the drops.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Specs (Materials, Care, Size, Shipping) -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="shop-section-header">
+        <h2 class="shop-section-title">Technical Specifications</h2>
+        <p class="shop-section-subtitle">Fabrication data and system logistics.</p>
+      </div>
+      
+      <div class="tech-specs-grid">
+        <!-- Materials -->
+        <article class="spec-card">
+            <div class="spec-header">
+                <img src={`${base}assets/images/icons/utility/star.svg`} alt="" class="spec-icon" />
+                <h3 class="spec-title">Materials</h3>
+            </div>
+            <div class="spec-list">
+                <div class="spec-row">
+                    <span class="spec-key">Tees</span>
+                    <span class="spec-val">Heavyweight Cotton (240gsm)</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-key">Hoodies</span>
+                    <span class="spec-val">French Terry (400gsm)</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-key">Prints</span>
+                    <span class="spec-val">High-Density Puff Print</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Sizing -->
+        <article class="spec-card">
+             <div class="spec-header">
+                <img src={`${base}assets/images/icons/utility/alert.svg`} alt="" class="spec-icon" />
+                <h3 class="spec-title">Fit Guide</h3>
+            </div>
+            <div class="spec-list">
+                <div class="spec-row">
+                    <span class="spec-key">Standard</span>
+                    <span class="spec-val">True to Size</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-key">Oversized</span>
+                    <span class="spec-val">Size Down for Regular Fit</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-key">Measurements</span>
+                    <span class="spec-val">Available on Drop</span>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Shipping -->
+        <article class="spec-card grid-span-2">
+             <div class="spec-header">
+                <img src={`${base}assets/images/icons/utility/contact.svg`} alt="" class="spec-icon" />
+                <h3 class="spec-title">Global Logistics</h3>
+            </div>
+            <div class="spec-list">
+                <div class="spec-row">
+                    <span class="spec-key">North America</span>
+                    <span class="spec-val">Priority Shipping (3-5 Days)</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-key">International</span>
+                    <span class="spec-val">Phased Rollout in Q2 2026</span>
+                </div>
+                 <div class="spec-row">
+                    <span class="spec-key">Handling</span>
+                    <span class="spec-val">All orders ship in eco-friendly mailers</span>
+                </div>
+            </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Bundle Builder -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="shop-section-header">
+        <h2 class="shop-section-title">Bundle Builder</h2>
+        <p class="shop-section-subtitle">Mix pieces, add exclusives, and build your drop kit in 2026.</p>
+      </div>
+      <div class="bundle-builder">
+        <div class="bundle-card">
+          <h3 class="bundle-title">Build your bundle</h3>
+          <p class="bundle-text">Select apparel, vinyl, and bonus items once the shop opens.</p>
+          <span class="bundle-tag">Teaser</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Mockups -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="shop-section-header">
+        <h2 class="shop-section-title">Visual Mockups</h2>
+        <p class="shop-section-subtitle">Swipe for early print directions and textures.</p>
+      </div>
+      <div class="mockup-wrapper">
+          <div class="mockup-carousel" aria-label="Product mockups">
+            <figure class="mockup-card">
+              <div class="mockup-art" aria-hidden="true">Front print</div>
+              <figcaption class="mockup-caption">Beam hoodie front</figcaption>
+            </figure>
+            <figure class="mockup-card">
+              <div class="mockup-art" aria-hidden="true">Back print</div>
+              <figcaption class="mockup-caption">Signal tee back</figcaption>
+            </figure>
+            <figure class="mockup-card">
+              <div class="mockup-art" aria-hidden="true">Texture</div>
+              <figcaption class="mockup-caption">Embossed patch</figcaption>
+            </figure>
+            <figure class="mockup-card">
+              <div class="mockup-art" aria-hidden="true">Poster</div>
+              <figcaption class="mockup-caption">Neon poster gloss</figcaption>
+            </figure>
+          </div>
+      </div>
+      <p class="mockup-note text-muted">Store opening soon. Final designs may evolve.</p>
+    </section>
+
+    <!-- Merch Tiers -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="shop-section-header">
+        <h2 class="shop-section-title">Merch Tiers</h2>
+        <p class="shop-section-subtitle">Pick your level and plan your pickup.</p>
+      </div>
+      <div class="grid tier-grid">
+        <article class="tier-card">
+          <h3 class="tier-name">Essentials</h3>
+          <p class="tier-price">Est. $20-$45</p>
+          <ul class="tier-list list-clean">
+            <li>Tees and caps</li>
+            <li>Everyday colorways</li>
+            <li>Fast restocks</li>
+          </ul>
+        </article>
+        <article class="tier-card">
+          <h3 class="tier-name">Premium</h3>
+          <p class="tier-price">Est. $50-$85</p>
+          <ul class="tier-list list-clean">
+            <li>Hoodies and jackets</li>
+            <li>Custom trims</li>
+            <li>Limited runs</li>
+          </ul>
+        </article>
+        <article class="tier-card">
+          <h3 class="tier-name">Limited</h3>
+          <p class="tier-price">Est. $90+</p>
+          <ul class="tier-list list-clean">
+            <li>Numbered drops</li>
+            <li>Signed inserts</li>
+            <li>Collector extras</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="shop-section community-strip" data-animate="fade-up">
+      <div class="community-content">
+        <div class="community-avatars" aria-hidden="true">
+          <span class="social-avatar-gradient"></span>
+          <span class="social-avatar-gradient"></span>
+          <span class="social-avatar-gradient"></span>
+          <span class="social-avatar-gradient"></span>
+        </div>
+        <div class="community-text">
+          <h2 class="shop-section-title">Join the Beam</h2>
+          <p class="shop-section-subtitle">Early access, behind-the-scenes drops, and fan-only bundles.</p>
+        </div>
+      </div>
+      <div class="community-stats">
+        <div class="community-stat">
+          <span class="community-stat-number">32k</span>
+          <span class="community-stat-label">Listeners</span>
+        </div>
+        <div class="community-stat">
+          <span class="community-stat-number">8k</span>
+          <span class="community-stat-label">Followers</span>
+        </div>
+        <div class="community-stat">
+          <span class="community-stat-number">120+</span>
+          <span class="community-stat-label">Cities</span>
+        </div>
+      </div>
+      <a class="cta-button" href="#shop-updates" aria-label="Get shop alert notifications">Get shop alerts</a>
+    </section>
+
+    <!-- FAQ -->
+    <section class="shop-section" data-animate="fade-up">
+      <div class="shop-section-header">
+        <h2 class="shop-section-title">FAQ</h2>
+        <p class="shop-section-subtitle">Quick answers before the store opens.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>When does the store open?</summary>
+          <p>First drop is targeted for late March 2026. Join the list for exact timing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Will there be international shipping?</summary>
+          <p>Yes. The first wave will focus on North America with expanded regions after.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I pick my size?</summary>
+          <p>Each drop includes a size guide. Most fits run true to size.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I bundle items?</summary>
+          <p>Bundles are planned for select drops and include exclusive add-ons.</p>
+        </details>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Email Signup CTA -->
+  <JoinBeamCTA
+    sectionStyle="padding: 6rem 0; background: rgba(0,0,0,0.2);"
+    captureStyle="max-width: 700px; margin: 0 auto;"
+    subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
+    subject="New subscriber from JaZeR Shop page"
+    buttonLabel="Join the Beam"
+    proofText="Join <strong>500+</strong> fans on the beam"
+  >
+    <Fragment slot="subtitle">
+      Be the first to hear about new merch drops, exclusive bundles, and <strong>shop updates</strong>.
+    </Fragment>
+  </JoinBeamCTA>
+
+</BaseLayout>

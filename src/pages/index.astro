@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+const base = import.meta.env.BASE_URL;
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+const ogImage = site
+  ? new URL(`${base}assets/images/JaZeR Main Logo.jpg`, site).toString()
+  : `${base}assets/images/JaZeR Main Logo.jpg`;
+
+const announcement = {
+  href: `${base}music`,
+  text: '?? NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it   '
+};
+---
+<BaseLayout
+  bodyClass="has-announcement"
+  showAnnouncement={true}
+  announcement={announcement}
+  showNoiseOverlay={true}
+  showPreloader={true}
+  showNavEnhancements={true}
+  showFooter={true}
+  showAudioPlayer={true}
+  showBackToTop={true}
+  includeGsap={true}
+>
+  <Fragment slot="head">
+    <title>JaZeR - Content Creator & Musician</title>
+    <meta name="title" content="JaZeR - Content Creator & Musician" />
+    <meta
+      name="description"
+      content="Official website of JaZeR - Content creator, music artist, and digital storyteller. Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+    />
+    <meta
+      name="keywords"
+      content="JaZeR, music artist, content creator, electronic music, music producer"
+    />
+    <meta name="author" content="JaZeR" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content="JaZeR - Content Creator & Musician" />
+    <meta
+      property="og:description"
+      content="Official website of JaZeR - Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+    />
+    <meta
+      property="og:image"
+      content={ogImage}
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content="JaZeR - Content Creator & Musician" />
+    <meta
+      property="twitter:description"
+      content="Official website of JaZeR - Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+    />
+    <meta
+      property="twitter:image"
+      content={ogImage}
+    />
+
+    <link rel="canonical" href={canonical} />
+  </Fragment>
+
+      <!-- HOME PAGE - #3 Hero Animation -->
+      <section class="hero hero-animated">
+        <div class="hero-particles"></div>
+        <div class="hero-content" data-animate="zoom-in">
+          <span class="hero-eyebrow" data-animate="fade-up">
+            <span class="eyebrow-word" style="--i: 0">Welcome</span>
+            <span class="eyebrow-divider">✦</span>
+            <span class="eyebrow-word" style="--i: 1">to</span>
+            <span class="eyebrow-divider">✦</span>
+            <span class="eyebrow-word" style="--i: 2">the</span>
+            <span class="eyebrow-divider">✦</span>
+            <span class="eyebrow-word" style="--i: 3">experience</span>
+          </span>
+          <img class="hero-logo" src={`${base}assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg`} alt="JaZeR" />
+          <!-- #2 - Typewriter Tagline -->
+          <p class="tagline-roles">
+            <span class="role" style="--i: 0">Content Creator</span>
+            <span class="role-divider">✦</span>
+            <span class="role" style="--i: 1">Musician</span>
+            <span class="role-divider">✦</span>
+            <span class="role" style="--i: 2">Digital Storyteller</span>
+          </p>
+          <!-- #1 - Dual CTA Buttons -->
+          <div class="cta-group">
+            <a href={`${base}music`} class="cta-button" data-audio-trigger>
+              <img src={`${base}assets/images/icons/music/headphones-black.svg`} alt="" class="cta-icon" style="width: 1.5em; height: 1.5em; filter: invert(1);" />
+              <span>Listen Now</span>
+            </a>
+            <a href={`${base}about`} class="cta-secondary">
+              <span>Learn My Story</span>
+              <span class="cta-arrow">→</span>
+            </a>
+          </div>
+        </div>
+        <!-- #3 - Scroll Indicator -->
+        <div class="scroll-indicator" onclick="document.querySelector('.stats-section').scrollIntoView({behavior: 'smooth'})">
+          <span>Explore</span>
+          <div class="scroll-indicator-arrow"></div>
+        </div>
+      </section>
+
+      <!-- #10 - Stats Section (Social Proof) - ROUND 2 GLASSMORPHISM -->
+      <section class="stats-section" data-animate="fade-up">
+        <div class="stats-container">
+          <h2 class="stats-heading visually-hidden">JaZeR by the numbers</h2>
+          <div class="stats-grid">
+            <!-- Global SVG Gradient Defs -->
+            <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+              <linearGradient id="infinityGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--jazer-cyan)" />
+                <stop offset="50%" stop-color="var(--jazer-purple)" />
+                <stop offset="100%" stop-color="var(--jazer-pink)" />
+              </linearGradient>
+            </svg>
+
+            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="100">
+              <!-- Listeners Icon: Activity/Radio -->
+              <img src={`${base}assets/images/icons/music/radio-black.svg`} class="stat-icon-svg" alt="" style="width: 24px; height: 24px; filter: invert(1);" />
+              <div class="stat-value" data-count="10000">
+                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
+                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
+                </svg>
+              </div>
+              <div class="stat-label">Monthly Listeners</div>
+            </div>
+
+            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="200">
+              <!-- Tracks Icon: Music Note -->
+              <img src={`${base}assets/images/icons/music/playlist-black.svg`} class="stat-icon-svg icon-purple" alt="" style="width: 24px; height: 24px; filter: invert(1);" />
+              <div class="stat-value" data-count="25">
+                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
+                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
+                </svg>
+              </div>
+              <div class="stat-label">Original Tracks</div>
+            </div>
+
+            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="300">
+              <!-- Community Icon: Users/Sparkle -->
+               <img src={`${base}assets/images/icons/music/crowd-black.svg`} class="stat-icon-svg icon-pink" alt="" style="width: 24px; height: 24px; filter: invert(1);" />
+              <div class="stat-value" data-count="5000">
+                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
+                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
+                </svg>
+              </div>
+              <div class="stat-label">Community Members</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Content Section -->
+      <section class="section featured-section" style="position: relative;">
+        <div class="container">
+          <!-- Ambient Glow Orbs -->
+          <div class="ambient-glow magenta"></div>
+          <div class="ambient-glow blue"></div>
+
+          <div class="section-header">
+            <img src={`${base}assets/images/Featured Content (450 x 150 px).svg`} alt="Featured Content" class="section-title-img" data-animate="fade-up">
+            <p class="section-subtitle" data-animate="fade-up" data-animate-delay="100">Explore my latest creative work</p>
+          </div>
+          
+          <div class="bento-grid">
+            <!-- Main Feature Spans 2 Columns -->
+            <a href={`${base}music`} class="card-link grid-span-2" data-animate="fade-up" data-animate-delay="100">
+              <article class="card card-featured track-card premium-card">
+                <!-- Vinyl Record -->
+                <div class="vinyl-container">
+                  <div class="vinyl-record">
+                    <div class="vinyl-grooves"></div>
+                    <div class="vinyl-label">
+                      <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="JZR" class="label-logo" />
+                    </div>
+                    <div class="vinyl-shine"></div>
+                  </div>
+                </div>
+                
+                <!-- Track Info -->
+                <div class="track-info">
+                  <span class="track-badge">NEW RELEASE</span>
+                  <h3 class="track-title">Latest Track</h3>
+                  <p class="track-artist">JaZeR</p>
+                  
+                  <!-- Waveform Visual -->
+                  <div class="track-waveform">
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                  </div>
+                  
+                  <div class="track-meta">
+                    <span class="track-duration">3:24</span>
+                    <span class="track-genre">Electronic • Bass</span>
+                  </div>
+                  
+                  <span class="track-cta">Stream Now</span>
+                </div>
+              </article>
+            </a>
+            <a href={`${base}videos`} class="card-link" data-animate="fade-up" data-animate-delay="200">
+              <article class="card premium-card video-card">
+                <!-- Visual Section (Top) -->
+                <div class="media-visual-container">
+                  <div class="video-icon-static">
+                    <img src={`${base}assets/images/icons/music/video-black.svg`} class="video-play-svg" alt="" style="width: 48px; height: 48px; filter: invert(1);" />
+                  </div>
+                </div>
+                
+                <!-- Info Section (Bottom) -->
+                <div class="track-info">
+                  <span class="track-badge" style="background: var(--jazer-cyan); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);">LATEST UPLOAD</span>
+                  <h3 class="track-title">New Video</h3>
+                  <p class="track-artist">Production Vlog</p>
+                  
+                  <div class="track-meta">
+                    <span class="track-duration">12:45</span>
+                    <span class="track-genre">Behind The Scenes</span>
+                  </div>
+                  
+                  <span class="track-cta">Watch Now</span>
+                </div>
+              </article>
+            </a>
+            <a href={`${base}contact`} class="card-link" data-animate="fade-up" data-animate-delay="300">
+              <article class="card premium-card live-card">
+                <!-- Visual Section (Top) -->
+                <div class="media-visual-container">
+                   <div class="live-visual">
+                       <img src={`${base}assets/images/icons/music/mic-black.svg`} class="live-mic-svg" alt="" style="width: 48px; height: 48px; filter: invert(1);" />
+                       <div class="live-pulse-ring"></div>
+                   </div>
+                </div>
+                
+                <!-- Info Section (Bottom) -->
+                <div class="track-info">
+                  <span class="track-badge" style="background: var(--jazer-pink); color: #fff; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);">UPCOMING</span>
+                  <h3 class="track-title">Live Sessions</h3>
+                  <p class="track-artist">Q&A + Performance</p>
+                  
+                  <div class="track-meta">
+                    <span class="track-duration">MAR 15</span>
+                    <span class="track-genre">Twitch • YouTube</span>
+                  </div>
+                  
+                  <span class="track-cta">Get Notified</span>
+                </div>
+              </article>
+            </a>
+          </div>
+        </div>
+      </section>
+
+          <JoinBeamCTA
+      subject="New subscriber from JaZeR website"
+      buttonLabel="Join Free"
+      proofText="Join <strong>500+</strong> fans already on the beam"
+    >
+      <Fragment slot="subtitle">
+        Get first access to new drops + an <strong>unreleased track</strong> as a welcome gift.
+      </Fragment>
+    </JoinBeamCTA>
+    
+</BaseLayout>

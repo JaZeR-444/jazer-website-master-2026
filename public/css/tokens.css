@@ -1,0 +1,122 @@
+/* Core theme tokens extracted from components.css */
+:root {
+  /* Brand Fonts - MATCHING YOUR ACTUAL LOGO */
+  --font-primary: "Nunito", sans-serif;
+  /* Logo, Hero - Matches your logo! */
+  --font-secondary: "Outfit", sans-serif;
+  /* Headers, Titles - Rounded & Modern */
+  --font-body: "DM Sans", sans-serif;
+  /* Body, UI - Friendly & Readable */
+
+  /* Alternative Font Options - Fallback to system fonts or keep if you have files for them later */
+  --font-alt-rounded: "Poppins", sans-serif;
+  --font-alt-geometric: "Rubik", sans-serif;
+
+  /* Brand Colors - JAZER BUBBLE LOGO PALETTE */
+  --jazer-cyan: #22d3ee; /* Bright Cyan (E, R letters) */
+  --jazer-pink: #ff6b9d; /* Hot Pink (J letter) */
+  --jazer-purple: #a855f7; /* Vibrant Purple (A, Z letters) */
+  --jazer-magenta: #c026d3; /* Deep Magenta */
+  --jazer-orange: #f59e0b; /* Warm Orange */
+  --jazer-yellow: #fbbf24; /* Sunny Yellow (Z accent) */
+  --jazer-green: #34d399; /* Fresh Mint */
+  --jazer-teal: #06b6d4; /* Deep Teal */
+
+  /* RGB variants for rgba() usage */
+  --jazer-cyan-rgb: 34, 211, 238;
+  --jazer-pink-rgb: 255, 107, 157;
+  --jazer-purple-rgb: 168, 85, 247;
+
+  /* Gradients - JAZER LOGO INSPIRED */
+  --gradient-primary: linear-gradient(
+    135deg,
+    #ff6b9d 0%,
+    #a855f7 50%,
+    #22d3ee 100%
+  );
+  --gradient-text: linear-gradient(
+    135deg,
+    #ff6b9d 0%,
+    #a855f7 35%,
+    #22d3ee 70%,
+    #06b6d4 100%
+  );
+  --gradient-accent: linear-gradient(135deg, #ff6b9d 0%, #a855f7 100%);
+  --gradient-warm: linear-gradient(135deg, #ff6b9d 0%, #fbbf24 100%);
+  --gradient-cool: linear-gradient(135deg, #a855f7 0%, #22d3ee 100%);
+
+  /* Backgrounds */
+  --bg-dark: #0a0a0f;
+  --bg-card: rgba(168, 85, 247, 0.05);
+  --bg-bubble: rgba(255, 107, 157, 0.1);
+  --text-light: #ffffff;
+  --text-gray: #b0b0b0;
+  --text-muted: #808080;
+  --text-secondary: var(--text-gray);
+  --scroll-progress: 0%;
+
+  /* Fluid Typography & Spacing */
+  --h1-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  --h2-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+  --h3-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+  --body-size: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+
+  /* Fluid Typography & Spacing - DRASTICALLY REDUCED */
+  --h1-size: clamp(2rem, 3vw + 1rem, 3rem);
+  --h2-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+  --h3-size: clamp(1.35rem, 2vw + 0.5rem, 2rem);
+  --body-size: clamp(
+    1rem,
+    0.5vw + 1rem,
+    1.125rem
+  ); /* Kept body readable but stable */
+
+  /* Mobile Fix: Optimized for better mobile real estate */
+  --container-padding: clamp(1.25rem, 6vw, 6rem);
+  --section-spacing: clamp(3rem, 8vw, 8rem);
+  /* Typography Scale - Mobile First */
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-lg: 1.125rem;
+  /* 18px */
+  --text-xl: 1.25rem;
+  /* 20px */
+  --text-2xl: 1.5rem;
+  /* 24px */
+  --text-3xl: 1.875rem;
+  /* 30px */
+  --text-4xl: 2.25rem;
+  /* 36px */
+  --text-5xl: 3rem;
+  /* 48px */
+  --text-6xl: 3.75rem;
+  /* 60px */
+  --text-7xl: 4.5rem;
+  /* 72px */
+  --text-8xl: 6rem;
+  /* 96px */
+
+  /* Line Heights - MORE BREATHING ROOM */
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+  --leading-loose: 2;
+
+  /* Letter Spacing - WIDER FOR FRIENDLINESS */
+  --tracking-tighter: -0.025em;
+  --tracking-tight: 0;
+  --tracking-normal: 0.01em;
+  --tracking-wide: 0.03em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+}
+
+:root {
+  /* Clean solid dark background - no weird gradients */
+  --bg-gradient: #0a0a0f;
+}

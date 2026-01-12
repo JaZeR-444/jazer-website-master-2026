@@ -1,0 +1,308 @@
+---
+const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
+
+const socials = [
+  { href: "https://instagram.com/jazer_music", label: "Instagram", icon: `${base}assets/images/icons/social/instagram-round-icon.svg` },
+  { href: "https://tiktok.com/@jazer_music", label: "TikTok", icon: `${base}assets/images/icons/social/tiktok-round-logo.svg` },
+  { href: "https://twitter.com/jazer_music", label: "X (Twitter)", icon: `${base}assets/images/icons/social/round-x(twitter)-icon.svg` },
+  { href: "https://youtube.com/@jazer", label: "YouTube", icon: `${base}assets/images/icons/social/youtube-round-icon.svg` },
+  { href: "https://open.spotify.com/artist/jazer", label: "Spotify", icon: `${base}assets/images/icons/social/spotify-round-icon.svg` },
+  { href: "https://music.apple.com/artist/jazer", label: "Apple Music", icon: `${base}assets/images/icons/social/apple-music-round-icon.svg` },
+  { href: "https://soundcloud.com/jazer", label: "SoundCloud", icon: `${base}assets/images/icons/social/soundcloud-round-icon.svg` },
+];
+---
+
+<footer class="sonic-footer">
+    <!-- Top Level: System Stream -->
+    <div class="sonic-system-stream">
+        <div class="system-message-track">
+            <!-- Content Duplicated for Seamless Loop -->
+            <span class="system-message">:: WELCOME TO THE DATABANK ::</span>
+            <span class="system-message">:: LATEST TRANSMISSION: IN DUE TIME ::</span>
+            <span class="system-message">:: JOIN THE BEAM ::</span>
+            <span class="system-message">:: EST. 2026 ::</span>
+            <span class="system-message">:: WELCOME TO THE DATABANK ::</span>
+            <span class="system-message">:: LATEST TRANSMISSION: IN DUE TIME ::</span>
+            <span class="system-message">:: JOIN THE BEAM ::</span>
+            <span class="system-message">:: EST. 2026 ::</span>
+        </div>
+    </div>
+
+
+    <div class="sonic-footer-inner">
+      <a class="sonic-footer-brand" href={`${base}`} aria-label="JaZeR home">
+        <img
+          src={`${base}assets/images/Vibrant JAZER Bubble Logo (600 x 200 px).svg`}
+          alt="JaZeR"
+          class="sonic-footer-logo"
+          width="150"
+          height="50"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+  
+      <nav class="sonic-footer-nav" aria-label="Primary Footer Navigation">
+        <a href={`${base}`} class="sonic-nav-link">[ HOME ]</a>
+        <a href={`${base}music`} class="sonic-nav-link active">[ MUSIC ]</a>
+        <a href={`${base}videos`} class="sonic-nav-link">[ VIDEOS ]</a>
+        <a href={`${base}shop`} class="sonic-nav-link">[ SHOP ]</a>
+        <a href={`${base}about`} class="sonic-nav-link">[ ABOUT ]</a>
+        <a href={`${base}contact`} class="sonic-nav-link">[ CONTACT ]</a>
+      </nav>
+  
+      <nav class="sonic-footer-socials" aria-label="JaZeR social links">
+        {socials.map((s) => (
+          <a
+            class="sonic-footer-social"
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            title={s.label}
+          >
+            <img src={s.icon} alt="" aria-hidden="true" />
+          </a>
+        ))}
+      </nav>
+  
+      <div class="sonic-footer-meta">
+        <p class="sonic-footer-copyright">
+          © {year} JAZER. ALL RIGHTS RESERVED.
+        </p>
+  
+        <p class="sonic-footer-status" data-quotes='["YOUR LIGHT IS REAL. YOUR DREAM IS VALID.", "KEEP BUILDING WHEN IT FEELS HEAVY.", "TURN PAIN INTO POWER, VISIONS INTO REALITY.", "THERE&apos;S STILL MAGIC IN ALL OF THIS.", "YOU&apos;RE CLOSER THAN YOU THINK."]'>
+          "YOUR LIGHT IS REAL. YOUR DREAM IS VALID."
+        </p>
+      </div>
+    </div>
+  
+    {/* Rotating Messages Script */}
+    <script is:inline>
+      const quoteEl = document.querySelector('.sonic-footer-status[data-quotes]');
+      if (quoteEl) {
+        try {
+          const quotes = JSON.parse(quoteEl.dataset.quotes);
+          let index = 0;
+          setInterval(() => {
+            index = (index + 1) % quotes.length;
+            quoteEl.style.opacity = '0';
+            setTimeout(() => {
+              quoteEl.textContent = `"${quotes[index]}"`;
+              quoteEl.style.opacity = '1';
+            }, 500); // Wait for fade out
+          }, 20000); // 20 seconds per quote
+        } catch (e) {
+          console.error('Error parsing quotes:', e);
+        }
+      }
+    </script>
+</footer>
+
+<style>
+/* Scoped Styles for Sonic Footer */
+.sonic-footer {
+  padding: 0 0 4rem;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* System Stream Ticker */
+.sonic-system-stream {
+    width: 100%;
+    background: rgba(6, 182, 212, 0.05);
+    border-top: 1px solid rgba(6, 182, 212, 0.1);
+    border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+    padding: 0.5rem 0;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0.5rem; /* Reduced margin to fit better with nav */
+    display: flex;
+}
+
+.system-message-track {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 40s linear infinite;
+}
+
+.system-message {
+    font-family: 'Courier New', monospace;
+    color: var(--jazer-cyan);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding-right: 4rem; 
+    opacity: 0.8;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+/* Command Navigation */
+.sonic-footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.sonic-nav-link {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.sonic-nav-link:hover, .sonic-nav-link.active {
+    color: var(--jazer-cyan);
+    text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+}
+
+/* Glass Panel & Content */
+.sonic-footer-inner {
+  width: min(920px, calc(100% - 2.5rem));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+
+  padding: 1.5rem 1.25rem;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.sonic-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.sonic-footer-logo {
+  opacity: 0.85;
+  transition: transform 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+}
+
+.sonic-footer-brand:hover .sonic-footer-logo {
+  opacity: 1;
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 10px var(--jazer-cyan));
+}
+
+.sonic-footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+/* Make the *tap target* bigger than the icon */
+.sonic-footer-social {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  opacity: 0.72;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sonic-footer-social img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: all 0.2s ease;
+}
+
+.sonic-footer-social:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Keyboard accessibility */
+.sonic-footer-social:focus-visible,
+.sonic-footer-brand:focus-visible,
+.sonic-nav-link:focus-visible {
+  outline: 2px solid rgba(0, 255, 255, 0.65);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.sonic-footer-social:focus-visible {
+    border-radius: 50%;
+}
+
+.sonic-footer-meta {
+  text-align: center;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.sonic-footer-copyright {
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.sonic-footer-status {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem; /* Slightly larger for quotes */
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.6); /* Brighter for readability */
+  margin: 0;
+  min-height: 1.25em;
+  transition: opacity 0.5s ease;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sonic-footer-logo,
+  .sonic-footer-social,
+  .sonic-nav-link,
+  .sonic-footer-status {
+    transition: none;
+  }
+  .sonic-footer-social:hover,
+  .sonic-footer-brand:hover .sonic-footer-logo {
+    transform: none;
+  }
+}
+
+/* Responsive Tweak for Stream */
+@media (max-width: 768px) {
+    .system-message { font-size: 0.65rem; padding-right: 2rem; }
+    
+    .sonic-footer-nav { 
+        gap: 1rem; 
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3x2 Grid */
+        justify-items: center;
+        text-align: center;
+    }
+    
+    .sonic-footer-socials { gap: 0.75rem; }
+    
+    .sonic-footer-inner {
+        width: calc(100% - 2rem);
+        padding: 1.5rem 1rem;
+    }
+}
+</style>

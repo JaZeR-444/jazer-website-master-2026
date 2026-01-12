@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+const base = import.meta.env.BASE_URL;
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+
+const announcement = {
+  href: `${base}music`,
+  text: '?? NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it  '
+};
+---
+<BaseLayout
+  bodyClass="has-announcement"
+  showAnnouncement={true}
+  announcement={announcement}
+  showNoiseOverlay={false}
+  showPreloader={true}
+  showNavEnhancements={true}
+  showFooter={true}
+  showAudioPlayer={true}
+  showBackToTop={true}
+  includeGsap={true}
+  extraStyles={[
+    '/css/pages-enhancements.css'
+  ]}
+>
+  <Fragment slot="head">
+    <title>Contact - JaZeR</title>
+    <meta name="description" content="Get in touch with JaZeR." />
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="preload"
+      as="image"
+      href={`${base}assets/images/Contact Me (450 x 94 px).svg`}
+      type="image/svg+xml"
+    />
+  </Fragment>
+
+        <!-- New Page Hero -->
+                <div class="page-hero" data-animate="fade-up">
+            <h1 class="page-hero-title">
+                <img class="page-hero-title-logo" src={`${base}assets/images/Contact Me (450 x 94 px).svg`} alt="Contact Me">
+            </h1>
+            <p class="page-hero-subtitle">
+                Send a message, collaborations, or press requests.
+            </p>
+        </div>
+
+        <div class="container section">
+            <p class="page-intro-icon text-center mb-lg">
+              Drop a message below and it'll beam straight to the control room.
+            </p>
+
+            <div class="premium-glass-card" style="max-width: 700px; margin: 0 auto;">
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-animate="fade-up">
+                    <div class="modern-form-group">
+                        <label for="name" class="modern-label">Name</label>
+                        <input id="name" type="text" name="name" class="modern-input" required placeholder="Your name">
+                    </div>
+                    <div class="modern-form-group">
+                        <label for="email" class="modern-label">Email</label>
+                        <input id="email" type="email" name="email" class="modern-input" required placeholder="your@email.com">
+                    </div>
+                    <div class="modern-form-group">
+                        <label for="subject" class="modern-label">Subject</label>
+                        <input id="subject" type="text" name="subject" class="modern-input" required placeholder="What's this about?">
+                    </div>
+                    <div class="modern-form-group">
+                        <label for="message" class="modern-label">Message</label>
+                        <textarea id="message" name="message" class="modern-textarea" required placeholder="Your message..."></textarea>
+                    </div>
+
+                    <input type="hidden" name="_subject" value="New contact from JaZeR website">
+
+                    <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+
+                    <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <div class="text-center mt-xl">
+                <p class="text-muted mb-sm">Or reach out on social media:</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/jazer_music" title="Instagram"><img src={`${base}assets/images/icons/social/instagram-round-icon.svg`} alt="Instagram" width="28" height="28"></a>
+                    <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src={`${base}assets/images/icons/social/tiktok-round-logo.svg`} alt="TikTok" width="28" height="28"></a>
+                    <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src={`${base}assets/images/icons/social/round-x(twitter)-icon.svg`} alt="X/Twitter" width="28" height="28"></a>
+                    <a href="https://youtube.com/@jazer" title="YouTube"><img src={`${base}assets/images/icons/social/youtube-round-icon.svg`} alt="YouTube" width="28" height="28"></a>
+                    <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src={`${base}assets/images/icons/social/spotify-round-icon.svg`} alt="Spotify" width="28" height="28"></a>
+                    <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src={`${base}assets/images/icons/social/apple-music-round-icon.svg`} alt="Apple Music" width="28" height="28"></a>
+                    <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src={`${base}assets/images/icons/social/soundcloud-round-icon.svg`} alt="SoundCloud" width="28" height="28"></a>
+                    <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src={`${base}assets/images/icons/social/round-facebook-icon.svg`} alt="Facebook" width="28" height="28"></a>
+                </div>
+            </div>
+        </div>
+
+  <!-- Email Signup CTA -->
+  <JoinBeamCTA
+    sectionStyle="padding: 6rem 0; background: rgba(0,0,0,0.2);"
+    captureStyle="max-width: 700px; margin: 0 auto;"
+    subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
+    subject="New subscriber from JaZeR Contact page"
+    buttonLabel="Join the Beam"
+    proofText="Join <strong>500+</strong> fans on the beam"
+  >
+    <Fragment slot="subtitle">
+      Be the first to hear new music, get exclusive updates, and <strong>join the community</strong>.
+    </Fragment>
+  </JoinBeamCTA>
+
+</BaseLayout>
+
