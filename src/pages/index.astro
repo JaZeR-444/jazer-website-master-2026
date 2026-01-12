@@ -134,13 +134,31 @@ const socialPreviews = [
           grid-template-columns: 1fr;
           gap: 2rem;
         }
-        /* Improve Stats Cards on Mobile */
         .stat-item {
           padding: 2rem;
         }
-        /* Improve Featured Section padding */
         .featured-section {
           padding: 4rem 0;
+        }
+        /* New section mobile styles */
+        .quick-links-row {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+        .achievements-row {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+        .now-playing-flex {
+          flex-direction: column;
+          text-align: center;
+        }
+        .now-playing-art {
+          margin: 0 auto;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .quick-links-row {
+          grid-template-columns: 1fr !important;
         }
       }
     </style>
@@ -348,14 +366,282 @@ const socialPreviews = [
         </div>
       </section>
 
-          <JoinBeamCTA
-      subject="New subscriber from JaZeR website"
-      buttonLabel="Join Free"
-      proofText="Join <strong>500+</strong> fans already on the beam"
-    >
-      <Fragment slot="subtitle">
-        Get first access to new drops + an <strong>unreleased track</strong> as a welcome gift.
-      </Fragment>
-    </JoinBeamCTA>
+      <!-- Now Playing / Featured Track -->
+      <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title text-center gradient-text">Now Playing</h2>
+            <p class="section-subtitle">Preview the upcoming debut single</p>
+          </div>
+          
+          <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; padding: 2rem; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;" data-animate="fade-up">
+            <!-- Album Art -->
+            <div style="width: 200px; height: 200px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="JZR" style="width: 120px; height: 120px;" />
+            </div>
+            
+            <!-- Track Info -->
+            <div style="flex: 1; min-width: 250px;">
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; background: var(--jazer-pink); border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.75rem;">COMING MARCH 2026</span>
+              <h3 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.25rem;">In Due Time</h3>
+              <p style="color: var(--text-muted); margin-bottom: 1rem;">JaZeR • Debut Single</p>
+              
+              <!-- Waveform -->
+              <div style="display: flex; align-items: flex-end; gap: 3px; height: 40px; margin-bottom: 1rem;">
+                {[...Array(24)].map((_, i) => (
+                  <div style={`width: 4px; background: linear-gradient(to top, var(--jazer-cyan), var(--jazer-purple)); border-radius: 2px; animation: waveform ${0.4 + Math.random() * 0.4}s ease-in-out infinite alternate; height: ${20 + Math.random() * 60}%;`}></div>
+                ))}
+              </div>
+              
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href={`${base}music`} class="cta-button" style="padding: 0.75rem 1.5rem;">
+                  <span>🎧</span>
+                  <span>Pre-Save</span>
+                </a>
+                <button class="cta-secondary" style="padding: 0.75rem 1.5rem;">
+                  <span>🔔 Notify Me</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <style>
+            @keyframes waveform {
+              0% { height: 20%; }
+              100% { height: 80%; }
+            }
+          </style>
+        </div>
+      </section>
+
+      <!-- Upcoming Events / Countdown -->
+      <section class="section" style="padding: 6rem 0;">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title text-center gradient-text">Coming Up</h2>
+            <p class="section-subtitle">Mark your calendar for these moments</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+            {upcomingEvents.map((event, index) => (
+              <div class="premium-card" style="padding: 2rem; position: relative; overflow: hidden;" data-animate="fade-up" data-animate-delay={index * 100}>
+                <span style={`position: absolute; top: 1rem; right: 1rem; padding: 0.25rem 0.75rem; background: ${event.status === 'SOON' ? 'var(--jazer-pink)' : 'rgba(255,255,255,0.1)'}; border-radius: 4px; font-size: 0.75rem; font-weight: 700;`}>{event.status}</span>
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">{event.icon}</div>
+                <h3 style="font-weight: 700; font-size: 1.25rem; margin-bottom: 0.5rem;">{event.title}</h3>
+                <p style="color: var(--jazer-cyan); font-weight: 600; margin-bottom: 0.25rem;">{event.date}</p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">{event.type}</p>
+              </div>
+            ))}
+          </div>
+          
+          <!-- Main Countdown -->
+          <div class="premium-glass-card" style="max-width: 600px; margin: 3rem auto; padding: 2rem; text-align: center;" data-animate="fade-up">
+            <p style="font-weight: 600; margin-bottom: 1rem;">🎵 "In Due Time" drops in</p>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+              <div>
+                <div id="countdown-days" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">62</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">DAYS</div>
+              </div>
+              <div>
+                <div id="countdown-hours" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">14</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">HOURS</div>
+              </div>
+              <div>
+                <div id="countdown-mins" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">32</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">MINS</div>
+              </div>
+              <div>
+                <div id="countdown-secs" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">08</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">SECS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Achievements / Milestones -->
+      <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.3);">
+        <div class="container">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+            {achievements.map((achievement, index) => (
+              <div style="text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">{achievement.icon}</div>
+                <div style="font-size: 1.75rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-pink), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{achievement.title}</div>
+                <div style="font-size: 0.875rem; color: var(--text-muted);">{achievement.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Fan Testimonials Carousel -->
+      <section class="section" style="padding: 6rem 0;">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title text-center gradient-text">What Fans Say</h2>
+            <p class="section-subtitle">Love from the community</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+            {testimonials.map((testimonial, index) => (
+              <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+                <div style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.3;">"</div>
+                <p style="font-style: italic; line-height: 1.6; margin-bottom: 1.5rem;">{testimonial.text}</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 600; font-size: 0.875rem;">{testimonial.author}</span>
+                  <span style="font-size: 0.75rem; color: var(--jazer-cyan);">via {testimonial.platform}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Teaser Section -->
+      <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title text-center gradient-text">Teaser</h2>
+            <p class="section-subtitle">First look at the music video</p>
+          </div>
+          
+          <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; overflow: hidden; border-radius: 16px;" data-animate="fade-up">
+            <div style="position: relative; padding-bottom: 56.25%; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.3); cursor: pointer; transition: transform 0.3s ease;">
+                  <img src={`${base}assets/images/icons/music/play-black.svg`} alt="Play" style="width: 32px; height: 32px; margin-left: 4px; filter: invert(1);" />
+                </div>
+                <p style="margin-top: 1.5rem; color: var(--text-muted);">Music Video Teaser Coming February 2026</p>
+              </div>
+            </div>
+          </div>
+          
+          <div style="text-align: center;" data-animate="fade-up">
+            <a href={`${base}videos`} class="cta-secondary">
+              <span>View All Videos</span>
+              <span class="cta-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social Feed Preview -->
+      <section class="section" style="padding: 6rem 0;">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title text-center gradient-text">Connect</h2>
+            <p class="section-subtitle">Follow the journey on socials</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 900px; margin: 3rem auto;">
+            {socialPreviews.map((social, index) => (
+              <a href="#" class="premium-card" style="padding: 1.5rem; text-align: center; text-decoration: none; color: inherit; transition: all 0.3s ease;" data-animate="fade-up" data-animate-delay={index * 100}>
+                <img src={`${base}assets/images/icons/social/${social.icon}`} alt={social.platform} style="width: 48px; height: 48px; margin-bottom: 1rem;" />
+                <h4 style="font-weight: 700; margin-bottom: 0.25rem;">{social.platform}</h4>
+                <p style="font-size: 0.875rem; color: var(--jazer-cyan); margin-bottom: 0.25rem;">{social.handle}</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">{social.followers} followers</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Latest Updates / News -->
+      <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title text-center gradient-text">Latest Updates</h2>
+            <p class="section-subtitle">What's happening behind the scenes</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+            {latestUpdates.map((update, index) => (
+              <div class="premium-card" style="padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;" data-animate="fade-up" data-animate-delay={index * 100}>
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">{update.icon}</div>
+                <div>
+                  <h4 style="font-weight: 700; margin-bottom: 0.25rem;">{update.title}</h4>
+                  <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">{update.desc}</p>
+                  <span style="font-size: 0.75rem; color: var(--jazer-cyan);">{update.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Links Navigation -->
+      <section class="section" style="padding: 6rem 0;">
+        <div class="container">
+          <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title text-center gradient-text">Explore</h2>
+            <p class="section-subtitle">Navigate to any section</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 900px; margin: 3rem auto;">
+            {quickLinks.map((link, index) => (
+              <a href={link.url} style={`display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem; background: ${link.gradient}; border-radius: 16px; text-decoration: none; color: #fff; transition: transform 0.3s ease;`} data-animate="fade-up" data-animate-delay={index * 50}>
+                <span style="font-size: 2rem; margin-bottom: 0.5rem;">{link.icon}</span>
+                <span style="font-weight: 700; font-size: 1rem;">{link.name}</span>
+                <span style="font-size: 0.75rem; opacity: 0.8;">{link.desc}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Brand Story Teaser -->
+      <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+        <div class="container">
+          <div class="premium-glass-card" style="max-width: 800px; margin: 0 auto; padding: 4rem; text-align: center;" data-animate="fade-up">
+            <div style="font-size: 3rem; margin-bottom: 1.5rem;">✨</div>
+            <h2 class="gradient-text" style="font-size: 2rem; margin-bottom: 1rem;">Why JaZeR?</h2>
+            <p style="font-size: 1.25rem; line-height: 1.8; color: var(--text-light); margin-bottom: 2rem;">
+              <strong>JaZeR</strong> is more than music — it's a <strong>sonic escape hatch</strong> for anyone who needs a place to belong. 
+              A focused beam of energy designed to cut through the noise, light up the dark, and remind you of what's possible.
+            </p>
+            <a href={`${base}about`} class="cta-button">
+              <span>📖</span>
+              <span>Read the Full Story</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <JoinBeamCTA
+        subject="New subscriber from JaZeR website"
+        buttonLabel="Join Free"
+        proofText="Join <strong>500+</strong> fans already on the beam"
+      >
+        <Fragment slot="subtitle">
+          Get first access to new drops + an <strong>unreleased track</strong> as a welcome gift.
+        </Fragment>
+      </JoinBeamCTA>
+
+      <script>
+        // Homepage Countdown Timer
+        function updateHomeCountdown() {
+          const premiereDate = new Date('2026-03-15T00:00:00Z').getTime();
+          const now = new Date().getTime();
+          const distance = premiereDate - now;
+          
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const secs = Math.floor((distance % (1000 * 60)) / 1000);
+          
+          const daysEl = document.getElementById('countdown-days');
+          const hoursEl = document.getElementById('countdown-hours');
+          const minsEl = document.getElementById('countdown-mins');
+          const secsEl = document.getElementById('countdown-secs');
+          
+          if (daysEl) daysEl.textContent = distance > 0 ? days : '0';
+          if (hoursEl) hoursEl.textContent = distance > 0 ? hours.toString().padStart(2, '0') : '00';
+          if (minsEl) minsEl.textContent = distance > 0 ? mins.toString().padStart(2, '0') : '00';
+          if (secsEl) secsEl.textContent = distance > 0 ? secs.toString().padStart(2, '0') : '00';
+        }
+        
+        updateHomeCountdown();
+        setInterval(updateHomeCountdown, 1000);
+      </script>
     
 </BaseLayout>
