@@ -19,11 +19,11 @@ const socials = [
         <div class="system-message-track">
             <!-- Content Duplicated for Seamless Loop -->
             <span class="system-message">:: WELCOME TO THE DATABANK ::</span>
-            <span class="system-message">:: LATEST TRANSMISSION: IN DUE TIME ::</span>
+            <span class="system-message">:: LATEST TRANSMISSION: TBA ::</span>
             <span class="system-message">:: JOIN THE BEAM ::</span>
             <span class="system-message">:: EST. 2026 ::</span>
             <span class="system-message">:: WELCOME TO THE DATABANK ::</span>
-            <span class="system-message">:: LATEST TRANSMISSION: IN DUE TIME ::</span>
+            <span class="system-message">:: LATEST TRANSMISSION: TBA ::</span>
             <span class="system-message">:: JOIN THE BEAM ::</span>
             <span class="system-message">:: EST. 2026 ::</span>
         </div>
@@ -46,7 +46,7 @@ const socials = [
       <nav class="sonic-footer-nav" aria-label="Primary Footer Navigation">
         <a href={`${base}`} class="sonic-nav-link">[ HOME ]</a>
         <a href={`${base}music`} class="sonic-nav-link active">[ MUSIC ]</a>
-        <a href={`${base}videos`} class="sonic-nav-link">[ VIDEOS ]</a>
+        <a href={`${base}videos`} class="sonic-nav-link">[ VIDEOS & VISUALS ]</a>
         <a href={`${base}shop`} class="sonic-nav-link">[ SHOP ]</a>
         <a href={`${base}about`} class="sonic-nav-link">[ ABOUT ]</a>
         <a href={`${base}contact`} class="sonic-nav-link">[ CONTACT ]</a>
@@ -71,6 +71,12 @@ const socials = [
         <p class="sonic-footer-copyright">
           © {year} JAZER. ALL RIGHTS RESERVED.
         </p>
+
+        <div class="sonic-trust-links">
+          <span class="trust-link">Privacy (TBD)</span>
+          <span class="trust-separator">•</span>
+          <span class="trust-link">Terms (TBD)</span>
+        </div>
   
         <p class="sonic-footer-status" data-quotes='["YOUR LIGHT IS REAL. YOUR DREAM IS VALID.", "KEEP BUILDING WHEN IT FEELS HEAVY.", "TURN PAIN INTO POWER, VISIONS INTO REALITY.", "THERE&apos;S STILL MAGIC IN ALL OF THIS.", "YOU&apos;RE CLOSER THAN YOU THINK."]'>
           "YOUR LIGHT IS REAL. YOUR DREAM IS VALID."
@@ -259,6 +265,25 @@ const socials = [
   color: rgba(255, 255, 255, 0.45);
   letter-spacing: 0.06em;
   margin: 0;
+}
+
+.sonic-trust-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.trust-link {
+  cursor: default;
+}
+
+.trust-separator {
+  opacity: 0.5;
 }
 
 .sonic-footer-status {

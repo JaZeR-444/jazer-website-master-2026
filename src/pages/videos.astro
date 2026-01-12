@@ -7,100 +7,107 @@ const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.ur
 
 const announcement = {
   href: `${base}videos`,
-  text: '🎬 FIRST MUSIC VIDEO PREMIERING MARCH 15, 2026 - Set your reminder now!'
+  text: '🎬 VISUAL CONTENT COMING IN 2026 — Join updates for early access'
 };
 
-// Upcoming video content
+// Upcoming video content - Using safe placeholders only
 const upcomingVideos = [
   {
     id: 1,
-    title: 'In Due Time - Official Music Video',
+    title: 'Visual Title (TBA)',
     type: 'Music Video',
-    duration: '3:24',
-    status: 'PREMIERE',
-    date: 'March 15, 2026',
-    description: 'The debut visual experience. Full cinematic production featuring stunning visuals and choreography.',
+    duration: 'TBD',
+    status: 'Coming in 2026',
+    description: 'The debut visual experience. Full cinematic production.',
     color: 'var(--jazer-pink)',
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
   },
   {
     id: 2,
-    title: 'Studio Sessions: The Making Of',
+    title: 'Studio Sessions (TBA)',
     type: 'Behind The Scenes',
-    duration: '12:45',
-    status: 'BTS',
-    date: 'March 2026',
-    description: 'Go behind the scenes as JaZeR creates the debut album. Studio process, production tips, and creative journey.',
+    duration: 'TBD',
+    status: 'Expected in 2026',
+    description: 'Go behind the scenes. Studio process, production tips, and creative journey.',
     color: 'var(--jazer-cyan)',
     gradient: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%)'
   },
   {
     id: 3,
-    title: 'Live Performance - First Show',
+    title: 'Live Session (TBA)',
     type: 'Live Performance',
-    duration: '45:00',
-    status: 'LIVE',
-    date: 'April 2026',
-    description: 'Experience the first live performance featuring all new tracks, visual effects, and stage production.',
+    duration: 'TBD',
+    status: 'Coming in 2026',
+    description: 'Experience live performance with visual effects and stage production.',
     color: 'var(--jazer-purple)',
     gradient: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%)'
   },
   {
     id: 4,
-    title: 'Creative Process Vlog',
+    title: 'Creative Vlog (TBA)',
     type: 'Documentary',
-    duration: '8:15',
-    status: 'VLOG',
-    date: 'April 2026',
-    description: 'A day in the life: songwriting, production workflow, inspiration sources, and creative philosophy.',
+    duration: 'TBD',
+    status: 'Expected in 2026',
+    description: 'A day in the life: songwriting, production workflow, and creative philosophy.',
     color: '#f59e0b',
     gradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 146, 60, 0.2) 100%)'
   },
   {
     id: 5,
-    title: 'Lyric Video Collection',
+    title: 'Lyric Video (TBA)',
     type: 'Lyric Video',
-    duration: '15:30',
-    status: 'LYRIC',
-    date: 'May 2026',
-    description: 'Animated lyric videos for all singles with kinetic typography and visual storytelling.',
+    duration: 'TBD',
+    status: 'Coming in 2026',
+    description: 'Animated lyric videos with kinetic typography and visual storytelling.',
     color: '#ec4899',
     gradient: 'linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(219, 39, 119, 0.2) 100%)'
   },
   {
     id: 6,
-    title: 'Tutorial: Producing Beats',
+    title: 'Production Tutorial (TBA)',
     type: 'Tutorial',
-    duration: '20:00',
-    status: 'EDU',
-    date: 'May 2026',
-    description: 'Learn how JaZeR produces tracks from scratch. FL Studio walkthrough, mixing tips, and sound design.',
+    duration: 'TBD',
+    status: 'Expected in 2026',
+    description: 'Learn production techniques. Walkthrough, mixing tips, and sound design.',
     color: '#10b981',
     gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%)'
   }
 ];
 
-// Video content types
+// Video content types - Using TBD for counts
 const contentTypes = [
-  { name: 'Music Videos', icon: 'video-black.svg', count: '5+', desc: 'Full production visuals', filter: 'music' },
-  { name: 'Behind The Scenes', icon: 'camera-black.svg', count: '10+', desc: 'Studio process', filter: 'bts' },
-  { name: 'Live Sessions', icon: 'live-black.svg', count: '8+', desc: 'Performances & shows', filter: 'live' },
-  { name: 'Tutorials', icon: 'mixer-black.svg', count: '15+', desc: 'Production guides', filter: 'tutorial' }
+  { name: 'Music Videos', icon: 'video-black.svg', count: 'TBD', desc: 'Full production visuals', filter: 'music' },
+  { name: 'Behind The Scenes', icon: 'camera-black.svg', count: 'TBD', desc: 'Studio process', filter: 'bts' },
+  { name: 'Live Sessions', icon: 'live-black.svg', count: 'TBD', desc: 'Performances & shows', filter: 'live' },
+  { name: 'Tutorials', icon: 'mixer-black.svg', count: 'TBD', desc: 'Production guides', filter: 'tutorial' }
 ];
 
-// Featured collaborators
+// Featured collaborators - Using TBD for names
 const collaborators = [
-  { name: 'Visual Director', role: 'Music Video Production', avatar: '🎬' },
-  { name: 'Choreographer', role: 'Dance & Movement', avatar: '💃' },
-  { name: 'VFX Artist', role: 'Visual Effects', avatar: '✨' },
-  { name: 'Sound Engineer', role: 'Audio Mixing', avatar: '🎧' }
+  { name: 'TBD', role: 'Music Video Production', avatar: '🎬' },
+  { name: 'TBD', role: 'Dance & Movement', avatar: '💃' },
+  { name: 'TBD', role: 'Visual Effects', avatar: '✨' },
+  { name: 'TBD', role: 'Audio Mixing', avatar: '🎧' }
 ];
 
-// Video testimonials/comments
-const videoComments = [
-  { text: "Can't wait for the official MV! The teasers look incredible.", author: "Early Supporter", platform: "YouTube" },
-  { text: "JaZeR's production tutorials are gonna change the game.", author: "Producer Fan", platform: "Instagram" },
-  { text: "The behind-the-scenes content is exactly what we need!", author: "Day One Fan", platform: "TikTok" }
+// FAQ Items - Safe copy only
+const videosFAQ = [
+  {
+    q: 'When will videos be available?',
+    a: 'Visual content is expected sometime in 2026. Join updates to be notified when videos drop.'
+  },
+  {
+    q: 'Where can I watch?',
+    a: 'Videos will be available on YouTube and social platforms when released. Subscribe to be first to know.'
+  },
+  {
+    q: 'What types of content are planned?',
+    a: 'Music videos, behind-the-scenes footage, tutorials, and live sessions are in development.'
+  },
+  {
+    q: 'How do I get notified about new videos?',
+    a: 'Join the email list below or subscribe on YouTube for premiere alerts and early access.'
+  }
 ];
 
 // BTS Photo gallery

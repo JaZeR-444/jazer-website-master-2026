@@ -1,0 +1,117 @@
+---
+import VideoCard from './VideoCard.astro';
+
+// Safe placeholder data - NO invented stats/dates
+const videos = [
+  {
+    title: 'Featured Visual (TBA)',
+    type: 'Music Video',
+    status: 'Coming in 2026',
+    color: 'var(--jazer-pink)',
+    gradient: 'linear-gradient(135deg, #1a1a2e 0%, #312e81 100%)'
+  },
+  {
+    title: 'Studio Sessions (TBA)',
+    type: 'Behind The Scenes',
+    status: 'Expected in 2026',
+    color: 'var(--jazer-cyan)',
+    gradient: 'linear-gradient(135deg, #0f172a 0%, #0e7490 100%)'
+  },
+  {
+    title: 'Live Performance (TBA)',
+    type: 'Live',
+    status: 'Coming in 2026',
+    color: 'var(--jazer-purple)',
+    gradient: 'linear-gradient(135deg, #2e1065 0%, #7c3aed 100%)'
+  },
+  {
+    title: 'Creative Vlog (TBA)',
+    type: 'Vlog',
+    status: 'TBD',
+    color: '#f59e0b',
+    gradient: 'linear-gradient(135deg, #451a03 0%, #d97706 100%)'
+  },
+  {
+    title: 'Lyric Video (TBA)',
+    type: 'Visualizer',
+    status: 'Coming in 2026',
+    color: '#ec4899',
+    gradient: 'linear-gradient(135deg, #500724 0%, #db2777 100%)'
+  },
+  {
+    title: 'Production Tutorial (TBA)',
+    type: 'Tutorial',
+    status: 'Expected in 2026',
+    color: '#10b981',
+    gradient: 'linear-gradient(135deg, #064e3b 0%, #059669 100%)'
+  }
+];
+
+const filters = [
+  { id: 'all', label: 'All Content' },
+  { id: 'music-video', label: 'Music Videos' },
+  { id: 'behind-the-scenes', label: 'BTS' },
+  { id: 'live', label: 'Live' }
+];
+---
+
+<section class="py-20" id="gallery">
+  <div class="container px-4">
+    <!-- Filters -->
+    <div class="flex flex-wrap justify-center gap-2 mb-12" data-animate="fade-up">
+      {filters.map((filter, index) => (
+        <button 
+          class={`filter-btn px-6 py-2 rounded-full text-sm font-bold transition-all duration-300 border border-[rgba(255,255,255,0.1)] ${index === 0 ? 'bg-[var(--jazer-cyan)] text-black border-[var(--jazer-cyan)]' : 'bg-[rgba(255,255,255,0.05)] text-[var(--text-muted)] hover:bg-[rgba(255,255,255,0.1)] hover:text-white'}`}
+          data-filter={filter.id}
+        >
+          {filter.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 video-grid">
+      {videos.map((video, index) => (
+        <div class="video-item" data-type={video.type.toLowerCase().replace(/\s+/g, '-')}>
+          <VideoCard {...video} delay={index * 100} />
+        </div>
+      ))}
+    </div>
+    
+    <!-- Empty State (Hidden by default, shown if filter matches nothing) -->
+    <div class="hidden empty-state text-center py-12">
+      <p class="text-[var(--text-muted)]">More content coming soon.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple filtering logic
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.video-item');
+  
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active state
+      buttons.forEach(b => {
+        b.classList.remove('bg-[var(--jazer-cyan)]', 'text-black', 'border-[var(--jazer-cyan)]');
+        b.classList.add('bg-[rgba(255,255,255,0.05)]', 'text-[var(--text-muted)]');
+      });
+      btn.classList.remove('bg-[rgba(255,255,255,0.05)]', 'text-[var(--text-muted)]');
+      btn.classList.add('bg-[var(--jazer-cyan)]', 'text-black', 'border-[var(--jazer-cyan)]');
+      
+      const filter = btn.getAttribute('data-filter');
+      
+      items.forEach(item => {
+        const type = item.getAttribute('data-type');
+        if (filter === 'all' || type === filter) {
+          (item as HTMLElement).style.display = 'block';
+          (item as HTMLElement).style.opacity = '0';
+          setTimeout(() => { (item as HTMLElement).style.opacity = '1'; }, 50);
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

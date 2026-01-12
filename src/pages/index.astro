@@ -1,647 +1,284 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+
 const base = import.meta.env.BASE_URL;
 const site = Astro.site;
 const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
 const ogImage = site
-  ? new URL(`${base}assets/images/JaZeR Main Logo.jpg`, site).toString()
-  : `${base}assets/images/JaZeR Main Logo.jpg`;
+    ? new URL(`${base}assets/images/JaZeR Main Logo.jpg`, site).toString()
+    : `${base}assets/images/JaZeR Main Logo.jpg`;
 
 const announcement = {
-  href: `${base}music`,
-  text: '🎵 NEW SINGLE "IN DUE TIME" DROPPING MARCH 15, 2026 - Pre-save now!'
+    href: `${base}music`,
+    text: 'Coming in 2026'
 };
 
-// Upcoming Events
-const upcomingEvents = [
-  { title: 'Single Release', date: 'March 15, 2026', type: 'Music', icon: '🎵', status: 'SOON' },
-  { title: 'Music Video Premiere', date: 'March 22, 2026', type: 'Video', icon: '🎬', status: 'COMING' },
-  { title: 'First Merch Drop', date: 'Late March 2026', type: 'Shop', icon: '🛍️', status: 'ANNOUNCED' }
+const pathways = [
+    {
+        title: 'Music',
+        href: `${base}music`,
+        desc: 'Releases and playlists',
+        icon: `${base}assets/images/icons/music/headphones-black.svg`
+    },
+    {
+        title: 'Videos & Visuals',
+        href: `${base}videos`,
+        desc: 'Visuals and behind-the-scenes',
+        icon: `${base}assets/images/icons/navigation/videos.svg`
+    },
+    {
+        title: 'About',
+        href: `${base}about`,
+        desc: 'The story and mission',
+        icon: `${base}assets/images/icons/navigation/about.svg`
+    },
+    {
+        title: 'Shop',
+        href: `${base}shop`,
+        desc: 'Merch and essentials',
+        icon: `${base}assets/images/icons/navigation/shop.svg`
+    },
+    {
+        title: 'Contact',
+        href: `${base}contact`,
+        desc: 'Collaborations and inquiries',
+        icon: `${base}assets/images/icons/navigation/contact.svg`
+    }
 ];
 
-// Fan Testimonials
-const testimonials = [
-  { text: "JaZeR's sound is like nothing I've heard before. Pure energy.", author: "Early Supporter", platform: "Instagram" },
-  { text: "This is the artist I've been waiting for. The vibe is unmatched.", author: "Day One Fan", platform: "YouTube" },
-  { text: "Every track hits different. Can't wait for the debut album!", author: "Music Lover", platform: "Twitter" },
-  { text: "The production quality is insane. This is next level.", author: "Producer Fan", platform: "SoundCloud" }
+const nextSteps = [
+    {
+        title: 'Next Release',
+        desc: 'TBA',
+        status: 'Coming in 2026'
+    },
+    {
+        title: 'Visual Drop',
+        desc: 'TBA',
+        status: 'TBA'
+    },
+    {
+        title: 'Merch',
+        desc: 'TBD',
+        status: 'Expected in 2026'
+    }
 ];
 
-// Quick Links
-const quickLinks = [
-  { name: 'Music', url: '/music', icon: '🎵', desc: 'Stream tracks', gradient: 'linear-gradient(135deg, #1DB954, #191414)' },
-  { name: 'Videos', url: '/videos', icon: '🎬', desc: 'Watch content', gradient: 'linear-gradient(135deg, #FF0000, #282828)' },
-  { name: 'About', url: '/about', icon: '👤', desc: 'My story', gradient: 'linear-gradient(135deg, #8b5cf6, #6366f1)' },
-  { name: 'Shop', url: '/shop', icon: '🛍️', desc: 'Get merch', gradient: 'linear-gradient(135deg, #ec4899, #f43f5e)' },
-  { name: 'Contact', url: '/contact', icon: '💬', desc: 'Get in touch', gradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)' }
-];
-
-// Achievements
-const achievements = [
-  { title: '10K+', label: 'Streams', icon: '🎧' },
-  { title: '500+', label: 'Fans', icon: '💜' },
-  { title: '25+', label: 'Tracks', icon: '🎵' },
-  { title: '2026', label: 'Launch Year', icon: '🚀' }
-];
-
-// Latest Updates
-const latestUpdates = [
-  { title: 'Studio Update', desc: 'Final mixing sessions for the debut single', date: 'Jan 2026', icon: '🎛️' },
-  { title: 'Music Video', desc: 'Filming wrapped for "In Due Time" visual', date: 'Jan 2026', icon: '🎬' },
-  { title: 'Merch Preview', desc: 'First look at upcoming merchandise designs', date: 'Jan 2026', icon: '👕' }
-];
-
-// Social Links
-const socialPreviews = [
-  { platform: 'Instagram', handle: '@jazer_music', followers: '2.5K', icon: 'instagram-round-icon.svg' },
-  { platform: 'TikTok', handle: '@jazer_music', followers: '5K', icon: 'tiktok-round-logo.svg' },
-  { platform: 'YouTube', handle: '@jazer', followers: '1.2K', icon: 'youtube-round-icon.svg' },
-  { platform: 'Spotify', handle: 'JaZeR', followers: '800', icon: 'spotify-round-icon.svg' }
-];
+const mutedStatuses = ['TBA', 'TBD'];
 ---
 <BaseLayout
-  bodyClass="has-announcement"
+  bodyClass="home-page has-announcement"
   showAnnouncement={true}
   announcement={announcement}
-  showNoiseOverlay={true}
-  showPreloader={true}
+  showNoiseOverlay={false}
+  showPreloader={false}
   showNavEnhancements={true}
   showFooter={true}
-  showAudioPlayer={true}
+  showAudioPlayer={false}
   showBackToTop={true}
-  includeGsap={true}
+  includeGsap={false}
+  extraStyles={[
+    '/css/home.css'
+  ]}
 >
   <Fragment slot="head">
-    <title>JaZeR - Content Creator & Musician</title>
-    <meta name="title" content="JaZeR - Content Creator & Musician" />
+    <title>JaZeR - Official Site</title>
+    <meta name="title" content="JaZeR - Official Site" />
     <meta
       name="description"
-      content="Official website of JaZeR - Content creator, music artist, and digital storyteller. Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+      content="Official site of JaZeR. Explore music, videos & visuals, and the story behind the sound."
     />
     <meta
       name="keywords"
-      content="JaZeR, music artist, content creator, electronic music, music producer"
+      content="JaZeR, music artist, content creator, visual storyteller"
     />
     <meta name="author" content="JaZeR" />
     <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:title" content="JaZeR - Content Creator & Musician" />
+    <meta property="og:title" content="JaZeR - Official Site" />
     <meta
       property="og:description"
-      content="Official website of JaZeR - Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+      content="Explore music, videos & visuals, and the story behind the sound."
     />
-    <meta
-      property="og:image"
-      content={ogImage}
-    />
+    <meta property="og:image" content={ogImage} />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
-    <meta property="twitter:title" content="JaZeR - Content Creator & Musician" />
+    <meta property="twitter:title" content="JaZeR - Official Site" />
     <meta
       property="twitter:description"
-      content="Official website of JaZeR - Listen to my latest tracks, watch exclusive content, and connect with my creative journey."
+      content="Explore music, videos & visuals, and the story behind the sound."
     />
-    <meta
-      property="twitter:image"
-      content={ogImage}
-    />
+    <meta property="twitter:image" content={ogImage} />
 
     <link rel="canonical" href={canonical} />
-    <style>
-      /* Mobile Optimization for Homepage */
-      @media (max-width: 768px) {
-        .hero {
-          min-height: auto;
-          padding: 6rem 0 4rem;
-        }
-        .hero-content {
-          padding: 0 1rem;
-        }
-        .bento-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-        .grid-span-2 {
-          grid-column: 1;
-        }
-        .stats-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-        .stat-item {
-          padding: 2rem;
-        }
-        .featured-section {
-          padding: 4rem 0;
-        }
-        /* New section mobile styles */
-        .quick-links-row {
-          grid-template-columns: repeat(2, 1fr) !important;
-        }
-        .achievements-row {
-          grid-template-columns: repeat(2, 1fr) !important;
-        }
-        .now-playing-flex {
-          flex-direction: column;
-          text-align: center;
-        }
-        .now-playing-art {
-          margin: 0 auto;
-        }
-      }
-      
-      @media (max-width: 480px) {
-        .quick-links-row {
-          grid-template-columns: 1fr !important;
-        }
-      }
-    </style>
   </Fragment>
 
-      <!-- HOME PAGE - #3 Hero Animation -->
-      <section class="hero hero-animated">
-        <div class="hero-particles"></div>
-        <div class="hero-content" data-animate="zoom-in">
-          <span class="hero-eyebrow" data-animate="fade-up">
-            <span class="eyebrow-word" style="--i: 0">Welcome</span>
-            <span class="eyebrow-divider">✦</span>
-            <span class="eyebrow-word" style="--i: 1">to</span>
-            <span class="eyebrow-divider">✦</span>
-            <span class="eyebrow-word" style="--i: 2">the</span>
-            <span class="eyebrow-divider">✦</span>
-            <span class="eyebrow-word" style="--i: 3">experience</span>
-          </span>
-          <img class="hero-logo" src={`${base}assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg`} alt="JaZeR" />
-          <!-- #2 - Typewriter Tagline -->
-          <p class="tagline-roles">
-            <span class="role" style="--i: 0">Content Creator</span>
-            <span class="role-divider">✦</span>
-            <span class="role" style="--i: 1">Musician</span>
-            <span class="role-divider">✦</span>
-            <span class="role" style="--i: 2">Digital Storyteller</span>
+  <section class="hero home-hero">
+    <div class="hero-content home-hero-content" data-animate="fade-up">
+      <div class="hero-status">
+        <span class="status-chip">New Era: Coming in 2026</span>
+      </div>
+      <img
+        class="hero-logo"
+        src={`${base}assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg`}
+        alt="JaZeR"
+        width="450"
+        height="150"
+        decoding="async"
+      />
+      <h1 class="jazer-h1 hero-title">
+        Cinematic music and visuals for a new era.
+      </h1>
+      <p class="jazer-body-lg hero-subhead">
+        Experience the next evolution of JaZeR. Music, art, and stories in one frequency.
+      </p>
+      <div class="cta-group">
+        <a href={`${base}music`} class="cta-button">
+          Listen Now
+        </a>
+        <a href="#pathways" class="cta-secondary">
+          Explore
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section home-featured">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Featured</h2>
+        <p class="section-subtitle">Priority updates and releases</p>
+      </div>
+
+      <article class="premium-card featured-card" data-animate="fade-up" data-animate-delay="100">
+        <div class="featured-media" aria-hidden="true">
+          <img
+            src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="featured-content">
+          <span class="status-chip">Coming in 2026</span>
+          <h3 class="jazer-h3">Next Release (TBA)</h3>
+          <p class="text-muted">
+            A new sonic journey is in production. Stay tuned for the drop.
           </p>
-          <!-- #1 - Dual CTA Buttons -->
           <div class="cta-group">
-            <a href={`${base}music`} class="cta-button" data-audio-trigger>
-              <img src={`${base}assets/images/icons/music/headphones-black.svg`} alt="" class="cta-icon" style="width: 1.5em; height: 1.5em; filter: invert(1);" />
-              <span>Listen Now</span>
-            </a>
-            <a href={`${base}about`} class="cta-secondary">
-              <span>Learn My Story</span>
-              <span class="cta-arrow">→</span>
-            </a>
+            <a href={`${base}music`} class="cta-button">Visit Music</a>
+            <a href={`${base}videos`} class="cta-secondary">Videos & Visuals</a>
           </div>
         </div>
-        <!-- #3 - Scroll Indicator -->
-        <div class="scroll-indicator" onclick="document.querySelector('.stats-section').scrollIntoView({behavior: 'smooth'})">
-          <span>Explore</span>
-          <div class="scroll-indicator-arrow"></div>
-        </div>
-      </section>
+      </article>
+    </div>
+  </section>
 
-      <!-- #10 - Stats Section (Social Proof) - ROUND 2 GLASSMORPHISM -->
-      <section class="stats-section" data-animate="fade-up">
-        <div class="stats-container">
-          <h2 class="stats-heading visually-hidden">JaZeR by the numbers</h2>
-          <div class="stats-grid">
-            <!-- Global SVG Gradient Defs -->
-            <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
-              <linearGradient id="infinityGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="var(--jazer-cyan)" />
-                <stop offset="50%" stop-color="var(--jazer-purple)" />
-                <stop offset="100%" stop-color="var(--jazer-pink)" />
-              </linearGradient>
-            </svg>
+  <section class="section home-pathways" id="pathways">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Explore</h2>
+        <p class="section-subtitle">Choose your path</p>
+      </div>
 
-            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="100">
-              <!-- Listeners Icon: Activity/Radio -->
-              <img src={`${base}assets/images/icons/music/radio-black.svg`} class="stat-icon-svg" alt="" style="width: 24px; height: 24px; filter: invert(1);" />
-              <div class="stat-value" data-count="10000">
-                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
-                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
-                </svg>
-              </div>
-              <div class="stat-label">Monthly Listeners</div>
+      <div class="pathways-grid">
+        {pathways.map((pathway, index) => (
+          <a
+            href={pathway.href}
+            class="pathway-card premium-card"
+            data-animate="fade-up"
+            data-animate-delay={index * 80}
+          >
+            <div class="pathway-icon" aria-hidden="true">
+              <img src={pathway.icon} alt="" loading="lazy" decoding="async" />
             </div>
+            <h3 class="jazer-h4">{pathway.title}</h3>
+            <p class="text-muted text-sm">{pathway.desc}</p>
+            <span class="pathway-cta">Explore</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
-            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="200">
-              <!-- Tracks Icon: Music Note -->
-              <img src={`${base}assets/images/icons/music/playlist-black.svg`} class="stat-icon-svg icon-purple" alt="" style="width: 24px; height: 24px; filter: invert(1);" />
-              <div class="stat-value" data-count="25">
-                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
-                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
-                </svg>
-              </div>
-              <div class="stat-label">Original Tracks</div>
-            </div>
-
-            <div class="stat-item premium-card stats-card-refined" data-animate="fade-up" data-animate-delay="300">
-              <!-- Community Icon: Users/Sparkle -->
-               <img src={`${base}assets/images/icons/music/crowd-black.svg`} class="stat-icon-svg icon-pink" alt="" style="width: 24px; height: 24px; filter: invert(1);" />
-              <div class="stat-value" data-count="5000">
-                <svg class="stat-infinity-svg" viewBox="0 0 60 30">
-                  <path class="stat-infinity-path" d="M15 15 C 5 15, 5 5, 15 5 C 25 5, 25 25, 30 25 C 35 25, 35 5, 45 5 C 55 5, 55 15, 45 15 C 35 15, 35 35, 30 35 C 25 35, 25 15, 15 15 Z" transform="translate(0, -2.5) scale(1, 0.8)"/>
-                </svg>
-              </div>
-              <div class="stat-label">Community Members</div>
-            </div>
-          </div>
+  <section class="section brand-banner">
+    <div class="container">
+      <div class="brand-banner-inner" data-animate="fade-up">
+        <p class="jazer-eyebrow">Signature</p>
+        <h2 class="jazer-h2">A focused beam of sound and visuals.</h2>
+        <p class="jazer-body-lg text-muted brand-banner-subhead">
+          Music, visuals, and story converge in one signal.
+        </p>
+        <img
+          class="brand-banner-logo"
+          src={`${base}assets/images/Vibrant JAZER Bubble Logo (300 x 100 px).svg`}
+          alt="JaZeR"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="brand-banner-tags">
+          <span class="tag-chip">Music</span>
+          <span class="tag-chip">Visuals</span>
+          <span class="tag-chip">Story</span>
+          <span class="tag-chip">Community</span>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <!-- Featured Content Section -->
-      <section class="section featured-section" style="position: relative;">
-        <div class="container">
-          <!-- Ambient Glow Orbs -->
-          <div class="ambient-glow magenta"></div>
-          <div class="ambient-glow blue"></div>
+  <section class="section home-proof">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Press / Features</h2>
+        <p class="section-subtitle">Updates will appear here.</p>
+      </div>
 
-          <div class="section-header">
-            <img src={`${base}assets/images/Featured Content (450 x 150 px).svg`} alt="Featured Content" class="section-title-img" data-animate="fade-up">
-            <p class="section-subtitle" data-animate="fade-up" data-animate-delay="100">Explore my latest creative work</p>
-          </div>
-          
-          <div class="bento-grid">
-            <!-- Main Feature Spans 2 Columns -->
-            <a href={`${base}music`} class="card-link grid-span-2" data-animate="fade-up" data-animate-delay="100">
-              <article class="card card-featured track-card premium-card">
-                <!-- Vinyl Record -->
-                <div class="vinyl-container">
-                  <div class="vinyl-record">
-                    <div class="vinyl-grooves"></div>
-                    <div class="vinyl-label">
-                      <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="JZR" class="label-logo" />
-                    </div>
-                    <div class="vinyl-shine"></div>
-                  </div>
-                </div>
-                
-                <!-- Track Info -->
-                <div class="track-info">
-                  <span class="track-badge">NEW RELEASE</span>
-                  <h3 class="track-title">Latest Track</h3>
-                  <p class="track-artist">JaZeR</p>
-                  
-                  <!-- Waveform Visual -->
-                  <div class="track-waveform">
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                    <span class="wave-bar"></span>
-                  </div>
-                  
-                  <div class="track-meta">
-                    <span class="track-duration">3:24</span>
-                    <span class="track-genre">Electronic • Bass</span>
-                  </div>
-                  
-                  <span class="track-cta">Stream Now</span>
-                </div>
-              </article>
-            </a>
-            <a href={`${base}videos`} class="card-link" data-animate="fade-up" data-animate-delay="200">
-              <article class="card premium-card video-card">
-                <!-- Visual Section (Top) -->
-                <div class="media-visual-container">
-                  <div class="video-icon-static">
-                    <img src={`${base}assets/images/icons/music/video-black.svg`} class="video-play-svg" alt="" style="width: 48px; height: 48px; filter: invert(1);" />
-                  </div>
-                </div>
-                
-                <!-- Info Section (Bottom) -->
-                <div class="track-info">
-                  <span class="track-badge" style="background: var(--jazer-cyan); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);">LATEST UPLOAD</span>
-                  <h3 class="track-title">New Video</h3>
-                  <p class="track-artist">Production Vlog</p>
-                  
-                  <div class="track-meta">
-                    <span class="track-duration">12:45</span>
-                    <span class="track-genre">Behind The Scenes</span>
-                  </div>
-                  
-                  <span class="track-cta">Watch Now</span>
-                </div>
-              </article>
-            </a>
-            <a href={`${base}contact`} class="card-link" data-animate="fade-up" data-animate-delay="300">
-              <article class="card premium-card live-card">
-                <!-- Visual Section (Top) -->
-                <div class="media-visual-container">
-                   <div class="live-visual">
-                       <img src={`${base}assets/images/icons/music/mic-black.svg`} class="live-mic-svg" alt="" style="width: 48px; height: 48px; filter: invert(1);" />
-                       <div class="live-pulse-ring"></div>
-                   </div>
-                </div>
-                
-                <!-- Info Section (Bottom) -->
-                <div class="track-info">
-                  <span class="track-badge" style="background: var(--jazer-pink); color: #fff; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);">UPCOMING</span>
-                  <h3 class="track-title">Live Sessions</h3>
-                  <p class="track-artist">Q&A + Performance</p>
-                  
-                  <div class="track-meta">
-                    <span class="track-duration">MAR 15</span>
-                    <span class="track-genre">Twitch • YouTube</span>
-                  </div>
-                  
-                  <span class="track-cta">Get Notified</span>
-                </div>
-              </article>
-            </a>
-          </div>
-        </div>
-      </section>
+      <div class="premium-card press-card" data-animate="fade-up" data-animate-delay="100">
+        <span class="status-chip is-muted">TBA</span>
+        <p class="text-muted">
+          Press mentions and features will be listed once available.
+        </p>
+      </div>
+    </div>
+  </section>
 
-      <!-- Now Playing / Featured Track -->
-      <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-        <div class="container">
-          <div class="section-header" data-animate="fade-up">
-            <h2 class="section-title text-center gradient-text">Now Playing</h2>
-            <p class="section-subtitle">Preview the upcoming debut single</p>
-          </div>
-          
-          <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; padding: 2rem; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;" data-animate="fade-up">
-            <!-- Album Art -->
-            <div style="width: 200px; height: 200px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="JZR" style="width: 120px; height: 120px;" />
-            </div>
-            
-            <!-- Track Info -->
-            <div style="flex: 1; min-width: 250px;">
-              <span style="display: inline-block; padding: 0.25rem 0.75rem; background: var(--jazer-pink); border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.75rem;">COMING MARCH 2026</span>
-              <h3 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.25rem;">In Due Time</h3>
-              <p style="color: var(--text-muted); margin-bottom: 1rem;">JaZeR • Debut Single</p>
-              
-              <!-- Waveform -->
-              <div style="display: flex; align-items: flex-end; gap: 3px; height: 40px; margin-bottom: 1rem;">
-                {[...Array(24)].map((_, i) => (
-                  <div style={`width: 4px; background: linear-gradient(to top, var(--jazer-cyan), var(--jazer-purple)); border-radius: 2px; animation: waveform ${0.4 + Math.random() * 0.4}s ease-in-out infinite alternate; height: ${20 + Math.random() * 60}%;`}></div>
-                ))}
-              </div>
-              
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href={`${base}music`} class="cta-button" style="padding: 0.75rem 1.5rem;">
-                  <span>🎧</span>
-                  <span>Pre-Save</span>
-                </a>
-                <button class="cta-secondary" style="padding: 0.75rem 1.5rem;">
-                  <span>🔔 Notify Me</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <style>
-            @keyframes waveform {
-              0% { height: 20%; }
-              100% { height: 80%; }
-            }
-          </style>
-        </div>
-      </section>
+  <JoinBeamCTA
+    id="updates"
+    sectionClass="section home-updates"
+    sectionStyle="padding: var(--section-spacing) 0;"
+    captureStyle="max-width: 720px; margin: 0 auto;"
+    subtitleStyle="font-size: 1.125rem; max-width: 520px; margin: 1.5rem auto;"
+    subject="New subscriber from JaZeR Home page"
+    buttonLabel="Get updates"
+    proofText="Updates: <strong>Expected in 2026</strong>"
+  >
+    <Fragment slot="subtitle">
+      Get updates—new drops expected in <strong>2026</strong>.
+    </Fragment>
+  </JoinBeamCTA>
 
-      <!-- Upcoming Events / Countdown -->
-      <section class="section" style="padding: 6rem 0;">
-        <div class="container">
-          <div class="section-header" data-animate="fade-up">
-            <h2 class="section-title text-center gradient-text">Coming Up</h2>
-            <p class="section-subtitle">Mark your calendar for these moments</p>
-          </div>
-          
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-            {upcomingEvents.map((event, index) => (
-              <div class="premium-card" style="padding: 2rem; position: relative; overflow: hidden;" data-animate="fade-up" data-animate-delay={index * 100}>
-                <span style={`position: absolute; top: 1rem; right: 1rem; padding: 0.25rem 0.75rem; background: ${event.status === 'SOON' ? 'var(--jazer-pink)' : 'rgba(255,255,255,0.1)'}; border-radius: 4px; font-size: 0.75rem; font-weight: 700;`}>{event.status}</span>
-                <div style="font-size: 2.5rem; margin-bottom: 1rem;">{event.icon}</div>
-                <h3 style="font-weight: 700; font-size: 1.25rem; margin-bottom: 0.5rem;">{event.title}</h3>
-                <p style="color: var(--jazer-cyan); font-weight: 600; margin-bottom: 0.25rem;">{event.date}</p>
-                <p style="font-size: 0.875rem; color: var(--text-muted);">{event.type}</p>
-              </div>
-            ))}
-          </div>
-          
-          <!-- Main Countdown -->
-          <div class="premium-glass-card" style="max-width: 600px; margin: 3rem auto; padding: 2rem; text-align: center;" data-animate="fade-up">
-            <p style="font-weight: 600; margin-bottom: 1rem;">🎵 "In Due Time" drops in</p>
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
-              <div>
-                <div id="countdown-days" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">62</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">DAYS</div>
-              </div>
-              <div>
-                <div id="countdown-hours" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">14</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">HOURS</div>
-              </div>
-              <div>
-                <div id="countdown-mins" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">32</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">MINS</div>
-              </div>
-              <div>
-                <div id="countdown-secs" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">08</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">SECS</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <section class="section home-next">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">What's Next</h2>
+        <p class="section-subtitle">Signals in progress.</p>
+      </div>
 
-      <!-- Achievements / Milestones -->
-      <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.3);">
-        <div class="container">
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 800px; margin: 0 auto;">
-            {achievements.map((achievement, index) => (
-              <div style="text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">{achievement.icon}</div>
-                <div style="font-size: 1.75rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-pink), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{achievement.title}</div>
-                <div style="font-size: 0.875rem; color: var(--text-muted);">{achievement.label}</div>
-              </div>
-            ))}
+      <div class="next-grid">
+        {nextSteps.map((item, index) => (
+          <div class="premium-card next-card" data-animate="fade-up" data-animate-delay={index * 100}>
+            <span class={`status-chip${mutedStatuses.includes(item.status) ? ' is-muted' : ''}`}>
+              {item.status}
+            </span>
+            <h3 class="jazer-h4">{item.title}</h3>
+            <p class="text-muted">{item.desc}</p>
           </div>
-        </div>
-      </section>
-
-      <!-- Fan Testimonials Carousel -->
-      <section class="section" style="padding: 6rem 0;">
-        <div class="container">
-          <div class="section-header" data-animate="fade-up">
-            <h2 class="section-title text-center gradient-text">What Fans Say</h2>
-            <p class="section-subtitle">Love from the community</p>
-          </div>
-          
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-            {testimonials.map((testimonial, index) => (
-              <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
-                <div style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.3;">"</div>
-                <p style="font-style: italic; line-height: 1.6; margin-bottom: 1.5rem;">{testimonial.text}</p>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <span style="font-weight: 600; font-size: 0.875rem;">{testimonial.author}</span>
-                  <span style="font-size: 0.75rem; color: var(--jazer-cyan);">via {testimonial.platform}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- Video Teaser Section -->
-      <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-        <div class="container">
-          <div class="section-header" data-animate="fade-up">
-            <h2 class="section-title text-center gradient-text">Teaser</h2>
-            <p class="section-subtitle">First look at the music video</p>
-          </div>
-          
-          <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; overflow: hidden; border-radius: 16px;" data-animate="fade-up">
-            <div style="position: relative; padding-bottom: 56.25%; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
-              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.3); cursor: pointer; transition: transform 0.3s ease;">
-                  <img src={`${base}assets/images/icons/music/play-black.svg`} alt="Play" style="width: 32px; height: 32px; margin-left: 4px; filter: invert(1);" />
-                </div>
-                <p style="margin-top: 1.5rem; color: var(--text-muted);">Music Video Teaser Coming February 2026</p>
-              </div>
-            </div>
-          </div>
-          
-          <div style="text-align: center;" data-animate="fade-up">
-            <a href={`${base}videos`} class="cta-secondary">
-              <span>View All Videos</span>
-              <span class="cta-arrow">→</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Social Feed Preview -->
-      <section class="section" style="padding: 6rem 0;">
-        <div class="container">
-          <div class="section-header" data-animate="fade-up">
-            <h2 class="section-title text-center gradient-text">Connect</h2>
-            <p class="section-subtitle">Follow the journey on socials</p>
-          </div>
-          
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 900px; margin: 3rem auto;">
-            {socialPreviews.map((social, index) => (
-              <a href="#" class="premium-card" style="padding: 1.5rem; text-align: center; text-decoration: none; color: inherit; transition: all 0.3s ease;" data-animate="fade-up" data-animate-delay={index * 100}>
-                <img src={`${base}assets/images/icons/social/${social.icon}`} alt={social.platform} style="width: 48px; height: 48px; margin-bottom: 1rem;" />
-                <h4 style="font-weight: 700; margin-bottom: 0.25rem;">{social.platform}</h4>
-                <p style="font-size: 0.875rem; color: var(--jazer-cyan); margin-bottom: 0.25rem;">{social.handle}</p>
-                <p style="font-size: 0.75rem; color: var(--text-muted);">{social.followers} followers</p>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- Latest Updates / News -->
-      <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-        <div class="container">
-          <div class="section-header" data-animate="fade-up">
-            <h2 class="section-title text-center gradient-text">Latest Updates</h2>
-            <p class="section-subtitle">What's happening behind the scenes</p>
-          </div>
-          
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-            {latestUpdates.map((update, index) => (
-              <div class="premium-card" style="padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;" data-animate="fade-up" data-animate-delay={index * 100}>
-                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">{update.icon}</div>
-                <div>
-                  <h4 style="font-weight: 700; margin-bottom: 0.25rem;">{update.title}</h4>
-                  <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">{update.desc}</p>
-                  <span style="font-size: 0.75rem; color: var(--jazer-cyan);">{update.date}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- Quick Links Navigation -->
-      <section class="section" style="padding: 6rem 0;">
-        <div class="container">
-          <div class="section-header" data-animate="fade-up">
-            <h2 class="section-title text-center gradient-text">Explore</h2>
-            <p class="section-subtitle">Navigate to any section</p>
-          </div>
-          
-          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 900px; margin: 3rem auto;">
-            {quickLinks.map((link, index) => (
-              <a href={link.url} style={`display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem; background: ${link.gradient}; border-radius: 16px; text-decoration: none; color: #fff; transition: transform 0.3s ease;`} data-animate="fade-up" data-animate-delay={index * 50}>
-                <span style="font-size: 2rem; margin-bottom: 0.5rem;">{link.icon}</span>
-                <span style="font-weight: 700; font-size: 1rem;">{link.name}</span>
-                <span style="font-size: 0.75rem; opacity: 0.8;">{link.desc}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- Brand Story Teaser -->
-      <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-        <div class="container">
-          <div class="premium-glass-card" style="max-width: 800px; margin: 0 auto; padding: 4rem; text-align: center;" data-animate="fade-up">
-            <div style="font-size: 3rem; margin-bottom: 1.5rem;">✨</div>
-            <h2 class="gradient-text" style="font-size: 2rem; margin-bottom: 1rem;">Why JaZeR?</h2>
-            <p style="font-size: 1.25rem; line-height: 1.8; color: var(--text-light); margin-bottom: 2rem;">
-              <strong>JaZeR</strong> is more than music — it's a <strong>sonic escape hatch</strong> for anyone who needs a place to belong. 
-              A focused beam of energy designed to cut through the noise, light up the dark, and remind you of what's possible.
-            </p>
-            <a href={`${base}about`} class="cta-button">
-              <span>📖</span>
-              <span>Read the Full Story</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <JoinBeamCTA
-        subject="New subscriber from JaZeR website"
-        buttonLabel="Join Free"
-        proofText="Join <strong>500+</strong> fans already on the beam"
-      >
-        <Fragment slot="subtitle">
-          Get first access to new drops + an <strong>unreleased track</strong> as a welcome gift.
-        </Fragment>
-      </JoinBeamCTA>
-
-      <script>
-        // Homepage Countdown Timer
-        function updateHomeCountdown() {
-          const premiereDate = new Date('2026-03-15T00:00:00Z').getTime();
-          const now = new Date().getTime();
-          const distance = premiereDate - now;
-          
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const secs = Math.floor((distance % (1000 * 60)) / 1000);
-          
-          const daysEl = document.getElementById('countdown-days');
-          const hoursEl = document.getElementById('countdown-hours');
-          const minsEl = document.getElementById('countdown-mins');
-          const secsEl = document.getElementById('countdown-secs');
-          
-          if (daysEl) daysEl.textContent = distance > 0 ? days : '0';
-          if (hoursEl) hoursEl.textContent = distance > 0 ? hours.toString().padStart(2, '0') : '00';
-          if (minsEl) minsEl.textContent = distance > 0 ? mins.toString().padStart(2, '0') : '00';
-          if (secsEl) secsEl.textContent = distance > 0 ? secs.toString().padStart(2, '0') : '00';
-        }
-        
-        updateHomeCountdown();
-        setInterval(updateHomeCountdown, 1000);
-      </script>
-    
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
