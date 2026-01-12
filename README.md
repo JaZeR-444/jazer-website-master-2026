@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Vibrant JAZER Bubble Logo (600 x 200 px).svg" alt="JaZeR Logo" width="600" />
+<img src="images/Vibrant JAZER Bubble Logo (600 x 200 px).svg" alt="JaZeR Logo" width="600" />
 
 # 🎶 JaZeR Official Website
 
