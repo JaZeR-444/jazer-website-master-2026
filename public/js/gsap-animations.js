@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initNavLinkHoverEffects();
     initThemeToggleEnhancement();
     initScrollCTA();
+    initBentoAnimations(); // New professional bento animations
 });
 
 /**
@@ -319,6 +320,65 @@ function initScrollCTA() {
                 ease: "power2.in" 
             });
         }
+    });
+}
+
+/**
+ * 11. Bento Grid Professional Animations
+ * Adds staggered entrance and 3D Tilt effect to home page cards.
+ */
+function initBentoAnimations() {
+    const cards = document.querySelectorAll('.bento-card');
+    
+    if (cards.length === 0) return;
+
+    // 1. Staggered Entrance
+    gsap.from(".bento-card", {
+        scrollTrigger: {
+            trigger: ".bento-grid",
+            start: "top 85%"
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out"
+    });
+
+    // 2. 3D Tilt Effect on Hover
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element.
+            const y = e.clientY - rect.top;  // y position within the element.
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -5; // Max rotation deg
+            const rotateY = ((x - centerX) / centerX) * 5;
+
+            gsap.to(card, {
+                duration: 0.5,
+                rotateX: rotateX,
+                rotateY: rotateY,
+                scale: 1.02,
+                transformPerspective: 1000,
+                ease: "power2.out",
+                boxShadow: `0 20px 40px rgba(0,0,0,0.4)`
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+                duration: 0.8,
+                rotateX: 0,
+                rotateY: 0,
+                scale: 1,
+                ease: "elastic.out(1, 0.4)",
+                boxShadow: `0 4px 10px rgba(0,0,0,0.3)`
+            });
+        });
     });
 }
 

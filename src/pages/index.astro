@@ -117,83 +117,115 @@ const mutedStatuses = ['TBA', 'TBD'];
     <link rel="canonical" href={canonical} />
   </Fragment>
 
-  <section class="hero home-hero home-hero--compact">
-    <div class="hero-content home-hero-content" data-animate="fade-up">
-      <span class="status-chip">Coming in 2026</span>
-      <img
-        class="hero-logo"
-        src={`${base}assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg`}
-        alt="JaZeR"
-        width="450"
-        height="150"
-        decoding="async"
-      />
-      <h1 class="jazer-h1 hero-title">Cinematic music and visuals.</h1>
-      <p class="jazer-body-lg hero-subhead">Music, art, and stories in one frequency.</p>
-      <div class="cta-group">
-        <a href={`${base}music`} class="cta-button">Listen Now</a>
-        <a href="#pathways" class="cta-secondary">Explore</a>
-      </div>
-    </div>
-  </section>
+  <div class="home-bento-layout">
+    <!-- LEFT COLUMN: HERO -->
+    <section class="home-bento-left">
+      <div class="hero-content home-hero-content" data-animate="fade-up">
+        <img
+          class="hero-logo"
+          src={`${base}assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg`}
+          alt="JaZeR"
+          width="450"
+          height="150"
+          decoding="async"
+        />
+        <span class="status-chip">Coming in 2026</span>
+        <h1 class="jazer-h1 hero-title">Meet <span class="accent-glow">✦</span> The <span class="accent-glow">✦</span> Artist</h1>
+        <div class="cta-group">
+          <a href={`${base}music`} class="cta-button">Listen Now</a>
+          <a href="#explore" class="cta-secondary">Explore</a>
+        </div>
 
-  <section class="section home-pathways" id="pathways">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <h2 class="section-title text-center gradient-text">Explore</h2>
-        <p class="section-subtitle">Choose your path</p>
-      </div>
-
-      <div class="pathways-grid">
-        {pathways.map((pathway, index) => (
-          <a
-            href={pathway.href}
-            class="pathway-card premium-card"
-            data-animate="fade-up"
-            data-animate-delay={index * 80}
+        <!-- JOIN BEAM (Moved to Left Col) -->
+        <div class="hero-join-beam">
+          <JoinBeamCTA
+            id="updates"
+            sectionClass="home-updates-mini"
+            sectionStyle="padding: 1rem 0 0; background: transparent;"
+            captureStyle="max-width: 100%; margin: 0;"
+            subtitleStyle="font-size: 0.9rem; margin: 0.5rem 0;"
+            subject="New subscriber from JaZeR Home page"
+            buttonLabel="Join"
+            proofText=""
           >
-            <div class="pathway-icon" aria-hidden="true">
-              <img src={pathway.icon} alt="" loading="lazy" decoding="async" />
+            <Fragment slot="subtitle">
+              Join the Beam for updates & exclusive drops.
+            </Fragment>
+          </JoinBeamCTA>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: EXPLORE & UPDATES -->
+    <section class="home-bento-right" id="explore">
+      
+      <!-- BENTO GRID -->
+      <div class="bento-section">
+        <h2 class="section-title gradient-text" data-animate="fade-up">Explore</h2>
+        <p class="section-subtitle">Choose your frequency</p>
+        
+        <div class="bento-grid">
+          {/* About Card - Featured Larger */}
+          <a href={`${base}about`} class="bento-card bento-card--featured premium-card" data-animate="zoom-in">
+            <div class="bento-icon">
+              <img src={`${base}assets/images/icons/navigation/about.svg`} alt="" loading="lazy"/>
             </div>
-            <h3 class="jazer-h4">{pathway.title}</h3>
-            <p class="text-muted text-sm">{pathway.desc}</p>
-            <span class="pathway-cta">Explore</span>
+            <div class="bento-content">
+              <h3 class="jazer-h3">About</h3>
+              <p class="text-muted">The story and mission</p>
+              <span class="bento-cta">Discover →</span>
+            </div>
           </a>
-        ))}
-      </div>
-    </div>
-  </section>
 
+          {/* Other Cards */}
+          {pathways.filter(p => p.title !== 'About').map((pathway, index) => (
+            <a href={pathway.href} class="bento-card premium-card" data-animate="fade-up" data-animate-delay={index * 50}>
+              <div class="bento-icon-sm">
+                 <img src={pathway.icon} alt="" loading="lazy" />
+              </div>
+              <div class="bento-content">
+                <h3 class="jazer-h5">{pathway.title}</h3>
+                <p class="text-muted text-xs">{pathway.desc}</p>
+                <span class="bento-cta-sm">Explore →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- WHAT'S NEXT -->
+      <div class="next-section">
+        <h2 class="section-title gradient-text" data-animate="fade-up">What's Next</h2>
+        <div class="next-grid next-grid--compact">
+          {nextSteps.map((item, index) => (
+            <div class="next-card next-card--compact" data-animate="fade-up" data-animate-delay={index * 60}>
+              <h3 class="jazer-h6">{item.title}</h3>
+              <span class={`status-chip status-chip--xs${mutedStatuses.includes(item.status) ? ' is-muted' : ''}`}>
+                {item.status}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
   
-
-  <JoinBeamCTA
-    id="updates"
-    sectionClass="section home-updates"
-    sectionStyle="padding: clamp(1.5rem, 3.5vw, 2.25rem) 0;"
-    captureStyle="max-width: 600px; margin: 0 auto;"
-    subtitleStyle="font-size: 1rem; max-width: 450px; margin: 1rem auto;"
-    subject="New subscriber from JaZeR Home page"
-    buttonLabel="Get updates"
-    proofText="Updates: <strong>Expected in 2026</strong>"
-  >
-    <Fragment slot="subtitle">
-      Get updates—new drops expected in <strong>2026</strong>.
-    </Fragment>
-  </JoinBeamCTA>
-
-  <section class="section home-next home-next--compact">
-    <div class="container">
-      <h2 class="section-title text-center gradient-text" data-animate="fade-up">What's Next</h2>
-      <div class="next-grid next-grid--inline">
-        {nextSteps.map((item, index) => (
-          <div class="next-card next-card--inline" data-animate="fade-up" data-animate-delay={index * 60}>
-            <h3 class="jazer-h5">{item.title}</h3>
-            <span class={`status-chip status-chip--sm${mutedStatuses.includes(item.status) ? ' is-muted' : ''}`}>
-              {item.status}
-            </span>
-          </div>
-        ))}
-      </div>
+  <!-- BOTTOM TICKER MARQUEE -->
+  <div class="home-ticker">
+    <div class="home-ticker-track">
+      {[...Array(8)].map(() => (
+        <>
+          <span class="ticker-item">TBA</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">JOIN THE BEAM</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">EST. 2026</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">WELCOME TO THE DATABANK</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">LATEST TRANSMISSION: TBA</span>
+          <span class="ticker-sep">::</span>
+        </>
+      ))}
     </div>
-  </section>
-</BaseLayout>
+  </div>
