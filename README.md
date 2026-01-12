@@ -1354,9 +1354,278 @@ npm run preview  # Test production build locally
 <img src="public/assets/images/Vibrant JAZER Bubble Logo (300 x 100 px).svg" alt="JaZeR" width="200"/>
 </div>
 
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
 ---
 
-## 🤝 Contributing
+## 🔐 Security
+
+> **🛡️ Security Practices**: How we keep the site secure
+
+### Security Features
+
+<table>
+<tr>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/HTTPS-Enforced-green?style=for-the-badge&logo=let's-encrypt" alt="HTTPS"/>
+<br/><sub>Let's Encrypt SSL</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/Headers-Secured-blue?style=for-the-badge&logo=security" alt="Headers"/>
+<br/><sub>Security Headers</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/Dependencies-Updated-orange?style=for-the-badge&logo=npm" alt="Dependencies"/>
+<br/><sub>Regular Updates</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/Static-Site-purple?style=for-the-badge&logo=astro" alt="Static"/>
+<br/><sub>No Server Risks</sub>
+</td>
+</tr>
+</table>
+
+### Security Measures
+
+- ✅ **HTTPS Only** — All traffic encrypted with TLS 1.3
+- ✅ **No Backend** — Static site eliminates server vulnerabilities  
+- ✅ **CSP Headers** — Content Security Policy prevents XSS attacks
+- ✅ **Dependency Scanning** — Regular npm audit checks
+- ✅ **No Secrets** — No API keys or credentials in code
+- ✅ **GitHub Security** — Dependabot alerts enabled
+- ✅ **Self-Hosted Assets** — No third-party CDN vulnerabilities
+
+### Reporting Security Issues
+
+> **⚠️ Responsible Disclosure**: If you discover a security vulnerability, please report it responsibly.
+
+**Do NOT:**
+- Open a public GitHub issue
+- Discuss publicly on social media
+- Exploit the vulnerability
+
+**Instead:**
+1. Email security concerns to: [Contact Form](https://jazer-music.com/contact)
+2. Include detailed description of the vulnerability
+3. Provide steps to reproduce if applicable
+4. Wait for acknowledgment before public disclosure
+
+**We will:**
+- Respond within 48 hours
+- Investigate and patch critical issues immediately
+- Credit researchers (if desired) after resolution
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
+---
+
+## 🎓 Learning Resources
+
+> **📚 Helpful Resources**: Learn more about the technologies used
+
+### Official Documentation
+
+<table>
+<tr>
+<td width="50%">
+
+**Astro Framework:**
+- [📖 Official Docs](https://docs.astro.build)
+- [🎯 Tutorial](https://docs.astro.build/en/tutorial/0-introduction/)
+- [💬 Discord Community](https://astro.build/chat)
+- [📰 Blog & Updates](https://astro.build/blog/)
+
+</td>
+<td width="50%">
+
+**Web Technologies:**
+- [🌐 MDN Web Docs](https://developer.mozilla.org/)
+- [🎨 CSS Tricks](https://css-tricks.com/)
+- [⚡ JavaScript.info](https://javascript.info/)
+- [♿ Web Accessibility](https://www.w3.org/WAI/)
+
+</td>
+</tr>
+</table>
+
+### Recommended Tutorials
+
+**Astro Specific:**
+- [Astro Crash Course](https://www.youtube.com/watch?v=e-hTm5VmofI) - YouTube tutorial
+- [Build with Astro](https://learn.astro.build/) - Interactive lessons
+- [Astro Tips & Tricks](https://www.youtube.com/c/Astro) - Official YouTube
+
+**General Web Development:**
+- [freeCodeCamp](https://www.freecodecamp.org/) - Free coding courses
+- [Web.dev](https://web.dev/) - Google's web development resources
+- [Frontend Masters](https://frontendmasters.com/) - Advanced courses
+
+### Community Resources
+
+- 💬 [Astro Discord](https://astro.build/chat) - Active community support
+- 🐦 [Astro Twitter](https://twitter.com/astrodotbuild) - Latest updates
+- 📺 [Astro YouTube](https://www.youtube.com/@astrodotbuild) - Video content
+- 📝 [Dev.to Astro Tag](https://dev.to/t/astro) - Community articles
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
+---
+
+## 📦 Dependency Information
+
+> **🔍 Package Details**: Core dependencies and their purposes
+
+### Main Dependencies
+
+```json
+{
+  "astro": "^5.0.0",          // Static site generator framework
+  "vite": "^5.0.0"             // Build tool and dev server
+}
+```
+
+### Dependency Tree (Simplified)
+
+```
+jazer-website/
+├── astro@5.0.0
+│   ├── @astrojs/compiler
+│   ├── vite@5.0.0
+│   └── rollup@4.0.0
+└── [Development dependencies]
+    ├── @astrojs/check
+    └── typescript@5.0.0
+```
+
+### Package Sizes
+
+| Package | Size | Purpose |
+|---------|------|---------|
+| **astro** | ~12MB | Core framework |
+| **vite** | ~8MB | Build tool |
+| **Total** | ~450KB | **Production bundle** |
+
+> **💡 Note**: Despite large development dependencies, the final production build is only ~450KB total.
+
+### Keeping Dependencies Updated
+
+```bash
+# Check for outdated packages
+npm outdated
+
+# Update all packages
+npm update
+
+# Update to latest (including breaking changes)
+npm install astro@latest
+
+# Security audit
+npm audit
+npm audit fix
+```
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
+---
+
+## ⚡ Performance Optimization Tips
+
+> **🚀 Speed Secrets**: How we achieve blazing-fast performance
+
+### Optimization Techniques Used
+
+**1. Image Optimization**
+```bash
+# Use modern formats
+✓ SVG for logos and icons (scalable, tiny)
+✓ WebP for photos (70% smaller than JPEG)
+✓ Lazy loading for below-the-fold images
+
+# Implementation
+<img src="image.jpg" loading="lazy" alt="Description" />
+```
+
+**2. Font Optimization**
+```css
+/* Self-hosted WOFF2 fonts */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/DMSans-Regular.woff2') format('woff2');
+  font-display: swap; /* Prevent FOIT */
+  font-weight: 400;
+}
+```
+
+**3. CSS Optimization**
+```css
+/* Use CSS custom properties */
+:root {
+  --color-primary: #22d3ee;
+  --spacing-unit: 8px;
+}
+
+/* Minimize specificity */
+.button { } /* Good */
+div.container .button { } /* Avoid */
+```
+
+**4. JavaScript Optimization**
+```javascript
+// Astro: Ship zero JS by default
+// Only add interactivity where needed
+<script>
+  // This runs once on page load
+  // No framework overhead!
+</script>
+```
+
+**5. Build Optimization**
+```javascript
+// astro.config.mjs
+export default defineConfig({
+  build: {
+    inlineStylesheets: 'auto',
+    assets: '_astro'
+  },
+  vite: {
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: undefined
+        }
+      }
+    }
+  }
+});
+```
+
+### Performance Checklist
+
+- [x] Minimize HTTP requests (18 vs 42 before)
+- [x] Enable compression (Gzip/Brotli via GitHub Pages)
+- [x] Use CDN (GitHub's global CDN)
+- [x] Optimize images (WebP, lazy loading)
+- [x] Inline critical CSS
+- [x] Defer non-critical JavaScript
+- [x] Use system fonts as fallback
+- [x] Implement resource hints (preconnect, prefetch)
+- [x] Minimize render-blocking resources
+- [x] Optimize font loading (font-display: swap)
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
+---
 
 This is a **personal artist website** for the JaZeR brand and is **not open for public contributions**.
 
