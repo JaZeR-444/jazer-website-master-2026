@@ -7,11 +7,48 @@ const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.ur
 
 const announcement = {
   href: `${base}music`,
-  text: '?? NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it  '
+  text: '🎵 NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it'
 };
+
+// Contact Reasons
+const contactReasons = [
+  { value: 'general', label: 'General Inquiry', icon: '💬' },
+  { value: 'collaboration', label: 'Collaboration Request', icon: '🤝' },
+  { value: 'booking', label: 'Booking / Events', icon: '🎤' },
+  { value: 'press', label: 'Press / Media', icon: '📰' },
+  { value: 'licensing', label: 'Music Licensing', icon: '📝' },
+  { value: 'feedback', label: 'Feedback / Fan Message', icon: '💜' }
+];
+
+// FAQ Items
+const faqs = [
+  { q: 'When is the first single releasing?', a: '"In Due Time" drops March 15, 2026. Pre-save links coming February 2026.' },
+  { q: 'Are you open to collaborations?', a: 'Yes! Send details about your project through the contact form. Include links to your work.' },
+  { q: 'Can I use your music in my content?', a: 'For licensing inquiries, use the contact form with subject "Music Licensing" and describe your project.' },
+  { q: 'How can I support JaZeR?', a: 'Stream the music, share with friends, join the email list, and engage on social media!' },
+  { q: 'Do you do live performances?', a: 'Live shows are planned for 2026. Join the email list for announcements and early ticket access.' }
+];
+
+// Social Links with descriptions
+const socialLinks = [
+  { name: 'Instagram', url: 'https://instagram.com/jazer_music', icon: 'instagram-round-icon.svg', desc: 'Daily updates & stories' },
+  { name: 'TikTok', url: 'https://tiktok.com/@jazer_music', icon: 'tiktok-round-logo.svg', desc: 'Short clips & trends' },
+  { name: 'YouTube', url: 'https://youtube.com/@jazer', icon: 'youtube-round-icon.svg', desc: 'Videos & vlogs' },
+  { name: 'Twitter/X', url: 'https://x.com/JaZeR_Music', icon: 'round-x(twitter)-icon.svg', desc: 'Thoughts & updates' },
+  { name: 'Spotify', url: 'https://open.spotify.com/artist/jazer', icon: 'spotify-round-icon.svg', desc: 'Stream music' },
+  { name: 'SoundCloud', url: 'https://soundcloud.com/jazer', icon: 'soundcloud-round-icon.svg', desc: 'Exclusive tracks' }
+];
+
+// Quick Links
+const quickLinks = [
+  { name: 'Music', url: '/music', icon: '🎵', desc: 'Latest releases' },
+  { name: 'Videos', url: '/videos', icon: '🎬', desc: 'Visual content' },
+  { name: 'About', url: '/about', icon: '👤', desc: 'The story' },
+  { name: 'Shop', url: '/shop', icon: '🛍️', desc: 'Merchandise' }
+];
 ---
 <BaseLayout
-  bodyClass="has-announcement"
+  bodyClass="has-announcement contact-page"
   showAnnouncement={true}
   announcement={announcement}
   showNoiseOverlay={false}
@@ -27,7 +64,7 @@ const announcement = {
 >
   <Fragment slot="head">
     <title>Contact - JaZeR</title>
-    <meta name="description" content="Get in touch with JaZeR." />
+    <meta name="description" content="Get in touch with JaZeR. Send messages, collaboration requests, press inquiries, or just say hello." />
     <link rel="canonical" href={canonical} />
     <link
       rel="preload"
@@ -35,94 +72,368 @@ const announcement = {
       href={`${base}assets/images/Contact Me (450 x 94 px).svg`}
       type="image/svg+xml"
     />
-  </Fragment>
-  
-  <style>
-    .contact-hero {
-      padding: 6rem 1rem 3rem;
-      text-align: center;
-    }
-    .page-hero-title-logo {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 1rem;
-    }
-    .contact-card {
-      max-width: 700px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    
-    @media (max-width: 768px) {
+    <style>
       .contact-hero {
-        padding: 4rem 1rem 2rem;
+        padding: 6rem 1rem 3rem;
+        text-align: center;
       }
       .page-hero-title-logo {
-        max-width: 300px;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
       }
-      .section {
-        padding-left: 1rem;
-        padding-right: 1rem;
+      .contact-card {
+        max-width: 700px;
+        margin: 0 auto;
+        width: 100%;
       }
-    }
-  </style>
+      
+      /* Response Time */
+      .response-time {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 8px;
+        margin-bottom: 2rem;
+      }
+      .response-dot {
+        width: 10px;
+        height: 10px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.2); }
+      }
+      
+      /* Reason Cards */
+      .reason-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .reason-card {
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid transparent;
+        border-radius: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .reason-card:hover,
+      .reason-card.active {
+        border-color: var(--jazer-cyan);
+        background: rgba(6, 182, 212, 0.1);
+      }
+      .reason-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .reason-label {
+        font-size: 0.813rem;
+        font-weight: 600;
+      }
+      
+      /* FAQ Accordion */
+      .faq-item {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        margin-bottom: 0.75rem;
+        overflow: hidden;
+      }
+      .faq-question {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: none;
+        color: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s ease;
+      }
+      .faq-question:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .faq-icon {
+        transition: transform 0.3s ease;
+      }
+      .faq-item.open .faq-icon {
+        transform: rotate(45deg);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .faq-item.open .faq-answer {
+        max-height: 200px;
+      }
+      .faq-answer-content {
+        padding: 1rem 1.25rem;
+        background: rgba(0, 0, 0, 0.2);
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+      
+      /* Social Grid */
+      .social-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+      }
+      .social-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      .social-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--jazer-cyan);
+      }
+      .social-card img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0.75rem;
+      }
+      .social-name {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+      .social-desc {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+      
+      /* Quick Links */
+      .quick-links-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+      .quick-link-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 1rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      .quick-link-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--jazer-purple);
+        background: rgba(139, 92, 246, 0.1);
+      }
+      .quick-link-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .quick-link-name {
+        font-weight: 600;
+        font-size: 0.938rem;
+      }
+      .quick-link-desc {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+      
+      @media (max-width: 768px) {
+        .contact-hero {
+          padding: 4rem 1rem 2rem;
+        }
+        .page-hero-title-logo {
+          max-width: 300px;
+        }
+        .reason-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .quick-links-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </Fragment>
 
-        <!-- New Page Hero -->
-        <div class="page-hero contact-hero" data-animate="fade-up">
-            <h1 class="page-hero-title">
-                <img class="page-hero-title-logo" src={`${base}assets/images/Contact Me (450 x 94 px).svg`} alt="Contact Me">
-            </h1>
-            <p class="page-hero-subtitle">
-                Send a message, collaborations, or press requests.
-            </p>
+  <!-- Page Hero -->
+  <div class="page-hero contact-hero" data-animate="fade-up">
+    <h1 class="page-hero-title">
+      <img class="page-hero-title-logo" src={`${base}assets/images/Contact Me (450 x 94 px).svg`} alt="Contact Me">
+    </h1>
+    <p class="page-hero-subtitle">
+      Send a message, collaboration requests, press inquiries, or just say hello.
+    </p>
+  </div>
+
+  <!-- Response Time Indicator -->
+  <div class="container" style="max-width: 700px;">
+    <div class="response-time" data-animate="fade-up">
+      <div class="response-dot"></div>
+      <span style="font-weight: 600;">Typical response time: 24-48 hours</span>
+    </div>
+  </div>
+
+  <!-- Contact Form Section -->
+  <div class="container section">
+    <div class="premium-glass-card contact-card" data-animate="fade-up">
+      
+      <!-- Contact Reason Selector -->
+      <h3 style="text-align: center; margin-bottom: 1.5rem; font-weight: 600;">What's this about?</h3>
+      <div class="reason-grid">
+        {contactReasons.map((reason, index) => (
+          <div class="reason-card" data-reason={reason.value}>
+            <div class="reason-icon">{reason.icon}</div>
+            <div class="reason-label">{reason.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="modern-form-group">
+          <label for="name" class="modern-label">Name</label>
+          <input id="name" type="text" name="name" class="modern-input" required placeholder="Your name">
+        </div>
+        <div class="modern-form-group">
+          <label for="email" class="modern-label">Email</label>
+          <input id="email" type="email" name="email" class="modern-input" required placeholder="your@email.com">
+        </div>
+        <div class="modern-form-group">
+          <label for="reason" class="modern-label">Reason</label>
+          <select id="reason" name="reason" class="modern-input" required>
+            <option value="">Select a reason...</option>
+            {contactReasons.map((reason) => (
+              <option value={reason.value}>{reason.label}</option>
+            ))}
+          </select>
+        </div>
+        <div class="modern-form-group">
+          <label for="subject" class="modern-label">Subject</label>
+          <input id="subject" type="text" name="subject" class="modern-input" required placeholder="What's this about?">
+        </div>
+        <div class="modern-form-group">
+          <label for="message" class="modern-label">Message</label>
+          <textarea id="message" name="message" class="modern-textarea" required placeholder="Your message..." rows="5"></textarea>
         </div>
 
-        <div class="container section">
-            <p class="page-intro-icon text-center mb-lg">
-              Drop a message below and it'll beam straight to the control room.
-            </p>
+        <input type="hidden" name="_subject" value="New contact from JaZeR website">
 
-            <div class="premium-glass-card contact-card">
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-animate="fade-up">
-                    <div class="modern-form-group">
-                        <label for="name" class="modern-label">Name</label>
-                        <input id="name" type="text" name="name" class="modern-input" required placeholder="Your name">
-                    </div>
-                    <div class="modern-form-group">
-                        <label for="email" class="modern-label">Email</label>
-                        <input id="email" type="email" name="email" class="modern-input" required placeholder="your@email.com">
-                    </div>
-                    <div class="modern-form-group">
-                        <label for="subject" class="modern-label">Subject</label>
-                        <input id="subject" type="text" name="subject" class="modern-input" required placeholder="What's this about?">
-                    </div>
-                    <div class="modern-form-group">
-                        <label for="message" class="modern-label">Message</label>
-                        <textarea id="message" name="message" class="modern-textarea" required placeholder="Your message..."></textarea>
-                    </div>
+        <button type="submit" class="cta-button" style="width: 100%;">
+          <span>📤</span>
+          <span>Send Message</span>
+        </button>
 
-                    <input type="hidden" name="_subject" value="New contact from JaZeR website">
+        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
 
-                    <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+  <!-- Social Links Grid -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Connect on Social</h2>
+        <p class="section-subtitle">Follow for daily updates and behind-the-scenes content</p>
+      </div>
+      
+      <div class="social-grid" style="max-width: 800px; margin: 3rem auto;">
+        {socialLinks.map((social, index) => (
+          <a href={social.url} class="social-card" target="_blank" rel="noopener" data-animate="fade-up" data-animate-delay={index * 50}>
+            <img src={`${base}assets/images/icons/social/${social.icon}`} alt={social.name} />
+            <span class="social-name">{social.name}</span>
+            <span class="social-desc">{social.desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
-                    <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
-                </form>
+  <!-- FAQ Section -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Quick answers to common questions</p>
+      </div>
+      
+      <div style="max-width: 700px; margin: 3rem auto;" data-animate="fade-up">
+        {faqs.map((faq, index) => (
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>{faq.q}</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-content">{faq.a}</div>
             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-            <div class="text-center mt-xl">
-                <p class="text-muted mb-sm">Or reach out on social media:</p>
-                <div class="social-links">
-                    <a href="https://instagram.com/jazer_music" title="Instagram"><img src={`${base}assets/images/icons/social/instagram-round-icon.svg`} alt="Instagram" width="28" height="28"></a>
-                    <a href="https://tiktok.com/@jazer_music" title="TikTok"><img src={`${base}assets/images/icons/social/tiktok-round-logo.svg`} alt="TikTok" width="28" height="28"></a>
-                    <a href="https://x.com/JaZeR_Music" title="X/Twitter"><img src={`${base}assets/images/icons/social/round-x(twitter)-icon.svg`} alt="X/Twitter" width="28" height="28"></a>
-                    <a href="https://youtube.com/@jazer" title="YouTube"><img src={`${base}assets/images/icons/social/youtube-round-icon.svg`} alt="YouTube" width="28" height="28"></a>
-                    <a href="https://open.spotify.com/artist/jazer" title="Spotify"><img src={`${base}assets/images/icons/social/spotify-round-icon.svg`} alt="Spotify" width="28" height="28"></a>
-                    <a href="https://music.apple.com/artist/jazer" title="Apple Music"><img src={`${base}assets/images/icons/social/apple-music-round-icon.svg`} alt="Apple Music" width="28" height="28"></a>
-                    <a href="https://soundcloud.com/jazer" title="SoundCloud"><img src={`${base}assets/images/icons/social/soundcloud-round-icon.svg`} alt="SoundCloud" width="28" height="28"></a>
-                    <a href="https://www.facebook.com/jazer.music/" title="Facebook"><img src={`${base}assets/images/icons/social/round-facebook-icon.svg`} alt="Facebook" width="28" height="28"></a>
-                </div>
-            </div>
+  <!-- Quick Links -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Explore More</h2>
+        <p class="section-subtitle">Navigate to other sections</p>
+      </div>
+      
+      <div class="quick-links-grid" style="max-width: 600px; margin: 3rem auto;">
+        {quickLinks.map((link, index) => (
+          <a href={link.url} class="quick-link-card" data-animate="fade-up" data-animate-delay={index * 100}>
+            <span class="quick-link-icon">{link.icon}</span>
+            <span class="quick-link-name">{link.name}</span>
+            <span class="quick-link-desc">{link.desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Hours / Availability -->
+  <section class="section" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="premium-glass-card" style="max-width: 500px; margin: 0 auto; padding: 2rem; text-align: center;" data-animate="fade-up">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🕐</div>
+        <h3 style="font-weight: 700; margin-bottom: 1rem;">Availability</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Messages are typically answered within 24-48 hours during business days.</p>
+        <div style="display: flex; justify-content: center; gap: 2rem; font-size: 0.875rem;">
+          <div>
+            <div style="font-weight: 600;">Timezone</div>
+            <div style="color: var(--text-muted);">EST (UTC-5)</div>
+          </div>
+          <div>
+            <div style="font-weight: 600;">Best Time</div>
+            <div style="color: var(--text-muted);">10am - 6pm</div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Email Signup CTA -->
   <JoinBeamCTA
@@ -138,5 +449,36 @@ const announcement = {
     </Fragment>
   </JoinBeamCTA>
 
-</BaseLayout>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isOpen = item.classList.contains('open');
+        
+        // Close all items
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
 
+    // Reason Card Selection
+    const reasonCards = document.querySelectorAll('.reason-card');
+    const reasonSelect = document.getElementById('reason');
+    
+    reasonCards.forEach(card => {
+      card.addEventListener('click', () => {
+        reasonCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        if (reasonSelect) {
+          reasonSelect.value = card.dataset.reason;
+        }
+      });
+    });
+  </script>
+
+</BaseLayout>

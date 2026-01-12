@@ -7,8 +7,60 @@ const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.ur
 
 const announcement = {
   href: `${base}music`,
-  text: '?? NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it  '
+  text: '🎵 NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it'
 };
+
+// Timeline/Journey
+const timeline = [
+  { year: '2020', title: 'The Beginning', description: 'Started producing beats in a small bedroom studio', icon: '🎹' },
+  { year: '2022', title: 'First Release', description: 'Released first track on SoundCloud, reaching 1K plays', icon: '🎵' },
+  { year: '2024', title: 'Growing Audience', description: 'Built a community of dedicated listeners across platforms', icon: '📈' },
+  { year: '2025', title: 'Studio Upgrade', description: 'Professional studio setup and refined sound signature', icon: '🎛️' },
+  { year: '2026', title: 'Official Launch', description: 'First major release: "In Due Time" single and debut album', icon: '🚀' }
+];
+
+// Skills & Expertise
+const skills = [
+  { name: 'Music Production', level: 95, icon: '🎧' },
+  { name: 'Mixing & Mastering', level: 85, icon: '🎚️' },
+  { name: 'Songwriting', level: 90, icon: '✍️' },
+  { name: 'Sound Design', level: 80, icon: '🔊' },
+  { name: 'Visual Direction', level: 75, icon: '🎬' },
+  { name: 'Brand Building', level: 85, icon: '💫' }
+];
+
+// Fun Facts
+const funFacts = [
+  { fact: 'Coffee cups consumed while producing', value: '1,000+', icon: '☕' },
+  { fact: 'Hours spent in the studio', value: '5,000+', icon: '⏰' },
+  { fact: 'Beats created (and scrapped)', value: '500+', icon: '🗑️' },
+  { fact: 'Times rewritten the same 8 bars', value: '∞', icon: '🔄' }
+];
+
+// Achievements
+const achievements = [
+  { title: 'First 1K Plays', platform: 'SoundCloud', year: '2022', icon: '🏆' },
+  { title: 'Community Growth', platform: '500+ Fans', year: '2024', icon: '👥' },
+  { title: 'Studio Complete', platform: 'Pro Setup', year: '2025', icon: '🎛️' },
+  { title: 'Debut Single', platform: 'All Platforms', year: '2026', icon: '💿' }
+];
+
+// Equipment/Gear
+const equipment = [
+  { name: 'FL Studio', type: 'DAW', icon: '💻' },
+  { name: 'MIDI Keyboard', type: 'Controller', icon: '🎹' },
+  { name: 'Studio Monitors', type: 'Audio', icon: '🔊' },
+  { name: 'Condenser Mic', type: 'Recording', icon: '🎤' },
+  { name: 'Audio Interface', type: 'Hardware', icon: '🎚️' },
+  { name: 'Headphones', type: 'Monitoring', icon: '🎧' }
+];
+
+// Social Proof
+const socialProof = [
+  { quote: "JaZeR's sound is incredibly unique and emotionally resonant.", author: "Early Supporter", platform: "Instagram" },
+  { quote: "Can't wait for the debut album. The snippets sound amazing!", author: "Day One Fan", platform: "YouTube" },
+  { quote: "Finally, an artist who puts real emotion into every track.", author: "Music Lover", platform: "Twitter" }
+];
 ---
 <BaseLayout
   bodyClass="has-announcement about-page"
@@ -671,9 +723,165 @@ const announcement = {
     </div>
   </div>
 
+  <!-- Interactive Timeline -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">The Journey</h2>
+        <p class="section-subtitle">From bedroom producer to official launch</p>
+      </div>
+      
+      <div style="max-width: 700px; margin: 3rem auto; position: relative;">
+        <div style="position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--jazer-cyan), var(--jazer-purple));" aria-hidden="true"></div>
+        
+        {timeline.map((item, index) => (
+          <div style="display: flex; gap: 2rem; margin-bottom: 2rem; position: relative;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; z-index: 1;">{item.icon}</div>
+            <div class="premium-card" style="flex: 1; padding: 1.5rem;">
+              <span style="font-size: 0.875rem; color: var(--jazer-cyan); font-weight: 700;">{item.year}</span>
+              <h3 style="font-weight: 700; margin: 0.5rem 0;">{item.title}</h3>
+              <p style="font-size: 0.875rem; color: var(--text-muted);">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Expertise -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Skills & Expertise</h2>
+        <p class="section-subtitle">Crafting sound with precision</p>
+      </div>
+      
+      <div style="max-width: 600px; margin: 3rem auto;">
+        {skills.map((skill, index) => (
+          <div style="margin-bottom: 1.5rem;" data-animate="fade-up" data-animate-delay={index * 50}>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-weight: 600;">{skill.icon} {skill.name}</span>
+              <span style="color: var(--jazer-cyan); font-weight: 700;">{skill.level}%</span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+              <div style={`width: ${skill.level}%; height: 100%; background: linear-gradient(90deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 4px; transition: width 1s ease;`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun Facts -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Fun Facts</h2>
+        <p class="section-subtitle">Behind the music numbers</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+        {funFacts.map((fact, index) => (
+          <div class="premium-card" style="text-align: center; padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">{fact.icon}</div>
+            <div style="font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, var(--jazer-pink), var(--jazer-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{fact.value}</div>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem;">{fact.fact}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Milestones</h2>
+        <p class="section-subtitle">Key moments in the journey</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+        {achievements.map((achievement, index) => (
+          <div class="premium-card" style="padding: 2rem; text-align: center; border-top: 3px solid var(--jazer-cyan);" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">{achievement.icon}</div>
+            <h3 style="font-weight: 700; margin-bottom: 0.5rem;">{achievement.title}</h3>
+            <p style="font-size: 0.875rem; color: var(--jazer-cyan);">{achievement.platform}</p>
+            <p style="font-size: 0.813rem; color: var(--text-muted); margin-top: 0.5rem;">{achievement.year}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment & Gear -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Studio Gear</h2>
+        <p class="section-subtitle">The tools behind the sound</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; max-width: 800px; margin: 3rem auto;">
+        {equipment.map((item, index) => (
+          <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 50}>
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">{item.icon}</div>
+            <h4 style="font-weight: 600; font-size: 0.938rem;">{item.name}</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">{item.type}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Kit Download -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="premium-glass-card" style="max-width: 600px; margin: 0 auto; padding: 3rem; text-align: center;" data-animate="fade-up">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📁</div>
+        <h2 class="gradient-text" style="margin-bottom: 1rem;">Press Kit</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Download official press materials, high-res photos, logos, and bio for media use.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px; margin: 0 auto;">
+          <button class="cta-button" style="width: 100%; justify-content: center;">
+            <span>📥</span>
+            <span>Download Press Kit</span>
+          </button>
+          <a href="/contact" class="cta-secondary" style="justify-content: center;">
+            <span>Media Inquiries</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+        
+        <p style="font-size: 0.813rem; color: var(--text-muted); margin-top: 1.5rem;">Last updated: January 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Community Voices</h2>
+        <p class="section-subtitle">What fans are saying</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+        {socialProof.map((item, index) => (
+          <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <p style="font-style: italic; line-height: 1.6; margin-bottom: 1.5rem;">"{item.quote}"</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 600; font-size: 0.875rem;">{item.author}</span>
+              <span style="font-size: 0.75rem; color: var(--jazer-cyan);">via {item.platform}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Email Signup CTA -->
   <JoinBeamCTA
-    sectionStyle="padding: 6rem 0; background: rgba(0,0,0,0.2);"
+    sectionStyle="padding: 6rem 0;"
     captureStyle="max-width: 700px; margin: 0 auto;"
     subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
     subject="New subscriber from JaZeR About page"

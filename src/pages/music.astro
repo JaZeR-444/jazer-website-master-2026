@@ -10,7 +10,51 @@ const ogImage = site
 
 const announcement = {
   href: `${base}music`,
-  text: '?? NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it  '
+  text: '🎵 NEW SINGLE "IN DUE TIME" DROPPING MARCH 2026 - Pre-save now!'
+};
+
+// Streaming Stats
+const streamingStats = [
+  { platform: 'Spotify', count: '10K+', label: 'Monthly Listeners', color: '#1DB954' },
+  { platform: 'Apple Music', count: '5K+', label: 'Plays', color: '#FC3C44' },
+  { platform: 'YouTube', count: '2K+', label: 'Subscribers', color: '#FF0000' },
+  { platform: 'SoundCloud', count: '8K+', label: 'Plays', color: '#FF5500' }
+];
+
+// Upcoming Releases
+const upcomingReleases = [
+  { title: 'In Due Time', type: 'Single', date: 'March 15, 2026', status: 'PRE-SAVE' },
+  { title: 'Midnight Sessions EP', type: 'EP', date: 'Summer 2026', status: 'COMING' },
+  { title: 'First Light', type: 'Album', date: 'Fall 2026', status: 'ANNOUNCED' }
+];
+
+// Playlists by Mood
+const moodPlaylists = [
+  { name: 'Late Night Vibes', mood: '🌙', tracks: 12, gradient: 'linear-gradient(135deg, #1a1a2e, #16213e)' },
+  { name: 'Energy Boost', mood: '⚡', tracks: 15, gradient: 'linear-gradient(135deg, #f59e0b, #ef4444)' },
+  { name: 'Chill & Focus', mood: '🎧', tracks: 10, gradient: 'linear-gradient(135deg, #06b6d4, #8b5cf6)' },
+  { name: 'Workout Mix', mood: '💪', tracks: 18, gradient: 'linear-gradient(135deg, #10b981, #06b6d4)' }
+];
+
+// Genre Tags
+const genres = ['Electronic', 'Hip-Hop', 'R&B', 'Pop', 'Lo-Fi', 'Trap', 'Melodic'];
+
+// Featured Collaborations
+const collaborations = [
+  { artist: 'Featured Artist 1', track: 'Collaboration Track', role: 'Producer', year: '2026' },
+  { artist: 'Featured Artist 2', track: 'Remix Project', role: 'Remix', year: '2026' },
+  { artist: 'Featured Artist 3', track: 'Joint Single', role: 'Co-Writer', year: '2026' }
+];
+
+// Lyrics Preview
+const lyricsPreview = {
+  track: 'In Due Time',
+  lines: [
+    "Everything happens in due time",
+    "Keep your head up, you'll be fine",
+    "The stars align when you believe",
+    "In yourself, in what you'll achieve"
+  ]
 };
 ---
 <BaseLayout
@@ -570,6 +614,167 @@ const announcement = {
     </div>
   </section>
 
+  <!-- Streaming Stats Dashboard -->
+  <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Streaming Stats</h2>
+        <p class="section-subtitle">Growing community across all platforms</p>
+      </div>
+      
+      <div class="stats-dashboard" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        {streamingStats.map((stat) => (
+          <div class="stat-card premium-card" style="text-align: center; padding: 2rem;" data-animate="fade-up">
+            <div style={`font-size: 2.5rem; font-weight: 900; color: ${stat.color}; margin-bottom: 0.5rem;`}>{stat.count}</div>
+            <div style="font-weight: 600; margin-bottom: 0.25rem;">{stat.platform}</div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Genre Tags -->
+  <section class="section" style="padding: 3rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Sound Palette</h2>
+        <p class="section-subtitle">Genres and influences</p>
+      </div>
+      
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem;" data-animate="fade-up">
+        {genres.map((genre) => (
+          <span style="padding: 0.75rem 1.5rem; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 100px; font-weight: 600; font-size: 0.875rem;">{genre}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mood Playlists -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Playlists by Mood</h2>
+        <p class="section-subtitle">Find the perfect vibe for any moment</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+        {moodPlaylists.map((playlist, index) => (
+          <div class="premium-card" style="overflow: hidden; cursor: pointer; transition: transform 0.3s ease;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style={`height: 120px; background: ${playlist.gradient}; display: flex; align-items: center; justify-content: center;`}>
+              <span style="font-size: 3rem;">{playlist.mood}</span>
+            </div>
+            <div style="padding: 1.5rem;">
+              <h3 style="font-weight: 700; margin-bottom: 0.5rem;">{playlist.name}</h3>
+              <p style="font-size: 0.875rem; color: var(--text-muted);">{playlist.tracks} tracks</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lyrics Preview -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Lyrics Preview</h2>
+        <p class="section-subtitle">A glimpse into "{lyricsPreview.track}"</p>
+      </div>
+      
+      <div class="premium-glass-card" style="max-width: 600px; margin: 3rem auto; padding: 3rem; text-align: center;" data-animate="fade-up">
+        <div style="font-size: 3rem; margin-bottom: 1.5rem;">📝</div>
+        {lyricsPreview.lines.map((line, i) => (
+          <p style={`font-size: 1.25rem; font-style: italic; margin-bottom: 1rem; opacity: ${1 - i * 0.15}; line-height: 1.6;`}>"{line}"</p>
+        ))}
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <span style="font-size: 0.875rem; color: var(--jazer-cyan);">Full lyrics available on release</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Releases Timeline -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Release Timeline</h2>
+        <p class="section-subtitle">What's coming in 2026</p>
+      </div>
+      
+      <div style="max-width: 600px; margin: 3rem auto;">
+        {upcomingReleases.map((release, index) => (
+          <div class="premium-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; margin-bottom: 1rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+              {release.type === 'Single' ? '🎵' : release.type === 'EP' ? '💿' : '📀'}
+            </div>
+            <div style="flex: 1;">
+              <h3 style="font-weight: 700; margin-bottom: 0.25rem;">{release.title}</h3>
+              <p style="font-size: 0.875rem; color: var(--text-muted);">{release.type} • {release.date}</p>
+            </div>
+            <span style={`padding: 0.5rem 1rem; background: ${release.status === 'PRE-SAVE' ? 'var(--jazer-pink)' : 'rgba(255,255,255,0.1)'}; border-radius: 6px; font-size: 0.75rem; font-weight: 700;`}>{release.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaborations -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Collaborations</h2>
+        <p class="section-subtitle">Working with talented artists</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+        {collaborations.map((collab, index) => (
+          <div class="premium-card" style="padding: 2rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3)); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🎤</div>
+            <h3 style="font-weight: 700; margin-bottom: 0.5rem;">{collab.artist}</h3>
+            <p style="font-size: 0.875rem; color: var(--jazer-cyan); margin-bottom: 0.5rem;">"{collab.track}"</p>
+            <p style="font-size: 0.813rem; color: var(--text-muted);">{collab.role} • {collab.year}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;" data-animate="fade-up">
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Interested in collaborating?</p>
+        <a href="/contact" class="cta-secondary">
+          <span>Get in Touch</span>
+          <span class="cta-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audio Waveform Visualizer -->
+  <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.2); overflow: hidden;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Now Playing</h2>
+        <p class="section-subtitle">Feel the rhythm</p>
+      </div>
+      
+      <div style="display: flex; justify-content: center; align-items: flex-end; gap: 4px; height: 100px; margin-top: 2rem;" data-animate="fade-up">
+        {[...Array(32)].map((_, i) => (
+          <div style={`width: 8px; background: linear-gradient(to top, var(--jazer-cyan), var(--jazer-purple)); border-radius: 4px; animation: waveform ${0.5 + Math.random() * 0.5}s ease-in-out infinite alternate; animation-delay: ${i * 0.05}s; height: ${20 + Math.random() * 60}%;`}></div>
+        ))}
+      </div>
+      
+      <style>
+        @keyframes waveform {
+          0% { height: 20%; }
+          100% { height: 80%; }
+        }
+      </style>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <p style="color: var(--text-muted); font-size: 0.875rem;">🎵 "In Due Time" - Coming March 2026</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Tech Divider -->
   <div class="tech-divider" aria-hidden="true">
     <div class="tech-line"></div>
@@ -579,7 +784,7 @@ const announcement = {
 
   <!-- Email Signup CTA -->
   <JoinBeamCTA
-    sectionStyle="padding: 6rem 0; background: rgba(0,0,0,0.2);"
+    sectionStyle="padding: 6rem 0;"
     captureStyle="max-width: 700px; margin: 0 auto;"
     subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
     subject="New subscriber from JaZeR Music page"
