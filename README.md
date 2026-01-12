@@ -27,12 +27,44 @@
 
 > *"JaZeR is a sonic escape hatch — a beam of color for anyone who needs a place to belong."*
 
-### ✨ Experience It Live
+---
 
-<p>
-  <a href="https://jazer-444.github.io/TEST-Website-Import/">🏠 <strong>Visit Website</strong></a> •
-  <a href="https://jazer-444.github.io/TEST-Website-Import/music">🎵 Listen Now</a> •
-  <a href="https://jazer-444.github.io/TEST-Website-Import/videos">📺 Watch Videos</a> •
+### 🚀 Quick Actions
+
+<table>
+<tr>
+<td align="center" width="33%">
+<a href="https://jazer-444.github.io/TEST-Website-Import/">
+<img src="https://img.shields.io/badge/🌐_VISIT_LIVE_SITE-4FACFE?style=for-the-badge&logoColor=white" alt="Visit Live Site"/>
+</a>
+<br/>
+<sub>Experience the site in action</sub>
+</td>
+<td align="center" width="33%">
+<a href="#-quick-start">
+<img src="https://img.shields.io/badge/⚡_GET_STARTED-FF5D01?style=for-the-badge&logoColor=white" alt="Get Started"/>
+</a>
+<br/>
+<sub>Run locally in 60 seconds</sub>
+</td>
+<td align="center" width="33%">
+<a href="https://github.com/JaZeR-444/TEST-Website-Import/issues">
+<img src="https://img.shields.io/badge/🐛_REPORT_ISSUE-FF006E?style=for-the-badge&logoColor=white" alt="Report Issue"/>
+</a>
+<br/>
+<sub>Found a bug? Let us know</sub>
+</td>
+</tr>
+</table>
+
+---
+
+### ✨ Page Navigation
+
+<p align="center">
+  <a href="https://jazer-444.github.io/TEST-Website-Import/">🏠 <strong>Home</strong></a> •
+  <a href="https://jazer-444.github.io/TEST-Website-Import/music">🎵 Music</a> •
+  <a href="https://jazer-444.github.io/TEST-Website-Import/videos">📺 Videos</a> •
   <a href="https://jazer-444.github.io/TEST-Website-Import/about">👤 About</a> •
   <a href="https://jazer-444.github.io/TEST-Website-Import/shop">🛍️ Shop</a> •
   <a href="https://jazer-444.github.io/TEST-Website-Import/contact">📫 Contact</a>
@@ -44,28 +76,34 @@
 
 ## 🆕 What's New (January 2026)
 
+> **💡 Latest Updates**: Check out the newest features and improvements below!
+
 <table>
   <tr>
-    <td>🚀</td>
-    <td><strong>Astro 5.0 Migration</strong> — Modern static site generation with component architecture</td>
+    <td width="10%" align="center">🚀</td>
+    <td width="90%"><strong>Astro 5.0 Migration</strong> — Modern static site generation with component architecture</td>
   </tr>
   <tr>
-    <td>📱</td>
+    <td align="center">📱</td>
     <td><strong>Mobile Experience Enhanced</strong> — Improved touch targets, smoother animations, better responsive layout</td>
   </tr>
   <tr>
-    <td>⚡</td>
+    <td align="center">⚡</td>
     <td><strong>Performance Optimized</strong> — Self-hosted fonts, optimized images, <2s load time on mobile</td>
   </tr>
   <tr>
-    <td>🎨</td>
+    <td align="center">🎨</td>
     <td><strong>Dynamic Color Cycling</strong> — Automated theme color rotation through JaZeR brand palette</td>
   </tr>
   <tr>
-    <td>🤖</td>
+    <td align="center">🤖</td>
     <td><strong>Automated CI/CD</strong> — GitHub Actions deployment pipeline for instant updates</td>
   </tr>
 </table>
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
@@ -129,6 +167,10 @@
 
 > 📸 **Note**: Screenshots showcase the glassmorphic dark theme, vibrant brand colors, and responsive Astro-powered design.
 
+</div>
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
 </div>
 
 ---
@@ -237,6 +279,8 @@ Built with **Astro 5.0, performance-first engineering, and accessibility** in mi
 
 ### ✨ Key Highlights
 
+> **🎯 Core Strengths**: What makes this site stand out
+
 ```
 🎨 Distinctive Brand Identity  →  Custom color palette, typography, and visual system
 📱 Mobile-First Design         →  Optimized for fans on the go with responsive layouts
@@ -247,6 +291,10 @@ Built with **Astro 5.0, performance-first engineering, and accessibility** in mi
 🌙 Dark, Glassy UI             →  Modern dark theme with glassmorphic elements
 🔍 SEO Optimized               →  Complete meta tags, Open Graph, Twitter Cards
 ```
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
@@ -297,10 +345,16 @@ http://localhost:4321
 
 **That's it!** 🎉 The Astro dev server is now running. Make changes to any file and see updates instantly with hot module replacement.
 
+> **💡 Pro Tip**: Use `Ctrl+C` to stop the dev server. Check the terminal for any errors or warnings.
+
 ---
 
 <div align="center">
 <img src="public/assets/images/Vibrant JAZER Bubble Logo (300 x 100 px).svg" alt="JaZeR" width="200"/>
+</div>
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
 </div>
 
 ---
@@ -339,6 +393,8 @@ This is built with **Astro 5.0** — a modern static site generator that ships z
 
 **Maximum performance, minimal maintenance, complete control.**
 
+> **⚡ Performance First**: Astro ships zero JavaScript by default, resulting in blazing-fast load times.
+
 ```
 ✓ Zero JS by default         ✓ Lightning fast SSG
 ✓ Component architecture     ✓ No runtime overhead
@@ -346,6 +402,10 @@ This is built with **Astro 5.0** — a modern static site generator that ships z
 ✓ Small file sizes           ✓ Long-term stability
 ✓ SEO-friendly HTML          ✓ Instant page loads
 ```
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ### Architecture Benefits
 
@@ -361,6 +421,10 @@ This is built with **Astro 5.0** — a modern static site generator that ships z
 | **Learning Curve** | 📚 HTML/CSS/JS | 📚 Framework-specific |
 | **Maintenance** | 🔧 Minimal updates | 🔧 Constant updates |
 | **Deployment** | 🚀 Push to Git | 🚀 Build + Deploy |
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
@@ -494,6 +558,8 @@ git push origin main
 - See deployment workflow status
 - View logs if issues occur
 
+> **⚠️ Important**: Changes may take 2-3 minutes to appear live. Clear your browser cache if you don't see updates immediately.
+
 ### GitHub Actions Workflow
 
 The deployment is handled by `.github/workflows/deploy.yml`:
@@ -503,6 +569,10 @@ The deployment is handled by `.github/workflows/deploy.yml`:
 # Builds Astro site with npm run build
 # Deploys static files to gh-pages branch
 ```
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
@@ -628,7 +698,13 @@ The visual design combines five key principles:
 
 All design tokens are defined as CSS custom properties for easy theming and maintenance.
 
+> **🎨 Design Tip**: All colors use CSS custom properties, making theme customization straightforward for authorized developers.
+
 See [docs/LOGO_PLACEMENTS.md](docs/LOGO_PLACEMENTS.md) for complete brand guidelines.
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
@@ -735,7 +811,11 @@ lighthouse https://jazer-444.github.io/TEST-Website-Import/ --view
 ✅ Fast load times (< 2s on mobile)
 ```
 
-> **Note:** Performance may vary based on network conditions and device capabilities. Run Lighthouse in Chrome DevTools for current metrics.
+> **📊 Testing Note**: Performance scores may vary based on network conditions and device capabilities. Run Lighthouse in Chrome DevTools for real-time metrics.
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
@@ -743,34 +823,79 @@ lighthouse https://jazer-444.github.io/TEST-Website-Import/ --view
 
 ### Current Version: v1.0 (January 2026)
 
-✅ Astro 5.0 migration with component architecture  
-✅ Responsive mobile-first design  
-✅ Accessibility compliance (WCAG 2.1 AA)  
-✅ GitHub Pages deployment with Actions  
-✅ Social media integration  
-✅ Dynamic theme color cycling  
+**Completed Features:**
+
+```diff
++ Astro 5.0 migration with component architecture
++ Responsive mobile-first design
++ Accessibility compliance (WCAG 2.1 AA)
++ GitHub Pages deployment with Actions
++ Social media integration
++ Dynamic theme color cycling
+```
+
+**Progress: 100%** ████████████████████ **v1.0 Complete**
+
+---
 
 ### Planned Features (v1.1+)
 
-- [ ] Newsletter signup integration
-- [ ] Blog/news section for updates and announcements
-- [ ] Interactive music player with streaming embeds
-- [ ] Gallery page for photos and artwork
-- [ ] Event calendar for shows and appearances
-- [ ] Fan comments/guestbook section
-- [ ] Multi-language support (Spanish, Portuguese)
-- [ ] Dark/light mode toggle (currently dark-only)
-- [ ] Analytics integration for traffic insights
-- [ ] Progressive Web App (PWA) capabilities
+> **🚀 Coming Soon**: These features are in the planning/development pipeline
 
-### Long-term Vision
+**Phase 1 - Engagement** (Q1-Q2 2026):
+- [ ] 📧 Newsletter signup integration
+- [ ] 📝 Blog/news section for updates and announcements
+- [ ] 🎵 Interactive music player with streaming embeds
+- [ ] 🖼️ Gallery page for photos and artwork
+- [ ] 📅 Event calendar for shows and appearances
 
+**Progress: 0%** ░░░░░░░░░░░░░░░░░░░░ **Not Started**
+
+---
+
+**Phase 2 - Community** (Q3-Q4 2026):
+- [ ] 💬 Fan comments/guestbook section
+- [ ] 🌍 Multi-language support (Spanish, Portuguese)
+- [ ] 🌓 Dark/light mode toggle (currently dark-only)
+- [ ] 📊 Analytics integration for traffic insights
+- [ ] 📱 Progressive Web App (PWA) capabilities
+
+**Progress: 0%** ░░░░░░░░░░░░░░░░░░░░ **Not Started**
+
+---
+
+### Long-term Vision (2027+)
+
+> **🔮 Future Goals**: Ambitious features for the long term
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**Music & Media**
 - 🎵 Direct music streaming integration
 - 🎨 Generative art backgrounds based on music
 - 🤖 AI-powered music recommendation engine
+- 🎧 Exclusive audio experiences for fans
+
+</td>
+<td width="50%" valign="top">
+
+**Community & Commerce**
 - 👥 Fan community features and forums
 - 🎮 Interactive experiences and games
 - 🛍️ Full e-commerce integration for merchandise
+- 🎟️ Ticket sales and event management
+
+</td>
+</tr>
+</table>
+
+**Progress: 0%** ░░░░░░░░░░░░░░░░░░░░ **Vision Phase**
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
@@ -802,9 +927,17 @@ If you notice bugs or issues with the live site:
 - 🐛 Report technical problems via [GitHub Issues](https://github.com/JaZeR-444/TEST-Website-Import/issues)
 - Please do not submit pull requests without prior authorization
 
+> **⚠️ Note**: This is a proprietary project. Unauthorized contributions or pull requests will not be accepted.
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
 ---
 
 ## ❓ FAQ
+
+> **💭 Common Questions**: Quick answers to frequently asked questions
 
 <details>
 <summary><strong>Why Astro instead of React or Next.js?</strong></summary>
@@ -822,6 +955,8 @@ If you notice bugs or issues with the live site:
 
 **Answer**: **No.** This repository is publicly visible for portfolio and transparency purposes only. All code, designs, and brand assets are proprietary and protected by copyright.
 
+> **⚠️ Legal Warning**: Unauthorized use is prohibited and may result in legal action.
+
 **You may NOT:**
 - Copy, fork, or clone this repository for your own use
 - Use the layout, design, or structure as a template
@@ -838,6 +973,8 @@ This site is the intellectual property of JaZeR. Unauthorized use is prohibited.
 <br>
 
 **Answer**: Open an issue in the [GitHub Issues](../../issues) tab with a clear description. For business inquiries or collaborations, use the contact form on the [website](https://jazer-444.github.io/TEST-Website-Import/contact).
+
+> **💡 Tip**: When reporting bugs, include browser info, screenshots, and steps to reproduce the issue.
 
 </details>
 
@@ -865,7 +1002,7 @@ The end result is still a fast, static site that works everywhere.
 
 Create a new `.astro` file in the `src/pages/` directory. Astro automatically creates routes based on the file structure in `src/pages/`.
 
-**Note**: This repository is not a template. Do not attempt to replicate this structure for your own projects.
+> **⚠️ Reminder**: This repository is not a template. Do not attempt to replicate this structure for your own projects.
 
 </details>
 
@@ -879,6 +1016,10 @@ Create a new `.astro` file in the `src/pages/` directory. Astro automatically cr
 For informational purposes only: Astro static sites can technically deploy to various platforms (Netlify, Vercel, Cloudflare Pages, etc.), but **you do not have permission to deploy this specific codebase**.
 
 </details>
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
