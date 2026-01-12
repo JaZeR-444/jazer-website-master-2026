@@ -12,7 +12,7 @@
   grid-template-columns: 1fr;
   min-height: auto;
   gap: 2rem;
-  padding: 7rem 1.5rem 3rem; /* Top: nav(60) + announcement(40) + buffer */
+  padding: 6rem 1.5rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -26,6 +26,14 @@
     height: auto;
     overflow: visible;
     gap: 4rem;
+  }
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+  .home-bento-layout {
+    padding: 5rem 1rem 2rem;
+    gap: 3rem;
   }
 }
 
@@ -197,8 +205,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem !important;
+  gap: 1.5rem;
+  padding: 2.5rem !important;
   position: relative;
   overflow: hidden;
 }
@@ -248,7 +256,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-top-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
-  padding: 1.25rem;
+  padding: 2rem;
   text-decoration: none;
   color: white;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -256,7 +264,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.75rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -446,4 +454,100 @@
 @keyframes tickerScroll {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+@media (max-width: 768px) {
+  /* Hero section mobile adjustments */
+  .home-bento-left .hero-logo {
+    width: clamp(240px, 80vw, 320px);
+    margin-bottom: 1rem;
+  }
+
+  .home-bento-left .status-chip {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.85rem;
+  }
+
+  .home-bento-left .hero-title {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .home-bento-left .cta-button,
+  .home-bento-left .cta-secondary {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Bento cards mobile adjustments */
+  .bento-grid {
+    gap: 0.85rem;
+  }
+
+  .bento-card {
+    padding: 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .bento-card--featured {
+    padding: 1.75rem !important;
+    gap: 1.25rem;
+  }
+
+  .bento-icon-sm {
+    width: 38px;
+    height: 38px;
+  }
+
+  .jazer-h5 {
+    font-size: 0.95rem;
+  }
+
+  .text-xs {
+    font-size: 0.8rem;
+  }
+
+  /* What's Next section */
+  .next-grid--compact {
+    gap: 0.65rem;
+  }
+
+  .next-card--compact {
+    padding: 0.65rem 0.85rem;
+    min-width: 120px;
+  }
+
+  /* Ticker mobile adjustments */
+  .home-ticker {
+    padding: 0.6rem 0;
+  }
+
+  .ticker-item {
+    font-size: 0.7rem;
+    padding: 0 0.5rem;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .home-bento-layout {
+    padding: 6.5rem 2rem 2rem;
+    gap: 3rem;
+  }
+
+  .bento-grid {
+    max-width: 500px;
+  }
 }

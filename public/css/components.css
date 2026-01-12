@@ -3992,8 +3992,9 @@ footer .container {
   .nav-inner {
     display: flex !important;
     justify-content: space-between !important;
-    padding: 0.5rem 1.5rem !important;
-    width: 92% !important;
+    padding: 0.4rem 1rem !important;
+    width: auto !important;
+    max-width: 95% !important;
   }
 
   /* 2. Hide Desktop Menu */

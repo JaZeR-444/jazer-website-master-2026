@@ -19,33 +19,39 @@ const pathways = [
         title: 'Music',
         href: `${base}music`,
         desc: 'Releases and playlists',
+        cta: 'Listen ->',
         icon: `${base}assets/images/icons/music/headphones-black.svg`
     },
     {
         title: 'Videos & Visuals',
         href: `${base}videos`,
         desc: 'Visuals and behind-the-scenes',
+        cta: 'Watch ->',
         icon: `${base}assets/images/icons/navigation/videos.svg`
     },
     {
         title: 'About',
         href: `${base}about`,
         desc: 'The story and mission',
+        cta: 'Read ->',
         icon: `${base}assets/images/icons/navigation/about.svg`
     },
     {
         title: 'Shop',
         href: `${base}shop`,
         desc: 'Merch and essentials',
+        cta: 'Shop ->',
         icon: `${base}assets/images/icons/navigation/shop.svg`
     },
     {
         title: 'Contact',
         href: `${base}contact`,
         desc: 'Collaborations and inquiries',
+        cta: 'Connect ->',
         icon: `${base}assets/images/icons/navigation/contact.svg`
     }
 ];
+
 
 const nextSteps = [
     {
@@ -162,7 +168,7 @@ const mutedStatuses = ['TBA', 'TBD'];
       <!-- BENTO GRID -->
       <div class="bento-section">
         <h2 class="section-title gradient-text" data-animate="fade-up">Explore</h2>
-        <p class="section-subtitle">Choose your frequency</p>
+        <p class="section-subtitle">Choose your signal</p>
         
         <div class="bento-grid">
           {/* About Card - Featured Larger */}
@@ -172,8 +178,8 @@ const mutedStatuses = ['TBA', 'TBD'];
             </div>
             <div class="bento-content">
               <h3 class="jazer-h3">About</h3>
-              <p class="text-muted">The story and mission</p>
-              <span class="bento-cta">Discover →</span>
+              <p class="text-muted">Origin story, mission, and vision</p>
+              <span class="bento-cta">Read the story -></span>
             </div>
           </a>
 
@@ -186,7 +192,7 @@ const mutedStatuses = ['TBA', 'TBD'];
               <div class="bento-content">
                 <h3 class="jazer-h5">{pathway.title}</h3>
                 <p class="text-muted text-xs">{pathway.desc}</p>
-                <span class="bento-cta-sm">Explore →</span>
+                <span class="bento-cta-sm">{pathway.cta}</span>
               </div>
             </a>
           ))}
