@@ -46,15 +46,73 @@ const collaborations = [
   { artist: 'Featured Artist 3', track: 'Joint Single', role: 'Co-Writer', year: '2026' }
 ];
 
-// Lyrics Preview
-const lyricsPreview = {
-  track: 'In Due Time',
-  lines: [
-    "Everything happens in due time",
-    "Keep your head up, you'll be fine",
-    "The stars align when you believe",
-    "In yourself, in what you'll achieve"
-  ]
+// Behind the Music - Story behind songs
+const behindTheMusic = [
+  { track: 'In Due Time', story: 'Written during a late-night session after years of working towards this moment. The title reflects the belief that everything comes together when you stay committed.', inspiration: 'Personal journey', moodboard: '🌙 Late nights, 💭 Reflection, 🚀 Ambition' },
+  { track: 'Midnight Sessions', story: 'Inspired by countless hours spent perfecting the craft when the world is asleep. This EP captures the essence of dedication.', inspiration: 'Studio life', moodboard: '🎧 Focus, ⏰ Dedication, 🎹 Creation' }
+];
+
+// Track Analytics
+const trackAnalytics = [
+  { track: 'In Due Time', plays: '10K+', saves: '2.5K', shares: '800', growth: '+45%' },
+  { track: 'Preview Track 1', plays: '5K+', saves: '1.2K', shares: '400', growth: '+32%' },
+  { track: 'Preview Track 2', plays: '3K+', saves: '800', shares: '250', growth: '+28%' }
+];
+
+// Production Credits
+const productionCredits = [
+  { role: 'Producer', name: 'JaZeR', icon: '🎛️' },
+  { role: 'Mixing', name: 'JaZeR', icon: '🎚️' },
+  { role: 'Mastering', name: 'TBD', icon: '💿' },
+  { role: 'Songwriter', name: 'JaZeR', icon: '✍️' },
+  { role: 'Vocals', name: 'JaZeR', icon: '🎤' },
+  { role: 'Artwork', name: 'JaZeR Design', icon: '🎨' }
+];
+
+// Discography / Full Catalog
+const discography = [
+  { title: 'In Due Time', type: 'Single', year: '2026', status: 'upcoming', cover: 'gradient-1' },
+  { title: 'Midnight Sessions', type: 'EP', year: '2026', status: 'upcoming', cover: 'gradient-2' },
+  { title: 'First Light', type: 'Album', year: '2026', status: 'announced', cover: 'gradient-3' },
+  { title: 'Demo Collection', type: 'Compilation', year: '2025', status: 'unreleased', cover: 'gradient-4' }
+];
+
+// Audio Quality Options
+const audioQuality = [
+  { format: 'Standard', quality: '256 kbps', icon: '🎵', available: true },
+  { format: 'High Quality', quality: '320 kbps', icon: '🎧', available: true },
+  { format: 'Lossless', quality: 'FLAC 16-bit', icon: '💎', available: true },
+  { format: 'Hi-Res', quality: '24-bit/96kHz', icon: '🔊', available: false },
+  { format: 'Spatial Audio', quality: 'Dolby Atmos', icon: '🌐', available: false }
+];
+
+// Chart/Playlist Placements
+const chartPlacements = [
+  { playlist: 'New Music Friday', platform: 'Spotify', status: 'Target', icon: '🎯' },
+  { playlist: 'Chill Vibes', platform: 'Apple Music', status: 'Pitched', icon: '📤' },
+  { playlist: 'Discover Weekly', platform: 'Spotify', status: 'Goal', icon: '⭐' },
+  { playlist: 'Release Radar', platform: 'Spotify', status: 'Automatic', icon: '📡' }
+];
+
+// Exclusive Previews for Subscribers
+const exclusivePreviews = [
+  { title: 'In Due Time (Preview)', duration: '0:30', locked: false },
+  { title: 'Track 2 (Snippet)', duration: '0:15', locked: true },
+  { title: 'Album Intro (Teaser)', duration: '0:20', locked: true }
+];
+
+// Smart Links
+const smartLinks = {
+  mainLink: 'jazer.link/music',
+  platforms: ['Spotify', 'Apple Music', 'YouTube Music', 'Amazon Music', 'Tidal', 'Deezer', 'SoundCloud', 'Pandora']
+};
+
+// Listening Stats
+const listeningStats = {
+  topCity: 'Los Angeles',
+  topCountry: 'United States',
+  peakTime: '10 PM - 2 AM',
+  avgListenTime: '3:24'
 };
 ---
 <BaseLayout
@@ -771,6 +829,295 @@ const lyricsPreview = {
       
       <div style="text-align: center; margin-top: 2rem;">
         <p style="color: var(--text-muted); font-size: 0.875rem;">🎵 "In Due Time" - Coming March 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Equalizer -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Audio Experience</h2>
+        <p class="section-subtitle">Feel the frequency spectrum</p>
+      </div>
+      
+      <div class="premium-glass-card" style="max-width: 800px; margin: 3rem auto; padding: 2rem;" data-animate="fade-up">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 150px; gap: 2px;">
+          {[60, 150, 400, 1000, 2500, 6000, 16000].map((freq, i) => (
+            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div style={`width: 100%; background: linear-gradient(to top, var(--jazer-cyan), var(--jazer-purple), var(--jazer-pink)); border-radius: 4px; animation: eqBounce ${0.3 + i * 0.1}s ease-in-out infinite alternate; height: ${30 + Math.random() * 70}%;`}></div>
+              <span style="font-size: 0.625rem; color: var(--text-muted);">{freq >= 1000 ? `${freq/1000}k` : freq}Hz</span>
+            </div>
+          ))}
+        </div>
+        
+        <style>
+          @keyframes eqBounce {
+            0% { transform: scaleY(0.3); }
+            100% { transform: scaleY(1); }
+          }
+        </style>
+        
+        <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <div style="text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Bass</div>
+            <div style="font-weight: 700; color: var(--jazer-cyan);">+3dB</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Mids</div>
+            <div style="font-weight: 700; color: var(--jazer-purple);">0dB</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Highs</div>
+            <div style="font-weight: 700; color: var(--jazer-pink);">+2dB</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Track Analytics -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Track Analytics</h2>
+        <p class="section-subtitle">Performance across platforms</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+        {trackAnalytics.map((track, index) => (
+          <div class="premium-card" style="padding: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h3 style="font-weight: 700;">{track.track}</h3>
+              <span style="padding: 0.25rem 0.75rem; background: rgba(16, 185, 129, 0.2); color: #10b981; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">{track.growth}</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+              <div>
+                <div style="font-size: 1.5rem; font-weight: 900; color: var(--jazer-cyan);">{track.plays}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Plays</div>
+              </div>
+              <div>
+                <div style="font-size: 1.5rem; font-weight: 900; color: var(--jazer-purple);">{track.saves}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Saves</div>
+              </div>
+              <div>
+                <div style="font-size: 1.5rem; font-weight: 900; color: var(--jazer-pink);">{track.shares}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Shares</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Behind the Music -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Behind the Music</h2>
+        <p class="section-subtitle">The stories behind the songs</p>
+      </div>
+      
+      <div style="max-width: 800px; margin: 3rem auto;">
+        {behindTheMusic.map((item, index) => (
+          <div class="premium-glass-card" style="padding: 2.5rem; margin-bottom: 2rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📝</div>
+              <div>
+                <h3 style="font-weight: 700; font-size: 1.25rem;">"{item.track}"</h3>
+                <p style="font-size: 0.875rem; color: var(--jazer-cyan);">Inspiration: {item.inspiration}</p>
+              </div>
+            </div>
+            <p style="line-height: 1.8; color: var(--text-light); margin-bottom: 1.5rem;">{item.story}</p>
+            <div style="padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px;">
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Moodboard:</span>
+              <span style="font-size: 0.875rem; margin-left: 0.5rem;">{item.moodboard}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Discography Grid -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Discography</h2>
+        <p class="section-subtitle">The complete catalog</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+        {discography.map((release, index) => (
+          <div class="premium-card" style="overflow: hidden; cursor: pointer;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style={`height: 200px; background: linear-gradient(135deg, ${index === 0 ? 'var(--jazer-cyan), var(--jazer-purple)' : index === 1 ? 'var(--jazer-purple), var(--jazer-pink)' : index === 2 ? 'var(--jazer-pink), #f59e0b' : '#6366f1, #8b5cf6'}); display: flex; align-items: center; justify-content: center;`}>
+              <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="" style="width: 80px; height: 80px; opacity: 0.8;" />
+            </div>
+            <div style="padding: 1.5rem;">
+              <span style={`display: inline-block; padding: 0.2rem 0.5rem; background: ${release.status === 'upcoming' ? 'var(--jazer-pink)' : 'rgba(255,255,255,0.1)'}; border-radius: 4px; font-size: 0.625rem; font-weight: 700; margin-bottom: 0.75rem; text-transform: uppercase;`}>{release.status}</span>
+              <h3 style="font-weight: 700; margin-bottom: 0.25rem;">{release.title}</h3>
+              <p style="font-size: 0.875rem; color: var(--text-muted);">{release.type} • {release.year}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Production Credits -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Production Credits</h2>
+        <p class="section-subtitle">The team behind the sound</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; max-width: 800px; margin: 3rem auto;">
+        {productionCredits.map((credit, index) => (
+          <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay={index * 50}>
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">{credit.icon}</div>
+            <div style="font-weight: 700; font-size: 0.938rem; margin-bottom: 0.25rem;">{credit.name}</div>
+            <div style="font-size: 0.75rem; color: var(--jazer-cyan);">{credit.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Audio Quality Options -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Audio Quality</h2>
+        <p class="section-subtitle">Choose your listening experience</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; max-width: 1000px; margin: 3rem auto;">
+        {audioQuality.map((quality, index) => (
+          <div class="premium-card" style={`padding: 1.5rem; text-align: center; ${!quality.available ? 'opacity: 0.5;' : ''}`} data-animate="fade-up" data-animate-delay={index * 50}>
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">{quality.icon}</div>
+            <div style="font-weight: 700; margin-bottom: 0.25rem;">{quality.format}</div>
+            <div style="font-size: 0.813rem; color: var(--jazer-cyan); margin-bottom: 0.5rem;">{quality.quality}</div>
+            <span style={`padding: 0.25rem 0.5rem; background: ${quality.available ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)'}; color: ${quality.available ? '#10b981' : '#ef4444'}; border-radius: 4px; font-size: 0.625rem; font-weight: 700;`}>
+              {quality.available ? 'AVAILABLE' : 'COMING SOON'}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Chart Placements -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Playlist Goals</h2>
+        <p class="section-subtitle">Targeting these placements</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 3rem auto;">
+        {chartPlacements.map((placement, index) => (
+          <div class="premium-card" style="padding: 1.5rem; display: flex; align-items: center; gap: 1rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style="font-size: 2rem;">{placement.icon}</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; font-size: 0.938rem;">{placement.playlist}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">{placement.platform}</div>
+            </div>
+            <span style="padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); color: var(--jazer-purple); border-radius: 4px; font-size: 0.625rem; font-weight: 700;">{placement.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Exclusive Previews -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Exclusive Previews</h2>
+        <p class="section-subtitle">Unlock with email subscription</p>
+      </div>
+      
+      <div style="max-width: 500px; margin: 3rem auto;">
+        {exclusivePreviews.map((preview, index) => (
+          <div class="premium-card" style="padding: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;" data-animate="fade-up" data-animate-delay={index * 100}>
+            <div style={`width: 50px; height: 50px; background: ${preview.locked ? 'rgba(255,255,255,0.1)' : 'linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple))'}; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;`}>
+              {preview.locked ? '🔒' : '▶️'}
+            </div>
+            <div style="flex: 1;">
+              <div style="font-weight: 600;">{preview.title}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">{preview.duration}</div>
+            </div>
+            {preview.locked ? (
+              <span style="font-size: 0.75rem; color: var(--jazer-pink);">Join to unlock</span>
+            ) : (
+              <button class="system-button" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Play</button>
+            )}
+          </div>
+        ))}
+        
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="#join-beam" class="cta-button">
+            <span>🔓</span>
+            <span>Unlock All Previews</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Listening Stats -->
+  <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Listener Insights</h2>
+        <p class="section-subtitle">Who's listening and when</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 800px; margin: 3rem auto;">
+        <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📍</div>
+          <div style="font-weight: 700; font-size: 1.125rem; color: var(--jazer-cyan);">{listeningStats.topCity}</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">Top City</div>
+        </div>
+        <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay="100">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌍</div>
+          <div style="font-weight: 700; font-size: 1.125rem; color: var(--jazer-purple);">{listeningStats.topCountry}</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">Top Country</div>
+        </div>
+        <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay="200">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌙</div>
+          <div style="font-weight: 700; font-size: 1.125rem; color: var(--jazer-pink);">{listeningStats.peakTime}</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">Peak Time</div>
+        </div>
+        <div class="premium-card" style="padding: 1.5rem; text-align: center;" data-animate="fade-up" data-animate-delay="300">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⏱️</div>
+          <div style="font-weight: 700; font-size: 1.125rem; color: #10b981;">{listeningStats.avgListenTime}</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">Avg Listen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Links -->
+  <section class="section" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="premium-glass-card" style="max-width: 600px; margin: 0 auto; padding: 3rem; text-align: center;" data-animate="fade-up">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🔗</div>
+        <h2 class="gradient-text" style="margin-bottom: 0.5rem;">One Link, All Platforms</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Share music with anyone, anywhere</p>
+        
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem 2rem; border-radius: 12px; display: inline-flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+          <span style="font-family: monospace; font-size: 1.125rem; color: var(--jazer-cyan);">{smartLinks.mainLink}</span>
+          <button style="padding: 0.5rem 1rem; background: var(--jazer-cyan); color: #000; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Copy</button>
+        </div>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
+          {smartLinks.platforms.map((platform) => (
+            <span style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 6px; font-size: 0.813rem;">{platform}</span>
+          ))}
+        </div>
       </div>
     </div>
   </section>
