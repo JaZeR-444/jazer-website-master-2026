@@ -21,13 +21,233 @@
     font-size: 1rem;
   }
 
+  /* ============================================
+     MOBILE MENU: Enhanced Hamburger Button
+     ============================================ */
+  .mobile-menu {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Animated background gradient */
+  .mobile-menu::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(168, 85, 247, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu:hover::before {
+    opacity: 1;
+  }
+
+  /* Icon glow effect */
+  .mobile-menu::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--jazer-cyan), var(--jazer-purple));
+    border-radius: 12px;
+    opacity: 0;
+    filter: blur(8px);
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .mobile-menu:hover::after {
+    opacity: 0.3;
+  }
+
+  .mobile-menu.active {
+    background: rgba(79, 172, 254, 0.15);
+    transform: rotate(90deg);
+  }
+
+  .mobile-menu.active::after {
+    opacity: 0.5;
+  }
+
+  /* ============================================
+     MOBILE MENU: Glassmorphic Slide-In Panel
+     ============================================ */
+  .nav-links {
+    position: fixed !important;
+    top: 0;
+    right: -100%;
+    width: min(85vw, 400px);
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height */
+    background: rgba(10, 10, 20, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-left: 1px solid rgba(79, 172, 254, 0.2);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    padding: 5rem 2rem 2rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1002;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  /* Animated gradient border */
+  .nav-links::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, 
+      var(--jazer-cyan) 0%,
+      var(--jazer-purple) 50%,
+      var(--jazer-pink) 100%
+    );
+    animation: gradientSlide 3s ease infinite;
+  }
+
+  @keyframes gradientSlide {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* ============================================
+     MOBILE MENU: Navigation Items
+     ============================================ */
+  .nav-links li {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Staggered animation delays */
+  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+  .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+  .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
+  .nav-links.active li:nth-child(6) { transition-delay: 0.35s; }
+
   /* Navigation Links */
   .nav-links a {
-    min-height: 44px;
-    padding: 0.75rem 1rem;
+    min-height: 56px;
+    padding: 1rem 1.25rem;
     display: flex;
     align-items: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-light);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
   }
+
+  /* Hover gradient background */
+  .nav-links a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(79, 172, 254, 0.1), rgba(168, 85, 247, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-links a:hover::before {
+    opacity: 1;
+  }
+
+  /* Active page indicator */
+  .nav-links a.active {
+    background: linear-gradient(90deg, rgba(79, 172, 254, 0.2), rgba(168, 85, 247, 0.2));
+    border-left: 4px solid var(--jazer-cyan);
+    padding-left: calc(1.25rem - 4px);
+    box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
+  }
+
+  .nav-links a.active::after {
+    content: '●';
+    position: absolute;
+    right: 1rem;
+    color: var(--jazer-cyan);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+
+  /* ============================================
+     MOBILE MENU: Overlay Backdrop
+     ============================================ */
+  body.nav-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1001;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Prevent body scroll when menu is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* ============================================
+     MOBILE MENU: Close Button (X icon)
+     ============================================ */
+  .nav-links.active::after {
+    content: '✕';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: all;
+  }
+
+  .nav-links.active::after:hover {
+    background: rgba(255, 0, 110, 0.2);
+    color: var(--jazer-pink);
+    transform: rotate(90deg);
+  }
+
+  /* Navigation Links (continued) */
 
   /* Social Icons */
   .social-links a,
