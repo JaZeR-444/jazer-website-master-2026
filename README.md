@@ -207,7 +207,7 @@ Built with **Astro 5.0, performance-first engineering, and accessibility** in mi
 ### 🎭 What is JaZeR?
 
 <div align="center">
-<img src="public/assets/images/vibrant-jzr-monogram-logo (250 x 250 px).svg" alt="JZR Monogram" width="120"/>
+<img src="public/assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg" alt="JaZeR Logo" width="300"/>
 </div>
 
 **JaZeR** is more than just a website—it's a complete digital experience designed to connect music, visuals, and storytelling into one cohesive brand identity. From streaming platforms to social media, this site serves as the **central hub** for:
@@ -300,7 +300,7 @@ http://localhost:4321
 ---
 
 <div align="center">
-<img src="public/assets/images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="30"/>
+<img src="public/assets/images/Vibrant JAZER Bubble Logo (300 x 100 px).svg" alt="JaZeR" width="200"/>
 </div>
 
 ---
@@ -775,7 +775,7 @@ lighthouse https://jazer-444.github.io/TEST-Website-Import/ --view
 ---
 
 <div align="center">
-<img src="public/assets/images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="30"/>
+<img src="public/assets/images/Vibrant JAZER Bubble Logo (300 x 100 px).svg" alt="JaZeR" width="200"/>
 </div>
 
 ---
@@ -886,7 +886,7 @@ For informational purposes only: Astro static sites can technically deploy to va
 
 <div align="center">
 
-<img src="public/assets/images/vibrant-jzr-monogram-logo (100 x 100 px).svg" alt="JZR" width="80"/>
+<img src="public/assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg" alt="JaZeR" width="300"/>
 
 ### Stay Connected Across All Platforms
 
@@ -905,7 +905,7 @@ For informational purposes only: Astro static sites can technically deploy to va
 ---
 
 <div align="center">
-<img src="public/assets/images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="30"/>
+<img src="public/assets/images/Vibrant JAZER Bubble Logo (300 x 100 px).svg" alt="JaZeR" width="200"/>
 </div>
 
 ---
