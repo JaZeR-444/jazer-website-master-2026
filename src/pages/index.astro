@@ -10,8 +10,55 @@ const ogImage = site
 
 const announcement = {
   href: `${base}music`,
-  text: '?? NEW SINGLE DROPPING MARCH 2026 - Be the first to hear it   '
+  text: '🎵 NEW SINGLE "IN DUE TIME" DROPPING MARCH 15, 2026 - Pre-save now!'
 };
+
+// Upcoming Events
+const upcomingEvents = [
+  { title: 'Single Release', date: 'March 15, 2026', type: 'Music', icon: '🎵', status: 'SOON' },
+  { title: 'Music Video Premiere', date: 'March 22, 2026', type: 'Video', icon: '🎬', status: 'COMING' },
+  { title: 'First Merch Drop', date: 'Late March 2026', type: 'Shop', icon: '🛍️', status: 'ANNOUNCED' }
+];
+
+// Fan Testimonials
+const testimonials = [
+  { text: "JaZeR's sound is like nothing I've heard before. Pure energy.", author: "Early Supporter", platform: "Instagram" },
+  { text: "This is the artist I've been waiting for. The vibe is unmatched.", author: "Day One Fan", platform: "YouTube" },
+  { text: "Every track hits different. Can't wait for the debut album!", author: "Music Lover", platform: "Twitter" },
+  { text: "The production quality is insane. This is next level.", author: "Producer Fan", platform: "SoundCloud" }
+];
+
+// Quick Links
+const quickLinks = [
+  { name: 'Music', url: '/music', icon: '🎵', desc: 'Stream tracks', gradient: 'linear-gradient(135deg, #1DB954, #191414)' },
+  { name: 'Videos', url: '/videos', icon: '🎬', desc: 'Watch content', gradient: 'linear-gradient(135deg, #FF0000, #282828)' },
+  { name: 'About', url: '/about', icon: '👤', desc: 'My story', gradient: 'linear-gradient(135deg, #8b5cf6, #6366f1)' },
+  { name: 'Shop', url: '/shop', icon: '🛍️', desc: 'Get merch', gradient: 'linear-gradient(135deg, #ec4899, #f43f5e)' },
+  { name: 'Contact', url: '/contact', icon: '💬', desc: 'Get in touch', gradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)' }
+];
+
+// Achievements
+const achievements = [
+  { title: '10K+', label: 'Streams', icon: '🎧' },
+  { title: '500+', label: 'Fans', icon: '💜' },
+  { title: '25+', label: 'Tracks', icon: '🎵' },
+  { title: '2026', label: 'Launch Year', icon: '🚀' }
+];
+
+// Latest Updates
+const latestUpdates = [
+  { title: 'Studio Update', desc: 'Final mixing sessions for the debut single', date: 'Jan 2026', icon: '🎛️' },
+  { title: 'Music Video', desc: 'Filming wrapped for "In Due Time" visual', date: 'Jan 2026', icon: '🎬' },
+  { title: 'Merch Preview', desc: 'First look at upcoming merchandise designs', date: 'Jan 2026', icon: '👕' }
+];
+
+// Social Links
+const socialPreviews = [
+  { platform: 'Instagram', handle: '@jazer_music', followers: '2.5K', icon: 'instagram-round-icon.svg' },
+  { platform: 'TikTok', handle: '@jazer_music', followers: '5K', icon: 'tiktok-round-logo.svg' },
+  { platform: 'YouTube', handle: '@jazer', followers: '1.2K', icon: 'youtube-round-icon.svg' },
+  { platform: 'Spotify', handle: 'JaZeR', followers: '800', icon: 'spotify-round-icon.svg' }
+];
 ---
 <BaseLayout
   bodyClass="has-announcement"

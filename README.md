@@ -424,11 +424,15 @@ Orange (#FF9500) → Green (#00FF88) → Blue (#4FACFE)
 
 > **Learn about JaZeR, explore the site, and understand the features**
 
+⏱️ *Reading time: 8 minutes*
+
 </div>
 
 ---
 
 ## 🌟 Overview
+
+> **TL;DR**: Official website for JaZeR, a content creator and music artist. Built with Astro 5.0 for maximum performance, featuring music releases, videos, merchandise, and fan engagement.
 
 This repository powers the **official website** for **JaZeR** — a content creator and music artist building an authentic digital presence. The site showcases music releases, video content, merchandise, and provides a direct connection point for fans and collaborators.
 
@@ -440,12 +444,19 @@ Built with **Astro 5.0, performance-first engineering, and accessibility** in mi
 <img src="public/assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg" alt="JaZeR Logo" width="300"/>
 </div>
 
+<br/>
+
 **JaZeR** is more than just a website—it's a complete digital experience designed to connect music, visuals, and storytelling into one cohesive brand identity. From streaming platforms to social media, this site serves as the **central hub** for:
+
+<details>
+<summary><strong>📋 What You'll Find Here</strong></summary>
+
+<br/>
 
 <table>
   <tr>
-    <td align="center">🎵</td>
-    <td><strong>Music Releases</strong><br/>Latest tracks across all major platforms (Spotify, Apple Music, SoundCloud, YouTube)</td>
+    <td align="center" width="20%">🎵</td>
+    <td width="80%"><strong>Music Releases</strong><br/>Latest tracks across all major platforms (Spotify, Apple Music, SoundCloud, YouTube)</td>
   </tr>
   <tr>
     <td align="center">📺</td>
@@ -465,9 +476,16 @@ Built with **Astro 5.0, performance-first engineering, and accessibility** in mi
   </tr>
 </table>
 
+</details>
+
 ### ✨ Key Highlights
 
 > **🎯 Core Strengths**: What makes this site stand out
+
+<details open>
+<summary><strong>Click to view all features</strong></summary>
+
+<br/>
 
 ```
 🎨 Distinctive Brand Identity  →  Custom color palette, typography, and visual system
@@ -479,6 +497,8 @@ Built with **Astro 5.0, performance-first engineering, and accessibility** in mi
 🌙 Dark, Glassy UI             →  Modern dark theme with glassmorphic elements
 🔍 SEO Optimized               →  Complete meta tags, Open Graph, Twitter Cards
 ```
+
+</details>
 
 <div align="right">
 <a href="#-jazer-official-website">⬆️ Back to Top</a>
@@ -496,44 +516,96 @@ Built with **Astro 5.0, performance-first engineering, and accessibility** in mi
 
 > **Install, run locally, and start developing in minutes**
 
+⏱️ *Reading time: 5 minutes* | 🎯 *Skill level: Beginner*
+
 </div>
 
 ---
 
 ## ⚡ Quick Start
 
+> **TL;DR**: Clone repo → `npm install` → `npm run dev` → Open [localhost:4321](http://localhost:4321)
+
 Get the JaZeR website running locally in under 60 seconds:
+
+### 📋 Prerequisites
+
+<table>
+<tr>
+<td align="center" width="33%">
+<strong>✅ Node.js 18+</strong><br/>
+<sub><a href="https://nodejs.org/" target="_blank">Download →</a></sub>
+</td>
+<td align="center" width="33%">
+<strong>✅ Git</strong><br/>
+<sub><a href="https://git-scm.com/" target="_blank">Download →</a></sub>
+</td>
+<td align="center" width="33%">
+<strong>✅ Code Editor</strong><br/>
+<sub><a href="https://code.visualstudio.com/" target="_blank">VS Code →</a></sub>
+</td>
+</tr>
+</table>
+
+---
 
 ### Prerequisites
 
 - Node.js 18+ (for Astro dev server)
 - Git for version control
 
-### Installation
+### 📥 Installation
 
-> **💾 Clone the Repository**: Get started by downloading the project
+> **Step 1 of 3**: Clone and install dependencies
 
 ```bash
-# Clone the repository
+# 📁 Clone the repository
 git clone https://github.com/JaZeR-444/TEST-Website-Import.git
 
-# Navigate to the project directory
+# 📂 Navigate to the project directory  
 cd TEST-Website-Import
 
-# Install dependencies
+# 📦 Install dependencies
 npm install
 ```
 
-> **💡 Note**: Make sure you have Node.js 18+ installed before running these commands.
+> **💡 Pro Tip**: Make sure you have Node.js 18+ installed before running these commands.
 
-### Run Locally
+---
+
+### 🚀 Run Locally
+
+> **Step 2 of 3**: Start the development server
 
 **Available Scripts:**
 
+<table>
+<tr>
+<th width="30%">Command</th>
+<th width="50%">Purpose</th>
+<th width="20%">Port</th>
+</tr>
+<tr>
+<td><code>npm run dev</code></td>
+<td>Development server with hot reload ⚡</td>
+<td>4321</td>
+</tr>
+<tr>
+<td><code>npm run build</code></td>
+<td>Build for production 📦</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>npm run preview</code></td>
+<td>Preview production build 👀</td>
+<td>4321</td>
+</tr>
+</table>
+
 ```bash
-# Option 1: Development server with hot reload
+# Option 1: Development server with hot reload (Recommended for development)
 npm run dev
-# Opens at http://localhost:4321
+# ✅ Opens at http://localhost:4321
 
 # Option 2: Build for production
 npm run build
@@ -544,7 +616,11 @@ npm run preview
 
 > **🔥 Hot Reload**: The dev server automatically refreshes when you make changes to files.
 
-### View in Browser
+---
+
+### 🌐 View in Browser
+
+> **Step 3 of 3**: Access your local site
 
 Open your browser and navigate to:
 ```
