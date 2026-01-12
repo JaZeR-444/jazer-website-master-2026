@@ -7,6 +7,7 @@
     <title>Shop - JaZeR</title>
     <meta name="description" content="Shop JaZeR merchandise and exclusive items.">
     <link rel="canonical" href="https://jazer-music.com/shop.html">
+    <link rel="preload" as="image" href="images/Shop (234 x 96 px).svg" type="image/svg+xml">
     <link rel="icon" href="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/enhancements.css">
@@ -29,27 +30,68 @@
 
     <nav class="site-nav" role="navigation" aria-label="Primary">
         <div class="container nav-inner">
+            <div class="nav-background"></div>
             <a class="logo" href="index.html" aria-label="Go to home">
-                <img src="images/vibrant-jzr-monogram-logo (100 x 100 px).svg" alt="JaZeR logo" style="height: 40px; width: auto;">
+                <img
+                  src="images/vibrant-jzr-monogram-logo (100 x 100 px).svg"
+                  alt="JaZeR logo"
+                  style="height: 40px; width: auto;"
+                />
             </a>
-            <button class="theme-toggle" aria-label="Cycle theme colors" title="Click to change colors">
-                <span class="theme-toggle-icon"></span>
-                <span>Vibe</span>
-            </button>
-            <button id="mobileMenu" class="mobile-menu" aria-expanded="false" aria-controls="navLinks"
-                aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <button
+              id="mobileMenu"
+              class="mobile-menu"
+              aria-expanded="false"
+              aria-controls="navLinks"
+              aria-label="Toggle navigation"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="music.html">Music</a></li>
+                <li class="nav-dropdown">
+                  <a href="music.html">Music</a>
+                  <div class="nav-dropdown-content">
+                    <div class="dropdown-grid">
+                      <a href="music.html#singles" class="dropdown-item">
+                        <span class="dropdown-item-icon">🎵</span>
+                        <span class="dropdown-item-text">
+                          <span class="dropdown-item-title">Singles</span>
+                          <span class="dropdown-item-desc">Latest releases</span>
+                        </span>
+                      </a>
+                      <a href="music.html#albums" class="dropdown-item">
+                        <span class="dropdown-item-icon">💿</span>
+                        <span class="dropdown-item-text">
+                          <span class="dropdown-item-title">Albums</span>
+                          <span class="dropdown-item-desc">Full projects</span>
+                        </span>
+                      </a>
+                      <a href="music.html#remixes" class="dropdown-item">
+                        <span class="dropdown-item-icon">🔀</span>
+                        <span class="dropdown-item-text">
+                          <span class="dropdown-item-title">Remixes</span>
+                          <span class="dropdown-item-desc">Fresh takes</span>
+                        </span>
+                      </a>
+                      <a href="music.html#playlists" class="dropdown-item">
+                        <span class="dropdown-item-icon">📋</span>
+                        <span class="dropdown-item-text">
+                          <span class="dropdown-item-title">Playlists</span>
+                          <span class="dropdown-item-desc">Curated vibes</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </li>
                 <li><a href="videos.html">Videos</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="shop.html" class="active" aria-current="page">Shop</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                    <li class="nav-cta-item"><a href="music.html" class="nav-cta">Listen</a></li>
+
 </ul>
         </div>
     </nav>
@@ -60,37 +102,347 @@
 
     <main id="main" tabindex="-1">
         <!-- New Page Hero -->
-        <div class="page-hero" data-animate="fade-up">
-            <h1 class="page-hero-title gradient-text">Shop</h1>
+                <div class="page-hero" data-animate="fade-up">
+            <h1 class="page-hero-title">
+                <img class="page-hero-title-logo" src="images/Shop (234 x 96 px).svg" alt="Shop">
+            </h1>
             <p class="page-hero-subtitle">
-                Merch, bundles, and digital goodies are on the way — built for fans who ride the beam.
+                Merch, bundles, and digital perks are almost here for fans who ride the beam.
             </p>
+            <div class="drop-countdown" data-animate="fade-up">
+                <span class="countdown-label">Next drop</span>
+                <span class="countdown-time">2026</span>
+                <span class="countdown-note">Launch windows announced soon</span>
+            </div>
+            <div class="hero-email-capture" data-animate="fade-up">
+                <p class="hero-email-copy">Get drop alerts in one click.</p>
+                <form class="hero-email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="email" name="email" class="modern-input" placeholder="your@email.com" required>
+                    <input type="hidden" name="_subject" value="Shop drop alert signup">
+                    <button type="submit" class="cta-button">Notify Me</button>
+                </form>
+            </div>
         </div>
-
+            <div class="hero-email-capture" data-animate="fade-up">
+                <p class="hero-email-copy">Get drop alerts in one click.</p>
+                <form class="hero-email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="email" name="email" class="modern-input" placeholder="your@email.com" required>
+                    <input type="hidden" name="_subject" value="Shop drop alert signup">
+                    <button type="submit" class="cta-button">Notify Me</button>
+                </form>
+            </div>
+        </div>
         <div class="container section">
             <p class="page-intro-icon text-center mb-lg">
-              As designs go live, this section will turn into a fully interactive shop.
+                Preview the pipeline and lock in your spot for the first drop.
             </p>
 
-            <div class="grid">
-                <article class="coming-soon-card" data-animate="fade-up">
-                    <span class="coming-soon-text">Store Opening Soon</span>
-                    <p id="jazer-teaser" class="teaser mt-4 text-muted">Stay tuned! Fresh merch on the way.</p>
-                </article>
-            </div>
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Featured Drops</h2>
+                    <p class="shop-section-subtitle">Early teasers with projected pricing and launch windows.</p>
+                </div>
+                <div class="grid shop-featured-grid">
+                    <article class="shop-card">
+                        <div class="shop-card-media">
+                            <span class="shop-card-badge">Limited</span>
+                            <div class="shop-card-placeholder">Mockup</div>
+                        </div>
+                        <h3 class="shop-card-title">Beam Hoodie</h3>
+                        <p class="shop-card-meta">Est. $60 - 2026</p>
+                        <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                            <input type="email" name="email" class="shop-interest-input" placeholder="email for alerts" required>
+                            <input type="hidden" name="_subject" value="Shop interest: Beam Hoodie">
+                            <button type="submit" class="shop-interest-button">Notify me</button>
+                        </form>
+                    </article>
+                    <article class="shop-card">
+                        <div class="shop-card-media">
+                            <span class="shop-card-badge">Core</span>
+                            <div class="shop-card-placeholder">Mockup</div>
+                        </div>
+                        <h3 class="shop-card-title">Signal Tee</h3>
+                        <p class="shop-card-meta">Est. $30 - 2026</p>
+                        <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                            <input type="email" name="email" class="shop-interest-input" placeholder="email for alerts" required>
+                            <input type="hidden" name="_subject" value="Shop interest: Signal Tee">
+                            <button type="submit" class="shop-interest-button">Notify me</button>
+                        </form>
+                    </article>
+                    <article class="shop-card">
+                        <div class="shop-card-media">
+                            <span class="shop-card-badge">Bundle</span>
+                            <div class="shop-card-placeholder">Mockup</div>
+                        </div>
+                        <h3 class="shop-card-title">Orbit Sticker Pack</h3>
+                        <p class="shop-card-meta">Est. $12 - 2026</p>
+                        <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                            <input type="email" name="email" class="shop-interest-input" placeholder="email for alerts" required>
+                            <input type="hidden" name="_subject" value="Shop interest: Orbit Sticker Pack">
+                            <button type="submit" class="shop-interest-button">Notify me</button>
+                        </form>
+                    </article>
+                    <article class="shop-card">
+                        <div class="shop-card-media">
+                            <span class="shop-card-badge">Limited</span>
+                            <div class="shop-card-placeholder">Mockup</div>
+                        </div>
+                        <h3 class="shop-card-title">Neon Poster</h3>
+                        <p class="shop-card-meta">Est. $25 - 2026</p>
+                        <form class="shop-interest-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                            <input type="email" name="email" class="shop-interest-input" placeholder="email for alerts" required>
+                            <input type="hidden" name="_subject" value="Shop interest: Neon Poster">
+                            <button type="submit" class="shop-interest-button">Notify me</button>
+                        </form>
+                    </article>
+                </div>
+                        </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Drop Schedule</h2>
+                    <p class="shop-section-subtitle">Three waves planned across 2026. Exact timing announced on the list.</p>
+                </div>
+                <div class="drop-timeline">
+                    <div class="timeline-step">
+                        <span class="timeline-title">Wave One</span>
+                        <span class="timeline-meta">Essentials + stickers</span>
+                    </div>
+                    <div class="timeline-step">
+                        <span class="timeline-title">Wave Two</span>
+                        <span class="timeline-meta">Premium outerwear</span>
+                    </div>
+                    <div class="timeline-step">
+                        <span class="timeline-title">Wave Three</span>
+                        <span class="timeline-meta">Limited collectors</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Behind the Design</h2>
+                    <p class="shop-section-subtitle">Moodboards, sketches, and color studies driving the 2026 line.</p>
+                </div>
+                <div class="design-story">
+                    <div class="design-visual">Concept art</div>
+                    <div class="design-copy">
+                        <h3 class="design-title">Signal to Beam</h3>
+                        <p class="design-text">The 2026 line blends neon gradients, analog textures, and cosmic symbolism. Every piece is built to feel like a wearable track.</p>
+                        <p class="design-text">Expect reflective ink hits, holographic patches, and hidden details throughout the drops.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Materials & Care</h2>
+                    <p class="shop-section-subtitle">Premium fabrics, long-lasting prints, and easy care notes.</p>
+                </div>
+                <div class="materials-grid">
+                    <article class="material-card">
+                        <h3 class="material-title">Premium Cotton</h3>
+                        <p class="material-text">Soft, breathable, and built for everyday wear.</p>
+                    </article>
+                    <article class="material-card">
+                        <h3 class="material-title">Heavyweight Fleece</h3>
+                        <p class="material-text">Warm, structured, and perfect for layered looks.</p>
+                    </article>
+                    <article class="material-card">
+                        <h3 class="material-title">Care Guide</h3>
+                        <p class="material-text">Cold wash, hang dry, and keep graphics vibrant.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Size & Fit</h2>
+                    <p class="shop-section-subtitle">Fit notes and sizing guidance arriving with each 2026 drop.</p>
+                </div>
+                <div class="size-guide">
+                    <div class="size-card">
+                        <h3 class="size-title">Relaxed Fit</h3>
+                        <p class="size-text">Roomy silhouettes with modern drape.</p>
+                    </div>
+                    <div class="size-card">
+                        <h3 class="size-title">True to Size</h3>
+                        <p class="size-text">Standard fit for everyday wear.</p>
+                    </div>
+                    <div class="size-card">
+                        <h3 class="size-title">Oversized Options</h3>
+                        <p class="size-text">Select drops feature extra length and volume.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Shipping Rollout</h2>
+                    <p class="shop-section-subtitle">Regions open in phases throughout 2026.</p>
+                </div>
+                <div class="shipping-grid">
+                    <article class="shipping-card">
+                        <h3 class="shipping-title">North America</h3>
+                        <p class="shipping-text">Priority launch region.</p>
+                    </article>
+                    <article class="shipping-card">
+                        <h3 class="shipping-title">Europe</h3>
+                        <p class="shipping-text">Second wave availability.</p>
+                    </article>
+                    <article class="shipping-card">
+                        <h3 class="shipping-title">Global</h3>
+                        <p class="shipping-text">Expanded regions as supply grows.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Bundle Builder</h2>
+                    <p class="shop-section-subtitle">Mix pieces, add exclusives, and build your drop kit in 2026.</p>
+                </div>
+                <div class="bundle-builder">
+                    <div class="bundle-card">
+                        <h3 class="bundle-title">Build your bundle</h3>
+                        <p class="bundle-text">Select apparel, vinyl, and bonus items once the shop opens.</p>
+                        <span class="bundle-tag">Teaser</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Visual Mockups</h2>
+                    <p class="shop-section-subtitle">Swipe for early print directions and textures.</p>
+                </div>
+                    <p class="shop-section-subtitle">Swipe for early print directions and textures.</p>
+                </div>
+                <div class="mockup-carousel" aria-label="Product mockups">
+                    <figure class="mockup-card">
+                        <div class="mockup-art">Front print</div>
+                        <figcaption class="mockup-caption">Beam hoodie front</figcaption>
+                    </figure>
+                    <figure class="mockup-card">
+                        <div class="mockup-art">Back print</div>
+                        <figcaption class="mockup-caption">Signal tee back</figcaption>
+                    </figure>
+                    <figure class="mockup-card">
+                        <div class="mockup-art">Texture</div>
+                        <figcaption class="mockup-caption">Embossed patch</figcaption>
+                    </figure>
+                    <figure class="mockup-card">
+                        <div class="mockup-art">Poster</div>
+                        <figcaption class="mockup-caption">Neon poster gloss</figcaption>
+                    </figure>
+                </div>
+                <p class="mockup-note text-muted">Store opening soon. Final designs may evolve.</p>
+            </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">Merch Tiers</h2>
+                    <p class="shop-section-subtitle">Pick your level and plan your pickup.</p>
+                </div>
+                <div class="grid tier-grid">
+                    <article class="tier-card">
+                        <h3 class="tier-name">Essentials</h3>
+                        <p class="tier-price">Est. $20-$45</p>
+                        <ul class="tier-list list-clean">
+                            <li>Tees and caps</li>
+                            <li>Everyday colorways</li>
+                            <li>Fast restocks</li>
+                        </ul>
+                    </article>
+                    <article class="tier-card">
+                        <h3 class="tier-name">Premium</h3>
+                        <p class="tier-price">Est. $50-$85</p>
+                        <ul class="tier-list list-clean">
+                            <li>Hoodies and jackets</li>
+                            <li>Custom trims</li>
+                            <li>Limited runs</li>
+                        </ul>
+                    </article>
+                    <article class="tier-card">
+                        <h3 class="tier-name">Limited</h3>
+                        <p class="tier-price">Est. $90+</p>
+                        <ul class="tier-list list-clean">
+                            <li>Numbered drops</li>
+                            <li>Signed inserts</li>
+                            <li>Collector extras</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="shop-section community-strip" data-animate="fade-up">
+                <div class="community-content">
+                    <div class="community-avatars">
+                        <span class="social-avatar-gradient"></span>
+                        <span class="social-avatar-gradient"></span>
+                        <span class="social-avatar-gradient"></span>
+                        <span class="social-avatar-gradient"></span>
+                    </div>
+                    <div class="community-text">
+                        <h2 class="shop-section-title">Join the Beam</h2>
+                        <p class="shop-section-subtitle">Early access, behind-the-scenes drops, and fan-only bundles.</p>
+                    </div>
+                </div>
+                <div class="community-stats">
+                    <div class="community-stat">
+                        <span class="community-stat-number">32k</span>
+                        <span class="community-stat-label">Listeners</span>
+                    </div>
+                    <div class="community-stat">
+                        <span class="community-stat-number">8k</span>
+                        <span class="community-stat-label">Followers</span>
+                    </div>
+                    <div class="community-stat">
+                        <span class="community-stat-number">120+</span>
+                        <span class="community-stat-label">Cities</span>
+                    </div>
+                </div>
+                <a class="cta-button" href="#shop-updates">Get shop alerts</a>
+            </section>
+
+            <section class="shop-section" data-animate="fade-up">
+                <div class="shop-section-header">
+                    <h2 class="shop-section-title">FAQ</h2>
+                    <p class="shop-section-subtitle">Quick answers before the store opens.</p>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>When does the store open?</summary>
+                        <p>First drop is targeted for late March 2026. Join the list for exact timing.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Will there be international shipping?</summary>
+                        <p>Yes. The first wave will focus on North America with expanded regions after.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How do I pick my size?</summary>
+                        <p>Each drop includes a size guide. Most fits run true to size.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I bundle items?</summary>
+                        <p>Bundles are planned for select drops and include exclusive add-ons.</p>
+                    </details>
+                </div>
+            </section>
 
             <!-- Email Capture -->
-            <div class="email-capture premium-glass-card mt-xl" data-animate="fade-up">
-                <h3 class="email-capture-title mb-4">🛒 First Dibs on Drops</h3>
-                <p class="email-capture-subtitle mb-4">Be first in line when the merch drops.</p>
+            <div id="shop-updates" class="email-capture premium-glass-card mt-xl" data-animate="fade-up">
+                <h3 class="email-capture-title mb-4">First dibs on drops</h3>
+                <p class="email-capture-subtitle mb-4">Be first in line when the merch goes live.</p>
                 <form class="email-capture-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <input type="email" name="email" class="modern-input mb-4" placeholder="your@email.com" required>
                     <input type="hidden" name="_subject" value="Merch drop notification signup">
-                    <button type="submit" class="cta-button">Get Early Access →</button>
+                    <button type="submit" class="cta-button">Get early access</button>
                 </form>
                 <p class="email-capture-status" role="status" aria-live="polite"></p>
             </div>
         </div>
+
     </main>
 
     <!-- Footer - Premium Redesign -->

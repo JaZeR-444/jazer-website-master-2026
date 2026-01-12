@@ -89,6 +89,7 @@
     <!-- Navigation -->
     <nav class="site-nav" role="navigation" aria-label="Primary">
       <div class="container nav-inner">
+        <div class="nav-background"></div>
         <a class="logo" href="index.html" aria-label="Go to home">
           <img
             src="images/vibrant-jzr-monogram-logo (100 x 100 px).svg"
@@ -97,15 +98,7 @@
           />
         </a>
 
-        <!-- #10 - Visible Theme Toggle -->
-        <button
-          class="theme-toggle"
-          aria-label="Cycle theme colors"
-          title="Click to change colors"
-        >
-          <span class="theme-toggle-icon"></span>
-          <span>Vibe</span>
-        </button>
+
 
         <button
           id="mobileMenu"
@@ -120,12 +113,46 @@
         </button>
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-          <li><a href="music.html">Music</a></li>
+          <li class="nav-dropdown">
+            <a href="music.html">Music</a>
+            <div class="nav-dropdown-content">
+              <div class="dropdown-grid">
+                <a href="music.html#singles" class="dropdown-item">
+                  <span class="dropdown-item-icon">🎵</span>
+                  <span class="dropdown-item-text">
+                    <span class="dropdown-item-title">Singles</span>
+                    <span class="dropdown-item-desc">Latest releases</span>
+                  </span>
+                </a>
+                <a href="music.html#albums" class="dropdown-item">
+                  <span class="dropdown-item-icon">💿</span>
+                  <span class="dropdown-item-text">
+                    <span class="dropdown-item-title">Albums</span>
+                    <span class="dropdown-item-desc">Full projects</span>
+                  </span>
+                </a>
+                <a href="music.html#remixes" class="dropdown-item">
+                  <span class="dropdown-item-icon">🔀</span>
+                  <span class="dropdown-item-text">
+                    <span class="dropdown-item-title">Remixes</span>
+                    <span class="dropdown-item-desc">Fresh takes</span>
+                  </span>
+                </a>
+                <a href="music.html#playlists" class="dropdown-item">
+                  <span class="dropdown-item-icon">📋</span>
+                  <span class="dropdown-item-text">
+                    <span class="dropdown-item-title">Playlists</span>
+                    <span class="dropdown-item-desc">Curated vibes</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
           <li><a href="videos.html">Videos</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="shop.html">Shop</a></li>
           <li><a href="contact.html">Contact</a></li>
-                <li class="nav-cta-item"><a href="music.html" class="nav-cta">Listen</a></li>
+        
 </ul>
       </div>
     </nav>

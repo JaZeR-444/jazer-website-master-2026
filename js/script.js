@@ -30,11 +30,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setNavState(isOpen) {
         if (!mobileMenu || !navLinks) return;
+        
+        // Sync State
         mobileMenu.setAttribute('aria-expanded', String(isOpen));
+        mobileMenu.classList.toggle('active', isOpen);
         navLinks.classList.toggle('active', isOpen);
         document.body.classList.toggle('nav-open', isOpen);
+        
         if (navOverlay) {
             navOverlay.classList.toggle('active', isOpen);
+        }
+
+        // GSAP Animations
+        if (window.gsap) {
+            // Hamburger Icon Animation
+            const spans = mobileMenu.querySelectorAll('span');
+            if (isOpen) {
+                gsap.to(spans, {
+                    backgroundColor: 'var(--jazer-cyan)',
+                    duration: 0.3,
+                    stagger: 0.05
+                });
+                
+                // Staggered Menu Items Entry
+                const listItems = navLinks.querySelectorAll('li');
+                gsap.fromTo(listItems, 
+                    { opacity: 0, y: 20 }, 
+                    { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: "power2.out", delay: 0.1 }
+                );
+            } else {
+                 gsap.to(spans, {
+                    backgroundColor: 'var(--text-light)',
+                    duration: 0.3,
+                    stagger: 0.05
+                });
+            }
         }
     }
 
@@ -74,12 +104,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (siteNav) {
-        const navScrollThreshold = 60;
-        const updateNav = () => {
-            siteNav.classList.toggle('is-scrolled', window.scrollY > navScrollThreshold);
-        };
-        window.addEventListener('scroll', updateNav);
-        updateNav();
+        let lastScrollTop = 0;
+        const navScrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+            // 1. Visual Style Change (Glass/Shrink)
+            siteNav.classList.toggle('scrolled', scrollTop > navScrollThreshold);
+
+            // 2. Hide/Show Logic
+            // Only hide if we've scrolled past the header height (approx 100px) and are scrolling down
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                siteNav.classList.add('nav-hidden');
+                // Close mobile menu if open when scrolling down
+                if (document.body.classList.contains('nav-open')) {
+                    closeNav();
+                }
+            } else {
+                siteNav.classList.remove('nav-hidden');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, { passive: true });
     }
 
     // ============================================

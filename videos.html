@@ -4,60 +4,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" type="image/svg+xml">
+
     <title>Videos - JaZeR</title>
-    <meta name="description" content="Watch JaZeR's latest music videos and visual content.">
+    <meta name="description" content="Watch JaZeR's latest music videos, behind-the-scenes content, and visual storytelling.">
+    <meta name="keywords" content="JaZeR, videos, music videos, behind the scenes, visual content, vlogs">
     <link rel="canonical" href="https://jazer-music.com/videos.html">
-    <link rel="icon" href="images/icons/social/jazer-disco-round-icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css?v=36">
+    <link rel="stylesheet" href="css/enhancements.css?v=36">
     <link rel="stylesheet" href="css/pages-enhancements.css">
 </head>
 
-<body class="videos-page">
+<body class="has-announcement">
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+      <a href="videos.html">🎬 NEW CONTENT DROPPING SOON — Subscribe to stay updated →</a>
+      <button class="announcement-close" aria-label="Close announcement" onclick="document.getElementById('announcementBar').remove(); document.body.classList.remove('has-announcement');">✕</button>
+    </div>
+
+    <!-- Preloader -->
+    <div class="preloader" aria-hidden="true">
+        <img class="preloader-logo" src="images/vibrant-jzr-monogram-logo-(500 x 500 px).svg" alt="">
+        <div class="preloader-bar"></div>
+    </div>
+
     <a class="skip-link" href="#main">Skip to content</a>
 
     <nav class="site-nav" role="navigation" aria-label="Primary">
         <div class="container nav-inner">
+            <div class="nav-background"></div>
             <a class="logo" href="index.html" aria-label="Go to home">
-                <img src="images/icons/social/jazer-disco-round-icon.svg" alt="JaZeR logo">
+                <img
+                  src="images/vibrant-jzr-monogram-logo (100 x 100 px).svg"
+                  alt="JaZeR logo"
+                  style="height: 40px; width: auto;"
+                />
             </a>
-            <button id="mobileMenu" class="mobile-menu" aria-expanded="false" aria-controls="navLinks"
-                aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button
+              id="mobileMenu"
+              class="mobile-menu"
+              aria-expanded="false"
+              aria-controls="navLinks"
+              aria-label="Toggle navigation"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="music.html">Music</a></li>
-                <li><a href="videos.html" class="active">Videos</a></li>
+                <li class="nav-dropdown">
+                  <a href="music.html">Music</a>
+                  <div class="nav-dropdown-content">
+                    <div class="dropdown-grid">
+                      <a href="music.html#singles" class="dropdown-item">
+                        <span class="dropdown-item-icon">🎵</span>
+                        <span class="dropdown-item-text">
+                          <span class="dropdown-item-title">Singles</span>
+                          <span class="dropdown-item-desc">Latest releases</span>
+                        </span>
+                      </a>
+                      <a href="music.html#albums" class="dropdown-item">
+                        <span class="dropdown-item-icon">💿</span>
+                        <span class="dropdown-item-text">
+                          <span class="dropdown-item-title">Albums</span>
+                          <span class="dropdown-item-desc">Full projects</span>
+                        </span>
+                      </a>
+                      <a href="music.html#remixes" class="dropdown-item">
+                        <span class="dropdown-item-icon">🔀</span>
+                        <span class="dropdown-item-text">
+                          <span class="dropdown-item-title">Remixes</span>
+                          <span class="dropdown-item-desc">Fresh takes</span>
+                        </span>
+                      </a>
+                      <a href="music.html#playlists" class="dropdown-item">
+                        <span class="dropdown-item-icon">📋</span>
+                        <span class="dropdown-item-text">
+                          <span class="dropdown-item-title">Playlists</span>
+                          <span class="dropdown-item-desc">Curated vibes</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li><a href="videos.html" class="active" aria-current="page">Videos</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="contact.html">Contact</a></li>
-            </ul>
+            
+</ul>
         </div>
     </nav>
 
+    <div class="nav-progress" aria-hidden="true"></div>
+    <div class="nav-overlay" data-nav-overlay></div>
+
     <main id="main" tabindex="-1">
-        <!-- New Page Hero -->
-        <div class="page-hero" data-animate="fade-up">
-            <h1 class="page-hero-title gradient-text">Videos & Visuals</h1>
-            <p class="page-hero-subtitle">
-              Neon reels, live flips, and behind-the-scenes chaos are loading in this space.
-            </p>
-        </div>
-
-        <div class="container section">
-            <p class="page-intro-icon text-center mb-lg">
-              YouTube and Vimeo embeds will slot in here as the universe expands.
-            </p>
-
-            <div class="grid">
-                <article class="coming-soon-card" data-animate="fade-up">
-                    <span class="coming-soon-text">Signal Incoming</span>
-                    <p id="jazer-teaser" class="teaser mt-4 text-muted">Stay tuned! Fresh content on the way.</p>
-                </article>
+        <!-- Hero Section -->
+        <section class="hero hero-animated" style="min-height: 70vh; padding: 8rem 0 4rem;">
+            <div class="hero-particles"></div>
+            <div class="hero-content" data-animate="zoom-in" style="max-width: 800px;">
+                <span class="hero-eyebrow" data-animate="fade-up">
+                    <span class="eyebrow-word" style="--i: 0">Visual</span>
+                    <span class="eyebrow-divider">✦</span>
+                    <span class="eyebrow-word" style="--i: 1">Content</span>
+                    <span class="eyebrow-divider">✦</span>
+                    <span class="eyebrow-word" style="--i: 2">Coming</span>
+                    <span class="eyebrow-divider">✦</span>
+                    <span class="eyebrow-word" style="--i: 3">2026</span>
+                </span>
+                <img class="hero-logo" src="images/Videos & Visuals (501 x 75 px).svg" alt="Videos & Visuals" style="margin: 2rem 0;" />
+                <p class="tagline-roles" style="max-width: 600px; margin: 0 auto 2rem;">
+                    Music videos, behind-the-scenes studio sessions, live performances, and creative vlogs. The visual experience launches 2026.
+                </p>
+                <div class="cta-group">
+                    <a href="https://youtube.com/@jazer" class="cta-button" target="_blank" rel="noopener">
+                        <span class="cta-icon">📺</span>
+                        <span>Subscribe on YouTube</span>
+                    </a>
+                    <a href="#notify" class="cta-secondary">
+                        <span>Get Notified</span>
+                        <span class="cta-arrow">→</span>
+                    </a>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Featured Content Section -->
+        <section class="section featured-section" style="position: relative; padding: 6rem 0;">
+            <div class="container">
+                <!-- Ambient Glow Orbs -->
+                <div class="ambient-glow magenta"></div>
+                <div class="ambient-glow blue"></div>
+
+                <div class="section-header">
+                    <h2 class="section-title text-center gradient-text" data-animate="fade-up">Coming Soon</h2>
+                    <p class="section-subtitle" data-animate="fade-up" data-animate-delay="100">First video drops March 2026</p>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="bento-grid" style="margin-top: 4rem;">
+                    <!-- Main Featured Video - Spans 2 Columns -->
+                    <article class="card card-featured premium-card grid-span-2" data-animate="fade-up" data-animate-delay="100" style="overflow: hidden;">
+                        <!-- Video Thumbnail -->
+                        <div class="vinyl-container" style="position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border-radius: 20px; overflow: hidden;">
+                            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.2);">
+                                    <svg style="width: 32px; height: 32px; margin-left: 4px;" viewBox="0 0 24 24" fill="white">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="track-badge" style="position: absolute; top: 1rem; left: 1rem; background: var(--jazer-pink); color: #fff;">PREMIERE</span>
+                            <span style="position: absolute; bottom: 1rem; right: 1rem; background: rgba(0,0,0,0.9); padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.875rem; font-weight: 600;">3:24</span>
+                        </div>
+
+                        <!-- Track Info -->
+                        <div class="track-info" style="padding: 2rem;">
+                            <h3 class="track-title" style="font-size: 1.75rem; margin-bottom: 0.5rem;">First Music Video</h3>
+                            <p class="track-artist" style="font-size: 1.125rem; margin-bottom: 1rem;">JaZeR</p>
+
+                            <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
+                                The debut visual experience. Full production music video launching March 2026.
+                            </p>
+
+                            <div class="track-meta">
+                                <span class="track-genre">Music Video • Electronic</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Side Card 1 -->
+                    <article class="card premium-card" data-animate="fade-up" data-animate-delay="200" style="overflow: hidden;">
+                        <div style="position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%); border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <svg style="width: 48px; height: 48px; opacity: 0.4;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                <circle cx="12" cy="13" r="4"/>
+                            </svg>
+                            <span class="track-badge" style="position: absolute; top: 0.75rem; left: 0.75rem; background: var(--jazer-cyan); color: #000; font-size: 0.75rem;">BTS</span>
+                        </div>
+                        <div class="track-info">
+                            <h3 class="track-title">Studio Sessions</h3>
+                            <p class="track-artist" style="font-size: 0.875rem;">Behind the Scenes</p>
+                            <span class="track-cta" style="font-size: 0.875rem;">Coming Soon</span>
+                        </div>
+                    </article>
+
+                    <!-- Side Card 2 -->
+                    <article class="card premium-card" data-animate="fade-up" data-animate-delay="300" style="overflow: hidden;">
+                        <div style="position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <svg style="width: 48px; height: 48px; opacity: 0.4;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                <line x1="12" y1="19" x2="12" y2="23"/>
+                                <line x1="8" y1="23" x2="16" y2="23"/>
+                            </svg>
+                            <span class="track-badge" style="position: absolute; top: 0.75rem; left: 0.75rem; background: var(--jazer-purple); color: #fff; font-size: 0.75rem;">LIVE</span>
+                        </div>
+                        <div class="track-info">
+                            <h3 class="track-title">Live Performances</h3>
+                            <p class="track-artist" style="font-size: 0.875rem;">Concerts & Sessions</p>
+                            <span class="track-cta" style="font-size: 0.875rem;">2026 Tour</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Links -->
+        <section class="section" style="padding: 4rem 0;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title text-center gradient-text" data-animate="fade-up">Subscribe & Follow</h2>
+                    <p class="section-subtitle" data-animate="fade-up" data-animate-delay="100">Watch on your favorite platform</p>
+                </div>
+
+                <div class="streaming-platform-grid" style="max-width: 600px; margin: 3rem auto 0; gap: 1.5rem;">
+                    <a href="https://youtube.com/@jazer" class="platform-card premium-card" target="_blank" rel="noopener" data-animate="fade-up" data-animate-delay="100">
+                        <div class="platform-icon">
+                            <img src="images/icons/social/youtube-round-icon.svg" alt="YouTube" width="48" height="48">
+                        </div>
+                        <h4 class="platform-name" style="font-size: 1rem; font-weight: 600;">YouTube</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">Music Videos & Vlogs</p>
+                    </a>
+
+                    <a href="https://tiktok.com/@jazer_music" class="platform-card premium-card" target="_blank" rel="noopener" data-animate="fade-up" data-animate-delay="150">
+                        <div class="platform-icon">
+                            <img src="images/icons/social/tiktok-round-logo.svg" alt="TikTok" width="48" height="48">
+                        </div>
+                        <h4 class="platform-name" style="font-size: 1rem; font-weight: 600;">TikTok</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">Short Form Content</p>
+                    </a>
+
+                    <a href="https://instagram.com/jazer_music" class="platform-card premium-card" target="_blank" rel="noopener" data-animate="fade-up" data-animate-delay="200">
+                        <div class="platform-icon">
+                            <img src="images/icons/social/instagram-round-icon.svg" alt="Instagram" width="48" height="48">
+                        </div>
+                        <h4 class="platform-name" style="font-size: 1rem; font-weight: 600;">Instagram</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">Reels & Stories</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/jazer.music/" class="platform-card premium-card" target="_blank" rel="noopener" data-animate="fade-up" data-animate-delay="250">
+                        <div class="platform-icon">
+                            <img src="images/icons/social/round-facebook-icon.svg" alt="Facebook" width="48" height="48">
+                        </div>
+                        <h4 class="platform-name" style="font-size: 1rem; font-weight: 600;">Facebook</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">Live Streams</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Email Capture Section -->
+        <section class="section email-section" id="notify" style="padding: 6rem 0;">
+            <div class="container">
+                <div class="email-capture" data-animate="fade-up" style="max-width: 700px; margin: 0 auto;">
+                    <img src="images/join-the-beam (1500 x 500 px) (300 x 100 px).svg" alt="Join the Beam" class="email-capture-title-img" data-animate="fade-up">
+                    <p class="email-capture-subtitle" style="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;">
+                        Get notified when the first video drops. Plus exclusive <strong>behind-the-scenes content</strong>.
+                    </p>
+                    <form
+                        class="email-capture-form"
+                        action="https://formspree.io/f/YOUR_FORM_ID"
+                        method="POST"
+                    >
+                        <input
+                            type="email"
+                            name="email"
+                            class="email-capture-input"
+                            placeholder="your@email.com"
+                            required
+                            autocomplete="email"
+                        />
+                        <input
+                            type="hidden"
+                            name="_subject"
+                            value="New subscriber from JaZeR Videos page"
+                        />
+                        <button type="submit" class="email-capture-btn">
+                            <span>Notify Me</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+                    <p class="email-capture-status" role="status" aria-live="polite"></p>
+                    <!-- Social Proof -->
+                    <div class="email-capture-proof">
+                        <div class="email-capture-avatars">
+                            <span class="social-avatar-gradient"></span>
+                            <span class="social-avatar-gradient"></span>
+                            <span class="social-avatar-gradient"></span>
+                            <span class="social-avatar-gradient"></span>
+                        </div>
+                        <span>Join <strong>500+</strong> fans waiting for the premiere</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer - Premium Redesign -->

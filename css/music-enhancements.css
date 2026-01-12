@@ -58,8 +58,8 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 32px;
-  padding: 3rem 2rem;
-  margin: 3rem 0;
+  padding: 1.5rem;
+  margin: 2rem 0;
   position: relative;
   overflow: hidden;
 }
@@ -105,19 +105,19 @@
 
 .streaming-platform-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
   position: relative;
   z-index: 1;
 }
 
 .platform-card {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1rem 0.75rem;
   text-align: center;
   text-decoration: none;
   color: var(--text-light);
@@ -125,6 +125,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .platform-card::before {
@@ -149,27 +150,29 @@
 }
 
 .platform-card:hover {
-  transform: translateY(-12px) scale(1.05);
-  border-color: var(--jazer-cyan);
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0, 242, 254, 0.4);
+  background: rgba(255, 255, 255, 0.06);
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(0, 242, 254, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 242, 254, 0.2),
+    inset 0 0 20px rgba(0, 242, 254, 0.05);
 }
 
 .platform-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 1rem;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(147, 51, 234, 0.2));
-  padding: 10px;
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(147, 51, 234, 0.15));
+  padding: 6px;
+  transition: all 0.5s ease;
   position: relative;
   z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .platform-card:hover .platform-icon {
@@ -178,8 +181,8 @@
 }
 
 .platform-icon img {
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
@@ -190,7 +193,7 @@
 
 .platform-name {
   font-family: var(--font-secondary);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 700;
   margin-bottom: 0.5rem;
   position: relative;
@@ -204,7 +207,7 @@
 
 .platform-cta {
   font-family: var(--font-body);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--text-muted);
   font-weight: 600;
   position: relative;
@@ -1190,26 +1193,78 @@
    Quick Fixes for Music Page Layout
    ========================================= */
 
-/* Fix Discography Grid */
+/* =========================================
+   ENHANCED MUSIC PAGE LAYOUT
+   ========================================= */
+
+/* Tech Divider */
+.tech-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem 0;
+    opacity: 0.7;
+    position: relative;
+    z-index: 1;
+}
+
+.tech-line {
+    height: 1px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--jazer-cyan), transparent);
+    box-shadow: 0 0 10px var(--jazer-cyan);
+}
+
+.tech-node {
+    width: 8px;
+    height: 8px;
+    background: var(--jazer-cyan);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px var(--jazer-cyan), 0 0 20px var(--jazer-cyan);
+}
+
+/* Holographic Discography Grid */
 .discography-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
     padding: 2rem 0;
 }
 
 .release-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(20, 20, 30, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     overflow: hidden;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(15px);
+    position: relative;
+}
+
+.release-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.1), transparent);
+    animation: holographScan 4s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
+@keyframes holographScan {
+    0% { top: -100%; }
+    100% { top: 200%; }
 }
 
 .release-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(34, 211, 238, 0.2);
     border-color: var(--jazer-cyan);
 }
 
@@ -1218,6 +1273,7 @@
     aspect-ratio: 1;
     overflow: hidden;
     position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .cover-placeholder {
@@ -1239,6 +1295,8 @@
 
 .release-details {
     padding: 1.5rem;
+    position: relative;
+    z-index: 3;
 }
 
 .release-title {
@@ -1247,6 +1305,7 @@
     font-weight: 700;
     margin-bottom: 0.25rem;
     color: var(--text-light);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .release-meta {
@@ -1270,16 +1329,17 @@
 
 .release-link:hover {
     gap: 0.75rem;
-    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.8);
 }
 
-/* Fix Spotify Card & Premium Card Alignment */
+/* Fix Spotify Card & Premium Card Alignment + Brand Glows */
 .streaming-platform-grid {
     align-items: stretch;
+    gap: 1.5rem;
 }
 
 .platform-card.premium-card {
-    background: rgba(0, 0, 0, 0.4) !important; /* Force match others */
+    background: rgba(0, 0, 0, 0.4) !important;
     border: 2px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
     box-shadow: none !important;
@@ -1297,11 +1357,41 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Hero Section Styles */
+/* Platform Specific Glows */
+.platform-spotify:hover { border-color: #1DB954 !important; box-shadow: 0 0 30px rgba(29, 185, 84, 0.3) !important; }
+.platform-apple:hover { border-color: #FA243C !important; box-shadow: 0 0 30px rgba(250, 36, 60, 0.3) !important; }
+.platform-soundcloud:hover { border-color: #FF5500 !important; box-shadow: 0 0 30px rgba(255, 85, 0, 0.3) !important; }
+.platform-youtube:hover { border-color: #FF0000 !important; box-shadow: 0 0 30px rgba(255, 0, 0, 0.3) !important; }
+.platform-tidal:hover { border-color: #fff !important; box-shadow: 0 0 30px rgba(255, 255, 255, 0.3) !important; }
+.platform-amazon:hover { border-color: #FF9900 !important; box-shadow: 0 0 30px rgba(255, 153, 0, 0.3) !important; }
+
+/* Hero Section Styles - ENHANCED MAINFRAME */
 .music-hero-section {
     padding: 8rem 0 4rem;
     position: relative;
     overflow: hidden;
+    /* Mainframe Grid Background */
+    background-image: 
+        linear-gradient(rgba(168, 85, 247, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center top;
+}
+
+/* Animated Scanline Overlay */
+.music-hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, 
+        transparent 50%, 
+        rgba(0, 242, 254, 0.03) 50%, 
+        rgba(0, 242, 254, 0.03) 51%, 
+        transparent 51%
+    );
+    background-size: 100% 6px;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .music-hero-container {
@@ -1309,42 +1399,76 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-label {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    font-size: 0.875rem;
-    font-weight: 600;
+    gap: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    background: rgba(10, 10, 20, 0.6);
+    border: 1px solid rgba(255, 0, 110, 0.4); /* Neon Pink Border */
+    border-radius: 4px; /* Techy sharp corners */
+    font-family: 'Courier New', monospace; /* Terminal Font */
+    font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     margin-bottom: 1.5rem;
     backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.15);
 }
 
 .status-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background: #FF006E;
     border-radius: 50%;
     box-shadow: 0 0 10px #FF006E;
-    animation: blink 2s infinite;
+    position: relative;
 }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+/* Radar Pulse Effect */
+.status-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border: 1px solid #FF006E;
+    animation: radarRipple 2s linear infinite;
+    opacity: 0;
+}
+
+@keyframes radarRipple {
+    0% { width: 100%; height: 100%; opacity: 0.8; }
+    100% { width: 400%; height: 400%; opacity: 0; }
 }
 
 .music-hero-title {
     font-size: clamp(3rem, 6vw, 4.5rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
+    transition: filter 0.2s ease;
+}
+
+/* Glitch Hover Effect */
+.music-hero-title:hover {
+    animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    filter: drop-shadow(4px 4px 0px rgba(255, 0, 110, 0.7)) 
+            drop-shadow(-4px -4px 0px rgba(0, 242, 254, 0.7));
+}
+
+@keyframes glitch-anim {
+    0% { transform: translate(0) }
+    20% { transform: translate(-3px, 3px) }
+    40% { transform: translate(-3px, -3px) }
+    60% { transform: translate(3px, 3px) }
+    80% { transform: translate(3px, -3px) }
+    100% { transform: translate(0) }
 }
 
 .music-hero-description {
