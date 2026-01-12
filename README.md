@@ -73,31 +73,61 @@
 
 <div align="center">
 
-### Desktop Experience
+### 🖥️ Desktop Experience
+
 <kbd><img src="docs/jazer-page-screenshots/home-page.png" alt="JaZeR website homepage on desktop showing hero section with vibrant brand colors" width="800"/></kbd>
 
-### Multi-Page Layout
+<sub>*Homepage featuring hero section, dynamic animations, and brand identity*</sub>
+
+---
+
+### 📄 All Pages Showcase
+
 <table>
 <tr>
-<td width="33%" align="center">
-<kbd><img src="docs/jazer-page-screenshots/music-page.png" alt="Music Page" width="100%"/></kbd><br/><br/>
-<b>🎵 Music</b><br/>
-<sub>Releases & Streaming</sub>
+<td width="50%" align="center">
+<kbd><img src="docs/jazer-page-screenshots/music-page.png" alt="Music Page" width="100%"/></kbd>
+<br/><br/>
+<img src="public/assets/images/Featured Content (450 x 150 px).svg" alt="Music" width="150"/>
+<br/>
+<sub><strong>Music Releases & Streaming Links</strong></sub>
 </td>
-<td width="33%" align="center">
-<kbd><img src="docs/jazer-page-screenshots/videos-page.png" alt="Videos Page" width="100%"/></kbd><br/><br/>
-<b>📺 Videos</b><br/>
-<sub>Visual Content</sub>
+<td width="50%" align="center">
+<kbd><img src="docs/jazer-page-screenshots/videos-page.png" alt="Videos Page" width="100%"/></kbd>
+<br/><br/>
+<img src="public/assets/images/Videos & Visuals (501 x 75 px).svg" alt="Videos" width="150"/>
+<br/>
+<sub><strong>Video Content & Media</strong></sub>
 </td>
-<td width="33%" align="center">
-<kbd><img src="docs/jazer-page-screenshots/about-page.png" alt="About Page" width="100%"/></kbd><br/><br/>
-<b>👤 About</b><br/>
-<sub>Artist Story</sub>
+</tr>
+<tr>
+<td width="50%" align="center">
+<kbd><img src="docs/jazer-page-screenshots/about-page.png" alt="About Page" width="100%"/></kbd>
+<br/><br/>
+<img src="public/assets/images/About JaZeR (441 x 94 px).svg" alt="About" width="140"/>
+<br/>
+<sub><strong>Artist Story & Biography</strong></sub>
+</td>
+<td width="50%" align="center">
+<kbd><img src="docs/jazer-page-screenshots/shop-page.png" alt="Shop Page" width="100%"/></kbd>
+<br/><br/>
+<strong>🛍️ SHOP</strong>
+<br/>
+<sub><strong>Merchandise & Products</strong></sub>
+</td>
+</tr>
+<tr>
+<td width="50%" align="center" colspan="2">
+<kbd><img src="docs/jazer-page-screenshots/contact-me-page.png" alt="Contact Page" width="50%"/></kbd>
+<br/><br/>
+<img src="public/assets/images/Contact Me (450 x 94 px).svg" alt="Contact" width="150"/>
+<br/>
+<sub><strong>Get In Touch & Connect</strong></sub>
 </td>
 </tr>
 </table>
 
-> 📸 **Note**: Screenshots showcase the glassmorphic dark theme, vibrant brand colors, and responsive design across devices.
+> 📸 **Note**: Screenshots showcase the glassmorphic dark theme, vibrant brand colors, and responsive Astro-powered design.
 
 </div>
 
@@ -107,40 +137,62 @@
 
 <div align="center">
 
+### 🎯 Quick Navigation
+
 **[🆕 What's New](#-whats-new-january-2026)** • 
 **[🎨 Preview](#-preview)** • 
-**[Overview](#-overview)** • 
-**[Quick Start](#-quick-start)** • 
-**[Features](#-features)** • 
-**[Tech Stack](#️-tech-stack)** • 
-**[Roadmap](#️-roadmap--vision)** • 
-**[License](#️-license--legal)**
+**[🌟 Overview](#-overview)** • 
+**[⚡ Quick Start](#-quick-start)** • 
+**[✨ Features](#-features)** • 
+**[🏗️ Tech Stack](#️-tech-stack)**
+
+**[📁 Project Structure](#-project-structure)** • 
+**[🌐 Deployment](#-deployment)** • 
+**[🎨 Brand & Design](#-brand--design)** • 
+**[📊 Performance](#-quality--performance)** • 
+**[🗺️ Roadmap](#️-roadmap--vision)** • 
+**[⚖️ License](#️-license--legal)**
 
 </div>
 
 <details>
 <summary><strong>📖 Expand Full Documentation Index</strong></summary>
 
-### Getting Started
+<br/>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🚀 Getting Started
 - [🆕 What's New](#-whats-new-january-2026)
-- [🎨 Preview](#-preview)
+- [🎨 Preview & Screenshots](#-preview)
 - [🌟 Overview](#-overview)
 - [⚡ Quick Start](#-quick-start)
 
-### Core Features
+### 💎 Core Features
 - [✨ Features](#-features)
 - [🏗️ Tech Stack](#️-tech-stack)
 - [📁 Project Structure](#-project-structure)
 - [🎨 Brand & Design](#-brand--design)
 
-### Development
+</td>
+<td width="50%" valign="top">
+
+### 🔧 Development
 - [🌐 Deployment](#-deployment)
 - [📊 Quality & Performance](#-quality--performance)
+- [🤝 Contributing](#-contributing)
 
-### Project Info
+### 📚 Project Info
 - [🗺️ Roadmap & Vision](#️-roadmap--vision)
 - [❓ FAQ](#-faq)
+- [🔗 Connect](#-connect-with-jazer)
 - [⚖️ License & Legal](#️-license--legal)
+
+</td>
+</tr>
+</table>
 
 </details>
 
@@ -730,42 +782,25 @@ lighthouse https://jazer-444.github.io/TEST-Website-Import/ --view
 
 ## 🤝 Contributing
 
-This is primarily a **personal artist website** for the JaZeR brand. However, if you're collaborating on improvements or maintenance:
+This is a **personal artist website** for the JaZeR brand and is **not open for public contributions**.
 
-### How to Contribute
+### For Authorized Collaborators Only
 
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
-3. **Make your changes** following the existing code style
-4. **Test thoroughly** across browsers and devices
-5. **Commit with clear messages**: `git commit -m "Add: feature description"`
-6. **Push to your fork**: `git push origin feature/your-feature-name`
-7. **Open a Pull Request** with a detailed description
+If you have been explicitly granted access to work on this project:
 
-### What to Contribute
-
-**Welcome contributions:**
-- 🐛 Bug fixes (layout issues, broken links, responsiveness)
-- ♿ Accessibility improvements
-- ⚡ Performance optimizations
-- 📱 Mobile experience enhancements
-- 🎨 UI/UX refinements that match the JaZeR aesthetic
-- 📝 Documentation improvements
-
-**Discuss first:**
-- 🎨 Major design changes or redesigns
-- 🆕 New pages or sections
-- 🔧 Structural changes to the codebase
-- 🎯 Feature additions that change site functionality
-
-### Code Style Guidelines
-
+**Development Guidelines:**
 - Use **Astro components** for reusable UI elements
 - Follow existing **CSS naming conventions**
 - Write **vanilla JavaScript** (no jQuery or heavy frameworks)
 - Maintain **accessibility** standards (WCAG 2.1 AA)
 - Keep code **clean and commented** where necessary
 - Test on **multiple browsers and devices**
+
+### Reporting Issues
+
+If you notice bugs or issues with the live site:
+- 🐛 Report technical problems via [GitHub Issues](https://github.com/JaZeR-444/TEST-Website-Import/issues)
+- Please do not submit pull requests without prior authorization
 
 ---
 
@@ -785,7 +820,15 @@ This is primarily a **personal artist website** for the JaZeR brand. However, if
 
 <br>
 
-**Answer**: The repository is public for portfolio transparency, but all code, designs, and brand assets are proprietary. See the [LICENSE](#️-license--legal) section for details. You may study the code for educational purposes with proper attribution, but cannot use it in your own projects without written permission.
+**Answer**: **No.** This repository is publicly visible for portfolio and transparency purposes only. All code, designs, and brand assets are proprietary and protected by copyright.
+
+**You may NOT:**
+- Copy, fork, or clone this repository for your own use
+- Use the layout, design, or structure as a template
+- Deploy a similar site using this codebase
+- Extract components or code for other projects
+
+This site is the intellectual property of JaZeR. Unauthorized use is prohibited. See the [License](#️-license--legal) section for complete terms.
 
 </details>
 
@@ -818,18 +861,11 @@ The end result is still a fast, static site that works everywhere.
 
 <br>
 
-**Answer**: Create a new `.astro` file in the `src/pages/` directory:
+**Answer**: This information is provided for authorized collaborators only. 
 
-```bash
-# Create new page
-touch src/pages/newpage.astro
+Create a new `.astro` file in the `src/pages/` directory. Astro automatically creates routes based on the file structure in `src/pages/`.
 
-# Use the BaseLayout component
-# Add your content
-# The page will be available at /newpage
-```
-
-Astro automatically creates routes based on the file structure in `src/pages/`.
+**Note**: This repository is not a template. Do not attempt to replicate this structure for your own projects.
 
 </details>
 
@@ -838,13 +874,9 @@ Astro automatically creates routes based on the file structure in `src/pages/`.
 
 <br>
 
-**Answer**: Yes! Astro static sites can deploy anywhere:
-- **Netlify**: Connect Git repo, auto-deploy
-- **Vercel**: Excellent Astro support
-- **Cloudflare Pages**: Fast global CDN
-- **AWS S3 + CloudFront**: Enterprise solution
+**Answer**: This is **not applicable** — this codebase is proprietary and not available for reuse or deployment by others.
 
-Just run `npm run build` and deploy the `/dist` folder.
+For informational purposes only: Astro static sites can technically deploy to various platforms (Netlify, Vercel, Cloudflare Pages, etc.), but **you do not have permission to deploy this specific codebase**.
 
 </details>
 
@@ -927,12 +959,16 @@ These materials are provided for listening/viewing only. They may **NOT** be:
 
 ### Code Usage
 
-The source code in this repository is published primarily for transparency, hosting, and portfolio purposes.
+The source code in this repository is published for transparency and portfolio purposes **only**.
 
-Unless a separate `LICENSE` file is added that states otherwise, the default is **"All rights reserved"**:
-- ✅ You may view and learn from the structure and implementation
-- ❌ You may NOT copy the site wholesale, rebrand it, or deploy a derivative that closely mimics the JaZeR experience without permission
+**All rights reserved** — no license is granted:
+- ❌ You may NOT copy, fork, or clone this repository
+- ❌ You may NOT use this as a template or starting point
+- ❌ You may NOT deploy a derivative site using this codebase
+- ❌ You may NOT extract components, designs, or code for other projects
 - ❌ You may NOT claim the design, structure, or branding as your own work
+
+This is proprietary software. Unauthorized use, reproduction, or distribution is strictly prohibited.
 
 ### Third-Party Assets
 
