@@ -15,23 +15,21 @@ const faqs = [
 ];
 ---
 
-<section class="py-20 bg-[rgba(0,0,0,0.2)] border-t border-[rgba(255,255,255,0.05)]">
-  <div class="container px-4 max-w-3xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-[var(--text-muted)]">
-        Common Questions
-      </span>
+<section class="faq-section">
+  <div class="container">
+    <h2 class="faq-header">
+      <span class="gradient-text">Common Questions</span>
     </h2>
     
-    <div class="space-y-4">
+    <div class="faq-list">
       {faqs.map((item) => (
-        <div class="faq-item rounded-xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.05)] overflow-hidden">
+        <div class="faq-item">
           <details class="group">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-bold text-lg">{item.q}</span>
-              <span class="transform transition-transform duration-300 group-open:rotate-180 text-[var(--jazer-cyan)]">▼</span>
+            <summary class="faq-summary">
+              <span class="faq-question">{item.q}</span>
+              <span class="faq-icon">▼</span>
             </summary>
-            <div class="px-6 pb-6 text-[var(--text-muted)] leading-relaxed">
+            <div class="faq-answer">
               {item.a}
             </div>
           </details>
@@ -40,3 +38,86 @@ const faqs = [
     </div>
   </div>
 </section>
+
+<style>
+  .faq-section {
+    padding: 5rem 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .faq-header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, var(--text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+
+  .faq-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  
+  /* Hide default marker */
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: white;
+  }
+
+  .faq-icon {
+    color: var(--jazer-cyan);
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+</style>

@@ -9,58 +9,194 @@ const {
 } = Astro.props;
 ---
 
-<article class="video-card group relative rounded-2xl overflow-hidden bg-[rgba(13,14,18,0.6)] border border-[rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl animate-fade-up" style={`animation-delay: ${delay}ms`}>
+<article class="video-card animate-fade-up" style={`animation-delay: ${delay}ms`}>
   <!-- Thumbnail Area -->
-  <div class="video-thumbnail relative aspect-video overflow-hidden">
+  <div class="video-thumbnail">
     <!-- Gradient Placeholder -->
-    <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105" style={`background: ${gradient};`}></div>
+    <div class="thumbnail-bg" style={`background: ${gradient};`}></div>
     
     <!-- Type Icon (Overlay) -->
-    <div class="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none">
-       <span class="text-4xl filter invert drop-shadow-lg">🎬</span>
+    <div class="thumbnail-icon">
+       <span class="icon-emoji">🎬</span>
     </div>
 
     <!-- Status Badge -->
-    <div class="absolute top-3 left-3 z-10">
-      <span class="px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-white shadow-sm" style={`background: ${color};`}>
+    <div class="status-badge-container">
+      <span class="status-badge" style={`background: ${color};`}>
         {status}
       </span>
     </div>
 
     <!-- Hover Overlay -->
-    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-      <a href="#updates" class="notify-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-bold text-sm transform scale-90 group-hover:scale-100 transition-all duration-300">
-        <span>🔔</span>
+    <div class="hover-overlay">
+      <a href="#updates" class="notify-btn">
+        <span class="btn-icon">🔔</span>
         <span>Get Notified</span>
       </a>
     </div>
   </div>
 
   <!-- Content Area -->
-  <div class="p-5">
-    <div class="flex items-center gap-2 mb-2">
-      <span class="text-[10px] uppercase tracking-wider font-bold text-[var(--text-muted)] border border-[rgba(255,255,255,0.1)] px-2 py-0.5 rounded-full">
+  <div class="video-content">
+    <div class="video-meta">
+      <span class="type-badge">
         {type}
       </span>
     </div>
     
-    <h3 class="text-lg font-bold text-white mb-1 group-hover:text-[var(--jazer-cyan)] transition-colors">
+    <h3 class="video-title">
       {title}
     </h3>
     
-    <p class="text-sm text-[var(--text-muted)]">
+    <p class="video-subtitle">
       {status === 'Live' ? 'Watch Now' : 'Premiere waiting list open'}
     </p>
   </div>
 </article>
 
 <style>
-  .animate-fade-up {
-    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0;
+  .video-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(13, 14, 18, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
   }
+
+  .video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .video-thumbnail {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .thumbnail-bg {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.7s ease;
+  }
+
+  .video-card:hover .thumbnail-bg {
+    transform: scale(1.05);
+  }
+
+  .thumbnail-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .icon-emoji {
+    font-size: 2.5rem;
+    filter: invert(1) drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  }
+
+  .status-badge-container {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 10;
+  }
+
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  .hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .video-card:hover .hover-overlay {
+    opacity: 1;
+  }
+
+  .notify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 9999px;
+    background: white;
+    color: black;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+  }
+
+  .video-card:hover .notify-btn {
+    transform: scale(1);
+  }
+
+  .video-content {
+    padding: 1.25rem;
+  }
+
+  .video-meta {
+    margin-bottom: 0.5rem;
+  }
+
+  .type-badge {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+  }
+
+  .video-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+    transition: color 0.3s ease;
+    font-family: var(--font-secondary, sans-serif);
+  }
+
+  .video-card:hover .video-title {
+    color: var(--jazer-cyan);
+  }
+
+  .video-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
   }
 </style>

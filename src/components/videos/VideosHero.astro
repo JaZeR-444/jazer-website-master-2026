@@ -2,52 +2,124 @@
 const { base = import.meta.env.BASE_URL } = Astro.props;
 ---
 
-<section class="videos-hero relative overflow-hidden py-32 min-h-[60vh] flex items-center justify-center">
-  <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--jazer-purple-dark)_0%,_var(--bg-dark)_70%)] opacity-40"></div>
-    <div class="noise-overlay opacity-30"></div>
-  </div>
+<section class="videos-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
 
-  <div class="container relative z-10 text-center px-4">
-    <div class="hero-eyebrow mb-6 animate-fade-up" style="animation-delay: 0.1s;">
-      <span class="inline-block px-3 py-1 rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(0,0,0,0.3)] text-xs tracking-[0.2em] uppercase text-[var(--jazer-cyan)] backdrop-blur-md">
+  <div class="hero-content container">
+    <div class="hero-eyebrow animate-fade-up" style="animation-delay: 0.1s;">
+      <span class="eyebrow-badge">
         Official Channel
       </span>
     </div>
 
-    <h1 class="hero-title text-5xl md:text-7xl font-black mb-6 tracking-tight animate-fade-up" style="animation-delay: 0.2s;">
-      <span class="block bg-clip-text text-transparent bg-gradient-to-r from-white via-[var(--jazer-cyan)] to-[var(--jazer-purple)]">
-        VISUALS & MOTION
-      </span>
+    <h1 class="hero-title animate-fade-up" style="animation-delay: 0.2s;">
+      <span class="gradient-text">VISUALS & MOTION</span>
     </h1>
 
-    <p class="hero-subtitle text-lg md:text-xl text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-up" style="animation-delay: 0.3s;">
-      Music videos, behind-the-scenes studio sessions, and creative vlogs.<br class="hidden md:block" />
+    <p class="hero-subtitle animate-fade-up" style="animation-delay: 0.3s;">
+      Music videos, behind-the-scenes studio sessions, and creative vlogs.<br class="desktop-only" />
       The complete visual experience is coming in 2026.
     </p>
 
-    <div class="flex flex-wrap justify-center gap-4 animate-fade-up" style="animation-delay: 0.4s;">
-      <a href="#updates" class="cta-button group">
-        <span class="cta-icon group-hover:scale-110 transition-transform duration-300">🔔</span>
+    <div class="hero-cta animate-fade-up" style="animation-delay: 0.4s;">
+      <a href="#updates" class="cta-button">
+        <span class="cta-icon">🔔</span>
         <span>Get Premiere Alerts</span>
       </a>
-      <a href="https://youtube.com/@jazer" target="_blank" rel="noopener" class="cta-secondary group">
-        <span class="cta-icon group-hover:scale-110 transition-transform duration-300">📺</span>
+      <a href="https://youtube.com/@jazer" target="_blank" rel="noopener" class="cta-secondary">
+        <span class="cta-icon">📺</span>
         <span>Subscribe on YouTube</span>
       </a>
     </div>
   </div>
   
-  <!-- Decorative film strip effect at bottom -->
-  <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[var(--bg-dark)] to-transparent z-20"></div>
+  <div class="hero-bottom-fade"></div>
 </section>
 
 <style>
+  .videos-hero {
+    position: relative;
+    padding: 8rem 0 6rem;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, var(--bg-dark) 70%);
+    z-index: 0;
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .eyebrow-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--jazer-cyan);
+    backdrop-filter: blur(8px);
+    margin-bottom: 1.5rem;
+  }
+
   .hero-title {
     font-family: var(--font-primary, sans-serif);
+    font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
     text-shadow: 0 0 40px rgba(6, 182, 212, 0.2);
   }
-  
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, var(--jazer-cyan) 50%, var(--jazer-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-body, sans-serif);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
   .cta-button {
     display: inline-flex;
     align-items: center;
@@ -60,15 +132,16 @@ const { base = import.meta.env.BASE_URL } = Astro.props;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 0.9rem;
+    text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(6, 182, 212, 0.25);
   }
-  
+
   .cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(6, 182, 212, 0.4);
   }
-  
+
   .cta-secondary {
     display: inline-flex;
     align-items: center;
@@ -81,15 +154,38 @@ const { base = import.meta.env.BASE_URL } = Astro.props;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 0.9rem;
+    text-decoration: none;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
   }
-  
+
   .cta-secondary:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: white;
     transform: translateY(-2px);
+  }
+
+  .hero-bottom-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    background: linear-gradient(to top, var(--bg-dark), transparent);
+    z-index: 20;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-only {
+      display: block;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .desktop-only {
+      display: none;
+    }
   }
 
   @keyframes fade-up {

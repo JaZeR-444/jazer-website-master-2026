@@ -1,0 +1,241 @@
+---
+const { 
+  title = "Featured Visual (TBA)",
+  subtitle = "Official Music Video — Coming in 2026"
+} = Astro.props;
+---
+
+<section class="featured-visual-section">
+  <div class="container">
+    <!-- Player Frame -->
+    <div class="player-card animate-fade-up" style="animation-delay: 0.5s;">
+      
+      <!-- Placeholder Gradient/Background -->
+      <div class="player-bg"></div>
+      
+      <!-- Animated Noise -->
+      <div class="noise-overlay"></div>
+      
+      <!-- Center Content -->
+      <div class="player-content">
+        <!-- Play Button Ring -->
+        <div class="play-btn-wrapper">
+          <div class="play-btn-glow"></div>
+          <div class="play-btn-circle">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+        
+        <h2 class="featured-title">{title}</h2>
+        <p class="featured-subtitle">{subtitle}</p>
+      </div>
+
+      <!-- Bottom Bar (Fake Controls) -->
+      <div class="player-controls">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Info Bar -->
+    <div class="info-bar animate-fade-up" style="animation-delay: 0.6s;">
+      <div class="info-text">
+        <h3 class="info-title">Latest Release</h3>
+        <p class="info-desc">Stay tuned for the premiere</p>
+      </div>
+      <div class="info-action">
+         <a href="#updates" class="waitlist-link">
+           Join the Waitlist →
+         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-visual-section {
+    padding: 3rem 0;
+    position: relative;
+    z-index: 20;
+    margin-top: -5rem;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .player-card {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: black;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .player-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, #1e1b4b 0%, #000000 100%);
+  }
+
+  .noise-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .player-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    z-index: 10;
+  }
+
+  .play-btn-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .play-btn-glow {
+    position: absolute;
+    inset: 0;
+    background: var(--jazer-cyan);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.2;
+    animation: pulse 2s infinite;
+  }
+
+  .play-btn-circle {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+  }
+
+  .play-icon {
+    font-size: 2rem;
+    margin-left: 0.25rem;
+    filter: invert(1);
+    opacity: 0.5;
+  }
+
+  .featured-title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-secondary, sans-serif);
+  }
+
+  .featured-subtitle {
+    color: var(--jazer-cyan);
+    font-family: monospace;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .player-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    background: linear-gradient(to top, black, transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 0 1.5rem 1rem;
+    opacity: 0.5;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    width: 0;
+    height: 100%;
+    background: var(--jazer-cyan);
+  }
+
+  .info-bar {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .info-bar {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  .info-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-desc {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .waitlist-link {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--jazer-cyan);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+  }
+
+  .waitlist-link:hover {
+    color: white;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.1); }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+</style>

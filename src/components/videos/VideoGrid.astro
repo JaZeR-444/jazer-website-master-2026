@@ -55,13 +55,13 @@ const filters = [
 ];
 ---
 
-<section class="py-20" id="gallery">
-  <div class="container px-4">
+<section class="video-grid-section" id="gallery">
+  <div class="container">
     <!-- Filters -->
-    <div class="flex flex-wrap justify-center gap-2 mb-12" data-animate="fade-up">
+    <div class="filters-container">
       {filters.map((filter, index) => (
         <button 
-          class={`filter-btn px-6 py-2 rounded-full text-sm font-bold transition-all duration-300 border border-[rgba(255,255,255,0.1)] ${index === 0 ? 'bg-[var(--jazer-cyan)] text-black border-[var(--jazer-cyan)]' : 'bg-[rgba(255,255,255,0.05)] text-[var(--text-muted)] hover:bg-[rgba(255,255,255,0.1)] hover:text-white'}`}
+          class={`filter-btn ${index === 0 ? 'active' : ''}`}
           data-filter={filter.id}
         >
           {filter.label}
@@ -70,7 +70,7 @@ const filters = [
     </div>
 
     <!-- Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 video-grid">
+    <div class="video-grid">
       {videos.map((video, index) => (
         <div class="video-item" data-type={video.type.toLowerCase().replace(/\s+/g, '-')}>
           <VideoCard {...video} delay={index * 100} />
@@ -78,29 +78,101 @@ const filters = [
       ))}
     </div>
     
-    <!-- Empty State (Hidden by default, shown if filter matches nothing) -->
-    <div class="hidden empty-state text-center py-12">
-      <p class="text-[var(--text-muted)]">More content coming soon.</p>
+    <!-- Empty State -->
+    <div class="empty-state">
+      <p>More content coming soon.</p>
     </div>
   </div>
 </section>
+
+<style>
+  .video-grid-section {
+    padding: 5rem 0;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-family: var(--font-primary, sans-serif);
+  }
+
+  .filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .filter-btn.active {
+    background: var(--jazer-cyan);
+    color: black;
+    border-color: var(--jazer-cyan);
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .video-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .empty-state {
+    display: none;
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-muted);
+  }
+
+  .empty-state.visible {
+    display: block;
+  }
+</style>
 
 <script>
   // Simple filtering logic
   const buttons = document.querySelectorAll('.filter-btn');
   const items = document.querySelectorAll('.video-item');
+  const emptyState = document.querySelector('.empty-state');
   
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       // Update active state
-      buttons.forEach(b => {
-        b.classList.remove('bg-[var(--jazer-cyan)]', 'text-black', 'border-[var(--jazer-cyan)]');
-        b.classList.add('bg-[rgba(255,255,255,0.05)]', 'text-[var(--text-muted)]');
-      });
-      btn.classList.remove('bg-[rgba(255,255,255,0.05)]', 'text-[var(--text-muted)]');
-      btn.classList.add('bg-[var(--jazer-cyan)]', 'text-black', 'border-[var(--jazer-cyan)]');
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
       
       const filter = btn.getAttribute('data-filter');
+      let hasVisible = false;
       
       items.forEach(item => {
         const type = item.getAttribute('data-type');
@@ -108,10 +180,19 @@ const filters = [
           (item as HTMLElement).style.display = 'block';
           (item as HTMLElement).style.opacity = '0';
           setTimeout(() => { (item as HTMLElement).style.opacity = '1'; }, 50);
+          hasVisible = true;
         } else {
           (item as HTMLElement).style.display = 'none';
         }
       });
+
+      if (emptyState) {
+          if (!hasVisible) {
+            emptyState.classList.add('visible');
+          } else {
+            emptyState.classList.remove('visible');
+          }
+      }
     });
   });
 </script>
