@@ -82,10 +82,35 @@ const upcomingVideos = [
 
 // Video content types
 const contentTypes = [
-  { name: 'Music Videos', icon: 'video-black.svg', count: '5+', desc: 'Full production visuals' },
-  { name: 'Behind The Scenes', icon: 'camera-black.svg', count: '10+', desc: 'Studio process' },
-  { name: 'Live Sessions', icon: 'live-black.svg', count: '8+', desc: 'Performances & shows' },
-  { name: 'Tutorials', icon: 'mixer-black.svg', count: '15+', desc: 'Production guides' }
+  { name: 'Music Videos', icon: 'video-black.svg', count: '5+', desc: 'Full production visuals', filter: 'music' },
+  { name: 'Behind The Scenes', icon: 'camera-black.svg', count: '10+', desc: 'Studio process', filter: 'bts' },
+  { name: 'Live Sessions', icon: 'live-black.svg', count: '8+', desc: 'Performances & shows', filter: 'live' },
+  { name: 'Tutorials', icon: 'mixer-black.svg', count: '15+', desc: 'Production guides', filter: 'tutorial' }
+];
+
+// Featured collaborators
+const collaborators = [
+  { name: 'Visual Director', role: 'Music Video Production', avatar: '🎬' },
+  { name: 'Choreographer', role: 'Dance & Movement', avatar: '💃' },
+  { name: 'VFX Artist', role: 'Visual Effects', avatar: '✨' },
+  { name: 'Sound Engineer', role: 'Audio Mixing', avatar: '🎧' }
+];
+
+// Video testimonials/comments
+const videoComments = [
+  { text: "Can't wait for the official MV! The teasers look incredible.", author: "Early Supporter", platform: "YouTube" },
+  { text: "JaZeR's production tutorials are gonna change the game.", author: "Producer Fan", platform: "Instagram" },
+  { text: "The behind-the-scenes content is exactly what we need!", author: "Day One Fan", platform: "TikTok" }
+];
+
+// BTS Photo gallery
+const btsPhotos = [
+  { id: 1, caption: 'Studio Setup', gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
+  { id: 2, caption: 'Recording Session', gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
+  { id: 3, caption: 'Video Shoot', gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
+  { id: 4, caption: 'Editing Suite', gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' },
+  { id: 5, caption: 'Creative Meeting', gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' },
+  { id: 6, caption: 'Rehearsal', gradient: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)' }
 ];
 ---
 <BaseLayout
@@ -365,6 +390,358 @@ const contentTypes = [
         .stat-value {
           font-size: 2rem;
         }
+        .film-strip {
+          display: none;
+        }
+        .bts-gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .collaborators-grid {
+          grid-template-columns: 1fr;
+        }
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        .video-embed-container {
+          padding: 1.5rem;
+        }
+        .filter-tabs {
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        .filter-tab {
+          font-size: 0.813rem;
+          padding: 0.5rem 1rem;
+        }
+      }
+
+      /* Film Strip Animation */
+      .film-strip {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 0;
+        background: linear-gradient(90deg, transparent, rgba(0,0,0,0.3), transparent);
+      }
+      .film-strip-track {
+        display: flex;
+        animation: filmScroll 30s linear infinite;
+        gap: 1rem;
+      }
+      .film-frame {
+        flex-shrink: 0;
+        width: 200px;
+        height: 120px;
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+      }
+      .film-frame::before,
+      .film-frame::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 12px;
+        background: repeating-linear-gradient(
+          180deg,
+          #000 0px,
+          #000 8px,
+          transparent 8px,
+          transparent 16px
+        );
+      }
+      .film-frame::before { left: 0; }
+      .film-frame::after { right: 0; }
+      @keyframes filmScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      /* Video Embed Container */
+      .video-embed-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 20px;
+        border: 1px solid rgba(6, 182, 212, 0.3);
+      }
+      .video-embed {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      }
+      .video-embed iframe,
+      .video-embed-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .video-embed-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      }
+      .teaser-play-btn {
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .teaser-play-btn:hover {
+        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.25);
+        border-color: var(--jazer-cyan);
+      }
+
+      /* Filter Tabs */
+      .filter-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+      .filter-tab {
+        padding: 0.75rem 1.5rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .filter-tab:hover,
+      .filter-tab.active {
+        background: var(--jazer-cyan);
+        color: #000;
+        border-color: var(--jazer-cyan);
+      }
+
+      /* BTS Photo Gallery */
+      .bts-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .bts-photo {
+        aspect-ratio: 4/3;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .bts-photo:hover {
+        transform: scale(1.05);
+        z-index: 10;
+      }
+      .bts-photo-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+      }
+      .bts-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      /* Premiere Alert Modal */
+      .premiere-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 2rem;
+      }
+      .premiere-modal.active {
+        display: flex;
+      }
+      .premiere-modal-content {
+        max-width: 500px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: 20px;
+        padding: 3rem;
+        border: 1px solid rgba(6, 182, 212, 0.3);
+        text-align: center;
+        position: relative;
+      }
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.1);
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Collaborators Grid */
+      .collaborators-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      .collaborator-card {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+      .collaborator-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--jazer-purple);
+      }
+      .collaborator-avatar {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      .collaborator-name {
+        font-weight: 700;
+        font-size: 1.125rem;
+        margin-bottom: 0.25rem;
+      }
+      .collaborator-role {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+
+      /* Testimonials */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      .testimonial-card {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        color: var(--text-light);
+      }
+      .testimonial-author {
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+      .testimonial-platform {
+        font-size: 0.75rem;
+        color: var(--jazer-cyan);
+      }
+
+      /* YouTube Subscribe Button */
+      .yt-subscribe-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      .yt-subscribe-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: #FF0000;
+        color: #fff;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+      .yt-subscribe-btn:hover {
+        background: #cc0000;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+      }
+      .yt-subscribe-btn img {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* Category Cards */
+      .category-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+      .category-card {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .category-card:hover,
+      .category-card.active {
+        border-color: var(--jazer-cyan);
+        background: rgba(6, 182, 212, 0.1);
+      }
+      .category-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .category-name {
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+
+      @media (max-width: 768px) {
+        .category-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .collaborators-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     </style>
   </Fragment>
@@ -397,8 +774,58 @@ const contentTypes = [
             </div>
         </section>
 
+        <!-- Film Strip Animation -->
+        <section class="film-strip" aria-hidden="true">
+            <div class="film-strip-track">
+                {[...Array(12)].map((_, i) => (
+                    <div class="film-frame" style={`background: linear-gradient(135deg, hsl(${i * 30}, 70%, 30%) 0%, hsl(${i * 30 + 30}, 60%, 20%) 100%);`}>
+                        <div style="position: absolute; inset: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0.5;">
+                            🎬
+                        </div>
+                    </div>
+                ))}
+                {[...Array(12)].map((_, i) => (
+                    <div class="film-frame" style={`background: linear-gradient(135deg, hsl(${i * 30}, 70%, 30%) 0%, hsl(${i * 30 + 30}, 60%, 20%) 100%);`}>
+                        <div style="position: absolute; inset: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0.5;">
+                            🎬
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Video Teaser/Trailer Embed -->
+        <section class="section" style="padding: 6rem 0;">
+            <div class="container">
+                <div class="section-header" data-animate="fade-up">
+                    <h2 class="section-title text-center gradient-text">Official Teaser</h2>
+                    <p class="section-subtitle">Watch the exclusive sneak peek</p>
+                </div>
+
+                <div class="video-embed-container" data-animate="fade-up">
+                    <div class="video-embed">
+                        <div class="video-embed-placeholder">
+                            <div class="teaser-play-btn" id="playTeaser">
+                                <img src={`${base}assets/images/icons/music/play-black.svg`} alt="Play" style="width: 40px; height: 40px; margin-left: 4px; filter: invert(1);" />
+                            </div>
+                            <p style="margin-top: 1.5rem; color: var(--text-muted);">Teaser Coming February 2026</p>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">Be the first to see it</p>
+                        <div class="yt-subscribe-container">
+                            <a href="https://youtube.com/@jazer?sub_confirmation=1" class="yt-subscribe-btn" target="_blank" rel="noopener">
+                                <img src={`${base}assets/images/icons/social/youtube-round-icon.svg`} alt="YouTube" />
+                                <span>Subscribe for Updates</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Countdown Section -->
-        <section class="section" id="countdown" style="padding: 4rem 0;">
+        <section class="section" id="countdown" style="padding: 4rem 0; background: rgba(0,0,0,0.2);">
             <div class="container">
                 <div class="countdown-container" data-animate="fade-up">
                     <div style="text-align: center;">
@@ -424,17 +851,17 @@ const contentTypes = [
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 2rem;">
-                        <a href="https://youtube.com/@jazer" class="cta-secondary" target="_blank" rel="noopener" style="display: inline-flex;">
-                            <span>Set Reminder on YouTube</span>
-                            <span class="cta-arrow">→</span>
-                        </a>
+                        <button class="cta-button" id="openReminderModal" style="display: inline-flex;">
+                            <span class="cta-icon">🔔</span>
+                            <span>Set Premiere Reminder</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Stats Section -->
-        <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.2);">
+        <section class="section" style="padding: 4rem 0;">
             <div class="container">
                 <div class="video-stats" data-animate="fade-up">
                     <div class="stat-card">
@@ -457,17 +884,56 @@ const contentTypes = [
             </div>
         </section>
 
+        <!-- Video Category Cards -->
+        <section class="section" style="padding: 4rem 0; background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header" data-animate="fade-up">
+                    <h2 class="section-title text-center gradient-text">Browse by Category</h2>
+                    <p class="section-subtitle">Find exactly what you're looking for</p>
+                </div>
+
+                <div class="category-cards" data-animate="fade-up">
+                    <div class="category-card active" data-filter="all">
+                        <div class="category-icon">🎬</div>
+                        <div class="category-name">All Videos</div>
+                    </div>
+                    <div class="category-card" data-filter="music">
+                        <div class="category-icon">🎵</div>
+                        <div class="category-name">Music Videos</div>
+                    </div>
+                    <div class="category-card" data-filter="bts">
+                        <div class="category-icon">🎥</div>
+                        <div class="category-name">Behind The Scenes</div>
+                    </div>
+                    <div class="category-card" data-filter="live">
+                        <div class="category-icon">🎤</div>
+                        <div class="category-name">Live Sessions</div>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-tabs" data-animate="fade-up">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="music">Music Videos</button>
+                    <button class="filter-tab" data-filter="bts">BTS</button>
+                    <button class="filter-tab" data-filter="live">Live</button>
+                    <button class="filter-tab" data-filter="tutorial">Tutorials</button>
+                    <button class="filter-tab" data-filter="vlog">Vlogs</button>
+                </div>
+            </div>
+        </section>
+
         <!-- Upcoming Videos Gallery -->
-        <section class="section" style="padding: 6rem 0;">
+        <section class="section" id="videos" style="padding: 6rem 0;">
             <div class="container">
                 <div class="section-header" data-animate="fade-up">
                     <h2 class="section-title text-center gradient-text">Coming Soon</h2>
                     <p class="section-subtitle">Upcoming video releases throughout 2026</p>
                 </div>
 
-                <div class="video-gallery">
+                <div class="video-gallery" id="videoGallery">
                     {upcomingVideos.map((video, index) => (
-                        <article class="video-card" data-animate="fade-up" data-animate-delay={index * 100}>
+                        <article class="video-card" data-animate="fade-up" data-animate-delay={index * 100} data-category={video.type.toLowerCase().replace(/\s+/g, '-')}>
                             <div class="video-thumbnail" style={`background: ${video.gradient};`}>
                                 <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
                                     <img src={`${base}assets/images/icons/music/${video.type === 'Music Video' ? 'play-black.svg' : video.type === 'Behind The Scenes' ? 'video-black.svg' : 'live-black.svg'}`} alt={video.type} style="width: 64px; height: 64px; opacity: 0.3; filter: invert(1);" />
@@ -478,6 +944,7 @@ const contentTypes = [
                                     </div>
                                 </div>
                                 <span style={`position: absolute; bottom: 1rem; right: 1rem;`} class="video-duration">{video.duration}</span>
+                                <span style={`position: absolute; top: 1rem; left: 1rem;`} class="video-badge" style={`background: ${video.color}; color: #fff;`}>{video.status}</span>
                             </div>
                             <div class="video-content">
                                 <div class="video-meta">
@@ -494,8 +961,69 @@ const contentTypes = [
             </div>
         </section>
 
-        <!-- Content Types Section -->
+        <!-- Behind The Scenes Photo Gallery -->
         <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header" data-animate="fade-up">
+                    <h2 class="section-title text-center gradient-text">Behind The Scenes</h2>
+                    <p class="section-subtitle">Sneak peeks from upcoming productions</p>
+                </div>
+
+                <div class="bts-gallery" data-animate="fade-up">
+                    {btsPhotos.map((photo) => (
+                        <div class="bts-photo">
+                            <div class="bts-photo-inner" style={`background: ${photo.gradient};`}>
+                                📸
+                            </div>
+                            <div class="bts-caption">{photo.caption}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Collaborators -->
+        <section class="section" style="padding: 6rem 0;">
+            <div class="container">
+                <div class="section-header" data-animate="fade-up">
+                    <h2 class="section-title text-center gradient-text">Creative Team</h2>
+                    <p class="section-subtitle">The talented people bringing visuals to life</p>
+                </div>
+
+                <div class="collaborators-grid" data-animate="fade-up">
+                    {collaborators.map((collab) => (
+                        <div class="collaborator-card">
+                            <div class="collaborator-avatar">{collab.avatar}</div>
+                            <h3 class="collaborator-name">{collab.name}</h3>
+                            <p class="collaborator-role">{collab.role}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Testimonials/Comments -->
+        <section class="section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header" data-animate="fade-up">
+                    <h2 class="section-title text-center gradient-text">Fan Reactions</h2>
+                    <p class="section-subtitle">What the community is saying</p>
+                </div>
+
+                <div class="testimonials-grid" data-animate="fade-up">
+                    {videoComments.map((comment) => (
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"{comment.text}"</p>
+                            <p class="testimonial-author">{comment.author}</p>
+                            <p class="testimonial-platform">via {comment.platform}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Types Section -->
+        <section class="section" style="padding: 6rem 0;">
             <div class="container">
                 <div class="section-header" data-animate="fade-up">
                     <h2 class="section-title text-center gradient-text">What to Expect</h2>
@@ -611,6 +1139,33 @@ const contentTypes = [
             Get notified when the first video drops. Plus exclusive <strong>behind-the-scenes content</strong> and early access.
           </Fragment>
         </JoinBeamCTA>
+
+    <!-- Premiere Alert Modal -->
+    <div class="premiere-modal" id="premiereModal">
+        <div class="premiere-modal-content">
+            <button class="modal-close" id="closeModal">×</button>
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🔔</div>
+            <h2 class="gradient-text" style="font-size: 1.75rem; margin-bottom: 1rem;">Set Premiere Reminder</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Never miss the premiere! Get notified on your preferred platform.</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="https://youtube.com/@jazer?sub_confirmation=1" class="yt-subscribe-btn" target="_blank" rel="noopener" style="justify-content: center;">
+                    <img src={`${base}assets/images/icons/social/youtube-round-icon.svg`} alt="YouTube" style="width: 24px; height: 24px;" />
+                    <span>Subscribe on YouTube</span>
+                </a>
+                
+                <a href="#notify" class="cta-button" id="emailReminder" style="justify-content: center; display: flex; gap: 0.75rem;">
+                    <span>📧</span>
+                    <span>Email Reminder</span>
+                </a>
+                
+                <button class="cta-secondary" id="calendarReminder" style="justify-content: center; display: flex; gap: 0.75rem;">
+                    <span>📅</span>
+                    <span>Add to Calendar</span>
+                </button>
+            </div>
+        </div>
+    </div>
     
     <script>
         // Countdown Timer
@@ -624,20 +1179,118 @@ const contentTypes = [
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
             
-            if (distance < 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-            }
+            if (daysEl) daysEl.textContent = distance > 0 ? days : '00';
+            if (hoursEl) hoursEl.textContent = distance > 0 ? hours.toString().padStart(2, '0') : '00';
+            if (minutesEl) minutesEl.textContent = distance > 0 ? minutes.toString().padStart(2, '0') : '00';
+            if (secondsEl) secondsEl.textContent = distance > 0 ? seconds.toString().padStart(2, '0') : '00';
         }
         
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        // Premiere Modal
+        const modal = document.getElementById('premiereModal');
+        const openBtn = document.getElementById('openReminderModal');
+        const closeBtn = document.getElementById('closeModal');
+        const emailReminder = document.getElementById('emailReminder');
+
+        if (openBtn) {
+            openBtn.addEventListener('click', () => {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        if (emailReminder) {
+            emailReminder.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Close modal on background click
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Calendar Reminder
+        const calendarBtn = document.getElementById('calendarReminder');
+        if (calendarBtn) {
+            calendarBtn.addEventListener('click', () => {
+                const event = {
+                    title: 'JaZeR - First Music Video Premiere',
+                    start: '2026-03-15T00:00:00Z',
+                    end: '2026-03-15T01:00:00Z',
+                    description: 'World premiere of JaZeR\'s first official music video! Watch live on YouTube.',
+                    location: 'https://youtube.com/@jazer'
+                };
+                
+                const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=20260315T000000Z/20260315T010000Z&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
+                
+                window.open(googleCalUrl, '_blank');
+            });
+        }
+
+        // Video Filter Tabs
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const categoryCards = document.querySelectorAll('.category-card');
+        const videoCards = document.querySelectorAll('.video-card');
+
+        function filterVideos(filter) {
+            videoCards.forEach(card => {
+                const category = card.dataset.category || '';
+                if (filter === 'all' || category.includes(filter)) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                filterVideos(tab.dataset.filter);
+            });
+        });
+
+        categoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                categoryCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                const filter = card.dataset.filter;
+                filterTabs.forEach(t => {
+                    t.classList.toggle('active', t.dataset.filter === filter);
+                });
+                filterVideos(filter);
+            });
+        });
+
+        // BTS Photo Gallery Lightbox Effect
+        const btsPhotos = document.querySelectorAll('.bts-photo');
+        btsPhotos.forEach(photo => {
+            photo.addEventListener('click', () => {
+                photo.classList.toggle('expanded');
+            });
+        });
     </script>
 </BaseLayout>

@@ -74,150 +74,6 @@
 
 ---
 
-## 📋 Table of Contents
-
-> **📖 Documentation Guide**: Navigate through all sections quickly
-
-### 👥 Choose Your Path
-
-<table>
-<tr>
-<td align="center" width="25%">
-<strong>👀 First-Time Visitor</strong><br/>
-<sub>Learn about the project</sub><br/><br/>
-<a href="#-understanding-the-project">Start Here →</a>
-</td>
-<td align="center" width="25%">
-<strong>💻 Developer</strong><br/>
-<sub>Set up and develop</sub><br/><br/>
-<a href="#-getting-started">Start Here →</a>
-</td>
-<td align="center" width="25%">
-<strong>🔧 Contributor</strong><br/>
-<sub>Authorized collaborators</sub><br/><br/>
-<a href="#-contributing">Start Here →</a>
-</td>
-<td align="center" width="25%">
-<strong>📚 Researcher</strong><br/>
-<sub>Technical deep dive</sub><br/><br/>
-<a href="#️-technical-documentation">Start Here →</a>
-</td>
-</tr>
-</table>
-
----
-
-### 📌 Emoji Legend
-
-<details>
-<summary><strong>Click to view emoji meanings used throughout this README</strong></summary>
-
-<br/>
-
-| Emoji | Meaning | Usage |
-|:-----:|---------|-------|
-| 🎶 🎵 | Music & Audio | Music-related content, streaming, releases |
-| 📺 📹 | Video & Media | Video content, visual media |
-| 🎨 | Design & Branding | Design, colors, visual identity |
-| ⚡ 🚀 | Performance & Speed | Fast loading, optimization |
-| 📱 💻 | Devices | Mobile, desktop, responsive design |
-| ♿ | Accessibility | WCAG compliance, screen readers |
-| 🔒 🔐 | Security | HTTPS, secure connections |
-| 🛍️ | Commerce | Shop, merchandise, products |
-| 👤 👥 | People & Community | About, users, community |
-| 📧 📫 | Contact | Email, contact forms |
-| 🐛 | Bugs & Issues | Bug reports, problems |
-| 💡 | Tips & Ideas | Helpful information, suggestions |
-| ⚠️ | Warnings | Important notices, cautions |
-| ✅ ✓ | Complete | Finished features, checkmarks |
-| 🔮 | Future | Planned features, vision |
-| 📊 | Statistics | Data, metrics, analytics |
-
-</details>
-
----
-
-<div align="center">
-
-### 🎯 Quick Navigation
-
-**[🆕 What's New](#-whats-new-january-2026)** • 
-**[🎨 Preview](#-preview)** • 
-**[🌟 Overview](#-overview)** • 
-**[⚡ Quick Start](#-quick-start)** • 
-**[✨ Features](#-features)** • 
-**[🏗️ Tech Stack](#️-tech-stack)**
-
-**[📁 Project Structure](#-project-structure)** • 
-**[🌐 Deployment](#-deployment)** • 
-**[🎨 Brand & Design](#-brand--design)** • 
-**[📊 Performance](#-quality--performance)** • 
-**[🗺️ Roadmap](#️-roadmap--vision)** • 
-**[⚖️ License](#️-license--legal)**
-
-</div>
-
-<details>
-<summary><strong>📖 Expand Full Documentation Index</strong></summary>
-
-<br/>
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 📖 Understanding the Project
-- [🆕 What's New](#-whats-new-january-2026)
-- [🎨 Preview & Screenshots](#-preview)
-- [🌟 Overview](#-overview)
-- [✨ Features](#-features)
-- [📊 Visual Metrics](#-visual-metrics-dashboard)
-- [🎬 Demonstrations](#-visual-demonstrations)
-
-### 🚀 Getting Started
-- [⚡ Quick Start](#-quick-start)
-- [📁 Project Structure](#-project-structure)
-- [🔧 Troubleshooting](#-troubleshooting-guide)
-
-### ⚙️ Technical Documentation
-- [🏗️ Tech Stack](#️-tech-stack)
-- [⚡ Performance Tips](#-performance-optimization-tips)
-- [📱 Device Compatibility](#-device-compatibility-matrix)
-- [📊 Quality & Performance](#-quality--performance)
-
-</td>
-<td width="50%" valign="top">
-
-### 🎨 Design & Branding
-- [🎨 Brand & Design](#-brand--design)
-- [🌈 Color Palette](#-visual-color-palette)
-- [🌐 Deployment](#-deployment)
-
-### 🔬 Advanced Topics
-- [🔐 Security](#-security)
-- [📦 Dependencies](#-dependency-information)
-- [🎓 Learning Resources](#-learning-resources)
-
-### 📋 Project Management
-- [🗺️ Roadmap & Vision](#️-roadmap--vision)
-- [🤝 Contributing](#-contributing)
-- [❓ FAQ](#-faq)
-
-### 📞 Support & Legal
-- [🔗 Connect](#-connect-with-jazer)
-- [📊 Project Stats](#-project-stats)
-- [⚖️ License & Legal](#️-license--legal)
-- [🙏 Acknowledgments](#-acknowledgments)
-- [📞 Support](#-support)
-
-</td>
-</tr>
-</table>
-
-</details>
-
----
-
 ## 🆕 What's New (January 2026)
 
 > **💡 Latest Updates**: Check out the newest features and improvements below!
@@ -418,13 +274,100 @@ Orange (#FF9500) → Green (#00FF88) → Blue (#4FACFE)
 
 ---
 
+## 📋 Table of Contents
+
+> **📖 Documentation Guide**: Navigate through all sections quickly
+
+### 📌 Emoji Legend
+
+<details>
+<summary><strong>Click to view emoji meanings used throughout this README</strong></summary>
+
+<br/>
+
+| Emoji | Meaning | Usage |
+|:-----:|---------|-------|
+| 🎶 🎵 | Music & Audio | Music-related content, streaming, releases |
+| 📺 📹 | Video & Media | Video content, visual media |
+| 🎨 | Design & Branding | Design, colors, visual identity |
+| ⚡ 🚀 | Performance & Speed | Fast loading, optimization |
+| 📱 💻 | Devices | Mobile, desktop, responsive design |
+| ♿ | Accessibility | WCAG compliance, screen readers |
+| 🔒 🔐 | Security | HTTPS, secure connections |
+| 🛍️ | Commerce | Shop, merchandise, products |
+| 👤 👥 | People & Community | About, users, community |
+| 📧 📫 | Contact | Email, contact forms |
+| 🐛 | Bugs & Issues | Bug reports, problems |
+| 💡 | Tips & Ideas | Helpful information, suggestions |
+| ⚠️ | Warnings | Important notices, cautions |
+| ✅ ✓ | Complete | Finished features, checkmarks |
+| 🔮 | Future | Planned features, vision |
+| 📊 | Statistics | Data, metrics, analytics |
+
+</details>
+
+---
+
 <div align="center">
 
-# 📖 Understanding the Project
+### 🎯 Quick Navigation
 
-> **Learn about JaZeR, explore the site, and understand the features**
+**[🆕 What's New](#-whats-new-january-2026)** • 
+**[🎨 Preview](#-preview)** • 
+**[🌟 Overview](#-overview)** • 
+**[⚡ Quick Start](#-quick-start)** • 
+**[✨ Features](#-features)** • 
+**[🏗️ Tech Stack](#️-tech-stack)**
+
+**[📁 Project Structure](#-project-structure)** • 
+**[🌐 Deployment](#-deployment)** • 
+**[🎨 Brand & Design](#-brand--design)** • 
+**[📊 Performance](#-quality--performance)** • 
+**[🗺️ Roadmap](#️-roadmap--vision)** • 
+**[⚖️ License](#️-license--legal)**
 
 </div>
+
+<details>
+<summary><strong>📖 Expand Full Documentation Index</strong></summary>
+
+<br/>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🚀 Getting Started
+- [🆕 What's New](#-whats-new-january-2026)
+- [🎨 Preview & Screenshots](#-preview)
+- [🌟 Overview](#-overview)
+- [⚡ Quick Start](#-quick-start)
+
+### 💎 Core Features
+- [✨ Features](#-features)
+- [🏗️ Tech Stack](#️-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🎨 Brand & Design](#-brand--design)
+
+</td>
+<td width="50%" valign="top">
+
+### 🔧 Development
+- [🌐 Deployment](#-deployment)
+- [📊 Quality & Performance](#-quality--performance)
+- [🤝 Contributing](#-contributing)
+
+### 📚 Project Info
+- [🗺️ Roadmap & Vision](#️-roadmap--vision)
+- [❓ FAQ](#-faq)
+- [🔗 Connect](#-connect-with-jazer)
+- [⚖️ License & Legal](#️-license--legal)
+
+</td>
+</tr>
+</table>
+
+</details>
 
 ---
 
@@ -482,20 +425,6 @@ Built with **Astro 5.0, performance-first engineering, and accessibility** in mi
 
 <div align="right">
 <a href="#-jazer-official-website">⬆️ Back to Top</a>
-</div>
-
-<div align="right">
-<a href="#-jazer-official-website">⬆️ Back to Top</a>
-</div>
-
----
-
-<div align="center">
-
-# 🚀 Getting Started
-
-> **Install, run locally, and start developing in minutes**
-
 </div>
 
 ---
@@ -563,20 +492,6 @@ http://localhost:4321
 
 <div align="right">
 <a href="#-jazer-official-website">⬆️ Back to Top</a>
-</div>
-
-<div align="right">
-<a href="#-jazer-official-website">⬆️ Back to Top</a>
-</div>
-
----
-
-<div align="center">
-
-# ⚙️ Technical Documentation
-
-> **Deep dive into the technology stack, architecture, and performance**
-
 </div>
 
 ---
@@ -795,20 +710,6 @@ The deployment is handled by `.github/workflows/deploy.yml`:
 
 <div align="right">
 <a href="#-jazer-official-website">⬆️ Back to Top</a>
-</div>
-
-<div align="right">
-<a href="#-jazer-official-website">⬆️ Back to Top</a>
-</div>
-
----
-
-<div align="center">
-
-# 🎨 Design & Branding
-
-> **Explore the visual identity, colors, typography, and deployment**
-
 </div>
 
 ---
@@ -1369,19 +1270,9 @@ npm run preview  # Test production build locally
 
 ---
 
-<div align="center">
-
-# 📋 Project Management
-
-> **Roadmap, contributing guidelines, and frequently asked questions**
-
-</div>
-
----
-
 ## 🗺️ Roadmap & Vision
 
-### Current Version: v1.0 (January 2026)
+###Current Version: v1.0 (January 2026)
 
 **Completed Features:**
 
@@ -1465,20 +1356,6 @@ npm run preview  # Test production build locally
 
 <div align="right">
 <a href="#-jazer-official-website">⬆️ Back to Top</a>
-</div>
-
-<div align="right">
-<a href="#-jazer-official-website">⬆️ Back to Top</a>
-</div>
-
----
-
-<div align="center">
-
-# 🔬 Advanced Topics
-
-> **Security practices, dependencies, and learning resources**
-
 </div>
 
 ---
@@ -1866,16 +1743,6 @@ For informational purposes only: Astro static sites can technically deploy to va
 
 ---
 
-<div align="center">
-
-# 📞 Support & Community
-
-> **Connect with JaZeR, get support, and explore legal information**
-
-</div>
-
----
-
 ## 🔗 Connect with JaZeR
 
 <div align="center">
@@ -2049,39 +1916,21 @@ Need help or have questions?
 
 <img src="public/assets/images/Transmission Incoming (429 x 150 px).svg" width="300" alt="Transmission Incoming"/>
 
----
-
-### 💜 Thank You for Exploring
+### 💜 Connect with the Beam
 
 > *"This is JaZeR. Welcome home."*  
 > *"Keep the beat, keep the lights warm, and bring the volume."* 🎚️🎧✨
 
 ---
 
-### 🌐 Ready to Experience It?
-
-**[Visit jazer-music.com →](https://jazer-music.com)**
+**[🌐 Visit the Live Site →](https://jazer-music.com)**
 
 ---
 
-<table>
-<tr>
-<td align="center">
-
 **Made with 💜 by JaZeR**  
-*Powered by Astro 5.0 + GitHub Pages*
+*Powered by Astro 5.0 + GitHub Pages • Built with HTML, CSS, and JavaScript*
 
-</td>
-</tr>
-<tr>
-<td align="center">
-
-**Latest Update**: January 12, 2026  
-*Comprehensive README reorganization for better UX*
-
-</td>
-</tr>
-</table>
+**Latest Update**: January 12, 2026 — Enhanced README with comprehensive UX improvements ✨
 
 ---
 
@@ -2089,7 +1938,10 @@ Need help or have questions?
 
 <br/>
 
-**📍 Quick Links**  
-[Top](#-jazer-official-website) • [Features](#-features) • [Quick Start](#-quick-start) • [Roadmap](#️-roadmap--vision) • [FAQ](#-faq) • [Connect](#-connect-with-jazer)
+<div align="center">
+
+**Quick Links**: [Top](#-jazer-official-website) • [Features](#-features) • [Roadmap](#️-roadmap--vision) • [FAQ](#-faq) • [Connect](#-connect-with-jazer)
+
+</div>
 
 </div>
