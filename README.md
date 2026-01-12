@@ -177,6 +177,38 @@
 
 ## 📋 Table of Contents
 
+> **📖 Documentation Guide**: Navigate through all sections quickly
+
+### 📌 Emoji Legend
+
+<details>
+<summary><strong>Click to view emoji meanings used throughout this README</strong></summary>
+
+<br/>
+
+| Emoji | Meaning | Usage |
+|:-----:|---------|-------|
+| 🎶 🎵 | Music & Audio | Music-related content, streaming, releases |
+| 📺 📹 | Video & Media | Video content, visual media |
+| 🎨 | Design & Branding | Design, colors, visual identity |
+| ⚡ 🚀 | Performance & Speed | Fast loading, optimization |
+| 📱 💻 | Devices | Mobile, desktop, responsive design |
+| ♿ | Accessibility | WCAG compliance, screen readers |
+| 🔒 🔐 | Security | HTTPS, secure connections |
+| 🛍️ | Commerce | Shop, merchandise, products |
+| 👤 👥 | People & Community | About, users, community |
+| 📧 📫 | Contact | Email, contact forms |
+| 🐛 | Bugs & Issues | Bug reports, problems |
+| 💡 | Tips & Ideas | Helpful information, suggestions |
+| ⚠️ | Warnings | Important notices, cautions |
+| ✅ ✓ | Complete | Finished features, checkmarks |
+| 🔮 | Future | Planned features, vision |
+| 📊 | Statistics | Data, metrics, analytics |
+
+</details>
+
+---
+
 <div align="center">
 
 ### 🎯 Quick Navigation
@@ -1043,6 +1075,10 @@ For informational purposes only: Astro static sites can technically deploy to va
 
 </div>
 
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
 ---
 
 <div align="center">
@@ -1060,6 +1096,10 @@ For informational purposes only: Astro static sites can technically deploy to va
 ![GitHub language count](https://img.shields.io/github/languages/count/JaZeR-444/jazer-website-master-2026?style=flat-square)
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fjazer-444.github.io%2FTEST-Website-Import%2F&style=flat-square)
 
+</div>
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
 </div>
 
 ---
@@ -1128,6 +1168,10 @@ This section is intended to clarify how the JaZeR brand and content may be used.
 
 **If you are unsure whether a use is allowed, reach out via the contact form before proceeding.**
 
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
 ---
 
 ## 🙏 Acknowledgments
@@ -1151,6 +1195,10 @@ This section is intended to clarify how the JaZeR brand and content may be used.
 - The open-source community for building amazing tools
 - Everyone who has contributed feedback and ideas to improve the site
 
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
+
 ---
 
 ## 📞 Support
@@ -1169,6 +1217,10 @@ Need help or have questions?
 - 📊 Press kit and media assets available upon request
 - 🤝 Open to collaborations, features, and partnerships
 - 🎤 Booking inquiries welcome
+
+<div align="right">
+<a href="#-jazer-official-website">⬆️ Back to Top</a>
+</div>
 
 ---
 
