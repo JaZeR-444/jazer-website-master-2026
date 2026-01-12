@@ -143,7 +143,11 @@ This repository powers the **official website** for **JaZeR** — a content crea
 
 Built with **performance, accessibility, and brand consistency** in mind, this is a modern static website that delivers a premium experience without the overhead of complex frameworks.
 
-### 🎭 What is JaZeR?
+### 🎭 What is JaZeR? 
+
+<div align="center">
+<img src="images/vibrant-jzr-monogram-logo (250 x 250 px).svg" alt="JZR Monogram" width="120"/>
+</div>
 
 **JaZeR** is more than just a website—it's a complete digital experience designed to connect music, visuals, and storytelling into one cohesive brand identity. From streaming platforms to social media, this site serves as the **central hub** for:
 
@@ -255,6 +259,12 @@ http://localhost:8000
 
 ---
 
+<div align="center">
+<img src="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="30"/>
+</div>
+
+---
+
 ## 🗺️ Roadmap
 
 ### Current Version: v1.0 (January 2026)
@@ -281,12 +291,20 @@ http://localhost:8000
 
 ### Long-term Vision
 
+<img src="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="24" style="vertical-align: middle; margin-right: 8px;"/>
+
 - 🎵 Direct music streaming integration
 - 🎨 Generative art backgrounds based on music
 - 🤖 AI-powered music recommendation engine
 - 👥 Fan community features and forums
 - 🎮 Interactive experiences and games
 - 🛍️ Full e-commerce integration for merchandise
+
+---
+
+<div align="center">
+<img src="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="30"/>
+</div>
 
 ---
 
@@ -566,6 +584,18 @@ All design tokens are defined in `css/style.css` as CSS custom properties for ea
 
 The site includes a comprehensive asset library with **two logo systems**:
 
+<div align="center">
+
+#### 🔵 Bubble Logo (Wordmark)
+<img src="images/Vibrant JAZER Bubble Logo (450 x 150 px).svg" alt="JaZeR Bubble Logo - Vibrant brand wordmark" width="350"/>
+
+#### 🔷 Monogram (Icon)
+<img src="images/vibrant-jzr-monogram-logo (250 x 250 px).svg" alt="JZR Monogram - Brand icon" width="150"/>
+
+</div>
+
+---
+
 #### 🔵 Vibrant JaZeR Bubble Logo (Text Logo)
 Horizontal brand wordmark with vibrant multi-color gradient styling:
 
@@ -683,6 +713,12 @@ For comprehensive technical documentation including:
 - Deployment pipeline details
 
 **👉 See [TECHNICAL.md](TECHNICAL.md)**
+
+---
+
+<div align="center">
+<img src="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="30"/>
+</div>
 
 ---
 
@@ -2124,6 +2160,12 @@ git push origin main
 
 ---
 
+<div align="center">
+<img src="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="30"/>
+</div>
+
+---
+
 ## 🤝 Contributing
 
 This is primarily a **personal artist website** for the JaZeR brand. However, if you're collaborating on improvements or maintenance:
@@ -2219,9 +2261,11 @@ Docs: add browser compatibility section to README
 
 ## 🔗 Connect with JaZeR
 
-Stay connected across all platforms:
-
 <div align="center">
+
+<img src="images/vibrant-jzr-monogram-logo (100 x 100 px).svg" alt="JZR" width="80"/>
+
+### Stay Connected Across All Platforms
 
 [![Instagram](https://img.shields.io/badge/Instagram-@jazer__music-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/jazer_music)
 [![TikTok](https://img.shields.io/badge/TikTok-@jazer__music-000000?style=for-the-badge&logo=tiktok&logoColor=white)](https://tiktok.com/@jazer_music)
@@ -2233,6 +2277,12 @@ Stay connected across all platforms:
 [![SoundCloud](https://img.shields.io/badge/SoundCloud-JaZeR-FF3300?style=for-the-badge&logo=soundcloud&logoColor=white)](https://soundcloud.com/jazer)
 [![Facebook](https://img.shields.io/badge/Facebook-jazer.music-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/jazer.music/)
 
+</div>
+
+---
+
+<div align="center">
+<img src="images/vibrant-jzr-monogram-logo (50 x 50 px).svg" alt="" width="30"/>
 </div>
 
 ---
@@ -2622,6 +2672,8 @@ git push backup main
 ## 🎵 Final Note
 
 <div align="center">
+
+<img src="images/vibrant-jzr-monogram-logo (250 x 250 px).svg" alt="JZR Monogram" width="150"/>
 
 > *"This is JaZeR. Welcome home."*  
 > *"Keep the beat, keep the lights warm, and bring the volume."* 🎚️🎧✨
