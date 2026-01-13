@@ -8,7 +8,8 @@ const {
   subtitleStyle,
   subject,
   buttonLabel,
-  proofText
+  proofText,
+  helperText = ''
 } = Astro.props;
 ---
 <section class={sectionClass} id={id} style={sectionStyle}>
@@ -39,9 +40,10 @@ const {
         <input type="hidden" name="_subject" value={subject} />
         <button type="submit" class="email-capture-btn">
           <span>{buttonLabel}</span>
-          <span class="btn-arrow"></span>
+          <span class="btn-arrow">→</span>
         </button>
       </form>
+      {helperText && <p class="email-capture-helper">{helperText}</p>}
       <p class="email-capture-status" role="status" aria-live="polite"></p>
       <div class="email-capture-proof">
         <div class="email-capture-avatars">
