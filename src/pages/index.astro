@@ -173,7 +173,7 @@ const mutedStatuses = ['TBA', 'TBD'];
         
         <div class="bento-grid">
           {/* About Card - Featured Larger */}
-          <a href={`${base}about`} class="bento-card bento-card--featured premium-card" data-animate="zoom-in">
+          <a href={`${base}about`} class="bento-card bento-card--featured" data-animate="zoom-in">
             <div class="bento-icon">
               <img src={`${base}assets/images/icons/navigation/about.svg`} alt="" loading="lazy"/>
             </div>
@@ -186,7 +186,7 @@ const mutedStatuses = ['TBA', 'TBD'];
 
           {/* Other Cards */}
           {pathways.filter(p => p.title !== 'About').map((pathway, index) => (
-            <a href={pathway.href} class="bento-card premium-card" data-animate="fade-up" data-animate-delay={index * 50}>
+            <a href={pathway.href} class="bento-card" data-animate="fade-up" data-animate-delay={index * 50}>
               <div class="bento-icon-sm">
                  <img src={pathway.icon} alt="" loading="lazy" />
               </div>

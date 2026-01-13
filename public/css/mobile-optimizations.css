@@ -607,6 +607,15 @@
 
 /* Small phones (320px - 480px) */
 @media (max-width: 480px) {
+  /* Extra small nav pill refinements */
+  .nav-inner {
+    padding: 10px 14px;
+  }
+  
+  .logo img {
+    height: 28px !important;
+  }
+  
   /* Navigation */
   .nav-links {
     padding-top: 5rem;
@@ -732,16 +741,64 @@
    ============================================ */
 
 @media (max-width: 768px) {
-  /* Hamburger Menu - Better touch target */
+  /* === NAV PILL SIZE REDUCTION === */
+  
+  /* Site nav wrapper - reduce outer padding */
+  .site-nav {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  /* Nav inner pill container - constrain size */
+  .nav-inner {
+    max-width: min(92vw, 420px);
+    padding: 12px 16px;
+    margin: 0 auto;
+  }
+  
+  /* Nav background (the pill itself) - smaller radius */
+  .nav-background {
+    border-radius: 26px;
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+  }
+  
+  /* Remove glow effects on mobile */
+  .nav-background::after {
+    display: none;
+  }
+  
+  /* Logo - reduce size */
+  .logo img {
+    height: 30px !important;
+    width: auto !important;
+    filter: none;
+  }
+  
+  /* Hamburger Menu - ensure 44px touch target */
   .mobile-menu {
     width: 44px;
     height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  
+  .mobile-menu:focus-visible {
+    outline: 2px solid var(--jazer-cyan);
+    outline-offset: 2px;
+    background: rgba(34, 211, 238, 0.1);
   }
 
   .mobile-menu span {
-    height: 3px;
-    margin: 5px 0;
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+    box-shadow: none;
   }
 
   /* Mobile Menu Panel */

@@ -16,6 +16,16 @@ const isAbout = normalizedPath.startsWith('/about');
 const isShop = normalizedPath.startsWith('/shop');
 const isContact = normalizedPath.startsWith('/contact');
 
+// Primary footer navigation links
+const navLinks = [
+  { href: `${base}`, label: "Home", active: isHome },
+  { href: `${base}music`, label: "Music", active: isMusic },
+  { href: `${base}videos`, label: "Videos", active: isVideos },
+  { href: `${base}shop`, label: "Shop", active: isShop },
+  { href: `${base}about`, label: "About", active: isAbout },
+  { href: `${base}contact`, label: "Contact", active: isContact },
+];
+
 const socials = [
   { href: "https://instagram.com/jazer_music", label: "Instagram", icon: `${base}assets/images/icons/social/instagram-round-icon.svg` },
   { href: "https://tiktok.com/@jazer_music", label: "TikTok", icon: `${base}assets/images/icons/social/tiktok-round-logo.svg` },
@@ -27,37 +37,50 @@ const socials = [
 ];
 ---
 
-<footer class="sonic-footer">
-    <!-- Top Level: System Stream -->
-    <!-- Top Level: System Stream REMOVED (Handled per-page if needed) -->
-
-
-    <div class="sonic-footer-inner">
-      <a class="sonic-footer-brand" href={`${base}`} aria-label="JaZeR home">
+<footer class="site-footer">
+  <div class="footer-inner">
+    
+    <!-- ZONE A: BRAND -->
+    <div class="footer-brand-zone">
+      <a class="footer-brand-link" href={`${base}`} aria-label="JaZeR home">
         <img
           src={`${base}assets/images/Vibrant JAZER Bubble Logo (600 x 200 px).svg`}
           alt="JaZeR"
-          class="sonic-footer-logo"
-          width="150"
-          height="50"
+          class="footer-logo"
+          width="120"
+          height="40"
           loading="lazy"
           decoding="async"
         />
       </a>
-  
-      <nav class="sonic-footer-nav" aria-label="Primary Footer Navigation">
-        <a href={`${base}`} class={`sonic-nav-link ${isHome ? 'active' : ''}`}>[ HOME ]</a>
-        <a href={`${base}music`} class={`sonic-nav-link ${isMusic ? 'active' : ''}`}>[ MUSIC ]</a>
-        <a href={`${base}videos`} class={`sonic-nav-link ${isVideos ? 'active' : ''}`}>[ VIDEOS ]</a>
-        <a href={`${base}shop`} class={`sonic-nav-link ${isShop ? 'active' : ''}`}>[ SHOP ]</a>
-        <a href={`${base}about`} class={`sonic-nav-link ${isAbout ? 'active' : ''}`}>[ ABOUT ]</a>
-        <a href={`${base}contact`} class={`sonic-nav-link ${isContact ? 'active' : ''}`}>[ CONTACT ]</a>
-      </nav>
-  
-      <nav class="sonic-footer-socials" aria-label="JaZeR social links">
+      <p class="footer-descriptor">Music • Visuals • Digital Storytelling</p>
+    </div>
+
+    <!-- ZONE B: LINKS -->
+    <nav class="footer-links-zone" aria-label="Footer Navigation">
+      <ul class="footer-link-grid">
+        {navLinks.map((link) => (
+          <li>
+            <a 
+              href={link.href} 
+              class={`footer-link ${link.active ? 'is-active' : ''}`}
+            >
+              <span class="link-bracket link-bracket--left">[</span>
+              <span class="link-text">{link.label}</span>
+              <span class="link-bracket link-bracket--right">]</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- ZONE C: TRUST (Social) -->
+    <div class="footer-social-zone">
+      <span class="social-label">Follow</span>
+      <nav class="footer-socials" aria-label="JaZeR social links">
         {socials.map((s) => (
           <a
-            class="sonic-footer-social"
+            class="footer-social-btn"
             href={s.href}
             target="_blank"
             rel="noopener noreferrer"
@@ -68,208 +91,263 @@ const socials = [
           </a>
         ))}
       </nav>
-  
-      <div class="sonic-footer-meta">
-        <p class="sonic-footer-copyright">
-          © {year} <span class="brand-gradient">JaZeR</span>. ALL RIGHTS RESERVED.
-        </p>
-
-        <div class="sonic-trust-links">
-          <span class="trust-link">Privacy (TBD)</span>
-          <span class="trust-separator">•</span>
-          <span class="trust-link">Terms (TBD)</span>
-        </div>
-  
-        <p class="sonic-footer-status" data-quotes='["YOUR LIGHT IS REAL. YOUR DREAM IS VALID.", "KEEP BUILDING WHEN IT FEELS HEAVY.", "TURN PAIN INTO POWER, VISIONS INTO REALITY.", "THERE&apos;S STILL MAGIC IN ALL OF THIS.", "YOU&apos;RE CLOSER THAN YOU THINK."]'>
-          "YOUR LIGHT IS REAL. YOUR DREAM IS VALID."
-        </p>
-      </div>
     </div>
-  
-    {/* Rotating Messages Script */}
-    <script is:inline>
-      const quoteEl = document.querySelector('.sonic-footer-status[data-quotes]');
-      if (quoteEl) {
-        try {
-          const quotes = JSON.parse(quoteEl.dataset.quotes);
-          let index = 0;
-          setInterval(() => {
-            index = (index + 1) % quotes.length;
-            quoteEl.style.opacity = '0';
-            setTimeout(() => {
-              quoteEl.textContent = `"${quotes[index]}"`;
-              quoteEl.style.opacity = '1';
-            }, 500); // Wait for fade out
-          }, 20000); // 20 seconds per quote
-        } catch (e) {
-          console.error('Error parsing quotes:', e);
-        }
+
+    <!-- LEGAL ROW -->
+    <div class="footer-legal-zone">
+      <p class="footer-copyright">
+        © {year} <span class="brand-gradient">JaZeR</span>. All Rights Reserved.
+      </p>
+      <p class="footer-quote" data-quotes='["YOUR LIGHT IS REAL. YOUR DREAM IS VALID.", "KEEP BUILDING WHEN IT FEELS HEAVY.", "TURN PAIN INTO POWER, VISIONS INTO REALITY.", "THERE&apos;S STILL MAGIC IN ALL OF THIS.", "YOU&apos;RE CLOSER THAN YOU THINK."]'>
+        "YOUR LIGHT IS REAL. YOUR DREAM IS VALID."
+      </p>
+    </div>
+  </div>
+
+  {/* Rotating Messages Script */}
+  <script is:inline>
+    const quoteEl = document.querySelector('.footer-quote[data-quotes]');
+    if (quoteEl) {
+      try {
+        const quotes = JSON.parse(quoteEl.dataset.quotes);
+        let index = 0;
+        setInterval(() => {
+          index = (index + 1) % quotes.length;
+          quoteEl.style.opacity = '0';
+          setTimeout(() => {
+            quoteEl.textContent = `"${quotes[index]}"`;
+            quoteEl.style.opacity = '1';
+          }, 500);
+        }, 20000);
+      } catch (e) {
+        console.error('Error parsing quotes:', e);
       }
-    </script>
+    }
+  </script>
 </footer>
 
-<style>
-/* Scoped Styles for Sonic Footer */
-.sonic-footer {
-  padding: 0 0 4rem;
+<style is:global>
+/* ============================================
+   SITE FOOTER - Premium 3-Zone Layout
+   ============================================ */
+
+.site-footer {
+  padding: 2rem 0 3rem;
   background: transparent;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  justify-content: center;
   width: 100%;
 }
 
-/* System Stream Ticker */
-.sonic-system-stream {
-    width: 100%;
-    background: rgba(6, 182, 212, 0.05);
-    border-top: 1px solid rgba(6, 182, 212, 0.1);
-    border-bottom: 1px solid rgba(6, 182, 212, 0.1);
-    padding: 0.5rem 0;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 0.5rem; /* Reduced margin to fit better with nav */
-    display: flex;
-}
-
-.system-message-track {
-    display: flex;
-    white-space: nowrap;
-    animation: ticker 40s linear infinite;
-}
-
-.system-message {
-    font-family: 'Courier New', monospace;
-    color: var(--jazer-cyan);
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    padding-right: 4rem; 
-    opacity: 0.8;
-}
-
-@keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } 
-}
-
-/* Command Navigation */
-.sonic-footer-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 0.5rem;
-    width: 100%;
-    max-width: 800px;
-}
-
-.sonic-nav-link {
-    font-family: 'Courier New', monospace;
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: all 0.3s ease;
-}
-
-.sonic-nav-link:hover, .sonic-nav-link.active {
-    color: var(--jazer-cyan);
-    text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
-}
-
-/* Glass Panel & Content */
-.sonic-footer-inner {
-  width: min(920px, calc(100% - 2.5rem));
+.footer-inner {
+  width: min(600px, calc(100% - 2rem));
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
-
-  padding: 1.5rem 1.25rem;
-  border-radius: 18px;
-  background: rgba(0, 0, 0, 0.28);
+  gap: 1.5rem;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  background: rgba(10, 10, 20, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.sonic-footer-brand {
+/* ============================================
+   ZONE A: BRAND
+   ============================================ */
+
+.footer-brand-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-brand-link {
   display: inline-flex;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-brand-link:hover {
+  transform: scale(1.03);
+}
+
+.footer-brand-link:focus-visible {
+  outline: 2px solid var(--jazer-cyan);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  opacity: 0.9;
+}
+
+.footer-descriptor {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+/* ============================================
+   ZONE B: LINKS
+   ============================================ */
+
+.footer-links-zone {
+  width: 100%;
+}
+
+.footer-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0.65rem 0.75rem;
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+  min-height: 44px;
+}
+
+/* Brackets - hidden by default, shown on hover/focus */
+.link-bracket {
+  opacity: 0;
+  color: var(--jazer-cyan);
+  font-weight: 400;
+  transition: opacity 0.15s ease;
+}
+
+.footer-link:hover .link-bracket,
+.footer-link:focus-visible .link-bracket,
+.footer-link.is-active .link-bracket {
+  opacity: 1;
+}
+
+.link-bracket--left {
+  margin-right: 0.25rem;
+}
+
+.link-bracket--right {
+  margin-left: 0.25rem;
+}
+
+.footer-link:hover,
+.footer-link.is-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-link:focus-visible {
+  outline: 2px solid var(--jazer-cyan);
+  outline-offset: 2px;
+  color: #fff;
+}
+
+/* ============================================
+   ZONE C: TRUST (Social)
+   ============================================ */
+
+.footer-social-zone {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  text-decoration: none;
 }
 
-.sonic-footer-logo {
-  opacity: 0.85;
-  transition: transform 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+.social-label {
+  font-family: var(--font-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.sonic-footer-brand:hover .sonic-footer-logo {
-  opacity: 1;
-  transform: scale(1.06);
-  filter: drop-shadow(0 0 10px var(--jazer-cyan));
-}
-
-.sonic-footer-socials {
+.footer-socials {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.9rem;
+  gap: 0.5rem;
 }
 
-/* Make the *tap target* bigger than the icon */
-.sonic-footer-social {
+.footer-social-btn {
   width: 44px;
   height: 44px;
   display: grid;
   place-items: center;
-  border-radius: 999px;
-  opacity: 0.72;
-  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-.sonic-footer-social img {
-  width: 24px;
-  height: 24px;
+.footer-social-btn img {
+  width: 20px;
+  height: 20px;
   object-fit: contain;
-  transition: all 0.2s ease;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
 }
 
-.sonic-footer-social:hover {
-  opacity: 1;
+.footer-social-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Keyboard accessibility */
-.sonic-footer-social:focus-visible,
-.sonic-footer-brand:focus-visible,
-.sonic-nav-link:focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.65);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-.sonic-footer-social:focus-visible {
-    border-radius: 50%;
+.footer-social-btn:hover img {
+  opacity: 1;
 }
 
-.sonic-footer-meta {
+.footer-social-btn:focus-visible {
+  outline: 2px solid var(--jazer-cyan);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   LEGAL ROW
+   ============================================ */
+
+.footer-legal-zone {
   text-align: center;
-  display: grid;
-  gap: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
 }
 
-.sonic-footer-copyright {
-  font-family: 'Courier New', monospace;
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.45);
-  letter-spacing: 0.06em;
+.footer-copyright {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
   margin: 0;
 }
 
-/* Gradient for JaZeR brand name */
 .brand-gradient {
   background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple), var(--jazer-pink));
   background-size: 200% 200%;
@@ -285,84 +363,81 @@ const socials = [
   50% { background-position: 100% 50%; }
 }
 
-.sonic-trust-links {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  font-family: 'Courier New', monospace;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.trust-link {
-  cursor: default;
-}
-
-.trust-separator {
-  opacity: 0.5;
-}
-
-.sonic-footer-status {
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  background: linear-gradient(90deg, var(--jazer-cyan), var(--jazer-purple), var(--jazer-pink), var(--jazer-cyan));
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.footer-quote {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.35);
   margin: 0;
   min-height: 1.25em;
   transition: opacity 0.5s ease;
-  animation: gradientFlow 8s linear infinite;
 }
 
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
-}
+/* ============================================
+   RESPONSIVE - Mobile
+   ============================================ */
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .sonic-footer-logo,
-  .sonic-footer-social,
-  .sonic-nav-link,
-  .sonic-footer-status {
-    transition: none;
-  }
-  .sonic-footer-social:hover,
-  .sonic-footer-brand:hover .sonic-footer-logo {
-    transform: none;
+@media (max-width: 768px) {
+  .footer-inner {
+    width: calc(100% - 1.5rem);
+    padding: 1.75rem 1.25rem;
+    gap: 1.25rem;
   }
   
-  /* Disable gradient animations */
-  .brand-gradient,
-  .sonic-footer-status {
-    animation: none !important;
-    background-position: 0% 50%;
+  .footer-logo {
+    height: 32px;
+  }
+  
+  .footer-descriptor {
+    font-size: 0.7rem;
+  }
+  
+  .footer-link-grid {
+    max-width: 280px;
+    gap: 0.35rem 0.75rem;
+  }
+  
+  .footer-link {
+    font-size: 0.75rem;
+    padding: 0.6rem 0.5rem;
+  }
+  
+  .footer-socials {
+    gap: 0.4rem;
+  }
+  
+  .footer-social-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
   }
 }
 
-/* Responsive Tweak for Stream */
-@media (max-width: 768px) {
-    .system-message { font-size: 0.65rem; padding-right: 2rem; }
-    
-    .sonic-footer-nav { 
-        gap: 1rem; 
-        padding: 0 1rem;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3x2 Grid */
-        justify-items: center;
-        text-align: center;
-    }
-    
-    .sonic-footer-socials { gap: 0.75rem; }
-    
-    .sonic-footer-inner {
-        width: calc(100% - 2rem);
-        padding: 1.5rem 1rem;
-    }
+@media (max-width: 420px) {
+  .footer-inner {
+    padding: 1.5rem 1rem;
+  }
+  
+  .footer-link {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.4rem;
+    min-height: 44px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer-brand-link,
+  .footer-link,
+  .footer-social-btn,
+  .footer-quote {
+    transition: none;
+  }
+  
+  .brand-gradient {
+    animation: none;
+    background-position: 0% 50%;
+  }
 }
 </style>

@@ -411,10 +411,22 @@
 /* BENTO GRID */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  max-width: 600px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
+  max-width: 560px;
   margin: 0 auto;
+}
+
+/* Mobile: Single column stack */
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  
+  .bento-card--featured {
+    grid-column: span 1;
+  }
 }
 
 /* Featured Card (About) */
@@ -425,9 +437,8 @@
   flex-direction: row;
   align-items: center;
   gap: 1.5rem;
-  padding: 2.5rem !important;
-  position: relative;
-  overflow: hidden;
+  padding: 1.5rem !important;
+  min-height: 0;
 }
 
 .bento-card--featured::before {
@@ -473,41 +484,27 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top-color: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 2rem;
+  border-top-color: rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 1.125rem;
   text-decoration: none;
   color: white;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  gap: 0.5rem;
+  min-width: 0;
 }
 
+/* Remove pseudo-element shimmer on regular cards */
 .bento-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.bento-card:hover::before {
-  opacity: 1;
+  display: none;
 }
 
 .bento-card:hover {
-  transform: translateY(-4px);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .bento-card:focus-visible {
@@ -519,45 +516,66 @@
   transform: translateY(-2px);
 }
 
+/* Card Content Wrapper */
+.bento-card .bento-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 0.25rem;
+}
+
+/* Featured card content has more space */
+.bento-card--featured .bento-content {
+  gap: 0.35rem;
+}
+
 .bento-icon-sm {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   display: grid;
   place-items: center;
-  transition: all 0.3s ease;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .bento-card:hover .bento-icon-sm {
-  background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(168, 85, 247, 0.12));
-  border-color: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .bento-icon-sm img {
   width: 20px;
   height: 20px;
   filter: invert(1) brightness(0.9);
-  transition: filter 0.3s ease;
 }
 
-.bento-card:hover .bento-icon-sm img {
-  filter: invert(1) brightness(1.1);
-}
-
-.jazer-h3 { 
-  font-size: 1.5rem; 
+/* Card Typography */
+.bento-card .jazer-h3 { 
+  font-size: 1.35rem; 
   margin: 0;
   line-height: 1.2;
 }
 
-.jazer-h5 { 
-  font-size: 1.1rem; 
+.bento-card .jazer-h5 { 
+  font-size: 0.95rem; 
   margin: 0;
   line-height: 1.3;
   font-weight: 700;
+}
+
+.bento-card .text-muted {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.bento-card .text-xs {
+  font-size: 0.75rem;
 }
 
 .text-xs {
@@ -573,25 +591,20 @@
   opacity: 1;
 }
 
+/* CTA Styling - Pinned to Bottom */
 .bento-cta, .bento-cta-sm {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   color: var(--jazer-cyan);
-  letter-spacing: 0.08em;
-  margin-top: auto;
-  opacity: 0.8;
+  letter-spacing: 0.04em;
   font-weight: 700;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.4rem;
 }
 
 .bento-card:hover .bento-cta,
 .bento-card:hover .bento-cta-sm {
-  opacity: 1;
-  color: var(--jazer-cyan);
-  gap: 0.65rem;
+  color: #fff;
 }
 
 /* ============================================
@@ -750,7 +763,13 @@
 
   /* Bento cards mobile adjustments */
   .bento-grid {
-    gap: 0.85rem;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-width: 100%;
+  }
+  
+  .bento-card--featured {
+    grid-column: span 1;
   }
 
   .bento-card {
