@@ -16,39 +16,49 @@ const announcement = {
 
 const pathways = [
     {
-        title: 'Music',
-        href: `${base}music`,
-        desc: 'Releases and playlists',
-        cta: 'Listen ->',
-        icon: `${base}assets/images/icons/music/headphones-black.svg`
-    },
-    {
         title: 'Videos & Visuals',
         href: `${base}videos`,
         desc: 'Visuals and behind-the-scenes',
         cta: 'Watch ->',
-        icon: `${base}assets/images/icons/navigation/videos.svg`
-    },
-    {
-        title: 'About',
-        href: `${base}about`,
-        desc: 'The story and mission',
-        cta: 'Read ->',
-        icon: `${base}assets/images/icons/navigation/about.svg`
+        icon: `${base}assets/images/icons/navigation/videos.svg`,
+        accent: 'cyan',
+        badge: null
     },
     {
         title: 'Shop',
         href: `${base}shop`,
         desc: 'Merch and essentials',
         cta: 'Shop ->',
-        icon: `${base}assets/images/icons/navigation/shop.svg`
+        icon: `${base}assets/images/icons/navigation/shop.svg`,
+        accent: 'yellow',
+        badge: null
+    },
+    {
+        title: 'Music',
+        href: `${base}music`,
+        desc: 'Releases and playlists',
+        cta: 'Listen ->',
+        icon: `${base}assets/images/icons/music/headphones-black.svg`,
+        accent: 'pink',
+        badge: 'Coming Soon'
+    },
+    {
+        title: 'About',
+        href: `${base}about`,
+        desc: 'The story and mission',
+        cta: 'Read ->',
+        icon: `${base}assets/images/icons/navigation/about.svg`,
+        accent: 'purple',
+        badge: null
     },
     {
         title: 'Contact',
         href: `${base}contact`,
         desc: 'Collaborations and inquiries',
         cta: 'Connect ->',
-        icon: `${base}assets/images/icons/navigation/contact.svg`
+        icon: `${base}assets/images/icons/navigation/contact.svg`,
+        accent: 'green',
+        badge: null
     }
 ];
 
@@ -142,24 +152,7 @@ const mutedStatuses = ['TBA', 'TBD'];
           <a href="#explore" class="cta-secondary">Explore</a>
         </div>
 
-        <!-- JOIN BEAM (Moved to Left Col) -->
-        <div class="hero-join-beam">
-          <JoinBeamCTA
-            id="updates"
-            sectionClass="home-updates-mini"
-            sectionStyle="padding: 1rem 0 0; background: transparent;"
-            captureStyle="max-width: 100%; margin: 0;"
-            subtitleStyle="font-size: 0.85rem; margin: 0.5rem 0;"
-            subject="New subscriber from JaZeR Home page"
-            buttonLabel="Join"
-            proofText=""
-            helperText="Updates + early drops. No spam."
-          >
-            <Fragment slot="subtitle">
-              Join the Beam for updates & exclusive drops.
-            </Fragment>
-          </JoinBeamCTA>
-        </div>
+
       </div>
     </section>
 
@@ -173,7 +166,7 @@ const mutedStatuses = ['TBA', 'TBD'];
         
         <div class="bento-grid">
           {/* About Card - Featured Larger */}
-          <a href={`${base}about`} class="bento-card bento-card--featured" data-animate="zoom-in">
+          <a href={`${base}about`} class="bento-card bento-card--featured" data-accent="purple" data-animate="zoom-in" data-stagger="0">
             <div class="bento-icon">
               <img src={`${base}assets/images/icons/navigation/about.svg`} alt="" loading="lazy"/>
             </div>
@@ -182,11 +175,20 @@ const mutedStatuses = ['TBA', 'TBD'];
               <p class="text-muted">Origin story, mission, and vision</p>
               <span class="bento-cta">Read the story -></span>
             </div>
+            <div class="card-glow-pulse"></div>
           </a>
 
           {/* Other Cards */}
           {pathways.filter(p => p.title !== 'About').map((pathway, index) => (
-            <a href={pathway.href} class="bento-card" data-animate="fade-up" data-animate-delay={index * 50}>
+            <a 
+              href={pathway.href} 
+              class="bento-card" 
+              data-accent={pathway.accent}
+              data-animate="fade-up" 
+              data-animate-delay={index * 50}
+              data-stagger={index + 1}
+            >
+              {pathway.badge && <span class="card-badge">{pathway.badge}</span>}
               <div class="bento-icon-sm">
                  <img src={pathway.icon} alt="" loading="lazy" />
               </div>
@@ -236,3 +238,49 @@ const mutedStatuses = ['TBA', 'TBD'];
       ))}
     </div>
   </div>
+
+  <!-- JOIN THE BEAM - Bottom CTA -->
+  <section class="join-beam-section">
+    <JoinBeamCTA
+      id="updates"
+      inline={true}
+      captureStyle="max-width: 500px; margin: 0 auto;"
+      subtitleStyle="font-size: 0.9rem; margin: 0.75rem 0;"
+      subject="New subscriber from JaZeR Home page"
+      buttonLabel="Join"
+      proofText=""
+      helperText="Updates + early drops. No spam."
+    >
+      <Fragment slot="subtitle">
+        Join the Beam for updates & exclusive drops.
+      </Fragment>
+    </JoinBeamCTA>
+  </section>
+
+  <!-- 3D Tilt Effect Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.bento-card');
+      const maxTilt = 8; // Maximum tilt angle in degrees
+      
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = ((y - centerY) / centerY) * -maxTilt;
+          const rotateY = ((x - centerX) / centerX) * maxTilt;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px) scale(1.02)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+        });
+      });
+    });
+  </script>
+</BaseLayout>

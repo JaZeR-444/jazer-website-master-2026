@@ -9,26 +9,43 @@ const {
   subject,
   buttonLabel,
   proofText,
-  helperText = ''
+  helperText = '',
+  inline = false
 } = Astro.props;
 ---
-<section class={sectionClass} id={id} style={sectionStyle}>
-  <div class="container">
-    <div class="email-capture" data-animate="fade-up" style={captureStyle}>
-      <img
-        src={`${base}assets/images/join-the-beam (1500 x 500 px) (300 x 100 px).svg`}
-        alt="Join the Beam"
-        class="email-capture-title-img"
-        data-animate="fade-up"
-      />
-      <p class="email-capture-subtitle" style={subtitleStyle}>
-        <slot name="subtitle" />
-      </p>
-      <form
-        class="email-capture-form"
-        action="https://formspree.io/f/YOUR_FORM_ID"
-        method="POST"
-      >
+{/* If inline mode, skip section/container wrappers */}
+{inline ? (
+  <div class="email-capture email-capture-enhanced" data-animate="fade-up" style={captureStyle} id={id}>
+    <!-- Subtle gradient border glow -->
+    <div class="email-capture-glow email-capture-glow--subtle"></div>
+    
+    <img
+      src={`${base}assets/images/join-the-beam (1500 x 500 px) (300 x 100 px).svg`}
+      alt="Join the Beam"
+      class="email-capture-title-img"
+      data-animate="fade-up"
+    />
+    
+    <p class="email-capture-subtitle" style={subtitleStyle}>
+      <slot name="subtitle" />
+    </p>
+    
+    <!-- Benefit chips - 2 only -->
+    <div class="benefit-chips">
+      <span class="benefit-chip">📩 Early Access</span>
+      <span class="benefit-chip">🎵 Exclusive Drops</span>
+    </div>
+    
+    <form
+      class="email-capture-form email-capture-form-inline"
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+    >
+      <div class="input-wrapper">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M22 6L12 13L2 6"/>
+        </svg>
         <input
           type="email"
           name="email"
@@ -37,24 +54,126 @@ const {
           required
           autocomplete="email"
         />
-        <input type="hidden" name="_subject" value={subject} />
-        <button type="submit" class="email-capture-btn">
-          <span>{buttonLabel}</span>
-          <span class="btn-arrow">→</span>
-        </button>
-      </form>
-      {helperText && <p class="email-capture-helper">{helperText}</p>}
-      <p class="email-capture-status" role="status" aria-live="polite"></p>
-      <div class="email-capture-proof">
-        <div class="email-capture-avatars">
-          <span class="social-avatar-gradient"></span>
-          <span class="social-avatar-gradient"></span>
-          <span class="social-avatar-gradient"></span>
-          <span class="social-avatar-gradient"></span>
-        </div>
-        <span set:html={proofText}></span>
       </div>
+      <input type="hidden" name="_subject" value={subject} />
+      <button type="submit" class="email-capture-btn">
+        <span class="btn-text">{buttonLabel}</span>
+        <span class="btn-arrow">→</span>
+        <span class="btn-spinner"></span>
+      </button>
+    </form>
+    
+    <!-- Helper text with lock icon -->
+    {helperText && <p class="email-capture-helper"><span class="lock-icon">🔒</span> {helperText}</p>}
+    
+    <!-- Status message -->
+    <p class="email-capture-status" role="status" aria-live="polite"></p>
+    
+    <!-- Social proof - authentic messaging -->
+    <div class="email-capture-proof">
+      <span class="proof-badge">⚡ Be the first to know</span>
+    </div>
+    
+    <!-- Success overlay -->
+    <div class="success-overlay">
+      <span class="success-check">✓</span>
+      <span class="success-text">You're in!</span>
     </div>
   </div>
-</section>
+) : (
+  <section class={sectionClass} id={id} style={sectionStyle}>
+    <div class="container">
+      <div class="email-capture email-capture-enhanced" data-animate="fade-up" style={captureStyle}>
+        <!-- Subtle gradient border glow -->
+        <div class="email-capture-glow email-capture-glow--subtle"></div>
+        
+        <img
+          src={`${base}assets/images/join-the-beam (1500 x 500 px) (300 x 100 px).svg`}
+          alt="Join the Beam"
+          class="email-capture-title-img"
+          data-animate="fade-up"
+        />
+        
+        <p class="email-capture-subtitle" style={subtitleStyle}>
+          <slot name="subtitle" />
+        </p>
+        
+        <!-- Benefit chips - 2 only -->
+        <div class="benefit-chips">
+          <span class="benefit-chip">📩 Early Access</span>
+          <span class="benefit-chip">🎵 Exclusive Drops</span>
+        </div>
+        
+        <form
+          class="email-capture-form email-capture-form-inline"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <div class="input-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M22 6L12 13L2 6"/>
+            </svg>
+            <input
+              type="email"
+              name="email"
+              class="email-capture-input"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+          <input type="hidden" name="_subject" value={subject} />
+          <button type="submit" class="email-capture-btn">
+            <span class="btn-text">{buttonLabel}</span>
+            <span class="btn-arrow">→</span>
+            <span class="btn-spinner"></span>
+          </button>
+        </form>
+        
+        <!-- Helper text with lock icon -->
+        {helperText && <p class="email-capture-helper"><span class="lock-icon">🔒</span> {helperText}</p>}
+        
+        <!-- Status message -->
+        <p class="email-capture-status" role="status" aria-live="polite"></p>
+        
+        <!-- Social proof - authentic messaging -->
+        <div class="email-capture-proof">
+          <span class="proof-badge">⚡ Be the first to know</span>
+        </div>
+        
+        <!-- Success overlay -->
+        <div class="success-overlay">
+          <span class="success-check">✓</span>
+          <span class="success-text">You're in!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
 
+<script>
+  // Form submission handling
+  document.querySelectorAll('.email-capture-form-inline').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.email-capture-btn');
+      const card = form.closest('.email-capture-enhanced');
+      
+      // Add loading state
+      btn.classList.add('loading');
+      
+      // Simulate submission (replace with actual form handling)
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        card.classList.add('success');
+        
+        // Reset after delay
+        setTimeout(() => {
+          card.classList.remove('success');
+          form.reset();
+        }, 3000);
+      }, 1500);
+    });
+  });
+</script>

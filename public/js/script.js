@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        navLinks.querySelectorAll('a').forEach((link) => {
+        // Handle regular navigation links (NOT dropdown toggles)
+        navLinks.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach((link) => {
             link.addEventListener('click', closeNav);
         });
 
@@ -112,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle.addEventListener('click', function(e) {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
+                e.stopPropagation();
+                
                 const parentDropdown = this.closest('.nav-dropdown');
                 const isExpanded = this.getAttribute('aria-expanded') === 'true';
                 
@@ -129,8 +132,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Toggle current dropdown
                 parentDropdown.classList.toggle('active');
                 this.setAttribute('aria-expanded', String(!isExpanded));
+                
+                // Scroll the dropdown into view if opening
+                if (!isExpanded) {
+                    setTimeout(() => {
+                        const dropdownContent = parentDropdown.querySelector('.nav-dropdown-content');
+                        if (dropdownContent) {
+                            dropdownContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    }, 100);
+                }
             }
         });
+        
+        // Prevent double-tap navigation on mobile
+        toggle.addEventListener('touchstart', function(e) {
+            if (window.innerWidth <= 768) {
+                this.dataset.touched = 'true';
+            }
+        }, { passive: true });
     });
 
     // ============================================

@@ -49,12 +49,10 @@ const releases = [
 
 // Streaming Platforms
 const streamingPlatforms = [
-  { name: 'Spotify', href: '#', icon: 'music-note-black.svg', color: '#1DB954' },
-  { name: 'Apple Music', href: '#', icon: 'playlist-black.svg', color: '#FA233B' },
-  { name: 'SoundCloud', href: '#', icon: 'soundcloud-round-icon.svg', color: '#FF5500', isRound: true },
-  { name: 'YouTube', href: '#', icon: 'youtube-round-icon.svg', color: '#FF0000', isRound: true },
-  { name: 'Tidal', href: '#', icon: 'album-black.svg', color: '#000000' },
-  { name: 'Amazon Music', href: '#', icon: 'playlist-black.svg', color: '#25D1DA' }
+  { name: 'Spotify', href: '#', icon: 'spotify-round-icon.svg' },
+  { name: 'Apple Music', href: '#', icon: 'apple-music-round-icon.svg' },
+  { name: 'SoundCloud', href: '#', icon: 'soundcloud-round-icon.svg' },
+  { name: 'YouTube', href: '#', icon: 'youtube-round-icon.svg' }
 ];
 
 // FAQ Items
@@ -131,12 +129,9 @@ const faqItems = [
     <style>
       /* Page-Specific Overrides */
       .music-hero-section {
-          min-height: 80vh;
-          display: flex;
           align-items: center;
           position: relative;
-          background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.05), transparent 60%),
-                      radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.05), transparent 60%);
+          background: transparent;
           overflow: hidden;
       }
 
@@ -163,6 +158,50 @@ const faqItems = [
       @keyframes sonicPulse {
           0%, 100% { height: 15%; opacity: 0.1; }
           50% { height: 70%; opacity: 0.4; }
+      }
+
+      /* Glitch Effect */
+      .glitch-text {
+        position: relative;
+        display: inline-block;
+      }
+      .glitch-text::before,
+      .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0f0f14; /* Match bg */
+      }
+      .glitch-text::before {
+        left: 2px;
+        text-shadow: -1px 0 #cc00ff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim-1 5s infinite linear alternate-reverse;
+      }
+      .glitch-text::after {
+        left: -2px;
+        text-shadow: -1px 0 #00ffff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim-2 5s infinite linear alternate-reverse;
+      }
+      @keyframes glitch-anim-1 {
+        0% { clip: rect(30px, 9999px, 10px, 0); }
+        20% { clip: rect(30px, 9999px, 80px, 0); }
+        40% { clip: rect(60px, 9999px, 20px, 0); }
+        60% { clip: rect(10px, 9999px, 50px, 0); }
+        80% { clip: rect(50px, 9999px, 30px, 0); }
+        100% { clip: rect(70px, 9999px, 90px, 0); }
+      }
+      @keyframes glitch-anim-2 {
+        0% { clip: rect(15px, 9999px, 50px, 0); }
+        20% { clip: rect(60px, 9999px, 20px, 0); }
+        40% { clip: rect(10px, 9999px, 80px, 0); }
+        60% { clip: rect(40px, 9999px, 10px, 0); }
+        80% { clip: rect(80px, 9999px, 40px, 0); }
+        100% { clip: rect(20px, 9999px, 60px, 0); }
       }
 
       .music-hero-content {
@@ -225,23 +264,43 @@ const faqItems = [
       
       .discography-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 3rem;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 1.5rem;
+          margin-top: 2rem;
       }
 
       .release-card {
-          background: rgba(15, 15, 20, 0.6);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 16px;
+          background: rgba(15, 15, 20, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          border-radius: 12px; /* More compact radius */
           overflow: hidden;
           transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-          group: hover;
+          display: flex; /* Horizontal compact layout on desktop? No, vertical but tighter */
+          flex-direction: column;
       }
       .release-card:hover {
-          transform: translateY(-8px);
-          border-color: rgba(6, 182, 212, 0.3);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+          transform: translateY(-4px); /* Smoother lift */
+          border-color: rgba(6, 182, 212, 0.4);
+          background: rgba(15, 15, 20, 0.7);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+      
+      /* Compact Text Adjustments */
+      .release-details {
+          padding: 1rem 1.25rem; /* Reduced padding */
+      }
+      .release-title {
+          font-size: 1.2rem; /* Slightly smaller title */
+          margin-bottom: 0.25rem;
+      }
+      .release-meta {
+          margin-bottom: 0.75rem;
+          font-size: 0.8rem;
+      }
+      .release-card p {
+          margin-bottom: 1rem !important;
+          font-size: 0.85rem !important;
+          line-height: 1.4 !important;
       }
 
       .release-cover {
@@ -322,8 +381,8 @@ const faqItems = [
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
-          gap: 1.5rem;
-          margin-top: 3rem;
+          gap: 0.75rem;
+          margin-top: 2rem;
       }
       .platform-pill {
           display: flex;
@@ -351,8 +410,236 @@ const faqItems = [
       }
 
       @media (max-width: 768px) {
-        .music-hero-section { min-height: auto; padding: 6rem 0 4rem; }
-        .discography-grid { grid-template-columns: 1fr; }
+        .music-hero-section { min-height: auto; padding: 4rem 0 2rem; }
+        
+        /* Force 3 Columns on Mobile for ALL grids */
+        .discography-grid,
+        .faq-grid,
+        .platform-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.25rem;
+          justify-content: stretch;
+        }
+
+        /* Compact Card Styles for Release Grid */
+        .release-card {
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          border-radius: 8px;
+        }
+        .release-details {
+          padding: 0.5rem 0.25rem;
+        }
+        .release-title {
+          font-size: 0.65rem;
+          margin-bottom: 0.1rem;
+          line-height: 1.1;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .release-meta {
+          font-size: 0.5rem;
+          margin-bottom: 0.25rem;
+          gap: 0.25rem;
+        }
+        .release-details p { display: none !important; }
+        .release-link { font-size: 0.6rem; gap: 0.25rem; }
+        .status-badge {
+          font-size: 0.4rem;
+          padding: 0.15rem 0.3rem;
+          top: 0.5rem; right: 0.5rem;
+        }
+        .meta-divider { display: none; }
+        .release-meta span { display: block; width: 100%; }
+
+        /* Compact Styles for FAQ Grid */
+        .faq-grid { margin: 1rem 0; }
+        .premium-glass-card {
+            padding: 0.5rem !important;
+            border-left-width: 2px !important;
+            min-height: 80px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .premium-glass-card h3 {
+            font-size: 0.6rem !important;
+            line-height: 1.1;
+            margin-bottom: 0.25rem !important;
+        }
+        .premium-glass-card p {
+            font-size: 0.5rem !important;
+            line-height: 1.2 !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Compact Styles for Platform Grid */
+        .platform-pill { 
+            padding: 0 !important;
+        }
+        .platform-pill img { width: 28px !important; height: 28px !important; }
+
+        .countdown-val { font-size: 1.25rem; }
+
+        /* Compact Featured Track Section */
+        .featured-track-container {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            padding: 1.75rem 1rem;
+            padding-right: 4rem; /* Space for the absolute button */
+            gap: 1rem;
+            text-align: left;
+            align-items: center;
+            position: relative;
+        }
+        .featured-track-visual {
+            margin-bottom: 0;
+            justify-content: flex-start;
+        }
+        .vinyl-container {
+            max-width: 80px;
+            margin: 0;
+        }
+        .featured-track-info {
+            gap: 0.25rem;
+        }
+        .featured-header {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .featured-badge-pill {
+            font-size: 0.55rem;
+            padding: 0.15rem 0.5rem;
+            margin-bottom: 0;
+        }
+        .featured-title {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+        .featured-artist {
+            font-size: 0.85rem;
+        }
+        .audio-visualizer {
+            display: none; /* Hide visualizer on mobile to save space */
+        }
+        .play-btn-circle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px; height: 40px;
+            margin: 0;
+        }
+        .play-icon, .pause-icon { width: 16px; height: 16px; }
+        .featured-meta-row {
+            justify-content: flex-start;
+            gap: 0.75rem;
+            margin-top: 0.25rem;
+            font-size: 0.7rem;
+        }
+      }
+      
+      /* FAQ Grid Base Style */
+      .faq-grid {
+          max-width: 700px; 
+          margin: 2rem auto; 
+          display: grid; 
+          gap: 1rem;
+      }
+      
+      /* Countdown Styles */
+      .countdown-container {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .countdown-val {
+        font-family: 'Courier New', monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--jazer-cyan);
+      }
+      .countdown-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        letter-spacing: 0.1em;
+      }
+      
+      /* Audio Play Button */
+      .play-btn-circle {
+        width: 50px; height: 50px;
+        border-radius: 50%;
+        background: var(--jazer-cyan);
+        display: flex; 
+        align-items: center; justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+      }
+      .play-btn-circle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(6, 182, 212, 0.5);
+      }
+      .play-icon { width: 20px; height: 20px; fill: #000; margin-left: 3px; }
+      .pause-icon { width: 18px; height: 18px; fill: #000; display: none; }
+      .playing .play-icon { display: none; }
+      .playing .pause-icon { display: block; }
+      
+      /* Ticker Styles */
+      .home-ticker {
+        border-top: 1px solid rgba(255,255,255,0.05);
+        background: rgba(0,0,0,0.3);
+        padding: 0.8rem 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+      .home-ticker-track {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: tickerScroll 120s linear infinite;
+        width: max-content;
+      }
+      .home-ticker-track:hover { animation-play-state: paused; }
+      .ticker-item {
+        font-family: 'Courier New', monospace;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: rgba(255, 255, 255, 0.6);
+        padding: 0 0.75rem;
+      }
+      .ticker-sep {
+        color: var(--jazer-cyan);
+        opacity: 0.5;
+        font-size: 0.7rem;
+        padding: 0 0.5rem;
+      }
+      @keyframes tickerScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      @media (max-width: 768px) {
+        .home-ticker { padding: 0.4rem 0; }
+        .ticker-item { font-size: 0.55rem; padding: 0 0.4rem; }
+        .ticker-sep { font-size: 0.5rem; }
       }
     </style>
   </Fragment>
@@ -371,13 +658,28 @@ const faqItems = [
         <span>SYSTEM STATUS: ONLINE</span>
       </div>
       
-      <h1 class="music-hero-title-text" style="background: none; -webkit-text-fill-color: initial;">
-        <img 
-          src={`${base}assets/images/Featured Content (450 x 150 px).svg`} 
-          alt="Featured Content" 
-          style="width: 100%; max-width: 600px; height: auto; filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.3));"
-        />
-      </h1>
+      <img
+        src={`${base}assets/images/Transmission Incoming (429 x 150 px).svg`}
+        alt="Transmission Incoming"
+        class="music-hero-title-img"
+        style="max-width: 100%; height: auto; margin-bottom: 1.5rem;"
+      />
+      
+      <!-- Countdown -->
+      <div id="countdown" class="countdown-container">
+        <div class="countdown-item">
+          <span class="countdown-val">364</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-val">23</span>
+          <span class="countdown-label">Hrs</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-val">59</span>
+          <span class="countdown-label">Mins</span>
+        </div>
+      </div>
       
       <p class="music-hero-description">
         The archive of JaZeR's auditory transmissions. <br/>
@@ -460,8 +762,15 @@ const faqItems = [
         </div>
       
         <div class="featured-track-info">
-          <div class="featured-header">
+          <div class="featured-header" style="display: flex; align-items: center; justify-content: space-between;">
             <span class="featured-badge-pill">🔥 New Release</span>
+            <div id="audio-player-btn" class="play-btn-circle" role="button" aria-label="Play Preview">
+               <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+               <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </div>
+            <audio id="track-audio" preload="none">
+               <source src={`${base}assets/audio/preview_placeholder.mp3`} type="audio/mpeg" />
+            </audio>
           </div>
           <h2 class="featured-title">In Due Time</h2>
           <p class="featured-artist">JaZeR</p>
@@ -508,9 +817,10 @@ const faqItems = [
               href={platform.href} 
               class="platform-pill"
               aria-label={`${platform.name} - Coming soon`}
+              title={platform.name}
             >
               <img 
-                src={`${base}assets/images/icons/${platform.isRound ? 'social' : 'music'}/${platform.icon}`} 
+                src={`${base}assets/images/icons/social/${platform.icon}`} 
                 alt="" 
                 loading="lazy" 
               />
@@ -536,15 +846,11 @@ const faqItems = [
         <h2 class="section-title text-center gradient-text">Frequencies FAQ</h2>
       </div>
       
-      <div style="max-width: 700px; margin: 2rem auto; display: grid; gap: 1rem;">
+      <div class="faq-grid">
         {faqItems.map((item, index) => (
-          <div class="premium-glass-card" style="padding: 1.5rem 2rem; border-left: 3px solid var(--jazer-cyan);" data-animate="fade-up" data-animate-delay={index * 100}>
-            <h3 style="font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">
-              {item.question}
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.938rem; margin: 0;">
-              {item.answer}
-            </p>
+          <div class="faq-card" data-animate="fade-up" data-animate-delay={index * 100}>
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
           </div>
         ))}
       </div>
@@ -552,20 +858,84 @@ const faqItems = [
   </section>
 
   <!-- Email Signup CTA -->
-  <div id="join-beam" style="scroll-margin-top: 100px;">
-    <JoinBeamCTA
-      sectionStyle="padding: 6rem 0;"
-      captureStyle="max-width: 700px; margin: 0 auto;"
-      subtitleStyle="font-size: 1.125rem; max-width: 500px; margin: 1.5rem auto;"
-      subject="New subscriber from JaZeR Music page"
-      buttonLabel="Initialize Uplink"
-      proofText="Join 200+ others waiting for the signal"
-    >
-      <Fragment slot="subtitle">
-        Secure your place in the beam. Priority access to transmissions, visuals, and data drops in 2026.
-      </Fragment>
-    </JoinBeamCTA>
+    <div id="join-beam" class="join-beam-section" style="max-width: 600px; margin: 0 auto; padding: 2rem 1rem;">
+      <JoinBeamCTA
+        inline={true}
+        captureStyle="max-width: 100%; margin: 0;"
+        subtitleStyle="font-size: 1rem; margin: 0.75rem 0;"
+        subject="New subscriber from JaZeR Music page"
+        buttonLabel="Initialize Uplink"
+        proofText=""
+      >
+        <Fragment slot="subtitle">
+          Secure your place in the beam. Priority access to transmissions, visuals, and data drops in 2026.
+        </Fragment>
+      </JoinBeamCTA>
+    </div>
   </div>
+
+  <!-- Bottom Ticker -->
+  <div class="home-ticker" style="border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.3);">
+    <div class="home-ticker-track">
+      {[...Array(8)].map(() => (
+        <>
+          <span class="ticker-item">AUDITORY TRANSMISSIONS</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">JOIN THE BEAM</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">EST. 2026</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">INCOMING SIGNALS</span>
+          <span class="ticker-sep">::</span>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    // Audio Player Logic
+    const playBtn = document.getElementById('audio-player-btn');
+    const audio = document.getElementById('track-audio');
+    
+    if(playBtn && audio) {
+      playBtn.addEventListener('click', () => {
+        if(audio.paused) {
+          audio.play();
+          playBtn.classList.add('playing');
+        } else {
+          audio.pause();
+          playBtn.classList.remove('playing');
+        }
+      });
+      
+      audio.addEventListener('ended', () => {
+        playBtn.classList.remove('playing');
+      });
+    }
+
+    // Simple Countdown Logic
+    const targetDate = new Date('2026-06-01T00:00:00').getTime();
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      
+      const vals = document.querySelectorAll('.countdown-val');
+      if(vals.length >= 3) {
+        vals[0].innerText = days > 0 ? days : '0';
+        vals[1].innerText = hours > 0 ? hours : '0';
+        vals[2].innerText = minutes > 0 ? minutes : '0';
+      }
+    }
+    
+    // Initial call and interval
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 
 </BaseLayout>
 
