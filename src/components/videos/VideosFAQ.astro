@@ -22,14 +22,19 @@ const faqs = [
     </h2>
     
     <div class="faq-list">
-      {faqs.map((item) => (
+      {faqs.map((item, index) => (
         <div class="faq-item">
           <details class="group">
-            <summary class="faq-summary">
+            <summary
+              class="faq-summary"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${index}`}
+              role="button"
+            >
               <span class="faq-question">{item.q}</span>
               <span class="faq-icon">▼</span>
             </summary>
-            <div class="faq-answer">
+            <div class="faq-answer" id={`faq-answer-${index}`}>
               {item.a}
             </div>
           </details>
@@ -44,6 +49,17 @@ const faqs = [
     padding: 5rem 0;
     background: rgba(0, 0, 0, 0.2);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 3rem 0;
+    }
+
+    .faq-header {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
   }
 
   .container {
@@ -93,6 +109,11 @@ const faqs = [
     cursor: pointer;
     list-style: none;
   }
+
+  .faq-summary:focus-visible {
+    outline: 2px solid var(--jazer-cyan);
+    outline-offset: 2px;
+  }
   
   /* Hide default marker */
   .faq-summary::-webkit-details-marker {
@@ -120,4 +141,43 @@ const faqs = [
     color: var(--text-muted);
     line-height: 1.6;
   }
+
+  @media (max-width: 480px) {
+    .faq-section {
+      padding: 2rem 0;
+    }
+
+    .faq-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-summary {
+      min-height: 48px; /* ensure easy tap */
+      padding: 1rem 1.25rem;
+      gap: 0.75rem;
+    }
+
+    .faq-question {
+      font-size: 1rem;
+    }
+
+    .faq-answer {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
 </style>
+
+<script>
+  document.querySelectorAll('.faq-item details').forEach((details) => {
+    const summary = details.querySelector('summary');
+    if (!summary) return;
+
+    const updateExpanded = () => {
+      summary.setAttribute('aria-expanded', details.open ? 'true' : 'false');
+    };
+
+    updateExpanded();
+    details.addEventListener('toggle', updateExpanded);
+  });
+</script>

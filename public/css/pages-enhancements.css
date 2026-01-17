@@ -10,7 +10,7 @@
     overflow: hidden;
 }
 
-.page-hero::before {
+/* .page-hero::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -22,7 +22,7 @@
     filter: blur(60px);
     z-index: 0;
     pointer-events: none;
-}
+} */
 
 .page-hero-title {
     font-size: 3.5rem;

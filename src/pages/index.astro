@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+import FloatingNotes from '../components/FloatingNotes.astro';
 
 const base = import.meta.env.BASE_URL;
 const site = Astro.site;
 const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
 const ogImage = site
-    ? new URL(`${base}assets/images/JaZeR Main Logo.jpg`, site).toString()
-    : `${base}assets/images/JaZeR Main Logo.jpg`;
+    ? new URL(`${base}assets/images/jazer-cosmic-soundbirth.png`, site).toString()
+    : `${base}assets/images/jazer-cosmic-soundbirth.png`;
 
 const announcement = {
     href: `${base}music`,
@@ -133,9 +134,11 @@ const mutedStatuses = ['TBA', 'TBD'];
     <link rel="canonical" href={canonical} />
   </Fragment>
 
-  <div class="home-bento-layout">
+  <FloatingNotes />
+  
+  <div class="home-bento-layout" style="position: relative;">
     <!-- LEFT COLUMN: HERO -->
-    <section class="home-bento-left">
+    <section class="home-bento-left" style="z-index: 1;">
       <div class="hero-content home-hero-content" data-animate="fade-up">
         <img
           class="hero-logo"

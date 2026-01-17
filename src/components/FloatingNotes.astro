@@ -1,0 +1,69 @@
+---
+/* FloatingNotes.astro */
+---
+<div class="floating-notes-bg" aria-hidden="true">
+  <div class="note">♪</div>
+  <div class="note">♫</div>
+  <div class="note">♩</div>
+  <div class="note">𝅘𝅥𝅯</div>
+  <div class="note">𝅘𝅥𝅮</div>
+  <div class="note">♪</div>
+  <div class="note">♫</div>
+  <div class="note">♭</div>
+  <div class="note">♯</div>
+  <div class="note">♪</div>
+  <div class="note">♩</div>
+  <div class="note">♮</div>
+</div>
+
+<style>
+  .floating-notes-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+    background-color: #000000; /* Solid Black */
+  }
+
+  .note {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.15); /* Clean white, low opacity */
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+    font-size: 1.5rem;
+    bottom: -10%;
+    animation: floatUp linear infinite;
+  }
+
+  /* Randomize positions, delays, and subtle variants */
+  .note:nth-child(1) { left: 5%;  animation-duration: 15s; animation-delay: 0s; font-size: 2rem; }
+  .note:nth-child(2) { left: 15%; animation-duration: 23s; animation-delay: 2s; font-size: 1.2rem; opacity: 0.1; }
+  .note:nth-child(3) { left: 25%; animation-duration: 18s; animation-delay: 5s; }
+  .note:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; font-size: 1.8rem; }
+  .note:nth-child(5) { left: 45%; animation-duration: 17s; animation-delay: 8s; }
+  .note:nth-child(6) { left: 55%; animation-duration: 25s; animation-delay: 3s; font-size: 1.4rem; }
+  .note:nth-child(7) { left: 65%; animation-duration: 21s; animation-delay: 6s; }
+  .note:nth-child(8) { left: 75%; animation-duration: 16s; animation-delay: 4s; font-size: 2.2rem; }
+  .note:nth-child(9) { left: 85%; animation-duration: 24s; animation-delay: 7s; }
+  .note:nth-child(10) { left: 95%; animation-duration: 19s; animation-delay: 2s; }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.4;
+    }
+    90% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(-110vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+</style>

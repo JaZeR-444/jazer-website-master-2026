@@ -149,6 +149,11 @@ const {
     transition: transform 0.3s ease;
   }
 
+  .notify-btn:focus-visible {
+    outline: 2px solid var(--jazer-cyan);
+    outline-offset: 3px;
+  }
+
   .video-card:hover .notify-btn {
     transform: scale(1);
   }
@@ -188,6 +193,64 @@ const {
   .video-subtitle {
     font-size: 0.875rem;
     color: var(--text-muted);
+  }
+
+  @media (max-width: 600px) {
+    .video-card {
+      border-radius: 12px;
+    }
+
+    .video-content {
+      padding: 0.75rem;
+    }
+
+    .video-title {
+      font-size: 0.95rem;
+      line-height: 1.2;
+      margin-bottom: 0.2rem;
+    }
+
+    .video-subtitle {
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
+    /* Hide the overlay text on very small screens if needed, or scale it */
+    .notify-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+    }
+    
+    .status-badge {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+
+  @media (hover: none) {
+    .video-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .video-card:hover .thumbnail-bg {
+      transform: none;
+    }
+
+    .hover-overlay {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .notify-btn {
+      min-height: 44px;
+      padding: 0.7rem 1.4rem;
+      transform: none;
+    }
+
+    .video-card:hover .notify-btn {
+      transform: none;
+    }
   }
 
   @keyframes fade-up {

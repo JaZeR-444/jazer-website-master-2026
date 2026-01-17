@@ -3,9 +3,6 @@ const { base = import.meta.env.BASE_URL } = Astro.props;
 ---
 
 <section class="videos-hero">
-  <div class="hero-bg"></div>
-  <div class="hero-noise"></div>
-
   <div class="hero-content container">
     <div class="hero-eyebrow animate-fade-up" style="animation-delay: 0.1s;">
       <span class="eyebrow-badge">
@@ -44,39 +41,28 @@ const { base = import.meta.env.BASE_URL } = Astro.props;
 <style>
   .videos-hero {
     position: relative;
-    padding: 8rem 0 6rem;
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    padding: 6rem 0 4rem; /* Restored safe desktop padding to clear header (Main 80px + 6rem = ~176px total) */
+    min-height: auto; /* Removed forced height centering */
+    display: block; /* Removed flex centering */
     text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .videos-hero {
+      padding: 0 0 3rem; /* Zero padding on mobile */
+    }
   }
 
   .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 2rem 1.5rem 0; /* Applied 2rem top padding to container instead of section to allow mobile override */
     position: relative;
     z-index: 10;
   }
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, var(--bg-dark) 70%);
-    z-index: 0;
-  }
-
-  .hero-noise {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    opacity: 0.4;
-    z-index: 1;
-    pointer-events: none;
-  }
+  /* Removed .hero-bg and .hero-noise as they are replaced by FloatingNotes */
 
   .eyebrow-badge {
     display: inline-block;
@@ -124,50 +110,125 @@ const { base = import.meta.env.BASE_URL } = Astro.props;
     gap: 1rem;
   }
 
+  .cta-button:focus-visible,
+  .cta-secondary:focus-visible {
+    outline: 2px solid var(--jazer-cyan);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .hero-cta {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      width: 100%;
+      margin: 0 auto;
+      gap: 0.5rem;
+    }
+    
+    .cta-button,
+    .cta-secondary {
+      width: 100% !important;
+      min-width: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 44px !important; /* Standard touch height */
+      min-height: 44px !important;
+      max-height: 44px !important;
+      padding: 0 0.25rem !important;
+      margin: 0 !important;
+      font-size: 0.65rem !important; /* Ensure text fits */
+      line-height: normal !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      box-sizing: border-box !important;
+      box-shadow: none !important; /* Remove shadows to equalize visual weight */
+    }
+    
+    .cta-icon {
+      font-size: 1rem !important;
+      line-height: 1 !important;
+      display: block !important;
+      margin-right: 0.35rem !important;
+    }
+
+    .videos-hero {
+      padding: 0 0 3rem;
+      min-height: auto;
+    }
+    
+    .hero-content.container {
+      padding-top: 0; /* Force 0 padding on mobile container */
+    }
+
+    .hero-title img {
+      max-width: min(90vw, 400px) !important;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bottom-fade {
+      height: 2.5rem;
+    }
+  }
+
   .cta-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
     background: var(--gradient-primary);
     color: white;
-    padding: 0.875rem 2rem;
-    border-radius: 9999px;
+    padding: 0.9rem 1.5rem;
+    border-radius: 14px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     font-size: 0.9rem;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.25);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
   }
 
   .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.5);
+    border-color: rgba(255,255,255,0.3);
   }
 
   .cta-secondary {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-    padding: 0.875rem 2rem;
-    border-radius: 9999px;
+    background: rgba(13, 14, 18, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.9rem 1.5rem;
+    border-radius: 14px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     font-size: 0.9rem;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(12px);
   }
 
   .cta-secondary:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-    transform: translateY(-2px);
+    border-color: var(--jazer-cyan);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(6, 182, 212, 0.15);
   }
 
   .hero-bottom-fade {

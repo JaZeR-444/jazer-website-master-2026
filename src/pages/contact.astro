@@ -4,10 +4,14 @@ import ContactHero from '../components/contact/ContactHero.astro';
 import ContactForm from '../components/contact/ContactForm.astro';
 import ContactFAQ from '../components/contact/ContactFAQ.astro';
 import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+import FloatingNotes from '../components/FloatingNotes.astro';
 
 const base = import.meta.env.BASE_URL;
 const site = Astro.site;
 const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+const ogImage = site
+    ? new URL(`${base}assets/images/jazer-cosmic-soundbirth.png`, site).toString()
+    : `${base}assets/images/jazer-cosmic-soundbirth.png`;
 
 const announcement = {
   href: `${base}videos`,
@@ -34,9 +38,13 @@ const announcement = {
       content="Get in touch with JaZeR. Send messages, collaboration requests, press inquiries, or just say hello. We typically respond within 3-5 business days." 
     />
     <link rel="canonical" href={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="twitter:image" content={ogImage} />
   </Fragment>
 
-  <main>
+  <FloatingNotes />
+
+
     <ContactHero />
     
     <ContactForm />
@@ -54,6 +62,6 @@ const announcement = {
         Stay connected. Be the first to hear new music and get exclusive <strong>behind-the-scenes content</strong>.
       </Fragment>
     </JoinBeamCTA>
-  </main>
+
 
 </BaseLayout>

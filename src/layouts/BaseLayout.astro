@@ -45,7 +45,7 @@ const resolvedStyles = extraStyles.map((href) =>
     ))}
     <slot name="head" />
   </head>
-  <body class={bodyClass}>
+  <body class={`${bodyClass}${showAnnouncement && announcement ? ' has-announcement' : ''}`}>
     {showNoiseOverlay && <div class="noise-overlay"></div>}
     {showAnnouncement && announcement && (
       <AnnouncementBar href={announcement.href} text={announcement.text} />

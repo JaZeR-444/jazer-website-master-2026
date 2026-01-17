@@ -695,9 +695,8 @@
     max-width: 100vw;
   }
 
-  /* Contain all sections */
+  /* Contain all sections - NOTE: .container removed to prevent clipping hero content */
   .section,
-  .container,
   .hero,
   .footer {
     max-width: 100vw;
@@ -1225,6 +1224,68 @@
   /* Mobile menu needs to be above everything */
   body.has-announcement .nav-links {
     z-index: 1101;
+  }
+}
+
+/* ============================================
+   17. VIDEOS PAGE MOBILE PASS
+   ============================================ */
+
+@media (max-width: 430px) {
+  body.videos-page .site-nav {
+    padding: 0.35rem 0.5rem;
+  }
+
+  body.videos-page .nav-inner {
+    padding: 0.25rem 0.75rem;
+  }
+
+  body.videos-page .mobile-menu {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+  }
+
+  body.videos-page.has-announcement .announcement-bar {
+    height: 44px;
+    padding: 0 1rem;
+    padding-right: 3rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+
+  body.videos-page.has-announcement .announcement-close {
+    width: 44px;
+    height: 44px;
+    right: 0.25rem;
+  }
+
+  body.videos-page.has-announcement .site-nav {
+    top: 44px !important;
+  }
+
+  body.videos-page .email-section {
+    padding: 3.5rem 0 !important;
+  }
+
+  body.videos-page .email-capture-form-inline {
+    flex-direction: column;
+  }
+
+  body.videos-page .email-capture-input,
+  body.videos-page .email-capture-btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+
+  body.videos-page .email-capture-btn {
+    padding: 0.85rem 1rem;
+  }
+
+  body.videos-page .email-capture-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }
 
