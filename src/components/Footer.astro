@@ -1,0 +1,450 @@
+---
+const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
+const { currentPath = '/' } = Astro.props;
+
+// Normalize path for comparison
+const basePath = base.endsWith('/') ? base.slice(0, -1) : base;
+const normalizedPath = basePath && currentPath.startsWith(basePath)
+  ? currentPath.slice(basePath.length) || '/'
+  : currentPath;
+
+const isHome = normalizedPath === '/';
+const isMusic = normalizedPath.startsWith('/music');
+const isVideos = normalizedPath.startsWith('/videos');
+const isAbout = normalizedPath.startsWith('/about');
+const isShop = normalizedPath.startsWith('/shop');
+const isContact = normalizedPath.startsWith('/contact');
+
+// Primary footer navigation links
+const navLinks = [
+  { href: `${base}`, label: "Home", active: isHome },
+  { href: `${base}music`, label: "Music", active: isMusic },
+  { href: `${base}videos`, label: "Videos", active: isVideos },
+  { href: `${base}shop`, label: "Shop", active: isShop },
+  { href: `${base}about`, label: "About", active: isAbout },
+  { href: `${base}contact`, label: "Contact", active: isContact },
+];
+
+const socials = [
+  { href: "https://instagram.com/jazer_music", label: "Instagram", icon: `${base}assets/images/icons/social/instagram-round-icon.svg` },
+  { href: "https://tiktok.com/@jazer_music", label: "TikTok", icon: `${base}assets/images/icons/social/tiktok-round-logo.svg` },
+  { href: "https://twitter.com/jazer_music", label: "X (Twitter)", icon: `${base}assets/images/icons/social/round-x(twitter)-icon.svg` },
+  { href: "https://youtube.com/@jazer", label: "YouTube", icon: `${base}assets/images/icons/social/youtube-round-icon.svg` },
+  { href: "https://open.spotify.com/artist/jazer", label: "Spotify", icon: `${base}assets/images/icons/social/spotify-round-icon.svg` },
+  { href: "https://music.apple.com/artist/jazer", label: "Apple Music", icon: `${base}assets/images/icons/social/apple-music-round-icon.svg` },
+  { href: "https://soundcloud.com/jazer", label: "SoundCloud", icon: `${base}assets/images/icons/social/soundcloud-round-icon.svg` },
+];
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    
+    <!-- ZONE A: BRAND -->
+    <div class="footer-brand-zone">
+      <a class="footer-brand-link" href={`${base}`} aria-label="JaZeR home">
+        <img
+          src={`${base}assets/images/Vibrant JAZER Bubble Logo (150 x 46 px).svg`}
+          alt="JaZeR"
+          class="footer-logo"
+          width="120"
+          height="40"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <p class="footer-descriptor">Music • Visuals • Digital Storytelling</p>
+    </div>
+
+    <!-- ZONE B: LINKS -->
+    <nav class="footer-links-zone" aria-label="Footer Navigation">
+      <ul class="footer-link-grid">
+        {navLinks.map((link) => (
+          <li>
+            <a 
+              href={link.href} 
+              class={`footer-link ${link.active ? 'is-active' : ''}`}
+            >
+              <span class="link-bracket link-bracket--left">[</span>
+              <span class="link-text">{link.label}</span>
+              <span class="link-bracket link-bracket--right">]</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- ZONE C: TRUST (Social) -->
+    <div class="footer-social-zone">
+      <span class="social-label">Follow</span>
+      <nav class="footer-socials" aria-label="JaZeR social links">
+        {socials.map((s) => (
+          <a
+            class="footer-social-btn"
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            title={s.label}
+          >
+            <img src={s.icon} alt="" aria-hidden="true" />
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <!-- LEGAL ROW -->
+    <div class="footer-legal-zone">
+      <p class="footer-copyright">
+        © {year} <span class="brand-gradient">JaZeR</span>. All Rights Reserved.
+      </p>
+      <p class="footer-quote" data-quotes='["YOUR LIGHT IS REAL. YOUR DREAM IS VALID.", "KEEP BUILDING WHEN IT FEELS HEAVY.", "TURN PAIN INTO POWER, VISIONS INTO REALITY.", "THERE&apos;S STILL MAGIC IN ALL OF THIS.", "YOU&apos;RE CLOSER THAN YOU THINK."]'>
+        "YOUR LIGHT IS REAL. YOUR DREAM IS VALID."
+      </p>
+    </div>
+  </div>
+
+  {/* Rotating Messages Script */}
+  <script is:inline>
+    const quoteEl = document.querySelector('.footer-quote[data-quotes]');
+    if (quoteEl) {
+      try {
+        const quotes = JSON.parse(quoteEl.dataset.quotes);
+        let index = 0;
+        setInterval(() => {
+          index = (index + 1) % quotes.length;
+          quoteEl.style.opacity = '0';
+          setTimeout(() => {
+            quoteEl.textContent = `"${quotes[index]}"`;
+            quoteEl.style.opacity = '1';
+          }, 500);
+        }, 20000);
+      } catch (e) {
+        console.error('Error parsing quotes:', e);
+      }
+    }
+  </script>
+</footer>
+
+<style is:global>
+/* ============================================
+   SITE FOOTER - Premium 3-Zone Layout
+   ============================================ */
+
+.site-footer {
+  padding: 2rem 0 3rem;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-inner {
+  width: min(600px, calc(100% - 2rem));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  background: rgba(10, 10, 20, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ============================================
+   ZONE A: BRAND
+   ============================================ */
+
+.footer-brand-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-brand-link {
+  display: inline-flex;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-brand-link:hover {
+  transform: scale(1.03);
+}
+
+.footer-brand-link:focus-visible {
+  outline: 2px solid var(--jazer-cyan);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  opacity: 0.9;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.footer-brand-link {
+  background: transparent !important;
+}
+
+.footer-descriptor {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+/* ============================================
+   ZONE B: LINKS
+   ============================================ */
+
+.footer-links-zone {
+  width: 100%;
+}
+
+.footer-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0.65rem 0.75rem;
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+  min-height: 44px;
+}
+
+/* Brackets - hidden by default, shown on hover/focus */
+.link-bracket {
+  opacity: 0;
+  color: var(--jazer-cyan);
+  font-weight: 400;
+  transition: opacity 0.15s ease;
+}
+
+.footer-link:hover .link-bracket,
+.footer-link:focus-visible .link-bracket,
+.footer-link.is-active .link-bracket {
+  opacity: 1;
+}
+
+.link-bracket--left {
+  margin-right: 0.25rem;
+}
+
+.link-bracket--right {
+  margin-left: 0.25rem;
+}
+
+.footer-link:hover,
+.footer-link.is-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-link:focus-visible {
+  outline: 2px solid var(--jazer-cyan);
+  outline-offset: 2px;
+  color: #fff;
+}
+
+/* ============================================
+   ZONE C: TRUST (Social)
+   ============================================ */
+
+.footer-social-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.social-label {
+  font-family: var(--font-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.footer-social-btn {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-social-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.footer-social-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.footer-social-btn:hover img {
+  opacity: 1;
+}
+
+.footer-social-btn:focus-visible {
+  outline: 2px solid var(--jazer-cyan);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   LEGAL ROW
+   ============================================ */
+
+.footer-legal-zone {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+}
+
+.footer-copyright {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple), var(--jazer-pink));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.footer-quote {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  min-height: 1.25em;
+  transition: opacity 0.5s ease;
+}
+
+/* ============================================
+   RESPONSIVE - Mobile
+   ============================================ */
+
+@media (max-width: 768px) {
+  .footer-inner {
+    width: calc(100% - 1.5rem);
+    padding: 1.75rem 1.25rem;
+    gap: 1.25rem;
+  }
+  
+  .footer-logo {
+    height: 32px;
+  }
+  
+  .footer-descriptor {
+    font-size: 0.7rem;
+  }
+  
+  .footer-link-grid {
+    max-width: 280px;
+    gap: 0.35rem 0.75rem;
+  }
+  
+  .footer-link {
+    font-size: 0.75rem;
+    padding: 0.6rem 0.5rem;
+  }
+  
+  .footer-socials {
+    gap: 0.4rem;
+  }
+  
+  .footer-social-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer-inner {
+    padding: 1.5rem 1rem;
+  }
+  
+  .footer-link {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.4rem;
+    min-height: 44px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer-brand-link,
+  .footer-link,
+  .footer-social-btn,
+  .footer-quote {
+    transition: none;
+  }
+  
+  .brand-gradient {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}
+</style>

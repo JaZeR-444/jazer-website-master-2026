@@ -1,0 +1,289 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+import FloatingNotes from '../components/FloatingNotes.astro';
+
+const base = import.meta.env.BASE_URL;
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+const ogImage = site
+    ? new URL(`${base}assets/images/jazer-cosmic-soundbirth.png`, site).toString()
+    : `${base}assets/images/jazer-cosmic-soundbirth.png`;
+
+const announcement = {
+    href: `${base}music`,
+    text: 'Coming in 2026'
+};
+
+const pathways = [
+    {
+        title: 'Videos & Visuals',
+        href: `${base}videos`,
+        desc: 'Visuals and behind-the-scenes',
+        cta: 'Watch ->',
+        icon: `${base}assets/images/icons/navigation/videos.svg`,
+        accent: 'cyan',
+        badge: null
+    },
+    {
+        title: 'Shop',
+        href: `${base}shop`,
+        desc: 'Merch and essentials',
+        cta: 'Shop ->',
+        icon: `${base}assets/images/icons/navigation/shop.svg`,
+        accent: 'yellow',
+        badge: null
+    },
+    {
+        title: 'Music',
+        href: `${base}music`,
+        desc: 'Releases and playlists',
+        cta: 'Listen ->',
+        icon: `${base}assets/images/icons/music/headphones-black.svg`,
+        accent: 'pink',
+        badge: 'Coming Soon'
+    },
+    {
+        title: 'About',
+        href: `${base}about`,
+        desc: 'The story and mission',
+        cta: 'Read ->',
+        icon: `${base}assets/images/icons/navigation/about.svg`,
+        accent: 'purple',
+        badge: null
+    },
+    {
+        title: 'Contact',
+        href: `${base}contact`,
+        desc: 'Collaborations and inquiries',
+        cta: 'Connect ->',
+        icon: `${base}assets/images/icons/navigation/contact.svg`,
+        accent: 'green',
+        badge: null
+    }
+];
+
+
+const nextSteps = [
+    {
+        title: 'Next Release',
+        desc: 'TBA',
+        status: 'Coming in 2026'
+    },
+    {
+        title: 'Visual Drop',
+        desc: 'TBA',
+        status: 'TBA'
+    },
+    {
+        title: 'Merch',
+        desc: 'TBD',
+        status: 'Expected in 2026'
+    }
+];
+
+const mutedStatuses = ['TBA', 'TBD'];
+---
+<BaseLayout
+  bodyClass="home-page has-announcement"
+  showAnnouncement={true}
+  announcement={announcement}
+  showNoiseOverlay={false}
+  showPreloader={false}
+  showNavEnhancements={true}
+  showFooter={true}
+  showAudioPlayer={false}
+  showBackToTop={true}
+  includeGsap={false}
+  extraStyles={[
+    '/css/home.css'
+  ]}
+>
+  <Fragment slot="head">
+    <title>JaZeR - Official Site</title>
+    <meta name="title" content="JaZeR - Official Site" />
+    <meta
+      name="description"
+      content="Official site of JaZeR. Explore music, videos & visuals, and the story behind the sound."
+    />
+    <meta
+      name="keywords"
+      content="JaZeR, music artist, content creator, visual storyteller"
+    />
+    <meta name="author" content="JaZeR" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content="JaZeR - Official Site" />
+    <meta
+      property="og:description"
+      content="Explore music, videos & visuals, and the story behind the sound."
+    />
+    <meta property="og:image" content={ogImage} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content="JaZeR - Official Site" />
+    <meta
+      property="twitter:description"
+      content="Explore music, videos & visuals, and the story behind the sound."
+    />
+    <meta property="twitter:image" content={ogImage} />
+
+    <link rel="canonical" href={canonical} />
+  </Fragment>
+
+  <FloatingNotes />
+  
+  <div class="home-bento-layout" style="position: relative;">
+    <!-- LEFT COLUMN: HERO -->
+    <section class="home-bento-left" style="z-index: 1;">
+      <div class="hero-content home-hero-content" data-animate="fade-up">
+        <img
+          class="hero-logo"
+          src={`${base}assets/images/Vibrant JAZER Bubble Logo (450 x 150 px).svg`}
+          alt="JaZeR"
+          width="450"
+          height="150"
+          decoding="async"
+        />
+        <span class="status-chip">Coming in 2026</span>
+        <h1 class="jazer-h1 hero-title">Meet <span class="accent-glow">✦</span> The <span class="accent-glow">✦</span> Artist</h1>
+        <div class="cta-group">
+          <a href={`${base}music`} class="cta-button">Listen Now</a>
+          <a href="#explore" class="cta-secondary">Explore</a>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: EXPLORE & UPDATES -->
+    <section class="home-bento-right" id="explore">
+      
+      <!-- BENTO GRID -->
+      <div class="bento-section">
+        <h2 class="section-title gradient-text" data-animate="fade-up">Explore</h2>
+        <p class="section-subtitle">Choose your signal</p>
+        
+        <div class="bento-grid">
+          {/* About Card - Featured Larger */}
+          <a href={`${base}about`} class="bento-card bento-card--featured" data-accent="purple" data-animate="zoom-in" data-stagger="0">
+            <div class="bento-icon">
+              <img src={`${base}assets/images/icons/navigation/about.svg`} alt="" loading="lazy"/>
+            </div>
+            <div class="bento-content">
+              <h3 class="jazer-h3">About</h3>
+              <p class="text-muted">Origin story, mission, and vision</p>
+              <span class="bento-cta">Read the story -></span>
+            </div>
+            <div class="card-glow-pulse"></div>
+          </a>
+
+          {/* Other Cards */}
+          {pathways.filter(p => p.title !== 'About').map((pathway, index) => (
+            <a 
+              href={pathway.href} 
+              class="bento-card" 
+              data-accent={pathway.accent}
+              data-animate="fade-up" 
+              data-animate-delay={index * 50}
+              data-stagger={index + 1}
+            >
+              {pathway.badge && <span class="card-badge">{pathway.badge}</span>}
+              <div class="bento-icon-sm">
+                 <img src={pathway.icon} alt="" loading="lazy" />
+              </div>
+              <div class="bento-content">
+                <h3 class="jazer-h5">{pathway.title}</h3>
+                <p class="text-muted text-xs">{pathway.desc}</p>
+                <span class="bento-cta-sm">{pathway.cta}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- WHAT'S NEXT -->
+      <div class="next-section">
+        <h2 class="section-title gradient-text" data-animate="fade-up">What's Next</h2>
+        <div class="next-grid next-grid--compact">
+          {nextSteps.map((item, index) => (
+            <div class="next-card next-card--compact" data-animate="fade-up" data-animate-delay={index * 60}>
+              <h3 class="jazer-h6">{item.title}</h3>
+              <span class={`status-chip status-chip--xs${mutedStatuses.includes(item.status) ? ' is-muted' : ''}`}>
+                {item.status}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- BOTTOM TICKER MARQUEE -->
+  <div class="home-ticker">
+    <div class="home-ticker-track">
+      {[...Array(8)].map(() => (
+        <>
+          <span class="ticker-item">TBA</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">JOIN THE BEAM</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">EST. 2026</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">WELCOME TO THE DATABANK</span>
+          <span class="ticker-sep">::</span>
+          <span class="ticker-item">LATEST TRANSMISSION: TBA</span>
+          <span class="ticker-sep">::</span>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <!-- JOIN THE BEAM - Bottom CTA -->
+  <section class="join-beam-section">
+    <JoinBeamCTA
+      id="updates"
+      inline={true}
+      captureStyle="max-width: 500px; margin: 0 auto;"
+      subtitleStyle="font-size: 0.9rem; margin: 0.75rem 0;"
+      subject="New subscriber from JaZeR Home page"
+      buttonLabel="Join"
+      proofText=""
+      helperText="Updates + early drops. No spam."
+    >
+      <Fragment slot="subtitle">
+        Join the Beam for updates & exclusive drops.
+      </Fragment>
+    </JoinBeamCTA>
+  </section>
+
+  <!-- 3D Tilt Effect Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.bento-card');
+      const maxTilt = 8; // Maximum tilt angle in degrees
+      
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = ((y - centerY) / centerY) * -maxTilt;
+          const rotateY = ((x - centerX) / centerX) * maxTilt;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px) scale(1.02)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+        });
+      });
+    });
+  </script>
+</BaseLayout>

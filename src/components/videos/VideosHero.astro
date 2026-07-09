@@ -1,0 +1,265 @@
+---
+const { base = import.meta.env.BASE_URL } = Astro.props;
+---
+
+<section class="videos-hero">
+  <div class="hero-content container">
+    <div class="hero-eyebrow animate-fade-up" style="animation-delay: 0.1s;">
+      <span class="eyebrow-badge">
+        Official Channel
+      </span>
+    </div>
+
+    <h1 class="hero-title animate-fade-up" style="animation-delay: 0.2s;">
+      <img 
+        src={`${base}assets/images/Videos & Visuals (501 x 75 px).svg`} 
+        alt="Videos & Visuals" 
+        style="width: 100%; max-width: 600px; height: auto; filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.4));"
+      />
+    </h1>
+
+    <p class="hero-subtitle animate-fade-up" style="animation-delay: 0.3s;">
+      Music videos, behind-the-scenes studio sessions, and creative vlogs.<br class="desktop-only" />
+      The complete visual experience is coming in 2026.
+    </p>
+
+    <div class="hero-cta animate-fade-up" style="animation-delay: 0.4s;">
+      <a href="#updates" class="cta-button">
+        <span class="cta-icon">🔔</span>
+        <span>Get Premiere Alerts</span>
+      </a>
+      <a href="https://youtube.com/@jazer" target="_blank" rel="noopener" class="cta-secondary">
+        <span class="cta-icon">📺</span>
+        <span>Subscribe on YouTube</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="hero-bottom-fade"></div>
+</section>
+
+<style>
+  .videos-hero {
+    position: relative;
+    padding: 6rem 0 4rem; /* Restored safe desktop padding to clear header (Main 80px + 6rem = ~176px total) */
+    min-height: auto; /* Removed forced height centering */
+    display: block; /* Removed flex centering */
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .videos-hero {
+      padding: 0 0 3rem; /* Zero padding on mobile */
+    }
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 0; /* Applied 2rem top padding to container instead of section to allow mobile override */
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Removed .hero-bg and .hero-noise as they are replaced by FloatingNotes */
+
+  .eyebrow-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--jazer-cyan);
+    backdrop-filter: blur(8px);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-primary, sans-serif);
+    font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(6, 182, 212, 0.2);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, var(--jazer-cyan) 50%, var(--jazer-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-body, sans-serif);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .cta-button:focus-visible,
+  .cta-secondary:focus-visible {
+    outline: 2px solid var(--jazer-cyan);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .hero-cta {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      width: 100%;
+      margin: 0 auto;
+      gap: 0.5rem;
+    }
+    
+    .cta-button,
+    .cta-secondary {
+      width: 100% !important;
+      min-width: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 44px !important; /* Standard touch height */
+      min-height: 44px !important;
+      max-height: 44px !important;
+      padding: 0 0.25rem !important;
+      margin: 0 !important;
+      font-size: 0.65rem !important; /* Ensure text fits */
+      line-height: normal !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      box-sizing: border-box !important;
+      box-shadow: none !important; /* Remove shadows to equalize visual weight */
+    }
+    
+    .cta-icon {
+      font-size: 1rem !important;
+      line-height: 1 !important;
+      display: block !important;
+      margin-right: 0.35rem !important;
+    }
+
+    .videos-hero {
+      padding: 0 0 3rem;
+      min-height: auto;
+    }
+    
+    .hero-content.container {
+      padding-top: 0; /* Force 0 padding on mobile container */
+    }
+
+    .hero-title img {
+      max-width: min(90vw, 400px) !important;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bottom-fade {
+      height: 2.5rem;
+    }
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.9rem 1.5rem;
+    border-radius: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.5);
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: rgba(13, 14, 18, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.9rem 1.5rem;
+    border-radius: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(12px);
+  }
+
+  .cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--jazer-cyan);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(6, 182, 212, 0.15);
+  }
+
+  .hero-bottom-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    background: linear-gradient(to top, var(--bg-dark), transparent);
+    z-index: 20;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-only {
+      display: block;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .desktop-only {
+      display: none;
+    }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+</style>

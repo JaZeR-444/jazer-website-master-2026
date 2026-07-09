@@ -1,0 +1,251 @@
+---
+import VideoCard from './VideoCard.astro';
+
+// Safe placeholder data - NO invented stats/dates
+const videos = [
+  {
+    title: 'Featured Visual (TBA)',
+    type: 'Music Video',
+    status: 'Coming in 2026',
+    color: 'var(--jazer-pink)',
+    gradient: 'linear-gradient(135deg, #1a1a2e 0%, #312e81 100%)'
+  },
+  {
+    title: 'Studio Sessions (TBA)',
+    type: 'Behind The Scenes',
+    status: 'Expected in 2026',
+    color: 'var(--jazer-cyan)',
+    gradient: 'linear-gradient(135deg, #0f172a 0%, #0e7490 100%)'
+  },
+  {
+    title: 'Live Performance (TBA)',
+    type: 'Live',
+    status: 'Coming in 2026',
+    color: 'var(--jazer-purple)',
+    gradient: 'linear-gradient(135deg, #2e1065 0%, #7c3aed 100%)'
+  },
+  {
+    title: 'Creative Vlog (TBA)',
+    type: 'Vlog',
+    status: 'TBD',
+    color: '#f59e0b',
+    gradient: 'linear-gradient(135deg, #451a03 0%, #d97706 100%)'
+  },
+  {
+    title: 'Lyric Video (TBA)',
+    type: 'Visualizer',
+    status: 'Coming in 2026',
+    color: '#ec4899',
+    gradient: 'linear-gradient(135deg, #500724 0%, #db2777 100%)'
+  },
+  {
+    title: 'Production Tutorial (TBA)',
+    type: 'Tutorial',
+    status: 'Expected in 2026',
+    color: '#10b981',
+    gradient: 'linear-gradient(135deg, #064e3b 0%, #059669 100%)'
+  }
+];
+
+const filters = [
+  { id: 'all', label: 'All Content' },
+  { id: 'music-video', label: 'Music Videos' },
+  { id: 'behind-the-scenes', label: 'BTS' },
+  { id: 'live', label: 'Live' }
+];
+---
+
+<section class="video-grid-section" id="gallery">
+  <div class="container">
+    <!-- Filters -->
+    <div class="filters-container">
+      {filters.map((filter, index) => (
+        <button 
+          class={`filter-btn ${index === 0 ? 'active' : ''}`}
+          data-filter={filter.id}
+        >
+          {filter.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Grid -->
+    <div class="video-grid">
+      {videos.map((video, index) => (
+        <div class="video-item" data-type={video.type.toLowerCase().replace(/\s+/g, '-')}>
+          <VideoCard {...video} delay={index * 100} />
+        </div>
+      ))}
+    </div>
+    
+    <!-- Empty State -->
+    <div class="empty-state">
+      <p>More content coming soon.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .video-grid-section {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .video-grid-section {
+      padding: 2rem 0 3.5rem; /* Reduced top padding on mobile */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .video-grid-section {
+      padding: 1rem 0 3rem; /* Minimal top padding on small mobile */
+    }
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .filters-container {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      padding-inline: 1rem; /* Better edge spacing */
+      padding-bottom: 1rem; /* Space for scrollbar */
+      margin-bottom: 2rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      scroll-snap-type: x proximity;
+      scroll-padding: 0.5rem;
+      gap: 0.75rem;
+    }
+    .filters-container::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    .filters-container {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+    .filter-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+      scroll-snap-align: start;
+    }
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.5rem;
+    min-height: 44px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-family: var(--font-primary, sans-serif);
+  }
+
+  .filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .filter-btn:focus-visible {
+    outline: 2px solid var(--jazer-cyan);
+    outline-offset: 2px;
+  }
+
+  .filter-btn.active {
+    background: var(--jazer-cyan);
+    color: black;
+    border-color: var(--jazer-cyan);
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem; /* Tighter gap on mobile */
+    }
+  }
+
+  @media (min-width: 640px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .video-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .empty-state {
+    display: none;
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-muted);
+  }
+
+  .empty-state.visible {
+    display: block;
+  }
+</style>
+
+<script>
+  // Simple filtering logic
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.video-item');
+  const emptyState = document.querySelector('.empty-state');
+  
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active state
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const filter = btn.getAttribute('data-filter');
+      let hasVisible = false;
+      
+      items.forEach(item => {
+        const type = item.getAttribute('data-type');
+        if (filter === 'all' || type === filter) {
+          (item as HTMLElement).style.display = 'block';
+          (item as HTMLElement).style.opacity = '0';
+          setTimeout(() => { (item as HTMLElement).style.opacity = '1'; }, 50);
+          hasVisible = true;
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+
+      if (emptyState) {
+          if (!hasVisible) {
+            emptyState.classList.add('visible');
+          } else {
+            emptyState.classList.remove('visible');
+          }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,1819 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+import FloatingNotes from '../components/FloatingNotes.astro';
+
+const base = import.meta.env.BASE_URL;
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+const ogImage = site
+    ? new URL(`${base}assets/images/jazer-cosmic-soundbirth.png`, site).toString()
+    : `${base}assets/images/jazer-cosmic-soundbirth.png`;
+
+const announcement = {
+    href: `${base}music`,
+    text: 'New Era: Coming in 2026'
+};
+
+const pathways = [
+    {
+        title: 'Music',
+        href: `${base}music`,
+        desc: 'Sonic transmissions',
+        icon: `${base}assets/images/icons/music/headphones-black.svg`,
+        cta: 'Listen'
+    },
+    {
+        title: 'Videos',
+        href: `${base}videos`,
+        desc: 'Visual stories',
+        icon: `${base}assets/images/icons/navigation/videos.svg`,
+        cta: 'Watch'
+    },
+    {
+        title: 'Shop',
+        href: `${base}shop`,
+        desc: 'Apparel & Goods',
+        icon: `${base}assets/images/icons/navigation/shop.svg`,
+        cta: 'Browse'
+    },
+    {
+        title: 'Contact',
+        href: `${base}contact`,
+        desc: 'Inquiries',
+        icon: `${base}assets/images/icons/navigation/contact.svg`,
+        cta: 'Connect'
+    }
+];
+
+const faqs = [
+    {
+        q: "When is the debut release?",
+        a: "The first official project is expected to arrive in 2026. Stay tuned for announcements."
+    },
+    {
+        q: "Will there be live performances?",
+        a: "Live experiences are in the planning stages. Dates and locations are TBA."
+    },
+    {
+        q: "How can I collaborate?",
+        a: "JaZeR is open to creative partnerships. Reach out via the Contact page to start a conversation."
+    }
+];
+---
+<BaseLayout
+  bodyClass="about-page has-announcement"
+  showAnnouncement={true}
+  announcement={announcement}
+  showNoiseOverlay={false}
+  showPreloader={false}
+  showNavEnhancements={true}
+  showFooter={true}
+  showAudioPlayer={false}
+  showBackToTop={true}
+  includeGsap={false}
+  extraStyles={[
+    '/css/home.css' /* Reusing home styles for consistent hero/card look */
+  ]}
+>
+  <FloatingNotes />
+  
+  <!-- Hero Section -->
+  <section class="hero hero-animated">
+    <div class="hero-content" style="max-width: 800px; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; padding: 0;">
+      <img class="hero-logo" src={`${base}assets/images/About JaZeR (441 x 94 px).svg`} alt="About JaZeR" style="margin: 0 auto 1.5rem; object-fit: contain; max-height: 120px;" />
+      <p class="tagline-roles" style="max-width: 600px; margin: 0 auto 1.5rem; font-size: 1.25rem;">
+        A sonic escape hatch — a beam of color for anyone who needs a place to belong.
+      </p>
+      <span id="hero-eyebrow-text" class="hero-eyebrow brand-gradient" style="display: inline-block; margin-bottom: 0.5rem; opacity: 1; visibility: visible;">
+        <span class="eyebrow-word" style="--i: 0">Meet</span>
+        <span class="eyebrow-divider">✦</span>
+        <span class="eyebrow-word" style="--i: 1">The</span>
+        <span class="eyebrow-divider">✦</span>
+        <span class="eyebrow-word" style="--i: 2">Artist</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true" style="margin: 0;">
+    <div class="tech-line"></div>
+    <div class="tech-node"></div>
+    <div class="tech-line"></div>
+  </div>
+
+  <!-- Artist Profile Section -->
+  <section class="section about-section" style="position: relative;">
+    <div class="container">
+      <!-- Ambient Glow Orbs -->
+      <div class="ambient-glow magenta"></div>
+      <div class="ambient-glow blue"></div>
+
+    <div class="bento-grid" style="align-items: stretch; gap: 1.5rem;">
+        
+        <!-- Profile Card - Horizontal Layout -->
+        <article class="card premium-card profile-card grid-span-2 profile-card-redesign" data-animate="fade-up" data-animate-delay="100">
+          <!-- Profile Image -->
+          <div class="profile-image-container">
+             <div class="profile-bg-gradient"></div>
+             <img src={`${base}assets/images/vibrant-jzr-monogram-logo (250 x 250 px).svg`} alt="JaZeR" class="profile-logo" />
+          </div>
+
+          <!-- Profile Content -->
+          <div class="profile-content">
+            <h1 class="profile-name">JaZeR</h1>
+            <p class="profile-roles">
+              Content Creator <span class="accent-star">✧</span> Musician <span class="accent-star">✧</span> Storyteller
+            </p>
+            
+            <div class="profile-actions">
+              <a href="https://instagram.com/jazer_music" target="_blank" class="cta-secondary profile-btn">
+                Follow
+              </a>
+              <a href="#connect" class="cta-secondary profile-btn">
+                Contact
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- At a Glance Stats - 4 Col Grid -->
+        <article class="card premium-card grid-span-2 at-glance-card stats-card-redesign" style="height: auto !important; overflow: visible !important;">
+          <h3 class="track-title stats-title">At a Glance</h3>
+          
+          <div class="stats-grid-4col">
+            <!-- Row 1 -->
+            <div class="stat-item">
+              <div class="stat-value text-purple">2026</div>
+              <div class="stat-label">Launch Year</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value text-purple">25+</div>
+              <div class="stat-label">Original Tracks</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value text-gradient-magic">Growing</div>
+              <div class="stat-label">Listeners</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value text-gradient-royal">Vision</div>
+              <div class="stat-label">Innovation</div>
+            </div>
+
+            <!-- Row 2 -->
+             <div class="stat-item">
+              <div class="stat-value text-purple">∞</div>
+              <div class="stat-label">Creative Energy</div>
+            </div>
+             <div class="stat-item">
+              <div class="stat-value text-purple">100%</div>
+              <div class="stat-label">Authentic</div>
+            </div>
+             <div class="stat-item">
+              <div class="stat-value text-gradient-royal">Style</div>
+              <div class="stat-label">Fusion</div>
+            </div>
+             <div class="stat-item">
+              <div class="stat-value text-gradient-magic">Status</div>
+              <div class="stat-label">Indie</div>
+            </div>
+          </div>
+
+          <div class="stats-mission" style="display: block !important; box-sizing: border-box !important; margin-top: 1.25rem !important; padding: 1rem !important; background: rgba(255, 255, 255, 0.05) !important; border-top: 1px solid rgba(255, 255, 255, 0.15) !important; border-radius: 12px !important; width: 100% !important; clear: both !important; position: relative !important; z-index: 50 !important; visibility: visible !important; opacity: 1 !important;">
+            <p style="font-size: 0.9rem !important; line-height: 1.5 !important; color: white !important; margin: 0 !important; text-align: center !important; width: 100% !important; display: block !important;">
+              <strong>Mission:</strong> To create music that feels like home for the people who don't always feel like they have one.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true" style="margin: 0;">
+    <div class="tech-line"></div>
+    <div class="tech-node"></div>
+    <div class="tech-line"></div>
+  </div>
+
+  <div class="container section">
+    <div class="content-narrow">
+
+      <!-- Visual Timeline -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md text-center"><span class="brand-gradient">The Journey</span></h2>
+
+        <div class="timeline-container">
+          <!-- Timeline line -->
+          <div class="timeline-line"></div>
+
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot pink"></div>
+            <div class="timeline-content">
+              <h4 style="color: var(--jazer-pink);">The Struggle</h4>
+              <p class="text-muted">
+                JaZeR was born out of transition — a long stretch of struggle, constraint, and feeling like my light was dimmed.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot purple"></div>
+            <div class="timeline-content">
+              <h4 style="color: var(--jazer-purple);">The Discovery</h4>
+              <p class="text-muted">
+                Music has always been the one thing that made me feel truly special. When I didn't know my purpose, sound gave me one. When I felt lost, rhythm felt like home.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot cyan"></div>
+            <div class="timeline-content">
+              <h4 style="color: var(--jazer-cyan);">The Mission - 2026</h4>
+              <p class="text-muted">
+                Now that I'm finally at a point where I feel free, JaZeR is my way of giving that feeling back. Creating music that feels like home for those who don't always have one.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission-card">
+          <p class="text-strong text-lg">
+            The mission is simple: to create music that feels like home for the people who don't always feel like they have one.
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA: Listen Now -->
+      <div class="text-center mb-lg" data-animate="fade-up">
+        <a href="music.html" class="cta-button">
+          <span class="cta-icon">🎧</span>
+          <span>Listen Now</span>
+        </a>
+      </div>
+
+      <!-- Core Values -->
+      <div class="core-values-grid mb-lg" data-animate="fade-up">
+        <div class="value-card value-card-pink">
+          <!-- Heart Icon -->
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>A sense of belonging</h3>
+          <p>For those who don't always feel like they have one</p>
+        </div>
+        <div class="value-card value-card-cyan">
+          <!-- Compass Icon -->
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>A sense of purpose</h3>
+          <p>Finding meaning through sound and rhythm</p>
+        </div>
+        <div class="value-card value-card-purple">
+          <!-- Rocket Icon -->
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Limitless potential</h3>
+          <p>A reminder that you're capable of far more than you were told</p>
+        </div>
+      </div>
+
+      <!-- Sound & Style -->
+      <div class="premium-glass-card mb-lg">
+        <h2 class="mb-md text-center"><span class="brand-gradient">Vibe, Sound & Style</span></h2>
+        <p class="mb-md text-lg" style="line-height: 1.7;">
+          <strong>Upbeat, positive, and lyrically sharp</strong> — with a lot of choppy wordplay and rhythmic twists.
+        </p>
+
+        <p class="mb-sm text-strong" style="font-size: 1.125rem; margin-top: 2rem;">Genre Influences:</p>
+        <div class="genre-badge-container">
+          <span class="genre-badge genre-rock">🎸 Southern Rock</span>
+          <span class="genre-badge genre-bass">🔊 Heavy Bass</span>
+          <span class="genre-badge genre-electronic">⚡ Electronic</span>
+          <span class="genre-badge genre-hiphop">🎤 Hip-Hop & Rap</span>
+          <span class="genre-badge genre-jazz">🎷 Jazz & Blues</span>
+          <span class="genre-badge genre-boom">🎹 Boom Bap</span>
+          <span class="genre-badge genre-trap">💎 Trap-Soul</span>
+        </div>
+
+        <div style="padding: 1.5rem; background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--jazer-cyan); border-radius: 8px;">
+          <p style="line-height: 1.7;">
+            Whenever I'm in the lab, I'm chasing emotion. Good, bad, beautiful, or painful — it all belongs. For me, the point of music is to take even the worst situations and transform them into something beautiful.
+          </p>
+        </div>
+      </div>
+
+      <!-- Behind the Scenes -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md text-center"><span class="brand-gradient">Behind the Scenes</span></h2>
+        <div class="process-grid">
+          <div class="process-card process-card-cyan">
+            <!-- Sliders/Mixer Icon -->
+            <svg class="process-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h4>Production</h4>
+            <p class="text-muted text-sm">FL Studio, Ableton, and a coffee addiction</p>
+          </div>
+          <div class="process-card process-card-purple">
+            <!-- Microphone Icon -->
+            <svg class="process-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h4>Recording</h4>
+            <p class="text-muted text-sm">Home studio vibes, late-night sessions</p>
+          </div>
+          <div class="process-card process-card-pink">
+            <!-- Pen/Edit Icon -->
+            <svg class="process-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h4>Writing</h4>
+            <p class="text-muted text-sm">Life experiences, emotions, and raw truth</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Themes -->
+      <div class="premium-glass-card mb-lg">
+        <h2 class="mb-md text-center"><span class="brand-gradient">Themes & The World of JaZeR</span></h2>
+        <p class="mb-md text-italic">
+          JaZeR lives in a "funky futuristic" lane — a blend of soulful humanity and cosmic, digital energy.
+        </p>
+        <div class="themes-grid mt-lg">
+          <div class="theme-card">
+            <h4>Self-belief & perseverance</h4>
+            <p class="text-sm text-muted">Never stopping, never shrinking</p>
+          </div>
+          <div class="theme-card">
+            <h4>Freedom & transformation</h4>
+            <p class="text-sm text-muted">Breaking out of old versions of yourself</p>
+          </div>
+          <div class="theme-card">
+            <h4>Authenticity & purpose</h4>
+            <p class="text-sm text-muted">Staying true while you build something new</p>
+          </div>
+          <div class="theme-card">
+            <h4>Mental & emotional growth</h4>
+            <p class="text-sm text-muted">Clarity, healing, evolution</p>
+          </div>
+          <div class="theme-card grid-span-2-mobile">
+            <h4>Technology & consciousness</h4>
+            <p class="text-sm text-muted">Metaphysical vibes, digital dreams, cosmic imagery</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why JaZeR -->
+      <div class="premium-glass-card mb-lg">
+        <h2 class="mb-md text-center"><span class="brand-gradient">Why "JaZeR"?</span></h2>
+        <div class="why-jazer-grid">
+          <!-- Card 1: Origin -->
+          <div class="why-card">
+            <h4 class="mb-sm" style="color: var(--jazer-pink);">Origin</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5;">
+              It started as a nickname. A play on my name, "Jay," and the way I move — an infinite beam of light.
+            </p>
+          </div>
+          <!-- Card 2: Identity -->
+          <div class="why-card">
+            <h4 class="mb-sm" style="color: var(--jazer-purple);">The Name</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5;">
+              JaZeR is like "J-Laser": a focused beam of energy designed to cut through the noise and light up the dark.
+            </p>
+          </div>
+          <!-- Card 3: Mission -->
+          <div class="why-card">
+            <h4 class="mb-sm" style="color: var(--accent-cyan);">The Mission</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5;">
+              To create a "sonic escape hatch" — a place where dreamers and builders can feel seen, safe, and at home.
+            </p>
+          </div>
+          <!-- Card 4: Promise -->
+          <div class="why-card special">
+            <h4 class="mb-sm" style="color: var(--text-primary);">The Promise</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5; font-weight: 600;">
+              To always leave you lighter, stronger, and closer to your next step than when you arrived.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials Section -->
+      <div class="premium-glass-card mb-lg" data-animate="fade-up">
+        <h2 class="mb-md text-center"><span class="brand-gradient">What Early Listeners Say</span></h2>
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card pink-border">
+            <p class="text-italic mb-sm" style="line-height: 1.6; font-size: 0.95rem;">
+              "The energy is unmatched. Every track feels like it's speaking directly to where I am in life."
+            </p>
+            <p class="text-xs text-strong" style="color: var(--jazer-pink);">— Early Supporter</p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card cyan-border">
+            <p class="text-italic mb-sm" style="line-height: 1.6; font-size: 0.95rem;">
+              "This is exactly what I needed to hear. The wordplay is insane and the vibe is perfect."
+            </p>
+            <p class="text-xs text-strong" style="color: var(--jazer-cyan);">— Beta Listener</p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card purple-border">
+            <p class="text-italic mb-sm" style="line-height: 1.6; font-size: 0.95rem;">
+              "JaZeR's music makes me feel like I'm not alone in this. It's fuel for the journey."
+            </p>
+            <p class="text-xs text-strong" style="color: var(--jazer-purple);">— Community Member</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA: Watch the Journey -->
+      <div class="text-center mb-lg" data-animate="fade-up">
+        <a href="videos.html" class="cta-button">
+          <span class="cta-icon">🎬</span>
+          <span>Watch the Journey</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- Collaborate Section -->
+  <section class="section about-section" id="connect">
+    <div class="container">
+      <div class="content-narrow">
+        <div class="premium-glass-card" data-animate="fade-up">
+          <h2 class="mb-md text-center"><span class="brand-gradient">Let's Work Together</span></h2>
+          <p class="text-center mb-lg" style="font-size: 1.125rem; line-height: 1.7;">
+            Open to collaborations, features, production work, and creative partnerships.
+          </p>
+
+          <div class="collab-grid">
+            <!-- Collaboration Type 1 -->
+            <div class="collab-card collab-card-pink">
+              <!-- Microphone Icon -->
+              <svg class="collab-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h4 class="feature-title">Features</h4>
+              <p class="feature-desc">Guest verses and vocal features</p>
+            </div>
+
+            <!-- Collaboration Type 2 -->
+            <div class="collab-card collab-card-purple">
+              <!-- Piano/Grid Icon -->
+              <svg class="collab-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 4v10M16 4v10M2 14h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <h4 class="feature-title">Production</h4>
+              <p class="feature-desc">Beats, mixing, and sound design</p>
+            </div>
+
+            <!-- Collaboration Type 3 -->
+            <div class="collab-card collab-card-cyan">
+              <!-- Briefcase Icon -->
+              <svg class="collab-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="7" width="20" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h4 class="feature-title">Business</h4>
+              <p class="feature-desc">Bookings, partnerships, licensing</p>
+            </div>
+          </div>
+
+          <div class="text-center" style="margin-top: 2.5rem;">
+            <a href="contact.html" class="cta-button">
+              <span class="cta-icon">📧</span>
+              <span>Get in Touch</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container section">
+    <div class="content-narrow">
+
+      <!-- For New Listeners -->
+      <div class="premium-glass-card callout-gradient-soft">
+        <h2 class="mb-md text-center"><span class="brand-gradient">For New Listeners</span></h2>
+        <p class="mb-lg text-center text-lg text-muted">
+          If you're reading this, here's what I want you to feel:
+        </p>
+        
+        <div class="feelings-grid mb-lg">
+          <div class="feeling-card feeling-card-pink">
+            <!-- Sparkles Icon -->
+            <svg class="feeling-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 3v4M22 5h-4M4 17v2M5 18H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="feeling-text">That your light is real.</p>
+          </div>
+          <div class="feeling-card feeling-card-purple">
+            <!-- Rocket Icon -->
+            <svg class="feeling-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="feeling-text">That your dream is valid.</p>
+          </div>
+          <div class="feeling-card feeling-card-cyan">
+            <!-- Galaxy/Stars Icon -->
+            <svg class="feeling-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12h2M20 12h2M6.343 6.343l1.414 1.414M16.243 16.243l1.414 1.414M6.343 17.657l1.414-1.414M16.243 7.757l1.414-1.414M12 2v2M12 20v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <p class="feeling-text">That you're closer than you think.</p>
+          </div>
+        </div>
+
+        <p class="mt-lg text-center manifesto-text">
+          "My music is for the dreamers, the builders, the ones trying to turn pain into power and visions into
+          reality. It's fuel to keep going when you're tired, to keep building when it feels heavy, and to remind you
+          that there's still magic in all of this."
+        </p>
+        <div class="text-center mt-lg">
+          <a href="music.html" class="cta-button">Press Play</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container" style="padding-bottom: 0;">
+    <JoinBeamCTA
+      inline={true}
+      id="updates"
+      captureStyle="max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem;"
+      subtitleStyle="font-size: 1rem; max-width: 520px; margin: 0.75rem auto;"
+      subject="New subscriber from JaZeR About page"
+      buttonLabel="Join the Beam"
+      proofText="Join 500+ fans on the beam"
+    >
+      <Fragment slot="subtitle">
+        Be the first to hear new music, get exclusive updates, and <strong>join the community</strong>.
+      </Fragment>
+    </JoinBeamCTA>
+  </div>
+</BaseLayout>
+
+
+<style>
+  .hero {
+    position: relative;
+    padding: 6rem 0 4rem; /* Standard Desktop Padding */
+    min-height: auto;
+    display: block;
+    text-align: center;
+  }
+
+  /* Brand Gradient (Matches Footer) */
+  .brand-gradient {
+    background: linear-gradient(135deg, var(--jazer-cyan), var(--jazer-purple), var(--jazer-pink));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    animation: gradientShift 4s ease infinite;
+  }
+  
+  .brand-gradient * {
+    -webkit-text-fill-color: transparent !important;
+    background: inherit !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+  }
+
+  /* Force specific override for eyebrow elements */
+  .hero-eyebrow .eyebrow-word,
+  .hero-eyebrow .eyebrow-divider {
+    background: inherit !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Specific Override for Hero Text Speed only */
+  #hero-eyebrow-text {
+      animation-duration: 4s !important;
+      background-size: 200% 200% !important;
+  }
+
+  /* CRITICAL: Disable fast animations on hero eyebrow children */
+  #hero-eyebrow-text .eyebrow-word,
+  #hero-eyebrow-text .eyebrow-divider {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      background: inherit !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+  }
+
+  @keyframes slowHeroGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+
+  /* About page section base styles */
+  .about-section {
+    padding: 4rem 0;
+  }
+
+  .at-glance-card {
+    padding: 2.5rem;
+  }
+
+  /* Desktop defaults */
+  .about-page .container.section {
+    padding: 3rem 0;
+  }
+
+  /* Timeline Styles */
+  .timeline-container {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--jazer-pink), var(--jazer-purple), var(--jazer-cyan));
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+  }
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -0.5rem;
+    top: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+  }
+  .timeline-dot.pink { background: var(--jazer-pink); box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2); }
+  .timeline-dot.purple { background: var(--jazer-purple); box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2); }
+  .timeline-dot.cyan { background: var(--jazer-cyan); box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2); }
+  
+  .timeline-content h4 {
+    margin-bottom: 0.5rem;
+  }
+
+  .mission-card {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid var(--jazer-pink);
+    border-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    /* Compact Timeline for Mobile */
+    .timeline-container {
+      padding-left: 1.5rem !important;
+    }
+    .timeline-item {
+      margin-bottom: 1.25rem !important;
+      padding-left: 1rem !important;
+    }
+    .timeline-dot {
+      width: 0.75rem !important;
+      height: 0.75rem !important;
+      left: -0.375rem !important;
+      top: 0.2rem !important;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+    }
+    .timeline-dot.purple { box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2) !important; }
+    .timeline-dot.cyan { box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2) !important; }
+
+    .timeline-content h4 {
+      font-size: 1rem !important;
+      margin-bottom: 0.25rem !important;
+    }
+    .timeline-content p {
+      font-size: 0.85rem !important;
+      line-height: 1.35 !important;
+    }
+    
+    /* Enhanced Mission Card for Mobile */
+    .mission-card {
+      margin-top: 1.25rem !important;
+      padding: 1rem 1.25rem !important;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(168, 85, 247, 0.1), rgba(34, 211, 238, 0.1)) !important;
+      border-left: 3px solid transparent !important;
+      border-image: linear-gradient(to bottom, var(--jazer-pink), var(--jazer-purple), var(--jazer-cyan)) 1 !important;
+      border-radius: 10px !important;
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.15), 0 0 20px rgba(34, 211, 238, 0.1) !important;
+    }
+    .mission-card p {
+      font-size: 0.9rem !important;
+      line-height: 1.45 !important;
+      font-weight: 500 !important;
+    }
+    
+    /* The Journey Header Mobile */
+    .premium-glass-card h2 .brand-gradient {
+      font-size: 1.5rem !important;
+    }
+
+    /* ============================================
+       VIBE, SOUND & STYLE - MOBILE OPTIMIZATION
+       ============================================ */
+    
+    /* Section container */
+    .premium-glass-card {
+      padding: 1.25rem !important;
+      margin-bottom: 1.25rem !important;
+    }
+    
+    /* Description text */
+    .premium-glass-card .text-lg {
+      font-size: 0.95rem !important;
+      line-height: 1.5 !important;
+    }
+    
+    /* Genre Influences label */
+    .premium-glass-card .text-strong {
+      font-size: 1rem !important;
+      margin-top: 1.25rem !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    /* Genre Badge Container - compact grid for mobile */
+    .genre-badge-container {
+      gap: 0.5rem !important;
+      justify-content: flex-start !important;
+    }
+    
+    /* Genre Badges - smaller on mobile */
+    .genre-badge {
+      font-size: 0.7rem !important;
+      padding: 0.4rem 0.7rem !important;
+      border-radius: 20px !important;
+    }
+    
+    /* Quote Callout Card - Enhanced styling */
+    .premium-glass-card > div[style*="border-left"] {
+      padding: 1rem !important;
+      margin-top: 1.25rem !important;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(168, 85, 247, 0.08)) !important;
+      border-left: 3px solid transparent !important;
+      border-image: linear-gradient(to bottom, var(--jazer-cyan), var(--jazer-purple)) 1 !important;
+      border-radius: 10px !important;
+      box-shadow: 0 4px 20px rgba(34, 211, 238, 0.1), 0 0 15px rgba(168, 85, 247, 0.08) !important;
+    }
+    
+    .premium-glass-card > div[style*="border-left"] p {
+      font-size: 0.9rem !important;
+      line-height: 1.5 !important;
+      font-style: italic !important;
+    }
+
+    /* ============================================
+       BEHIND THE SCENES - MOBILE ENHANCEMENT
+       ============================================ */
+    
+    .process-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.75rem !important;
+      margin-top: 1rem !important;
+    }
+    
+    .process-card {
+      padding: 1rem !important;
+      background: rgba(255, 255, 255, 0.03) !important;
+      border-radius: 12px !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      text-align: center !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .process-card h4 {
+      font-size: 0.8rem !important;
+      margin-bottom: 0.35rem !important;
+      font-weight: 600 !important;
+    }
+    
+    .process-card p {
+      font-size: 0.7rem !important;
+      line-height: 1.35 !important;
+    }
+    
+    .process-icon {
+      width: 32px !important;
+      height: 32px !important;
+      margin: 0 auto 0.5rem !important;
+      color: currentColor !important;
+    }
+    
+    /* Icon colors per card variant */
+    .process-card-cyan .process-icon {
+      color: var(--jazer-cyan) !important;
+      filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4)) !important;
+    }
+    .process-card-purple .process-icon {
+      color: var(--jazer-purple) !important;
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.4)) !important;
+    }
+    .process-card-pink .process-icon {
+      color: var(--jazer-pink) !important;
+      filter: drop-shadow(0 0 8px rgba(235, 72, 153, 0.4)) !important;
+    }
+    
+    /* Process Card Color Variants */
+    .process-card-cyan {
+      border-color: rgba(34, 211, 238, 0.25) !important;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(15, 15, 20, 0.6)) !important;
+    }
+    .process-card-cyan:hover {
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.15) !important;
+    }
+    
+    .process-card-purple {
+      border-color: rgba(168, 85, 247, 0.25) !important;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(15, 15, 20, 0.6)) !important;
+    }
+    .process-card-purple:hover {
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.15) !important;
+    }
+    
+    .process-card-pink {
+      border-color: rgba(235, 72, 153, 0.25) !important;
+      background: linear-gradient(135deg, rgba(235, 72, 153, 0.08), rgba(15, 15, 20, 0.6)) !important;
+    }
+    .process-card-pink:hover {
+      box-shadow: 0 0 20px rgba(235, 72, 153, 0.15) !important;
+    }
+    
+    /* ============================================
+       THEMES & THE WORLD OF JAZER - MOBILE
+       ============================================ */
+    
+    .themes-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.75rem !important;
+      margin-top: 1rem !important;
+    }
+    
+    .theme-card {
+      padding: 0.85rem 1rem !important;
+      background: rgba(255, 255, 255, 0.04) !important;
+      border-radius: 10px !important;
+      border-left: 3px solid var(--jazer-purple) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .theme-card:nth-child(1) { border-left-color: var(--jazer-pink) !important; }
+    .theme-card:nth-child(2) { border-left-color: var(--jazer-cyan) !important; }
+    .theme-card:nth-child(3) { border-left-color: var(--jazer-purple) !important; }
+    .theme-card:nth-child(4) { border-left-color: var(--jazer-pink) !important; }
+    .theme-card:nth-child(5) { border-left-color: var(--jazer-cyan) !important; grid-column: span 2 !important; }
+    
+    .theme-card h4 {
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 0.25rem !important;
+    }
+    
+    .theme-card p {
+      font-size: 0.75rem !important;
+      line-height: 1.35 !important;
+    }
+    
+    .theme-card:hover {
+      background: rgba(255, 255, 255, 0.06) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* ============================================
+       WHY "JAZER"? - MOBILE ENHANCEMENT
+       ============================================ */
+    
+    .why-jazer-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.75rem !important;
+      margin-top: 1rem !important;
+    }
+    
+    .why-card {
+      padding: 1rem !important;
+      background: rgba(255, 255, 255, 0.04) !important;
+      border-radius: 12px !important;
+      border-left: 3px solid var(--jazer-pink) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .why-card:nth-child(1) { border-left-color: var(--jazer-pink) !important; }
+    .why-card:nth-child(2) { border-left-color: var(--jazer-purple) !important; }
+    .why-card:nth-child(3) { border-left-color: var(--jazer-cyan) !important; }
+    .why-card:nth-child(4) { 
+      border-left-color: var(--jazer-pink) !important;
+      background: linear-gradient(135deg, rgba(235, 72, 153, 0.1), rgba(168, 85, 247, 0.05)) !important;
+      box-shadow: 0 0 20px rgba(235, 72, 153, 0.1) !important;
+    }
+    
+    .why-card h4 {
+      font-size: 0.9rem !important;
+      font-weight: 700 !important;
+      margin-bottom: 0.35rem !important;
+    }
+    
+    .why-card p {
+      font-size: 0.8rem !important;
+      line-height: 1.4 !important;
+    }
+    
+    .why-card:hover {
+      background: rgba(255, 255, 255, 0.06) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* ============================================
+       WHAT EARLY LISTENERS SAY - MOBILE
+       ============================================ */
+    
+    .testimonials-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.5rem !important;
+      margin-top: 1rem !important;
+    }
+    
+    .testimonial-card {
+      padding: 0.85rem !important;
+      background: rgba(255, 255, 255, 0.04) !important;
+      border-radius: 12px !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .testimonial-card.pink-border {
+      border-top: 3px solid var(--jazer-pink) !important;
+      background: linear-gradient(180deg, rgba(235, 72, 153, 0.08) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    .testimonial-card.cyan-border {
+      border-top: 3px solid var(--jazer-cyan) !important;
+      background: linear-gradient(180deg, rgba(34, 211, 238, 0.08) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    .testimonial-card.purple-border {
+      border-top: 3px solid var(--jazer-purple) !important;
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.08) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    
+    .testimonial-card p {
+      font-size: 0.7rem !important;
+      line-height: 1.4 !important;
+    }
+    
+    .testimonial-card .text-xs {
+      font-size: 0.65rem !important;
+      margin-top: 0.5rem !important;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* ============================================
+       LET'S WORK TOGETHER - MOBILE ENHANCEMENT
+       ============================================ */
+    
+    .collab-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.5rem !important;
+      margin-top: 1rem !important;
+    }
+    
+    .collab-card {
+      padding: 1rem 0.75rem !important;
+      background: rgba(255, 255, 255, 0.04) !important;
+      border-radius: 12px !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      text-align: center !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .collab-icon {
+      width: 28px !important;
+      height: 28px !important;
+      margin: 0 auto 0.5rem !important;
+      color: currentColor !important;
+    }
+    
+    .feature-title {
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 0.25rem !important;
+    }
+    
+    .feature-desc {
+      font-size: 0.65rem !important;
+      line-height: 1.35 !important;
+      opacity: 0.7 !important;
+    }
+    
+    /* Collab Card Color Variants */
+    .collab-card-pink {
+      border-top: 3px solid var(--jazer-pink) !important;
+      background: linear-gradient(180deg, rgba(235, 72, 153, 0.1) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    .collab-card-pink .collab-icon {
+      color: var(--jazer-pink) !important;
+      filter: drop-shadow(0 0 8px rgba(235, 72, 153, 0.4)) !important;
+    }
+    
+    .collab-card-purple {
+      border-top: 3px solid var(--jazer-purple) !important;
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.1) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    .collab-card-purple .collab-icon {
+      color: var(--jazer-purple) !important;
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.4)) !important;
+    }
+    
+    .collab-card-cyan {
+      border-top: 3px solid var(--jazer-cyan) !important;
+      background: linear-gradient(180deg, rgba(34, 211, 238, 0.1) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    .collab-card-cyan .collab-icon {
+      color: var(--jazer-cyan) !important;
+      filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4)) !important;
+    }
+
+    /* ============================================
+       FOR NEW LISTENERS - MOBILE ENHANCEMENT
+       ============================================ */
+    
+    .feelings-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.5rem !important;
+      margin-top: 1rem !important;
+    }
+    
+    .feeling-card {
+      padding: 1rem 0.75rem !important;
+      background: rgba(255, 255, 255, 0.04) !important;
+      border-radius: 12px !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      text-align: center !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .feeling-icon {
+      width: 28px !important;
+      height: 28px !important;
+      margin: 0 auto 0.5rem !important;
+      color: currentColor !important;
+    }
+    
+    .feeling-text {
+      font-size: 0.7rem !important;
+      line-height: 1.35 !important;
+      font-weight: 500 !important;
+    }
+    
+    /* Feeling Card Color Variants */
+    .feeling-card-pink {
+      border-top: 3px solid var(--jazer-pink) !important;
+      background: linear-gradient(180deg, rgba(235, 72, 153, 0.08) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    .feeling-card-pink .feeling-icon {
+      color: var(--jazer-pink) !important;
+      filter: drop-shadow(0 0 8px rgba(235, 72, 153, 0.4)) !important;
+    }
+    
+    .feeling-card-purple {
+      border-top: 3px solid var(--jazer-purple) !important;
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.08) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    .feeling-card-purple .feeling-icon {
+      color: var(--jazer-purple) !important;
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.4)) !important;
+    }
+    
+    .feeling-card-cyan {
+      border-top: 3px solid var(--jazer-cyan) !important;
+      background: linear-gradient(180deg, rgba(34, 211, 238, 0.08) 0%, rgba(15, 15, 20, 0.6) 100%) !important;
+    }
+    .feeling-card-cyan .feeling-icon {
+      color: var(--jazer-cyan) !important;
+      filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4)) !important;
+    }
+    
+    /* Manifesto Quote */
+    .manifesto-text {
+      font-size: 0.9rem !important;
+      line-height: 1.5 !important;
+      font-style: italic !important;
+      padding: 1rem !important;
+      margin-top: 1rem !important;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(235, 72, 153, 0.08)) !important;
+      border-radius: 12px !important;
+      border-left: 3px solid transparent !important;
+      border-image: linear-gradient(to bottom, var(--jazer-purple), var(--jazer-pink)) 1 !important;
+    }
+
+    /* ============================================
+       JOIN THE BEAM - STYLES MOVED TO COMPONENT
+       ============================================ */
+    /* Styles are now properly scoped in src/components/JoinBeamCTA.astro */
+
+    .hero {
+      padding: 0 !important; /* Remove top/bottom padding to tighten space */
+      margin-top: -0.5rem !important; /* Pull up slightly if needed */
+    }
+    
+    .hero-logo {
+      margin: 0.25rem auto 0.5rem !important; /* Tighter margins */
+      max-width: 200px !important;
+      display: block !important;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      padding: 0.3rem 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline-roles {
+      font-size: 0.9rem !important;
+      padding: 0 0.5rem;
+      margin-bottom: 0 !important;
+      line-height: 1.4;
+    }
+
+    /* About section mobile spacing - tighter */
+    .about-section {
+      padding: 0.75rem 0 !important;
+    }
+
+    .at-glance-card {
+      padding: 1rem !important;
+    }
+
+    /* CRITICAL: Shrink profile card image */
+    .profile-image {
+      aspect-ratio: 16/9 !important;
+      max-height: 120px !important;
+    }
+
+    .profile-image img {
+      width: 35% !important;
+      height: auto !important;
+    }
+
+    .profile-card .track-info {
+      padding: 0.75rem !important;
+    }
+
+    .about-page .container.section {
+      padding: 0.75rem 0 !important;
+    }
+
+    /* Section Spacing - very tight */
+    .section {
+      padding: 0.75rem 0 !important;
+    }
+
+    /* Premium Cards */
+    .premium-glass-card,
+    .premium-card {
+      padding: 1.25rem !important;
+      margin-bottom: 1.25rem !important;
+    }
+
+    .mb-lg {
+      margin-bottom: 1.5rem !important;
+    }
+    .mb-md {
+      margin-bottom: 1rem !important;
+    }
+
+    /* 2-column grid on mobile */
+    .bento-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.5rem !important;
+    }
+
+    .bento-grid > * {
+      margin-bottom: 0 !important;
+      width: auto !important;
+    }
+
+    .grid {
+      display: block !important;
+      gap: 0 !important;
+    }
+
+    .grid > * {
+      margin-bottom: 1rem !important;
+      width: 100% !important;
+    }
+
+    .grid-span-2 {
+      grid-column: span 1 !important;
+    }
+
+    /* Hide decorative overflow elements */
+    .ambient-glow {
+      display: none !important;
+    }
+
+    /* Fix button layout - stack vertically */
+    .track-info [style*="display: flex"] {
+      flex-direction: column !important;
+      gap: 0.5rem !important;
+    }
+
+    .track-info .cta-secondary {
+      width: 100% !important;
+      text-align: center !important;
+    }
+
+    /* Container overflow fix */
+    .container {
+      overflow: hidden !important;
+      max-width: 100% !important;
+    }
+
+    /* Stats grid - 2 columns that fit on mobile */
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 1rem !important;
+    }
+
+    .stats-grid > div {
+      text-align: center;
+    }
+
+    /* Typography */
+    .gradient-text,
+    h2 {
+      font-size: 1.5rem !important;
+    }
+
+    h3, h4 {
+      font-size: 1rem !important;
+    }
+
+    .text-lg {
+      font-size: 1rem !important;
+    }
+
+    .text-xl {
+      font-size: 1.125rem !important;
+    }
+
+    .text-2xl {
+      font-size: 1.25rem !important;
+    }
+
+    /* Timeline */
+    .content-narrow {
+      padding: 0 0.5rem;
+    }
+
+    /* Stats grid */
+    [style*="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))"] {
+      gap: 1rem !important;
+    }
+
+    [style*="font-size: 2.5rem"] {
+      font-size: 2rem !important;
+    }
+
+    /* Testimonials */
+    [style*="padding: 1.5rem"] {
+      padding: 1rem !important;
+    }
+
+    /* CTA buttons */
+    .cta-button {
+      padding: 0.75rem 2rem !important;
+      font-size: 0.95rem !important;
+      width: auto !important;
+      display: inline-flex !important;
+      min-width: 140px;
+      justify-content: center;
+      margin: 0 auto !important;
+    }
+
+    /* Track badges */
+    .track-badge {
+      padding: 0.35rem 0.75rem !important;
+      font-size: 0.75rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 0.5rem 0 1.5rem;
+    }
+
+    .hero-logo {
+      max-width: 220px !important;
+    }
+
+    .tagline-roles {
+      font-size: 0.875rem !important;
+    }
+
+    .section {
+      padding: 1.5rem 0 !important;
+    }
+
+    .premium-glass-card,
+    .premium-card {
+      padding: 1rem !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .gradient-text,
+    h2 {
+      font-size: 1.25rem !important;
+    }
+
+    /* Behind the scenes grid */
+    [style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Stats */
+    [style*="font-size: 2.5rem"] {
+      font-size: 1.75rem !important;
+    }
+
+    /* Mobile Testimonials */
+    .testimonials-grid {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+    }
+  }
+
+  /* Testimonials Grid (Desktop Default) */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .testimonial-card {
+    padding: 1.25rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pink-border { border-left: 3px solid var(--jazer-pink); }
+  .cyan-border { border-left: 3px solid var(--jazer-cyan); }
+  .purple-border { border-left: 3px solid var(--jazer-purple); }
+
+  .text-xs { font-size: 0.75rem; }
+
+  /* Collab Grid */
+  .collab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 0.5rem; /* Tighter against title */
+  }
+
+  .collab-card {
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .collab-card:hover {
+    border-color: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
+
+  .feature-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .feature-title { margin-bottom: 0.5rem; font-size: 1.125rem; }
+  .feature-desc { font-size: 0.875rem; color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 768px) {
+    .collab-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.5rem !important;
+    }
+    .collab-card {
+      padding: 0.75rem !important;
+    }
+    .collab-card .feature-icon {
+      font-size: 1.75rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    .collab-card .feature-title {
+      font-size: 0.8rem !important;
+      margin-bottom: 0.25rem !important;
+      line-height: 1.2;
+    }
+    .collab-card .feature-desc {
+      font-size: 0.65rem !important;
+      line-height: 1.1;
+      opacity: 0.8;
+      display: block; /* Keep visible but tiny, or set to none if too crowded */
+    }
+    
+    /* Feelings Grid Mobile */
+    .feelings-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.5rem !important;
+    }
+    .feeling-card { padding: 0.5rem !important; }
+    .feeling-icon { font-size: 1.5rem !important; margin-bottom: 0.25rem !important; }
+    .feeling-text { font-size: 0.65rem !important; line-height: 1.2 !important; }
+  }
+
+  /* Feelings Grid Desktop */
+  .feelings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .feeling-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .feeling-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .feeling-text { font-size: 1.125rem; font-weight: 700; line-height: 1.4; }
+  
+  .manifesto-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    font-style: italic;
+    opacity: 0.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Profile Card Redesign */
+  .profile-card-redesign {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2.5rem;
+    text-align: left;
+  }
+  
+  .profile-image-container {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  }
+  
+  .profile-bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  }
+  
+  .profile-logo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15%;
+    z-index: 1;
+  }
+  
+  .profile-inner-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
+    z-index: 2;
+  }
+  
+  .profile-content {
+    flex: 1;
+  }
+  
+  .profile-name {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  
+  .profile-roles {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0.9;
+  }
+  
+  .profile-actions {
+    display: flex;
+    gap: 1.25rem;
+  }
+  
+  .profile-btn {
+    min-width: 140px;
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .profile-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .accent-cyan { color: var(--jazer-cyan); }
+  .accent-purple { color: var(--jazer-purple); }
+  .accent-star { color: white; opacity: 0.7; font-size: 0.8em; }
+  
+  /* Stats Card Redesign */
+  .stats-card-redesign {
+    padding: 2.5rem;
+  }
+  
+  .stats-title {
+    margin-bottom: 2rem;
+    font-size: 2rem; 
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .stats-grid-4col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  
+  .stat-label {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: capitalize; 
+    letter-spacing: 0.02em;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0.25rem;
+    white-space: nowrap;
+  }
+  
+  .text-purple { color: #a855f7; }
+  .text-pink { color: #ec4899; }
+  .text-cyan { color: #22d3ee; }
+  
+  .text-gradient-magic {
+    background: linear-gradient(135deg, #ec4899 0%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-royal {
+    background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Mission Text - Plain, Centered */
+  .stats-mission {
+    text-align: center;
+    max-width: 900px;
+    margin: 1.5rem auto 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+  
+  .stats-mission p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: white;
+    font-weight: 400;
+  }
+  
+  .stats-mission strong {
+    color: white;
+    font-weight: 600;
+  }
+  
+  /* Mobile Responsiveness for Redesign */
+  /* Mobile Responsiveness for Redesign - FORCE HORIZONTAL */
+  @media (max-width: 768px) {
+    .profile-card-redesign {
+      /* Keep Horizontal Layout even on mobile - FORCE WITH !IMPORTANT */
+      display: flex !important;
+      flex-direction: row !important; 
+      align-items: center !important;
+      padding: 1.25rem;
+      gap: 1.25rem;
+      text-align: left; 
+      /* Force full width to stack */
+      grid-column: 1 / -1 !important; 
+      width: 100% !important;
+    }
+  
+    .profile-image-container {
+      width: 85px;
+      height: 85px; 
+      margin: 0; 
+      border-radius: 16px;
+      flex-shrink: 0; /* Prevent shrinking */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .profile-content {
+        flex: 1; /* Take up remaining space */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .profile-name {
+      font-size: 1.75rem;
+      margin-bottom: 0.25rem;
+      line-height: 1;
+      text-align: left;
+    }
+    
+    .profile-roles {
+      justify-content: flex-start; /* Align left */
+      font-size: 0.75rem;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+      white-space: normal;
+      line-height: 1.3;
+      text-align: left;
+    }
+    
+    .profile-actions {
+      justify-content: flex-start;
+      gap: 0.75rem;
+      width: 100%;
+    }
+    
+    .profile-btn {
+      flex: 1; /* Expand to fill space */
+      padding: 0.6rem 0.5rem;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      min-width: 0; /* Allow shrinking if desperate */
+    }
+    
+    .stats-card-redesign {
+      padding: 1.25rem !important;
+      grid-column: 1 / -1 !important;
+      width: 100%;
+      height: auto !important;
+      min-height: min-content !important;
+      overflow: visible !important;
+      /* NUCLEAR OPTION: Force Flex Column to ensure stacking */
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+    }
+    
+    .stats-grid-4col {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      /* Ensure grid doesn't swallow space */
+      flex: 0 0 auto !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .stat-item {
+        padding: 0.6rem 0.25rem; /* Less squished */
+    }
+    
+    .stat-value {
+      font-size: 1.1rem; /* Slightly clearer */
+      margin-bottom: 0;
+    }
+
+    .stat-label {
+        font-size: 0.6rem;
+        white-space: normal; 
+        line-height: 1.1;
+        margin-top: 0.15rem;
+        opacity: 0.7;
+    }
+
+    .stats-mission {
+        /* Reset completely */
+        display: block !important;
+        float: none !important;
+        clear: both !important;
+        
+        margin: 1rem 0 0 0 !important;
+        padding: 1rem !important;
+        
+        border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 8px;
+        
+        width: 100% !important;
+        position: relative !important; /* Keep in flow */
+        z-index: 50 !important;
+        
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important; /* Prevent layer issues */
+    }
+
+    .stats-mission p {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+        color: white !important;
+        margin: 0 !important;
+        text-align: center;
+        width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,663 @@
+---
+const contactReasons = [
+  { value: 'general', label: 'General Inquiry', icon: '💬' },
+  { value: 'collaboration', label: 'Collaboration', icon: '🤝' },
+  { value: 'booking', label: 'Booking / Events', icon: '🎤' },
+  { value: 'press', label: 'Press / Media', icon: '📰' },
+  { value: 'licensing', label: 'Music Licensing', icon: '📝' },
+  { value: 'feedback', label: 'Fan Message', icon: '💜' }
+];
+---
+
+<section class="contact-section">
+  <div class="container">
+    <div class="form-card animate-fade-up" style="animation-delay: 0.4s;">
+      
+      <!-- Success State -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon-wrapper">
+          <div class="success-icon">✓</div>
+        </div>
+        <h3 class="success-title">Message Sent!</h3>
+        <p class="success-message">
+          Thank you for reaching out. Your message has been received and will be reviewed as soon as possible.
+        </p>
+        <button type="button" class="reset-btn" id="sendAnother">
+          Send Another Message
+        </button>
+      </div>
+
+      <!-- Form Container -->
+      <div id="formContainer">
+        <h3 class="form-header">What's this about?</h3>
+        
+        <!-- Reason Selector -->
+        <div class="reason-grid" role="radiogroup" aria-label="Select a reason for contact">
+          {contactReasons.map((reason, index) => (
+            <div 
+              class="reason-card" 
+              data-reason={reason.value}
+              role="radio"
+              aria-checked="false"
+              tabindex={index === 0 ? "0" : "-1"}
+            >
+              <div class="reason-icon">{reason.icon}</div>
+              <div class="reason-label">{reason.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Error Banner -->
+        <div class="form-error-banner" id="formErrorBanner" role="alert">
+          <span class="error-icon">⚠️</span>
+          <span><strong>Unable to send.</strong> Please check your connection and try again.</span>
+        </div>
+
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          
+          <!-- Honeypot & Timestamp -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="_timestamp" id="formTimestamp">
+          <input type="hidden" name="_subject" value="New contact from JaZeR website">
+
+          <!-- Hidden Reason Input -->
+          <select id="reason" name="reason" class="hidden-select" required aria-hidden="true" tabindex="-1">
+            <option value="">Select a reason...</option>
+            {contactReasons.map((reason) => (
+              <option value={reason.value}>{reason.label}</option>
+            ))}
+          </select>
+          <div class="field-error" id="reasonError">Please select a reason above</div>
+
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input 
+              id="name" 
+              type="text" 
+              name="name" 
+              class="form-input" 
+              required 
+              placeholder="Your name"
+              autocomplete="name"
+              minlength="2"
+            >
+            <div class="field-error">Please enter your name</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input 
+              id="email" 
+              type="email" 
+              name="email" 
+              class="form-input" 
+              required 
+              placeholder="your@email.com"
+              autocomplete="email"
+              inputmode="email"
+            >
+            <div class="field-error">Please enter a valid email address</div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">
+              Subject <span class="optional-tag">(optional)</span>
+            </label>
+            <input 
+              id="subject" 
+              type="text" 
+              name="subject" 
+              class="form-input" 
+              placeholder="Brief subject line"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              class="form-textarea" 
+              required 
+              placeholder="Tell us what's on your mind..."
+              rows="5"
+              minlength="20"
+            ></textarea>
+            <div class="field-hint">Minimum 20 characters</div>
+            <div class="field-error">Please write at least 20 characters</div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="spinner"></span>
+            <span class="btn-text">Send Message</span>
+            <span class="btn-icon">→</span>
+          </button>
+
+          <div class="privacy-note">
+            <span class="lock-icon">🔒</span>
+            <span>Your information is private and secure.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding-bottom: 6rem;
+    margin-top: -3rem;
+    position: relative;
+    z-index: 20;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .form-card {
+    background: rgba(13, 14, 18, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .form-header {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  /* Success State */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .form-success.visible {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .success-icon-wrapper {
+    width: 5rem;
+    height: 5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .success-icon {
+    font-size: 2.5rem;
+    color: #10b981;
+  }
+
+  .success-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .success-message {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .reset-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .reset-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: white;
+  }
+
+  /* Reason Grid */
+  .reason-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .reason-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .reason-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .reason-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .reason-card.active,
+  .reason-card[aria-checked="true"] {
+    background: rgba(6, 182, 212, 0.1);
+    border-color: var(--jazer-cyan);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  }
+
+  .reason-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .reason-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .reason-card.active .reason-label {
+    color: white;
+  }
+
+  /* Form Fields */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    margin-left: 0.25rem;
+  }
+
+  .optional-tag {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--jazer-cyan);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  /* Validation States */
+  .form-group.error .form-input,
+  .form-group.error .form-textarea {
+    border-color: #ef4444;
+  }
+
+  .field-error {
+    display: none;
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .form-group.error .field-error,
+  #reasonError.visible {
+    display: block;
+  }
+
+  .field-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-left: 0.25rem;
+  }
+
+  /* Submit Button */
+  .submit-btn {
+    margin-top: 1rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    align-self: center;
+    width: auto;
+    min-width: 14rem;
+    max-width: 100%;
+  }
+
+  .submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    filter: grayscale(1);
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: none;
+  }
+
+  .submit-btn.loading .spinner {
+    display: block;
+  }
+
+  .submit-btn.loading .btn-text,
+  .submit-btn.loading .btn-icon {
+    display: none;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Privacy Note */
+  .privacy-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  .lock-icon {
+    font-size: 0.9rem;
+  }
+
+  /* Utility */
+  .hp-field {
+    display: none;
+  }
+  
+  .hidden-select {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .form-error-banner {
+    display: none;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .form-error-banner.visible {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    .form-card {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-up {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+</style>
+
+<script>
+  // --- Form Logic ---
+  
+  // Set timestamp on page load (anti-spam)
+  const timestampInput = document.getElementById('formTimestamp');
+  if (timestampInput) {
+      timestampInput.value = Date.now().toString();
+  }
+  
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const formContainer = document.getElementById('formContainer');
+  const formSuccess = document.getElementById('formSuccess');
+  const formErrorBanner = document.getElementById('formErrorBanner');
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+  const sendAnotherBtn = document.getElementById('sendAnother');
+  
+  // Reason Selection
+  const reasonCards = document.querySelectorAll('.reason-card');
+  const reasonSelect = document.getElementById('reason') as HTMLSelectElement;
+  const reasonError = document.getElementById('reasonError');
+  
+  function selectReason(card: Element) {
+    reasonCards.forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-checked', 'false');
+      c.setAttribute('tabindex', '-1');
+    });
+    
+    card.classList.add('active');
+    card.setAttribute('aria-checked', 'true');
+    card.setAttribute('tabindex', '0');
+    
+    const value = (card as HTMLElement).dataset.reason;
+    if (reasonSelect && value) {
+      reasonSelect.value = value;
+      reasonError?.classList.remove('visible');
+    }
+  }
+  
+  reasonCards.forEach(card => {
+    card.addEventListener('click', () => selectReason(card));
+    
+    card.addEventListener('keydown', (e: Event) => {
+      const keyEvent = e as KeyboardEvent;
+      if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
+        keyEvent.preventDefault();
+        selectReason(card);
+      }
+    });
+  });
+
+  // Validation
+  const validators = {
+    name: (val: string) => val.trim().length >= 2,
+    email: (val: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
+    message: (val: string) => val.trim().length >= 20
+  };
+
+  function validateField(input: HTMLInputElement | HTMLTextAreaElement) {
+    const group = input.closest('.form-group');
+    if (!group) return true;
+    
+    const name = input.name as keyof typeof validators;
+    if (validators[name]) {
+      const isValid = validators[name](input.value);
+      group.classList.toggle('error', !isValid && input.value.length > 0);
+      return isValid;
+    }
+    return true;
+  }
+
+  ['name', 'email', 'message'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('blur', () => validateField(el as HTMLInputElement));
+      el.addEventListener('input', () => {
+        if (el.closest('.form-group')?.classList.contains('error')) {
+          validateField(el as HTMLInputElement);
+        }
+      });
+    }
+  });
+
+  // Submission
+  if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // 1. Anti-spam checks
+        const honeypot = document.getElementById('website') as HTMLInputElement;
+        if (honeypot && honeypot.value) {
+          showSuccess(); // Silently fail for bots
+          return;
+        }
+        
+        const ts = parseInt((document.getElementById('formTimestamp') as HTMLInputElement).value || '0');
+        if (Date.now() - ts < 3000) {
+          showSuccess(); // Too fast = bot
+          return;
+        }
+
+        // 2. Validate Reason
+        if (!reasonSelect.value) {
+          reasonError?.classList.add('visible');
+          // Scroll to reason selector
+          reasonError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        // 3. Validate Fields
+        let isValid = true;
+        ['name', 'email', 'message'].forEach(id => {
+          const el = document.getElementById(id) as HTMLInputElement;
+          if (!validateField(el)) isValid = false;
+        });
+
+        if (!isValid) {
+          const firstError = document.querySelector('.form-group.error');
+          firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        // 4. Submit
+        submitBtn.disabled = true;
+        submitBtn.classList.add('loading');
+        formErrorBanner?.classList.remove('visible');
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            showSuccess();
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (err) {
+          formErrorBanner?.classList.add('visible');
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+        }
+      });
+  }
+
+  function showSuccess() {
+    if (formContainer) formContainer.style.display = 'none';
+    if (formSuccess) {
+        formSuccess.classList.add('visible');
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  if (sendAnotherBtn) {
+      sendAnotherBtn.addEventListener('click', () => {
+        form.reset();
+        reasonSelect.value = '';
+        reasonCards.forEach(c => {
+          c.classList.remove('active');
+          c.setAttribute('aria-checked', 'false');
+        });
+        
+        document.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
+        
+        if (formContainer) formContainer.style.display = 'block';
+        if (formSuccess) formSuccess.classList.remove('visible');
+        if (timestampInput) timestampInput.value = Date.now().toString();
+      });
+  }
+</script>

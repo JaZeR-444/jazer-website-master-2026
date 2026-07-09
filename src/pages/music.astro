@@ -1,0 +1,1204 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JoinBeamCTA from '../components/JoinBeamCTA.astro';
+import FloatingNotes from '../components/FloatingNotes.astro';
+const base = import.meta.env.BASE_URL;
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).toString() : Astro.url.pathname;
+const ogImage = site
+  ? new URL(`${base}assets/images/jazer-cosmic-soundbirth.png`, site).toString()
+  : `${base}assets/images/jazer-cosmic-soundbirth.png`;
+
+const announcement = {
+  href: '#join-beam',
+  text: '🎵 Music in development — Get notified when it drops'
+};
+
+// Transmission Log (Unified Release Data)
+const releases = [
+  {
+    id: 'rel-001',
+    title: 'In Due Time',
+    type: 'Single',
+    status: 'In Development',
+    year: '2026',
+    gradient: 'gradient-1',
+    description: 'Melodic hip-hop meets raw emotion. The debut single.',
+    cta: 'Get Notified'
+  },
+  {
+    id: 'rel-002',
+    title: 'Foundations EP',
+    type: 'EP',
+    status: 'Planned',
+    year: '2026',
+    gradient: 'gradient-2',
+    description: 'A collection exploring ambition, struggle, and breakthrough moments.',
+    cta: 'Get Notified'
+  }
+];
+
+// Streaming Platforms
+const streamingPlatforms = [
+  { name: 'Spotify', href: '#', icon: 'spotify-round-icon.svg' },
+  { name: 'Apple Music', href: '#', icon: 'apple-music-round-icon.svg' },
+  { name: 'SoundCloud', href: '#', icon: 'soundcloud-round-icon.svg' },
+  { name: 'YouTube', href: '#', icon: 'youtube-round-icon.svg' }
+];
+
+// FAQ Items
+const faqItems = [
+  {
+    question: 'What kind of music does JaZeR make?',
+    answer: 'Melodic hip-hop with introspective lyrics. Think atmospheric beats, honest storytelling, and a focus on authenticity over trends.'
+  },
+  {
+    question: 'When is the first release?',
+    answer: 'Music is currently in development with releases planned for 2026. Sign up below to be notified when dates are announced.'
+  },
+  {
+    question: 'How can I stay updated?',
+    answer: 'Join the mailing list below to get notified about release dates, previews, and exclusive content before anyone else.'
+  },
+  {
+    question: 'Where will music be available?',
+    answer: 'All major streaming platforms — Spotify, Apple Music, YouTube Music, SoundCloud, and more on release day.'
+  }
+];
+---
+<BaseLayout
+  bodyClass="has-announcement music-page"
+  showAnnouncement={true}
+  announcement={announcement}
+  showNoiseOverlay={true}
+  showPreloader={true}
+  showNavEnhancements={true}
+  showFooter={true}
+  showAudioPlayer={false}
+  showBackToTop={true}
+  includeGsap={true}
+  extraStyles={[
+    '/css/music-enhancements.css'
+  ]}
+>
+  <Fragment slot="head">
+    <title>Music - JaZeR</title>
+    <meta name="title" content="Music - JaZeR" />
+    <meta
+      name="description"
+      content="Explore JaZeR's music - Latest releases, discography, and streaming links. Listen now on Spotify, Apple Music, and all major platforms."
+    />
+    <meta
+      name="keywords"
+      content="JaZeR, music, releases, discography, electronic music, streaming, Spotify, Apple Music, hip-hop, rap, melodic"
+    />
+    <meta name="author" content="JaZeR" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content="Music - JaZeR" />
+    <meta
+      property="og:description"
+      content="Explore JaZeR's music - Latest releases, discography, and streaming links."
+    />
+    <meta
+      property="og:image"
+      content={ogImage}
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content="Music - JaZeR" />
+    <meta
+      property="twitter:description"
+      content="Explore JaZeR's music - Latest releases, discography, and streaming links."
+    />
+    <meta
+      property="twitter:image"
+      content={ogImage}
+    />
+
+    <link rel="canonical" href={canonical} />
+    
+    <style>
+      /* Unified Page Background */
+      .music-page {
+        background: transparent;
+      }
+      /* Tech dividers moved to global enhancements.css */
+
+      /* Page-Specific Overrides */
+      .music-hero-section {
+          align-items: center;
+          position: relative;
+          background: transparent;
+          overflow: visible; /* Changed from hidden to prevent clipping */
+          margin-top: -40px; /* Reduced to prevent clipping */
+          padding-top: 0.5rem;
+          padding-bottom: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .music-hero-section {
+          margin-top: -30px;
+          padding-top: 0.25rem;
+          padding-bottom: 1.5rem;
+        }
+      }
+
+      /* Bottom fade removed - was causing visible box effect */
+
+      /* Sonic Waveform Background */
+      .sonic-waveform-bg {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0.25;
+          pointer-events: none;
+          z-index: 0;
+          filter: blur(0.5px);
+      }
+      .waveform-line {
+          width: 3px;
+          height: 100px;
+          margin: 0 8px;
+          background: linear-gradient(
+            180deg,
+            rgba(6, 182, 212, 0.9) 0%,
+            rgba(139, 92, 246, 0.7) 50%,
+            rgba(236, 72, 153, 0.5) 100%
+          );
+          border-radius: 100px;
+          animation: sonicPulse 2.5s ease-in-out infinite;
+          animation-delay: calc(var(--i) * 0.1s);
+          box-shadow:
+            0 0 15px rgba(6, 182, 212, 0.4),
+            0 0 30px rgba(6, 182, 212, 0.2);
+          position: relative;
+      }
+      .waveform-line::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: inherit;
+          border-radius: inherit;
+          filter: blur(8px);
+          opacity: 0.5;
+      }
+      @keyframes sonicPulse {
+          0%, 100% {
+            height: 8%;
+            opacity: 0.3;
+            transform: scaleY(1);
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+          }
+          50% {
+            height: 90%;
+            opacity: 0.8;
+            transform: scaleY(1.05);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.5), 0 0 50px rgba(139, 92, 246, 0.3);
+          }
+      }
+
+      /* Glitch Effect */
+      .glitch-text {
+        position: relative;
+        display: inline-block;
+      }
+      .glitch-text::before,
+      .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0f0f14; /* Match bg */
+      }
+      .glitch-text::before {
+        left: 2px;
+        text-shadow: -1px 0 #cc00ff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim-1 5s infinite linear alternate-reverse;
+      }
+      .glitch-text::after {
+        left: -2px;
+        text-shadow: -1px 0 #00ffff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim-2 5s infinite linear alternate-reverse;
+      }
+      @keyframes glitch-anim-1 {
+        0% { clip: rect(30px, 9999px, 10px, 0); }
+        20% { clip: rect(30px, 9999px, 80px, 0); }
+        40% { clip: rect(60px, 9999px, 20px, 0); }
+        60% { clip: rect(10px, 9999px, 50px, 0); }
+        80% { clip: rect(50px, 9999px, 30px, 0); }
+        100% { clip: rect(70px, 9999px, 90px, 0); }
+      }
+      @keyframes glitch-anim-2 {
+        0% { clip: rect(15px, 9999px, 50px, 0); }
+        20% { clip: rect(60px, 9999px, 20px, 0); }
+        40% { clip: rect(10px, 9999px, 80px, 0); }
+        60% { clip: rect(40px, 9999px, 10px, 0); }
+        80% { clip: rect(80px, 9999px, 40px, 0); }
+        100% { clip: rect(20px, 9999px, 60px, 0); }
+      }
+
+      .music-hero-content {
+          z-index: 2;
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: center;
+      }
+
+      .hero-eyebrow {
+          font-family: 'Courier New', monospace;
+          color: var(--jazer-cyan);
+          font-size: 0.8rem;
+          margin-bottom: 2rem;
+          letter-spacing: 0.2em;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.6rem 1.25rem;
+          background: rgba(6, 182, 212, 0.08);
+          border-radius: 100px;
+          border: 1px solid rgba(6, 182, 212, 0.2);
+          backdrop-filter: blur(8px);
+          animation: float-subtle 4s ease-in-out infinite;
+      }
+      @keyframes float-subtle {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+      }
+      .eyebrow-dot {
+          width: 8px; height: 8px;
+          background: var(--jazer-cyan);
+          box-shadow: 0 0 12px var(--jazer-cyan), 0 0 20px rgba(6, 182, 212, 0.5);
+          border-radius: 50%;
+          animation: pulse-glow 2s ease-in-out infinite;
+      }
+      @keyframes pulse-glow {
+          0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px var(--jazer-cyan); }
+          50% { opacity: 0.6; transform: scale(0.9); box-shadow: 0 0 20px var(--jazer-cyan), 0 0 30px rgba(6, 182, 212, 0.4); }
+      }
+
+      .music-hero-title-text {
+          font-family: var(--font-primary);
+          font-size: clamp(3rem, 8vw, 6rem);
+          font-weight: 900;
+          line-height: 1;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.02em;
+          background: linear-gradient(135deg, #fff 0%, #a5f3fc 50%, #c4b5fd 100%);
+          background-size: 200% 200%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradient-shift 8s ease-in-out infinite;
+          filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.2));
+      }
+      @keyframes gradient-shift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+      }
+
+      .music-hero-description {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.7);
+          max-width: 550px;
+          margin: 0 auto 2.5rem;
+          line-height: 1.7;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Section Styling */
+      .section-header {
+          margin-bottom: 3rem;
+          text-align: center;
+      }
+      .section-title {
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 800;
+          margin-bottom: 0.75rem;
+          letter-spacing: -0.02em;
+      }
+      .section-title.gradient-text {
+          background: linear-gradient(135deg, #fff 0%, var(--jazer-cyan) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          filter: drop-shadow(0 2px 10px rgba(6, 182, 212, 0.2));
+      }
+      .section-subtitle {
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 1rem;
+          max-width: 500px;
+          margin: 0 auto;
+          line-height: 1.6;
+      }
+
+      /* Decorative section accent */
+      .section-header::before {
+          content: "";
+          display: block;
+          width: 40px;
+          height: 3px;
+          background: linear-gradient(90deg, var(--jazer-cyan), transparent);
+          margin: 0 auto 1.5rem;
+          border-radius: 2px;
+      }
+
+      /* Discography Grid */
+      .discography-section {
+          padding: 5rem 0;
+          position: relative;
+          z-index: 2;
+      }
+
+      @media (max-width: 768px) {
+        .discography-section {
+          padding: 2.5rem 0;
+        }
+        .section-header {
+          margin-bottom: 2rem;
+        }
+        .section-header::before {
+          margin-bottom: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .discography-section {
+          padding: 1.5rem 0;
+        }
+        .section-header {
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      /* Section background accent */
+      .discography-section::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80%;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
+      }
+
+      .discography-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 2.5rem;
+      }
+
+      .release-card {
+          background: rgba(15, 15, 20, 0.6);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 16px;
+          overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+          display: flex;
+          flex-direction: column;
+          position: relative;
+      }
+      .release-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0) 0%, transparent 60%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+      }
+      .release-card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(6, 182, 212, 0.4);
+          background: rgba(15, 15, 20, 0.8);
+          box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.4),
+            0 0 40px rgba(6, 182, 212, 0.1);
+      }
+      .release-card:hover::before {
+          opacity: 1;
+          background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
+      }
+      
+      /* Compact Text Adjustments */
+      .release-details {
+          padding: 1rem 1.25rem; /* Reduced padding */
+      }
+      .release-title {
+          font-size: 1.2rem; /* Slightly smaller title */
+          margin-bottom: 0.25rem;
+      }
+      .release-meta {
+          margin-bottom: 0.75rem;
+          font-size: 0.8rem;
+      }
+      .release-card p {
+          margin-bottom: 1rem !important;
+          font-size: 0.85rem !important;
+          line-height: 1.4 !important;
+      }
+
+      .release-cover {
+          aspect-ratio: 1;
+          background: #111;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .cover-placeholder {
+          width: 100%; height: 100%;
+          transition: transform 0.6s ease;
+      }
+      .release-card:hover .cover-placeholder {
+          transform: scale(1.05);
+      }
+
+      .status-overlay {
+          position: absolute;
+          top: 1rem; right: 1rem;
+          z-index: 2;
+      }
+      .status-badge {
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(8px);
+          color: var(--jazer-cyan);
+          font-family: 'Courier New', monospace;
+          font-size: 0.7rem;
+          font-weight: 700;
+          padding: 0.4rem 0.75rem;
+          border-radius: 100px;
+          border: 1px solid rgba(6, 182, 212, 0.3);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          animation: badge-pulse 3s ease-in-out infinite;
+      }
+      @keyframes badge-pulse {
+          0%, 100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+          50% { box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2); }
+      }
+
+      .release-details {
+          padding: 1.5rem 1.75rem;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+      }
+      .release-title {
+          font-size: 1.35rem;
+          font-weight: 700;
+          color: white;
+          margin-bottom: 0.5rem;
+          line-height: 1.3;
+      }
+      .release-meta {
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 0.8rem;
+          margin-bottom: 1rem;
+          display: flex;
+          gap: 0.75rem;
+          align-items: center;
+          font-family: 'Courier New', monospace;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+      }
+      .meta-divider {
+          width: 4px; height: 4px;
+          background: var(--jazer-cyan);
+          border-radius: 50%;
+          opacity: 0.6;
+          box-shadow: 0 0 6px var(--jazer-cyan);
+      }
+
+      .release-description {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 0.9rem;
+          margin-bottom: 1.5rem;
+          line-height: 1.6;
+          flex: 1;
+      }
+
+      .release-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--jazer-cyan);
+          font-weight: 600;
+          font-size: 0.85rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          padding: 0.6rem 1rem;
+          background: rgba(6, 182, 212, 0.08);
+          border-radius: 6px;
+          border: 1px solid rgba(6, 182, 212, 0.2);
+          width: fit-content;
+      }
+      .release-link:hover {
+          gap: 0.75rem;
+          background: rgba(6, 182, 212, 0.15);
+          border-color: rgba(6, 182, 212, 0.4);
+          box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+      }
+      .release-link span {
+          transition: transform 0.3s ease;
+      }
+      .release-link:hover span {
+          transform: translateX(3px);
+      }
+
+      /* Platforms Section */
+      .platforms-section {
+          padding: 4rem 0;
+          position: relative;
+          background: linear-gradient(180deg, transparent 0%, rgba(6, 182, 212, 0.02) 50%, transparent 100%);
+      }
+      .platforms-content {
+          text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .platforms-section {
+          padding: 2rem 0;
+        }
+        .platforms-label {
+          margin-bottom: 1.25rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .platforms-section {
+          padding: 1.5rem 0;
+        }
+        .platforms-label {
+          margin-bottom: 1rem;
+        }
+      }
+      .platforms-label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+      }
+      .label-line {
+          width: 60px;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
+      }
+      .label-line:last-child {
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
+      }
+      .label-text {
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          font-family: 'Courier New', monospace;
+      }
+
+      /* Platform Grid */
+      .platform-grid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+      }
+      .platform-pill {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem 1.5rem;
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 100px;
+          color: var(--text-light);
+          text-decoration: none;
+          transition: all 0.3s ease;
+      }
+      .platform-pill:hover {
+          background: rgba(255,255,255,0.1);
+          transform: translateY(-2px);
+      }
+      .platform-pill img {
+          width: 20px; height: 20px;
+          filter: grayscale(1);
+          transition: filter 0.3s ease;
+      }
+      .platform-pill:hover img {
+          filter: grayscale(0);
+      }
+
+      @media (max-width: 768px) {
+        .music-hero-section {
+          min-height: auto;
+          padding: 1rem 0 1.5rem;
+        }
+
+        .music-hero-title-img {
+          max-width: 200px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero-eyebrow {
+          font-size: 0.65rem;
+          padding: 0.5rem 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .music-hero-description {
+          font-size: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        .hero-nav-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 0.75rem !important;
+        }
+
+        .hero-nav-links .system-button {
+          width: 100%;
+          max-width: 280px;
+          justify-content: center;
+        }
+
+        /* Section Headers Mobile */
+        .section-header {
+          margin-bottom: 2rem;
+        }
+        .section-header::before {
+          width: 30px;
+          margin-bottom: 1rem;
+        }
+        .section-subtitle {
+          font-size: 0.9rem;
+        }
+
+        /* Discography Section */
+        .discography-section {
+          padding: 3rem 0;
+        }
+
+        /* Mobile-Friendly Single Column Layout */
+        .discography-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          margin-top: 1.5rem;
+        }
+
+        /* Readable Card Styles */
+        .release-card {
+          display: grid;
+          grid-template-columns: 110px 1fr;
+          border-radius: 14px;
+          overflow: hidden;
+        }
+        .release-card::before {
+          display: none;
+        }
+        .release-cover {
+          aspect-ratio: 1;
+          min-height: 110px;
+        }
+        .release-details {
+          padding: 1rem 1.25rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .release-title {
+          font-size: 1.1rem;
+          margin-bottom: 0.35rem;
+          line-height: 1.25;
+        }
+        .release-meta {
+          font-size: 0.7rem;
+          margin-bottom: 0.75rem;
+          gap: 0.5rem;
+        }
+        .release-description {
+          display: none;
+        }
+        .release-link {
+          font-size: 0.75rem;
+          padding: 0.5rem 0.85rem;
+        }
+        .status-badge {
+          font-size: 0.5rem;
+          padding: 0.25rem 0.5rem;
+          top: 0.6rem;
+          right: 0.6rem;
+        }
+
+        /* Platforms Section Mobile */
+        .platforms-section {
+          padding: 2.5rem 0;
+        }
+        .platforms-label {
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+        .label-line {
+          width: 30px;
+        }
+        .label-text {
+          font-size: 0.65rem;
+        }
+
+        /* Platform Grid - Icon Only */
+        .platform-grid {
+          gap: 0.6rem;
+        }
+
+        /* Featured Track Section Mobile */
+        .featured-track-section {
+          padding: 2rem 0;
+        }
+        .featured-track-container {
+          display: grid;
+          grid-template-columns: 85px 1fr;
+          padding: 1.25rem;
+          gap: 1rem;
+          text-align: left;
+          align-items: center;
+          border-radius: 16px;
+        }
+        .featured-track-container::before {
+          display: none;
+        }
+        .featured-track-visual {
+          margin-bottom: 0;
+          justify-content: flex-start;
+        }
+        .vinyl-container {
+          max-width: 85px;
+          margin: 0;
+        }
+        .featured-track-info {
+          gap: 0.15rem;
+        }
+        .featured-header {
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+        .featured-badge-pill {
+          font-size: 0.55rem !important;
+          padding: 0.3rem 0.7rem !important;
+          margin-bottom: 0 !important;
+        }
+        .featured-title {
+          font-size: 1.2rem !important;
+          margin-bottom: 0.2rem !important;
+          line-height: 1.2;
+        }
+        .featured-artist {
+          font-size: 0.85rem !important;
+          margin-bottom: 0.5rem !important;
+        }
+        .featured-meta-row {
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-top: 0.75rem;
+        }
+        .featured-track-info .system-button {
+          font-size: 0.7rem;
+          padding: 0.6rem 1rem;
+          margin-top: 1rem !important;
+        }
+      }
+      
+      /* FAQ Grid Base Style */
+      .faq-grid {
+          max-width: 700px; 
+          margin: 2rem auto; 
+          display: grid; 
+          gap: 1rem;
+      }
+      
+      /* Countdown Styles */
+      .countdown-container {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .countdown-val {
+        font-family: 'Courier New', monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--jazer-cyan);
+      }
+      .countdown-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        letter-spacing: 0.1em;
+      }
+      
+      /* Audio Play Button */
+      .play-btn-circle {
+        width: 50px; height: 50px;
+        border-radius: 50%;
+        background: var(--jazer-cyan);
+        display: flex; 
+        align-items: center; justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+      }
+      .play-btn-circle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(6, 182, 212, 0.5);
+      }
+      .play-icon { width: 20px; height: 20px; fill: #000; margin-left: 3px; }
+      .pause-icon { width: 18px; height: 18px; fill: #000; display: none; }
+      .playing .play-icon { display: none; }
+      .playing .pause-icon { display: block; }
+      
+      /* Ticker Styles */
+      .home-ticker {
+        border-top: 1px solid rgba(255,255,255,0.05);
+        background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(6, 182, 212, 0.03) 50%, rgba(0,0,0,0.4) 100%);
+        padding: 1rem 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+      .home-ticker::before,
+      .home-ticker::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100px;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .home-ticker::before {
+        left: 0;
+        background: linear-gradient(90deg, rgba(15,15,20,1) 0%, transparent 100%);
+      }
+      .home-ticker::after {
+        right: 0;
+        background: linear-gradient(90deg, transparent 0%, rgba(15,15,20,1) 100%);
+      }
+      .home-ticker-track {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: tickerScroll 80s linear infinite;
+        width: max-content;
+      }
+      .home-ticker-track:hover { animation-play-state: paused; }
+      .ticker-item {
+        font-family: 'Courier New', monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.5);
+        padding: 0 1rem;
+        transition: color 0.3s ease;
+      }
+      .ticker-item:hover {
+        color: var(--jazer-cyan);
+      }
+      .ticker-sep {
+        color: var(--jazer-cyan);
+        opacity: 0.4;
+        font-size: 0.5rem;
+        padding: 0 0.5rem;
+        text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+      }
+      @keyframes tickerScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      @media (max-width: 768px) {
+        .home-ticker { padding: 0.6rem 0; }
+        .home-ticker::before,
+        .home-ticker::after { width: 40px; }
+        .ticker-item { font-size: 0.6rem; padding: 0 0.5rem; letter-spacing: 0.15em; }
+        .ticker-sep { font-size: 0.4rem; }
+      }
+    </style>
+  </Fragment>
+
+  <FloatingNotes />
+
+  <!-- Hero Section -->
+  <section class="music-hero-section" style="position: relative; z-index: 1;">
+    <div class="container music-hero-content" data-animate="fade-up">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        <span>SYSTEM STATUS: ONLINE</span>
+      </div>
+      
+      <img
+        src={`${base}assets/images/Transmission Incoming (429 x 150 px).svg`}
+        alt="Transmission Incoming"
+        class="music-hero-title-img"
+        style="max-width: 100%; height: auto; margin-bottom: 1.5rem;"
+      />
+
+      <p class="music-hero-description">
+        Melodic hip-hop blending introspective bars with atmospheric production.<br/>
+        Music currently in development — releases coming soon.
+      </p>
+
+      <div class="hero-nav-links" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="#transmission-log" class="system-button">See What's Coming</a>
+        <a href="#join-beam" class="system-button" style="background: transparent;">Get Notified</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true">
+    <div class="tech-line"></div>
+    <div class="tech-node"></div>
+    <div class="tech-line"></div>
+  </div>
+
+  <!-- Transmission Log (Releases) -->
+  <section id="transmission-log" class="discography-section section">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Transmission Log</h2>
+        <p class="section-subtitle">Incoming signals and scheduled releases</p>
+      </div>
+      
+      <div class="discography-grid">
+        {releases.map((release, index) => (
+          <article class="release-card" data-animate="fade-up" style={`--delay: ${index * 0.1}s`}>
+            <div class="release-cover">
+              <div class={`cover-placeholder ${release.gradient}`} aria-hidden="true"></div>
+              <div class="status-overlay" aria-hidden="true">
+                <span class="status-badge">{release.status}</span>
+              </div>
+            </div>
+            <div class="release-details">
+              <h3 class="release-title">{release.title}</h3>
+              <div class="release-meta">
+                <span>{release.type}</span>
+                <span class="meta-divider"></span>
+                <span>{release.year}</span>
+              </div>
+              <p class="release-description">{release.description}</p>
+              <a href="#join-beam" class="release-link">
+                {release.cta} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Track Section: System Preview -->
+  <section id="featured-track" class="featured-track-section section">
+    <div class="container">
+      <div class="featured-track-container premium-card" data-animate="fade-up">
+        <!-- Visual (Vinyl) - Left Side -->
+        <div class="featured-track-visual">
+           <div class="vinyl-container">
+             <div class="vinyl-record">
+               <div class="vinyl-grooves"></div>
+               <div class="vinyl-label">
+                 <img src={`${base}assets/images/JZR-Circle-Monogram-Logo (500 x 500 px).svg`} alt="JZR" class="label-logo" />
+               </div>
+               <div class="vinyl-shine"></div>
+             </div>
+           </div>
+        </div>
+      
+        <div class="featured-track-info">
+          <div class="featured-header">
+            <span class="featured-badge-pill" style="background: rgba(6, 182, 212, 0.2); color: var(--jazer-cyan);">Coming Soon</span>
+          </div>
+          <h2 class="featured-title">In Due Time</h2>
+          <p class="featured-artist">JaZeR</p>
+
+          <div class="featured-meta-row">
+            <span class="meta-tag">MELODIC HIP-HOP</span>
+            <span class="meta-tag" style="opacity: 0.6;">• DEBUT SINGLE</span>
+          </div>
+
+          <a href="#join-beam" class="system-button" style="margin-top: 1.5rem; font-size: 0.8rem;">
+            Get Notified on Release
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Divider -->
+  <div class="tech-divider" aria-hidden="true">
+    <div class="tech-line"></div>
+    <div class="tech-node"></div>
+    <div class="tech-line"></div>
+  </div>
+
+  <!-- Streaming Platforms (Pre-save / Profiles) -->
+  <section id="platforms" class="platforms-section">
+    <div class="container">
+      <div class="platforms-content" data-animate="fade-up">
+        <div class="platforms-label">
+          <span class="label-line"></span>
+          <span class="label-text">Available on all platforms at release</span>
+          <span class="label-line"></span>
+        </div>
+
+        <div class="platform-grid">
+          {streamingPlatforms.map((platform) => (
+            <div
+              class="platform-pill"
+              aria-label={`${platform.name} - Available at release`}
+              title={`${platform.name} - Coming soon`}
+            >
+              <img
+                src={`${base}assets/images/icons/social/${platform.icon}`}
+                alt={platform.name}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <h2 class="section-title text-center gradient-text">Questions & Answers</h2>
+        <p class="section-subtitle">Everything you need to know</p>
+      </div>
+
+      <div class="faq-grid">
+        {faqItems.map((item, index) => (
+          <div class="faq-card" data-animate="fade-up" style={`--delay: ${index * 0.1}s`}>
+            <div class="faq-icon">?</div>
+            <div class="faq-content">
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Signup CTA -->
+    <div id="join-beam" class="join-beam-section" style="max-width: 600px; margin: 0 auto; padding: 2rem 1rem;">
+      <JoinBeamCTA
+        inline={true}
+        captureStyle="max-width: 100%; margin: 0;"
+        subtitleStyle="font-size: 1rem; margin: 0.75rem 0;"
+        subject="New subscriber from JaZeR Music page"
+        buttonLabel="Notify Me"
+        proofText=""
+      >
+        <Fragment slot="subtitle">
+          Be the first to hear new music, get exclusive content, and stay updated on releases.
+        </Fragment>
+      </JoinBeamCTA>
+    </div>
+
+  <!-- Bottom Ticker -->
+  <div class="home-ticker" style="border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.3);">
+    <div class="home-ticker-track">
+      {[...Array(6)].map(() => (
+        <>
+          <span class="ticker-item">MELODIC HIP-HOP</span>
+          <span class="ticker-sep">•</span>
+          <span class="ticker-item">COMING SOON</span>
+          <span class="ticker-sep">•</span>
+          <span class="ticker-item">IN DUE TIME</span>
+          <span class="ticker-sep">•</span>
+          <span class="ticker-item">JAZER</span>
+          <span class="ticker-sep">•</span>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    // Scroll Reveal Animation
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.1
+    };
+
+    const revealOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealOnScroll.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('[data-animate], .release-card, .faq-card').forEach(el => {
+      el.classList.add('scroll-hidden');
+      revealOnScroll.observe(el);
+    });
+
+    // Parallax effect on hero orbs
+    const heroSection = document.querySelector('.music-hero-section');
+    if (heroSection) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * 0.3;
+        heroSection.style.setProperty('--parallax-y', `${rate}px`);
+      }, { passive: true });
+    }
+  </script>
+
+  <style>
+    /* Scroll reveal states */
+    .scroll-hidden {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .scroll-hidden.revealed {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .release-card.scroll-hidden.revealed,
+    .faq-card.scroll-hidden.revealed {
+      transition-delay: var(--delay, 0s);
+    }
+
+    /* Parallax on hero orbs */
+    .music-hero-section::before,
+    .music-hero-section::after {
+      transform: translateY(var(--parallax-y, 0));
+    }
+  </style>
+
+</BaseLayout>
+

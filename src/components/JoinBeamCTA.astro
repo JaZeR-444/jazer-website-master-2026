@@ -1,0 +1,466 @@
+---
+const base = import.meta.env.BASE_URL;
+const {
+  id,
+  sectionClass = 'section email-section',
+  sectionStyle,
+  captureStyle,
+  subtitleStyle,
+  subject,
+  buttonLabel,
+  proofText,
+  helperText = '',
+  inline = false
+} = Astro.props;
+---
+{/* If inline mode, skip section/container wrappers */}
+{inline ? (
+  <div class="email-capture email-capture-enhanced" data-animate="fade-up" style={captureStyle} id={id}>
+    <!-- Subtle gradient border glow -->
+    <div class="email-capture-glow email-capture-glow--subtle"></div>
+    
+    <img
+      src={`${base}assets/images/join-the-beam (1500 x 500 px) (300 x 100 px).svg`}
+      alt="Join the Beam"
+      class="email-capture-title-img"
+      data-animate="fade-up"
+    />
+    
+    <!-- Benefit chips - 2 only, moved right below header -->
+    <div class="benefit-chips">
+      <span class="benefit-chip">📩 Early Access</span>
+      <span class="benefit-chip">🎵 Exclusive Drops</span>
+    </div>
+    
+    <p class="email-capture-subtitle" style={subtitleStyle}>
+      <slot name="subtitle" />
+    </p>
+    
+    <form
+      class="email-capture-form email-capture-form-inline"
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+    >
+      <div class="input-wrapper">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M22 6L12 13L2 6"/>
+        </svg>
+        <input
+          type="email"
+          name="email"
+          class="email-capture-input"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        />
+      </div>
+      <input type="hidden" name="_subject" value={subject} />
+      <button type="submit" class="email-capture-btn">
+        <span class="btn-text">{buttonLabel}</span>
+        <span class="btn-arrow">→</span>
+        <span class="btn-spinner"></span>
+      </button>
+    </form>
+    
+    <!-- Helper text with lock icon -->
+    {helperText && <p class="email-capture-helper"><span class="lock-icon">🔒</span> {helperText}</p>}
+    
+    <!-- Status message -->
+    <p class="email-capture-status" role="status" aria-live="polite"></p>
+    
+    <!-- Success overlay -->
+    <div class="success-overlay">
+      <span class="success-check">✓</span>
+      <span class="success-text">You're in!</span>
+    </div>
+  </div>
+) : (
+  <section class={sectionClass} id={id} style={sectionStyle}>
+    <div class="container">
+      <div class="email-capture email-capture-enhanced" data-animate="fade-up" style={captureStyle}>
+        <!-- Subtle gradient border glow -->
+        <div class="email-capture-glow email-capture-glow--subtle"></div>
+        
+        <img
+          src={`${base}assets/images/join-the-beam (1500 x 500 px) (300 x 100 px).svg`}
+          alt="Join the Beam"
+          class="email-capture-title-img"
+          data-animate="fade-up"
+        />
+        
+        <!-- Benefit chips - 2 only, moved right below header -->
+        <div class="benefit-chips">
+          <span class="benefit-chip">📩 Early Access</span>
+          <span class="benefit-chip">🎵 Exclusive Drops</span>
+        </div>
+        
+        <p class="email-capture-subtitle" style={subtitleStyle}>
+          <slot name="subtitle" />
+        </p>
+        
+        <form
+          class="email-capture-form email-capture-form-inline"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <div class="input-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M22 6L12 13L2 6"/>
+            </svg>
+            <input
+              type="email"
+              name="email"
+              class="email-capture-input"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+          <input type="hidden" name="_subject" value={subject} />
+          <button type="submit" class="email-capture-btn">
+            <span class="btn-text">{buttonLabel}</span>
+            <span class="btn-arrow">→</span>
+            <span class="btn-spinner"></span>
+          </button>
+        </form>
+        
+        <!-- Helper text with lock icon -->
+        {helperText && <p class="email-capture-helper"><span class="lock-icon">🔒</span> {helperText}</p>}
+        
+        <!-- Status message -->
+        <p class="email-capture-status" role="status" aria-live="polite"></p>
+        
+        <!-- Success overlay -->
+        <div class="success-overlay">
+          <span class="success-check">✓</span>
+          <span class="success-text">You're in!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<script>
+  // Form submission handling
+  document.querySelectorAll('.email-capture-form-inline').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      const btn = form.querySelector('.email-capture-btn');
+      const card = form.closest('.email-capture-enhanced');
+      const status = card ? card.querySelector('.email-capture-status') : null;
+      const action = form.getAttribute('action') || '';
+      const isPlaceholder = action.includes('YOUR_FORM_ID');
+
+      if (!isPlaceholder) {
+        return;
+      }
+
+      e.preventDefault();
+
+      if (status) {
+        status.textContent = 'Submission not configured yet.';
+        status.classList.remove('success');
+        status.classList.add('error');
+      }
+
+      if (btn) {
+        btn.classList.add('loading');
+        setTimeout(() => {
+          btn.classList.remove('loading');
+        }, 600);
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Desktop - Compact Styling */
+  :global(.email-capture-enhanced) {
+    padding: 1.5rem 1rem !important;
+    text-align: center !important;
+  }
+
+  :global(.email-capture-title-img) {
+    max-width: 180px !important;
+    margin: 0 auto 0.75rem !important;
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  :global(.benefit-chips) {
+    gap: 0.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  :global(.benefit-chip) {
+    padding: 0.35rem 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  :global(.email-capture-subtitle) {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  :global(.email-capture-form-inline) {
+    gap: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    max-width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  :global(.input-wrapper) {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    max-width: 250px !important;
+  }
+
+  :global(.email-capture-input) {
+    padding: 0 0.5rem 0 2rem !important;
+    font-size: 0.9rem !important;
+    width: 100% !important;
+    min-width: 200px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    box-sizing: border-box !important;
+  }
+
+  :global(.input-icon) {
+    left: 0.5rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    position: absolute !important;
+    pointer-events: none !important;
+  }
+
+  :global(.email-capture-btn) {
+    padding: 0 1.25rem !important;
+    font-size: 0.9rem !important;
+    width: auto !important;
+    min-width: auto !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Mobile Optimizations - Force Global Application */
+  @media (max-width: 768px) {
+    /* Shrink the entire card */
+    :global(.email-capture-enhanced) {
+      padding: 0.875rem 0.75rem !important;
+      border-radius: 14px !important;
+      margin: 0 auto !important;
+      max-width: 85% !important;
+    }
+
+    /* Reduce title image size */
+    :global(.email-capture-title-img) {
+      max-width: 120px !important;
+      height: auto !important;
+      margin: 0 auto 0.5rem !important;
+      display: block !important;
+      padding: 0 !important;
+    }
+
+    /* Compact subtitle */
+    :global(.email-capture-subtitle) {
+      font-size: 0.85rem !important;
+      line-height: 1.35 !important;
+      margin-bottom: 0.625rem !important;
+      padding: 0 0.25rem !important;
+    }
+
+    /* Compact chips */
+    :global(.benefit-chips) {
+      gap: 0.4rem !important;
+      margin-bottom: 0.625rem !important;
+    }
+
+    :global(.benefit-chip) {
+      font-size: 0.65rem !important;
+      padding: 0.25rem 0.375rem !important;
+      border-radius: 10px !important;
+    }
+
+    /* Keep form horizontal but more compact */
+    :global(.email-capture-form-inline) {
+      flex-direction: row !important;
+      gap: 0.4rem !important;
+      margin-bottom: 0.5rem !important;
+      align-items: center !important;
+    }
+
+    :global(.input-wrapper) {
+      width: auto !important;
+      flex: 0 0 auto !important;
+      max-width: 180px !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    :global(.email-capture-input) {
+      font-size: 0.8rem !important;
+      padding: 0 0.5rem 0 2rem !important;
+      border-radius: 10px !important;
+      height: 44px !important;
+      width: 100% !important;
+      min-width: 150px !important;
+      box-sizing: border-box !important;
+      line-height: 44px !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    :global(.input-icon) {
+      width: 15px !important;
+      height: 15px !important;
+      left: 0.5rem !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+
+    :global(.email-capture-btn) {
+      padding: 0 0.875rem !important;
+      font-size: 0.8rem !important;
+      border-radius: 10px !important;
+      height: 44px !important;
+      width: auto !important;
+      min-width: auto !important;
+      box-sizing: border-box !important;
+      line-height: 44px !important;
+      border: 1px solid transparent !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* Helper text */
+    :global(.email-capture-helper) {
+      font-size: 0.65rem !important;
+      margin-top: 0.375rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    :global(.email-capture-enhanced) {
+      padding: 0.625rem 0.5rem !important;
+      border-radius: 10px !important;
+      margin: 0 auto !important;
+      max-width: 90% !important;
+    }
+
+    /* Reduce title image size significantly */
+    :global(.email-capture-title-img) {
+      max-width: 95px !important;
+      height: auto !important;
+      margin: 0 auto 0.375rem !important;
+      display: block !important;
+      padding: 0 !important;
+    }
+
+    /* Hide decorative glow/sparkles */
+    :global(.email-capture-glow),
+    :global(.sparkle-container),
+    :global(.sparkle) {
+      display: none !important;
+    }
+
+    /* Compact subtitle */
+    :global(.email-capture-subtitle) {
+      font-size: 0.7rem !important;
+      line-height: 1.2 !important;
+      margin-bottom: 0.4rem !important;
+      padding: 0 !important;
+    }
+
+    /* Compact chips */
+    :global(.benefit-chips) {
+      gap: 0.3rem !important;
+      margin-bottom: 0.4rem !important;
+    }
+
+    :global(.benefit-chip) {
+      font-size: 0.55rem !important;
+      padding: 0.2rem 0.3rem !important;
+      border-radius: 6px !important;
+    }
+
+    /* Force horizontal layout for form */
+    :global(.email-capture-form-inline) {
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 0.3rem !important;
+      margin-bottom: 0.375rem !important;
+      align-items: center !important;
+    }
+
+    /* Input wrapper flex adjustment */
+    :global(.input-wrapper) {
+      flex: 0 0 auto !important;
+      margin-bottom: 0 !important;
+      min-width: 0 !important;
+      width: auto !important;
+      max-width: 140px !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    /* Input styling */
+    :global(.email-capture-input) {
+      font-size: 0.7rem !important;
+      padding: 0 0.4rem 0 1.65rem !important;
+      border-radius: 8px !important;
+      height: 38px !important;
+      width: 100% !important;
+      min-width: 110px !important;
+      box-sizing: border-box !important;
+      line-height: 38px !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    :global(.input-icon) {
+      width: 13px !important;
+      height: 13px !important;
+      left: 0.4rem !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+
+    /* Button styling */
+    :global(.email-capture-btn) {
+      padding: 0 0.65rem !important;
+      font-size: 0.7rem !important;
+      border-radius: 8px !important;
+      height: 38px !important;
+      min-width: auto !important;
+      width: auto !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
+      line-height: 38px !important;
+      border: 1px solid transparent !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    
+    :global(.btn-arrow) {
+      font-size: 0.9rem !important;
+    }
+
+    /* Helper text */
+    :global(.email-capture-helper) {
+      font-size: 0.55rem !important;
+      margin-top: 0.25rem !important;
+    }
+  }
+</style>

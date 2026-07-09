@@ -1,0 +1,28 @@
+/* Base element styles and resets for the site */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-gradient, var(--bg-dark)) center top / cover no-repeat scroll;
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,141 @@
+---
+const { href, text } = Astro.props;
+---
+<div class="announcement-bar" id="announcementBar">
+  <div class="announcement-track-container">
+    <div class="announcement-track">
+      {/* Content Duplicated for Seamless Loop */}
+      {[...Array(10)].map(() => (
+        <>
+          <a href={href} class="announcement-link">{text}</a>
+          <span class="announcement-separator">::</span>
+        </>
+      ))}
+    </div>
+  </div>
+  <button
+    class="announcement-close"
+    aria-label="Close announcement"
+    onclick="document.getElementById('announcementBar').remove(); document.body.classList.remove('has-announcement');"
+  >
+    ✕
+  </button>
+</div>
+
+<style>
+  .announcement-bar {
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1100;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+
+  .announcement-track-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .announcement-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: announcementTicker var(--duration, 60s) linear infinite;
+    width: max-content;
+  }
+
+  .announcement-track:hover {
+    animation-play-state: paused;
+  }
+
+  .announcement-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 0.5rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .announcement-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .announcement-separator {
+    color: rgba(255, 255, 255, 0.5);
+    padding: 0 0.5rem;
+    font-size: 0.7em;
+  }
+
+  .announcement-close {
+    position: absolute;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    transition: background 0.2s ease;
+    z-index: 2;
+  }
+
+  .announcement-close:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  @keyframes announcementTicker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .announcement-bar {
+      height: 45px;
+      position: relative !important; /* Force scroll away on mobile */
+    }
+  }
+</style>
+
+<script>
+  function updateAnimationSpeed() {
+    const track = document.querySelector('.announcement-track') as HTMLElement;
+    if (!track) return;
+
+    // Desired speed in pixels per second (Lower = Slower)
+    // The user asked to "slow down", so 30 px/s is a good, readable speed.
+    const pixelsPerSecond = 30; 
+    
+    // We animate from 0 to -50% (half the total width)
+    const moveDistance = track.scrollWidth / 2;
+    
+    const duration = moveDistance / pixelsPerSecond;
+    
+    track.style.setProperty('--duration', `${duration}s`);
+  }
+
+  // Run on load and resize
+  window.addEventListener('load', updateAnimationSpeed);
+  window.addEventListener('resize', updateAnimationSpeed);
+  
+  // Initialize
+  updateAnimationSpeed();
+  document.body.classList.add('has-announcement');
+</script>
