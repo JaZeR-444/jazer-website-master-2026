@@ -381,12 +381,15 @@ const contactReasons = [
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
     transition: all 0.3s ease;
-    width: 100%;
+    align-self: center;
+    width: auto;
+    min-width: 14rem;
+    max-width: 100%;
   }
 
   .submit-btn:hover:not(:disabled) {
